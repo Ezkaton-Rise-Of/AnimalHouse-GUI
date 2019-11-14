@@ -8,7 +8,17 @@ namespace AnimalHouseDB
 {
     class AnimalhouseDatabase
     {
-        public string OpretKunde()
+        public AnimalhouseDatabase()
+        {
+        }
+
+        public string OpretKunde() {}
+
+        public string OpretDyr()
+        {
+
+        }
+
 
 
 
