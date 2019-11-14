@@ -134,10 +134,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 67);
+            this.label1.Size = new System.Drawing.Size(431, 73);
             this.label1.TabIndex = 27;
             this.label1.Text = "Animal House";
             // 
@@ -355,6 +355,7 @@
             this.Label_Sygdom.Size = new System.Drawing.Size(50, 13);
             this.Label_Sygdom.TabIndex = 52;
             this.Label_Sygdom.Text = "Sickness";
+            this.Label_Sygdom.Click += new System.EventHandler(this.Label_Sygdom_Click);
             // 
             // AnimalHouseGui_Register
             // 

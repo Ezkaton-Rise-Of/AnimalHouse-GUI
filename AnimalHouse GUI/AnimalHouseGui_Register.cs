@@ -21,5 +21,10 @@ namespace AnimalHouse_GUI
         {
 
         }
+
+        private void Label_Sygdom_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
