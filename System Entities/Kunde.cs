@@ -9,6 +9,7 @@ namespace AnimalHouse_Entities
     public class Kunde
     {
         // attributes 
+        public int Id;
         public string Fnavn;
         public string Lnavn;
         public string Adresse;
