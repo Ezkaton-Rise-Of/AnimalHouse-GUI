@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouse GUI", "AnimalHo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouseDB", "AnimalHouseDB\AnimalHouseDB.csproj", "{FA47EC7D-BEAB-49D3-A467-E7DAD25AB13D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHousePersistenslag", "AnimalHousePersistenslag\AnimalHousePersistenslag.csproj", "{BB4B345F-39AF-49EB-837F-E0368802E375}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouseBLL", "AnimalHousePersistenslag\AnimalHouseBLL.csproj", "{BB4B345F-39AF-49EB-837F-E0368802E375}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimaleHouseModel", "AnimaleHouseModel\AnimaleHouseModel.csproj", "{1269935A-78A6-46BD-939D-6729051FE282}"
 EndProject

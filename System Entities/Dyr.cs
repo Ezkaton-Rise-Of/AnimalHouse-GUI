@@ -9,11 +9,14 @@ namespace AnimalHouse_Entites
     public class Dyr
     {
         // attributes
+        public int DyrId;
         public int KundeId;
         public string Art;
         public string Race;
         public int Alder;
         public char Sex;
+
+        public Dyr() { }
 
         // Class Constructor
         public Dyr(int kundeid, string art, string race, int alder, char sex)
