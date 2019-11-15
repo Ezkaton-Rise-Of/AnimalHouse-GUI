@@ -45,8 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimalhouseDyrDatabase .cs" />
-    <Compile Include="AnimalhouseDatabase.cs" />
+    <Compile Include="AnimalhouseKundeDatabase.cs" />
     <Compile Include="IDyrDB.cs" />
+    <Compile Include="IKundeDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

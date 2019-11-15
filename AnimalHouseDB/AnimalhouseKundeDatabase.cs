@@ -28,7 +28,7 @@ namespace AnimalHouseDB
                 conn.Open();
                 try
                 {
-                    string commandtxt = $"Insert into Kunde (Fnavn,Lnavn,Adresse,Postnummer,Tlf,Kundetype) values (@Fnavn,@Lnavn,@Adresse,@Postnummer,@Tlf,@Kundetype)";
+                    string commandtxt = $"Insert into Kunde (Fnavn,Lnavn,Adresse,Postnummer,Tlf,Kundetype,E_mail) values (@Fnavn,@Lnavn,@Adresse,@Postnummer,@Tlf,@Kundetype,@E_mail)";
                     SqlCommand command = new SqlCommand(commandtxt, conn);
                     command.Parameters.Add(new SqlParameter("@Fnavn", k.Fnavn));
                     command.Parameters.Add(new SqlParameter("@Lnavn", k.Fnavn));
@@ -36,6 +36,8 @@ namespace AnimalHouseDB
                     command.Parameters.Add(new SqlParameter("@Postnummer", k.Postnummer));
                     command.Parameters.Add(new SqlParameter("@Tlf", k.Tlf));
                     command.Parameters.Add(new SqlParameter("@Kundetype", k.Kundetype));
+                    command.Parameters.Add(new SqlParameter("@E_mail", k.E_mail));
+
                     command.ExecuteNonQuery();
                 }
                 catch (Exception e)
