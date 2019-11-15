@@ -11,7 +11,7 @@ using AnimalHouse_Entites;
 
 namespace AnimalHouseDB
 {
-    class AnimalhouseDyrDatabase: IDyrDB
+    public class AnimalhouseDyrDatabase: IDyrDB
     {
         public AnimalhouseDyrDatabase()
         {

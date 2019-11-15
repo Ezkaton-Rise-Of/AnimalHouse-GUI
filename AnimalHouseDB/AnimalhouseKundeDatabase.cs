@@ -11,14 +11,11 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseKundeDatabase
     {
-        private static readonly AnimalhouseKundeDatabase dbInstance = new AnimalhouseKundeDatabase();
-        private AnimalhouseKundeDatabase()
+
+        public AnimalhouseKundeDatabase()
         {
         }
-        public static AnimalhouseKundeDatabase GetInstance()
-        {
-            return dbInstance;
-        }
+
 
         // Opretelse af en kunde.
         public string OpretKunde( Kunde k) 
