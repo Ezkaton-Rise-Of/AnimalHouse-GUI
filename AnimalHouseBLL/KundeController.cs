@@ -13,7 +13,7 @@ namespace AnimalHouseBLL
 
         public KundeController()
         {
-            PersistensFactory persistensFactory = new PersistensFactory();
+            KundePersistensFactory persistensFactory = KundePersistensFactory.GetInstance();
             KundeDB = persistensFactory.GetKundeDB();
         }
 

@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KundePersistensFactory.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="DyrController.cs" />
     <Compile Include="KundeController.cs" />
-    <Compile Include="PersistensFactory.cs" />
+    <Compile Include="DyrPersistensFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

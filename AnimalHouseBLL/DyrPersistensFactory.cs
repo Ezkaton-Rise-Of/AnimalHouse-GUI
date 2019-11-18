@@ -8,15 +8,15 @@ using AnimalHouse_Entities;
 
 namespace AnimalHouseBLL
 {
-    class PersistensFactory
+    public class DyrPersistensFactory
     {
-        private static PersistensFactory _instance = null;
-        public PersistensFactory() { }
-        public static PersistensFactory GetInstance()
+        private static DyrPersistensFactory _instance = null;
+        private DyrPersistensFactory() { }
+        public static DyrPersistensFactory GetInstance()
         {
             if (_instance == null)
             {
-                _instance = new PersistensFactory();
+                _instance = new DyrPersistensFactory();
                 return _instance;
             }
             else return _instance;
@@ -27,10 +27,7 @@ namespace AnimalHouseBLL
                 return new AnimalhouseDyrDatabase();
             } 
 
-            public IKundeDB GetKundeDB()
-            {
-                return new AnimalhouseKundeDatabase();
-            }
+
 
 
     }

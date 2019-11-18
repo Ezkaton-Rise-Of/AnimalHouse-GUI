@@ -12,7 +12,7 @@ namespace AnimalHouseBLL
         IDyrDB DyrDB;
         public DyrController()
         {
-            PersistensFactory persistensFactory = new PersistensFactory();
+            DyrPersistensFactory persistensFactory = DyrPersistensFactory.GetInstance();
             DyrDB = persistensFactory.GetDyrDB();
         }
 

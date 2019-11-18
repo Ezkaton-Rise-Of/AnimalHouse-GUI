@@ -11,7 +11,7 @@ namespace AnimalHouseBLL
     public class MainController
     {
         KundeController Kc;
-        DyrController Dc
+        DyrController Dc;
         public MainController()
         {
             Kc = new KundeController();
@@ -21,6 +21,8 @@ namespace AnimalHouseBLL
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string email)
         {
+
+
             return Kc.OpretKunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, oprettet, email);
         }
 
