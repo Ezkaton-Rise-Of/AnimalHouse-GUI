@@ -22,15 +22,15 @@ namespace AnimalHouseBLL
             else return _instance;
         }
         
-        public IDyrDB GetDyr()
-        {
-            return new AnimalhouseDyrDatabase();
-        } 
+            public IDyrDB GetDyrDB()
+            {
+                return new AnimalhouseDyrDatabase();
+            } 
 
-        public IKundeDB GetKunde()
-        {
-            return new AnimalhouseKundeDatabase();
-        }
+            public IKundeDB GetKundeDB()
+            {
+                return new AnimalhouseKundeDatabase();
+            }
 
 
     }

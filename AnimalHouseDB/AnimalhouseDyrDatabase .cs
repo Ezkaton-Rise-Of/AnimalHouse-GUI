@@ -17,6 +17,12 @@ namespace AnimalHouseDB
         {
         }
 
+        public Dyr HentDyr(int Id)
+        {
+            throw new NotImplementedException();
+
+        }
+
         public string OpretDyr(Dyr d)
         {
             string result;
@@ -49,6 +55,21 @@ namespace AnimalHouseDB
                 }
             }
             return result;
+        }
+
+        public string SletDyr(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string UpdaterDyr(Dyr d)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Dyr> IDyrDB.HentDyrByKundeId(int KId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
