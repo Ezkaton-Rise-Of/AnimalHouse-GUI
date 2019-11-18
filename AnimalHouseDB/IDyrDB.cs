@@ -9,5 +9,9 @@ namespace AnimalHouseDB
     public interface IDyrDB
     {
             string OpretDyr(Dyr d);
+            string UpdaterDyr(Dyr d);
+            string SletDyr(int Id);
+            Dyr HentDyr(int Id);
+        List<Dyr> HentDyrByKundeId(int KId);
     }
 }

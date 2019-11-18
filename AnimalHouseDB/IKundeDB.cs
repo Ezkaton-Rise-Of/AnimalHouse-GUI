@@ -9,5 +9,10 @@ namespace AnimalHouseDB
     public interface IKundeDB
     {
         string OpretKunde(Kunde k);
+        Kunde HentKundeById(int id);
+        string DeleteKunde(int id);
+        string UpdateKunde(Kunde k, int id);
+        Kunde HentKundeByTlf(string k);
+        List<Kunde> HentAlleKunder();
     }
 }

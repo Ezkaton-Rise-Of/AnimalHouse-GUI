@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace AnimalHouseDB
 {
-    public class AnimalhouseKundeDatabase
+    public class AnimalhouseKundeDatabase: IKundeDB
     {
 
         public AnimalhouseKundeDatabase()
@@ -101,7 +101,7 @@ namespace AnimalHouseDB
         }
 
         //KundeSøning
-        public Kunde SearchForKunde(int id)
+        public Kunde HentKundeById(int id)
         {
             Kunde k = null;
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -132,6 +132,16 @@ namespace AnimalHouseDB
                 }
             }
             return k;
+        }
+
+        public Kunde HentKundeByTlf(string k)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Kunde> HentAlleKunder()
+        {
+            throw new NotImplementedException();
         }
     }
 }

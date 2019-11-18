@@ -11,10 +11,6 @@ namespace AnimalHouseDB
     {
         static void Main(string[] args)
         {
-            Kunde k = new Kunde("Rick","Smith","Pakhustorvet22","6000","4343435","Private","Kolding",DateTime.Now);
-            String t =AnimalhouseKundeDatabase.GetInstance().OpretKunde(k);
-            Console.WriteLine(t);
-            Console.ReadKey();
             
         }
     }
