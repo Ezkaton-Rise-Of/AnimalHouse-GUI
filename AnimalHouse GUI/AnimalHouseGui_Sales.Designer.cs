@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGui_Sales));
-            this.label_AnimalHouse2 = new System.Windows.Forms.Label();
+            this.label_AnimalHouse4 = new System.Windows.Forms.Label();
             this.dataGridView_Historik = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -79,15 +79,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Order)).BeginInit();
             this.SuspendLayout();
             // 
-            // label_AnimalHouse2
+            // label_AnimalHouse4
             // 
-            this.label_AnimalHouse2.AutoSize = true;
-            this.label_AnimalHouse2.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_AnimalHouse2.Location = new System.Drawing.Point(12, 9);
-            this.label_AnimalHouse2.Name = "label_AnimalHouse2";
-            this.label_AnimalHouse2.Size = new System.Drawing.Size(287, 67);
-            this.label_AnimalHouse2.TabIndex = 29;
-            this.label_AnimalHouse2.Text = "Animal House";
+            this.label_AnimalHouse4.AutoSize = true;
+            this.label_AnimalHouse4.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_AnimalHouse4.Location = new System.Drawing.Point(12, 9);
+            this.label_AnimalHouse4.Name = "label_AnimalHouse4";
+            this.label_AnimalHouse4.Size = new System.Drawing.Size(287, 67);
+            this.label_AnimalHouse4.TabIndex = 29;
+            this.label_AnimalHouse4.Text = "Animal House";
             // 
             // dataGridView_Historik
             // 
@@ -646,7 +646,7 @@
             this.Controls.Add(this.dataGridView_Order);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView_Historik);
-            this.Controls.Add(this.label_AnimalHouse2);
+            this.Controls.Add(this.label_AnimalHouse4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnimalHouseGui_Sales";
             this.Text = "Animal House";
@@ -660,7 +660,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label_AnimalHouse2;
+        private System.Windows.Forms.Label label_AnimalHouse4;
         private System.Windows.Forms.DataGridView dataGridView_Historik;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

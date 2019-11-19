@@ -113,5 +113,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalHouseBLL\AnimalHouseBLL.csproj">
+      <Project>{bb4b345f-39af-49eb-837f-e0368802e375}</Project>
+      <Name>AnimalHouseBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

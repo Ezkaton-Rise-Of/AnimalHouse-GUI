@@ -29,303 +29,290 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGui_Booking));
-            this.label_AnimalHouse3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox_RestMængde = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label_AnimalHouse5 = new System.Windows.Forms.Label();
+            this.dateTimePicker_StartDato = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView_Booking = new System.Windows.Forms.DataGridView();
+            this.label_StartDato = new System.Windows.Forms.Label();
+            this.label_SlutDato = new System.Windows.Forms.Label();
+            this.textBox_BehandlerIdBooking = new System.Windows.Forms.TextBox();
+            this.dateTimePicker_SlutDato = new System.Windows.Forms.DateTimePicker();
+            this.textBox_EjerIdBooking = new System.Windows.Forms.TextBox();
+            this.label_BehandlerIdBooking = new System.Windows.Forms.Label();
+            this.label_EjerIdBooking = new System.Windows.Forms.Label();
+            this.button_RegBooking = new System.Windows.Forms.Button();
+            this.button_AnulBooking = new System.Windows.Forms.Button();
+            this.button_Søgning = new System.Windows.Forms.Button();
+            this.textBox_DyrIdBooking = new System.Windows.Forms.TextBox();
+            this.label_DyrIdBooking = new System.Windows.Forms.Label();
+            this.label_BookingType = new System.Windows.Forms.Label();
+            this.comboBox_BookingType = new System.Windows.Forms.ComboBox();
+            this.comboBox_BookingBur = new System.Windows.Forms.ComboBox();
+            this.label_BookingBur = new System.Windows.Forms.Label();
+            this.textBox_RestBur = new System.Windows.Forms.TextBox();
+            this.label_RestBur = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Booking)).BeginInit();
             this.SuspendLayout();
             // 
-            // label_AnimalHouse3
+            // label_AnimalHouse5
             // 
-            this.label_AnimalHouse3.AutoSize = true;
-            this.label_AnimalHouse3.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_AnimalHouse3.Location = new System.Drawing.Point(12, 9);
-            this.label_AnimalHouse3.Name = "label_AnimalHouse3";
-            this.label_AnimalHouse3.Size = new System.Drawing.Size(287, 67);
-            this.label_AnimalHouse3.TabIndex = 59;
-            this.label_AnimalHouse3.Text = "Animal House";
+            this.label_AnimalHouse5.AutoSize = true;
+            this.label_AnimalHouse5.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_AnimalHouse5.Location = new System.Drawing.Point(12, 9);
+            this.label_AnimalHouse5.Name = "label_AnimalHouse5";
+            this.label_AnimalHouse5.Size = new System.Drawing.Size(287, 67);
+            this.label_AnimalHouse5.TabIndex = 59;
+            this.label_AnimalHouse5.Text = "Animal House";
             // 
-            // dateTimePicker1
+            // dateTimePicker_StartDato
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(916, 31);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 107;
+            this.dateTimePicker_StartDato.Location = new System.Drawing.Point(12, 518);
+            this.dateTimePicker_StartDato.Name = "dateTimePicker_StartDato";
+            this.dateTimePicker_StartDato.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_StartDato.TabIndex = 107;
             // 
-            // dataGridView1
+            // dataGridView_Booking
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 99);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(864, 536);
-            this.dataGridView1.TabIndex = 108;
+            this.dataGridView_Booking.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_Booking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Booking.Location = new System.Drawing.Point(12, 99);
+            this.dataGridView_Booking.Name = "dataGridView_Booking";
+            this.dataGridView_Booking.Size = new System.Drawing.Size(1159, 388);
+            this.dataGridView_Booking.TabIndex = 108;
             // 
-            // label1
+            // label_StartDato
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(913, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 16);
-            this.label1.TabIndex = 109;
-            this.label1.Text = "Start Dato";
+            this.label_StartDato.AutoSize = true;
+            this.label_StartDato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_StartDato.Location = new System.Drawing.Point(9, 499);
+            this.label_StartDato.Name = "label_StartDato";
+            this.label_StartDato.Size = new System.Drawing.Size(77, 16);
+            this.label_StartDato.TabIndex = 109;
+            this.label_StartDato.Text = "Start Dato";
             // 
-            // label2
+            // label_SlutDato
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(913, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 16);
-            this.label2.TabIndex = 110;
-            this.label2.Text = "Slut Dato";
+            this.label_SlutDato.AutoSize = true;
+            this.label_SlutDato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_SlutDato.Location = new System.Drawing.Point(9, 550);
+            this.label_SlutDato.Name = "label_SlutDato";
+            this.label_SlutDato.Size = new System.Drawing.Size(71, 16);
+            this.label_SlutDato.TabIndex = 110;
+            this.label_SlutDato.Text = "Slut Dato";
             // 
-            // textBox1
+            // textBox_BehandlerIdBooking
             // 
-            this.textBox1.Location = new System.Drawing.Point(916, 197);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 111;
+            this.textBox_BehandlerIdBooking.Location = new System.Drawing.Point(379, 521);
+            this.textBox_BehandlerIdBooking.Name = "textBox_BehandlerIdBooking";
+            this.textBox_BehandlerIdBooking.Size = new System.Drawing.Size(200, 20);
+            this.textBox_BehandlerIdBooking.TabIndex = 111;
             // 
-            // dateTimePicker2
+            // dateTimePicker_SlutDato
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(916, 73);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 112;
+            this.dateTimePicker_SlutDato.Location = new System.Drawing.Point(12, 569);
+            this.dateTimePicker_SlutDato.Name = "dateTimePicker_SlutDato";
+            this.dateTimePicker_SlutDato.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_SlutDato.TabIndex = 112;
             // 
-            // textBox2
+            // textBox_EjerIdBooking
             // 
-            this.textBox2.Location = new System.Drawing.Point(916, 239);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 113;
+            this.textBox_EjerIdBooking.Location = new System.Drawing.Point(379, 572);
+            this.textBox_EjerIdBooking.Name = "textBox_EjerIdBooking";
+            this.textBox_EjerIdBooking.Size = new System.Drawing.Size(200, 20);
+            this.textBox_EjerIdBooking.TabIndex = 113;
             // 
-            // label3
+            // label_BehandlerIdBooking
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(913, 181);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 16);
-            this.label3.TabIndex = 114;
-            this.label3.Text = "Behandler ID";
+            this.label_BehandlerIdBooking.AutoSize = true;
+            this.label_BehandlerIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_BehandlerIdBooking.Location = new System.Drawing.Point(376, 499);
+            this.label_BehandlerIdBooking.Name = "label_BehandlerIdBooking";
+            this.label_BehandlerIdBooking.Size = new System.Drawing.Size(98, 16);
+            this.label_BehandlerIdBooking.TabIndex = 114;
+            this.label_BehandlerIdBooking.Text = "Behandler ID";
             // 
-            // label4
+            // label_EjerIdBooking
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(913, 220);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
-            this.label4.TabIndex = 115;
-            this.label4.Text = "Ejer ID";
+            this.label_EjerIdBooking.AutoSize = true;
+            this.label_EjerIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_EjerIdBooking.Location = new System.Drawing.Point(376, 550);
+            this.label_EjerIdBooking.Name = "label_EjerIdBooking";
+            this.label_EjerIdBooking.Size = new System.Drawing.Size(55, 16);
+            this.label_EjerIdBooking.TabIndex = 115;
+            this.label_EjerIdBooking.Text = "Ejer ID";
             // 
-            // button1
+            // button_RegBooking
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button1.Location = new System.Drawing.Point(916, 519);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 55);
-            this.button1.TabIndex = 116;
-            this.button1.Text = "Registrer Booking";
-            this.button1.UseVisualStyleBackColor = false;
+            this.button_RegBooking.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_RegBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_RegBooking.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_RegBooking.Location = new System.Drawing.Point(971, 518);
+            this.button_RegBooking.Name = "button_RegBooking";
+            this.button_RegBooking.Size = new System.Drawing.Size(200, 55);
+            this.button_RegBooking.TabIndex = 116;
+            this.button_RegBooking.Text = "Registrer Booking";
+            this.button_RegBooking.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // button_AnulBooking
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(916, 580);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 55);
-            this.button2.TabIndex = 117;
-            this.button2.Text = "Annuller Booking";
-            this.button2.UseVisualStyleBackColor = false;
+            this.button_AnulBooking.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_AnulBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_AnulBooking.ForeColor = System.Drawing.Color.Red;
+            this.button_AnulBooking.Location = new System.Drawing.Point(971, 610);
+            this.button_AnulBooking.Name = "button_AnulBooking";
+            this.button_AnulBooking.Size = new System.Drawing.Size(200, 55);
+            this.button_AnulBooking.TabIndex = 117;
+            this.button_AnulBooking.Text = "Annuller Booking";
+            this.button_AnulBooking.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // button_Søgning
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button3.Location = new System.Drawing.Point(916, 99);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 55);
-            this.button3.TabIndex = 118;
-            this.button3.Text = "Søgning";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button_Søgning.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_Søgning.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Søgning.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_Søgning.Location = new System.Drawing.Point(12, 595);
+            this.button_Søgning.Name = "button_Søgning";
+            this.button_Søgning.Size = new System.Drawing.Size(200, 55);
+            this.button_Søgning.TabIndex = 118;
+            this.button_Søgning.Text = "Søgning";
+            this.button_Søgning.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // textBox_DyrIdBooking
             // 
-            this.textBox3.Location = new System.Drawing.Point(916, 281);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 119;
+            this.textBox_DyrIdBooking.Location = new System.Drawing.Point(379, 630);
+            this.textBox_DyrIdBooking.Name = "textBox_DyrIdBooking";
+            this.textBox_DyrIdBooking.Size = new System.Drawing.Size(200, 20);
+            this.textBox_DyrIdBooking.TabIndex = 119;
             // 
-            // label5
+            // label_DyrIdBooking
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(913, 262);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 16);
-            this.label5.TabIndex = 120;
-            this.label5.Text = "Dyr ID";
+            this.label_DyrIdBooking.AutoSize = true;
+            this.label_DyrIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_DyrIdBooking.Location = new System.Drawing.Point(376, 611);
+            this.label_DyrIdBooking.Name = "label_DyrIdBooking";
+            this.label_DyrIdBooking.Size = new System.Drawing.Size(51, 16);
+            this.label_DyrIdBooking.TabIndex = 120;
+            this.label_DyrIdBooking.Text = "Dyr ID";
             // 
-            // label6
+            // label_BookingType
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(913, 364);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 16);
-            this.label6.TabIndex = 123;
-            this.label6.Text = "Booking Type";
+            this.label_BookingType.AutoSize = true;
+            this.label_BookingType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_BookingType.Location = new System.Drawing.Point(602, 499);
+            this.label_BookingType.Name = "label_BookingType";
+            this.label_BookingType.Size = new System.Drawing.Size(105, 16);
+            this.label_BookingType.TabIndex = 123;
+            this.label_BookingType.Text = "Booking Type";
             // 
-            // comboBox1
+            // comboBox_BookingType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_BookingType.FormattingEnabled = true;
+            this.comboBox_BookingType.Items.AddRange(new object[] {
             "Konsultation",
             "Behandling",
             "Operation"});
-            this.comboBox1.Location = new System.Drawing.Point(916, 382);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 124;
+            this.comboBox_BookingType.Location = new System.Drawing.Point(605, 517);
+            this.comboBox_BookingType.Name = "comboBox_BookingType";
+            this.comboBox_BookingType.Size = new System.Drawing.Size(200, 21);
+            this.comboBox_BookingType.TabIndex = 124;
             // 
-            // comboBox2
+            // comboBox_BookingBur
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBox_BookingBur.FormattingEnabled = true;
+            this.comboBox_BookingBur.Items.AddRange(new object[] {
             "Ja",
             "Nej"});
-            this.comboBox2.Location = new System.Drawing.Point(916, 425);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 21);
-            this.comboBox2.TabIndex = 125;
+            this.comboBox_BookingBur.Location = new System.Drawing.Point(605, 577);
+            this.comboBox_BookingBur.Name = "comboBox_BookingBur";
+            this.comboBox_BookingBur.Size = new System.Drawing.Size(200, 21);
+            this.comboBox_BookingBur.TabIndex = 125;
             // 
-            // label7
+            // label_BookingBur
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(913, 406);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 16);
-            this.label7.TabIndex = 126;
-            this.label7.Text = "Booking Af Bur";
+            this.label_BookingBur.AutoSize = true;
+            this.label_BookingBur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_BookingBur.Location = new System.Drawing.Point(602, 558);
+            this.label_BookingBur.Name = "label_BookingBur";
+            this.label_BookingBur.Size = new System.Drawing.Size(110, 16);
+            this.label_BookingBur.TabIndex = 126;
+            this.label_BookingBur.Text = "Booking Af Bur";
             // 
-            // textBox_RestMængde
+            // textBox_RestBur
             // 
-            this.textBox_RestMængde.BackColor = System.Drawing.Color.Black;
-            this.textBox_RestMængde.ForeColor = System.Drawing.Color.White;
-            this.textBox_RestMængde.Location = new System.Drawing.Point(916, 471);
-            this.textBox_RestMængde.Multiline = true;
-            this.textBox_RestMængde.Name = "textBox_RestMængde";
-            this.textBox_RestMængde.Size = new System.Drawing.Size(200, 34);
-            this.textBox_RestMængde.TabIndex = 127;
+            this.textBox_RestBur.BackColor = System.Drawing.Color.Black;
+            this.textBox_RestBur.ForeColor = System.Drawing.Color.White;
+            this.textBox_RestBur.Location = new System.Drawing.Point(605, 630);
+            this.textBox_RestBur.Multiline = true;
+            this.textBox_RestBur.Name = "textBox_RestBur";
+            this.textBox_RestBur.Size = new System.Drawing.Size(200, 34);
+            this.textBox_RestBur.TabIndex = 127;
             // 
-            // label8
+            // label_RestBur
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(913, 452);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(125, 16);
-            this.label8.TabIndex = 128;
-            this.label8.Text = "Resterende Bure";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(916, 321);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(187, 26);
-            this.pictureBox1.TabIndex = 129;
-            this.pictureBox1.TabStop = false;
+            this.label_RestBur.AutoSize = true;
+            this.label_RestBur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_RestBur.Location = new System.Drawing.Point(602, 611);
+            this.label_RestBur.Name = "label_RestBur";
+            this.label_RestBur.Size = new System.Drawing.Size(125, 16);
+            this.label_RestBur.TabIndex = 128;
+            this.label_RestBur.Text = "Resterende Bure";
             // 
             // AnimalHouseGui_Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 678);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox_RestMængde);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label_AnimalHouse3);
+            this.Controls.Add(this.label_RestBur);
+            this.Controls.Add(this.textBox_RestBur);
+            this.Controls.Add(this.label_BookingBur);
+            this.Controls.Add(this.comboBox_BookingBur);
+            this.Controls.Add(this.comboBox_BookingType);
+            this.Controls.Add(this.label_BookingType);
+            this.Controls.Add(this.label_DyrIdBooking);
+            this.Controls.Add(this.textBox_DyrIdBooking);
+            this.Controls.Add(this.button_Søgning);
+            this.Controls.Add(this.button_AnulBooking);
+            this.Controls.Add(this.button_RegBooking);
+            this.Controls.Add(this.label_EjerIdBooking);
+            this.Controls.Add(this.label_BehandlerIdBooking);
+            this.Controls.Add(this.textBox_EjerIdBooking);
+            this.Controls.Add(this.dateTimePicker_SlutDato);
+            this.Controls.Add(this.textBox_BehandlerIdBooking);
+            this.Controls.Add(this.label_SlutDato);
+            this.Controls.Add(this.label_StartDato);
+            this.Controls.Add(this.dataGridView_Booking);
+            this.Controls.Add(this.dateTimePicker_StartDato);
+            this.Controls.Add(this.label_AnimalHouse5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnimalHouseGui_Booking";
             this.Text = "Animal House";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.AnimalHouseGui_Booking_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Booking)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label_AnimalHouse3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox_RestMængde;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label_AnimalHouse5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_StartDato;
+        private System.Windows.Forms.DataGridView dataGridView_Booking;
+        private System.Windows.Forms.Label label_StartDato;
+        private System.Windows.Forms.Label label_SlutDato;
+        private System.Windows.Forms.TextBox textBox_BehandlerIdBooking;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_SlutDato;
+        private System.Windows.Forms.TextBox textBox_EjerIdBooking;
+        private System.Windows.Forms.Label label_BehandlerIdBooking;
+        private System.Windows.Forms.Label label_EjerIdBooking;
+        private System.Windows.Forms.Button button_RegBooking;
+        private System.Windows.Forms.Button button_AnulBooking;
+        private System.Windows.Forms.Button button_Søgning;
+        private System.Windows.Forms.TextBox textBox_DyrIdBooking;
+        private System.Windows.Forms.Label label_DyrIdBooking;
+        private System.Windows.Forms.Label label_BookingType;
+        private System.Windows.Forms.ComboBox comboBox_BookingType;
+        private System.Windows.Forms.ComboBox comboBox_BookingBur;
+        private System.Windows.Forms.Label label_BookingBur;
+        private System.Windows.Forms.TextBox textBox_RestBur;
+        private System.Windows.Forms.Label label_RestBur;
     }
 }
