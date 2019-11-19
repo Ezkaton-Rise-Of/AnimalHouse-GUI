@@ -27,7 +27,8 @@ namespace AnimalHouse_GUI
 
         private void button_RegDyr_Click(object sender, EventArgs e)
         {
-
+            string answer = controller.OpretDyr(textBox_EjerNavn.Text, textBox_Art.Text, textBox_Race.Text, textBox_Køn.Text, textBox_Alder.Text);
+            MessageBox.Show(answer);
         }
     }
 }

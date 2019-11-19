@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGui_DyrRegister));
             this.label_AnimalHouse3 = new System.Windows.Forms.Label();
             this.textBox_Art = new System.Windows.Forms.TextBox();
-            this.textBox_EjerId = new System.Windows.Forms.TextBox();
+            this.textBox_EjerNavn = new System.Windows.Forms.TextBox();
             this.button_RegDyr = new System.Windows.Forms.Button();
             this.label_Art = new System.Windows.Forms.Label();
             this.label_EjerIdDyr = new System.Windows.Forms.Label();
@@ -44,7 +44,8 @@
             this.label_Race = new System.Windows.Forms.Label();
             this.label_DyrReg = new System.Windows.Forms.Label();
             this.button_SøgningDyr = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_Alder = new System.Windows.Forms.TextBox();
+            this.label_Alder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Dyr)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,18 +62,18 @@
             // textBox_Art
             // 
             this.textBox_Art.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Art.Location = new System.Drawing.Point(22, 379);
+            this.textBox_Art.Location = new System.Drawing.Point(22, 314);
             this.textBox_Art.Name = "textBox_Art";
             this.textBox_Art.Size = new System.Drawing.Size(325, 22);
             this.textBox_Art.TabIndex = 74;
             // 
-            // textBox_EjerId
+            // textBox_EjerNavn
             // 
-            this.textBox_EjerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EjerId.Location = new System.Drawing.Point(22, 247);
-            this.textBox_EjerId.Name = "textBox_EjerId";
-            this.textBox_EjerId.Size = new System.Drawing.Size(325, 22);
-            this.textBox_EjerId.TabIndex = 73;
+            this.textBox_EjerNavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_EjerNavn.Location = new System.Drawing.Point(22, 247);
+            this.textBox_EjerNavn.Name = "textBox_EjerNavn";
+            this.textBox_EjerNavn.Size = new System.Drawing.Size(325, 22);
+            this.textBox_EjerNavn.TabIndex = 73;
             // 
             // button_RegDyr
             // 
@@ -91,7 +92,7 @@
             // 
             this.label_Art.AutoSize = true;
             this.label_Art.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Art.Location = new System.Drawing.Point(19, 360);
+            this.label_Art.Location = new System.Drawing.Point(19, 295);
             this.label_Art.Name = "label_Art";
             this.label_Art.Size = new System.Drawing.Size(27, 16);
             this.label_Art.TabIndex = 71;
@@ -120,7 +121,7 @@
             // textBox_Køn
             // 
             this.textBox_Køn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Køn.Location = new System.Drawing.Point(22, 501);
+            this.textBox_Køn.Location = new System.Drawing.Point(22, 436);
             this.textBox_Køn.Name = "textBox_Køn";
             this.textBox_Køn.Size = new System.Drawing.Size(325, 22);
             this.textBox_Køn.TabIndex = 76;
@@ -129,7 +130,7 @@
             // 
             this.label_Køn.AutoSize = true;
             this.label_Køn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Køn.Location = new System.Drawing.Point(19, 485);
+            this.label_Køn.Location = new System.Drawing.Point(19, 420);
             this.label_Køn.Name = "label_Køn";
             this.label_Køn.Size = new System.Drawing.Size(34, 16);
             this.label_Køn.TabIndex = 77;
@@ -161,7 +162,7 @@
             // textBox_Race
             // 
             this.textBox_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Race.Location = new System.Drawing.Point(22, 441);
+            this.textBox_Race.Location = new System.Drawing.Point(22, 376);
             this.textBox_Race.Name = "textBox_Race";
             this.textBox_Race.Size = new System.Drawing.Size(325, 22);
             this.textBox_Race.TabIndex = 82;
@@ -170,7 +171,7 @@
             // 
             this.label_Race.AutoSize = true;
             this.label_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Race.Location = new System.Drawing.Point(19, 422);
+            this.label_Race.Location = new System.Drawing.Point(19, 357);
             this.label_Race.Name = "label_Race";
             this.label_Race.Size = new System.Drawing.Size(45, 16);
             this.label_Race.TabIndex = 83;
@@ -199,20 +200,31 @@
             this.button_SøgningDyr.Text = "Søgning";
             this.button_SøgningDyr.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // textBox_Alder
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 309);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(325, 22);
-            this.textBox1.TabIndex = 92;
+            this.textBox_Alder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Alder.Location = new System.Drawing.Point(22, 501);
+            this.textBox_Alder.Name = "textBox_Alder";
+            this.textBox_Alder.Size = new System.Drawing.Size(325, 22);
+            this.textBox_Alder.TabIndex = 92;
+            // 
+            // label_Alder
+            // 
+            this.label_Alder.AutoSize = true;
+            this.label_Alder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Alder.Location = new System.Drawing.Point(19, 482);
+            this.label_Alder.Name = "label_Alder";
+            this.label_Alder.Size = new System.Drawing.Size(45, 16);
+            this.label_Alder.TabIndex = 93;
+            this.label_Alder.Text = "Alder";
             // 
             // AnimalHouseGui_DyrRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 678);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label_Alder);
+            this.Controls.Add(this.textBox_Alder);
             this.Controls.Add(this.button_SøgningDyr);
             this.Controls.Add(this.label_DyrReg);
             this.Controls.Add(this.label_Race);
@@ -223,7 +235,7 @@
             this.Controls.Add(this.textBox_Køn);
             this.Controls.Add(this.dataGridView_Dyr);
             this.Controls.Add(this.textBox_Art);
-            this.Controls.Add(this.textBox_EjerId);
+            this.Controls.Add(this.textBox_EjerNavn);
             this.Controls.Add(this.button_RegDyr);
             this.Controls.Add(this.label_Art);
             this.Controls.Add(this.label_EjerIdDyr);
@@ -240,7 +252,7 @@
         #endregion
         private System.Windows.Forms.Label label_AnimalHouse3;
         private System.Windows.Forms.TextBox textBox_Art;
-        private System.Windows.Forms.TextBox textBox_EjerId;
+        private System.Windows.Forms.TextBox textBox_EjerNavn;
         private System.Windows.Forms.Button button_RegDyr;
         private System.Windows.Forms.Label label_Art;
         private System.Windows.Forms.Label label_EjerIdDyr;
@@ -253,6 +265,7 @@
         private System.Windows.Forms.Label label_Race;
         private System.Windows.Forms.Label label_DyrReg;
         private System.Windows.Forms.Button button_SøgningDyr;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_Alder;
+        private System.Windows.Forms.Label label_Alder;
     }
 }
