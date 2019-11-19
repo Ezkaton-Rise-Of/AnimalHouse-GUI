@@ -24,9 +24,25 @@ namespace AnimalHouseBLL
 
         }
 
+        public Kunde SøgeKundeById(int id)
+        {
+            return KundeDB.HentKundeById(id);
+        }
 
+        public List<Kunde> HentAlleKunde()
+        {
+            return KundeDB.HentAlleKunder();
+        }
 
+        public string SletKunde(int id)
+        {
+            return KundeDB.SletKunde(id);
+        }
 
-
+        public String UpdateKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string e_mail)
+        {
+            Kunde k = new Kunde( fnavn, lnavn, adresse, postnummer, tlf,kundetype, by, oprettet,e_mail);
+            return KundeDB.UpdateKunde(k);
+        }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 namespace AnimalHouseBLL
@@ -31,11 +30,5 @@ namespace AnimalHouseBLL
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
         }
 
-
-
-        //public string CreateDyr(Dyr d)
-        //{
-        //    return Idyr.OpretDyr(d);
-        //}
     }
 }

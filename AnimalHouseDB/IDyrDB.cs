@@ -12,6 +12,11 @@ namespace AnimalHouseDB
             string UpdaterDyr(Dyr d);
             string SletDyr(int Id);
             Dyr HentDyr(int Id);
-        List<Dyr> HentDyrByKundeId(int KId);
+            List<Dyr> HentDyrByKundeId(int KId);
+            List<Dyr> HentAlleDyr();
+
+
+
+
     }
 }
