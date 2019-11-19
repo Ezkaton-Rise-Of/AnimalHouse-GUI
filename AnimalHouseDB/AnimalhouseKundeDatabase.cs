@@ -51,14 +51,14 @@ namespace AnimalHouseDB
         }
 
         // Update en kunde info
-        public string UpdateKunde(Kunde k, int id)
+        public string UpdateKunde(Kunde k)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 try
                 {
-                    string commandtxt = $"update Kunde set Fnavn = '{k.Fnavn}',Lnavn = '{k.Lnavn}',Adresse = '{k.Adresse}',Postnummer = '{k.Postnummer}',Tlf= '{k.Tlf}',Kundetype= '{k.Kundetype}' where KundeId ={id}";
+                    string commandtxt = $"update Kunde set Fnavn = '{k.Fnavn}',Lnavn = '{k.Lnavn}',Adresse = '{k.Adresse}',Postnummer = '{k.Postnummer}',Tlf= '{k.Tlf}',Kundetype= '{k.Kundetype}' where KundeId ={k.Id}";
                     SqlCommand command = new SqlCommand(commandtxt, conn);
                     command.ExecuteNonQuery();
                 }
@@ -134,14 +134,71 @@ namespace AnimalHouseDB
             return k;
         }
 
-        public Kunde HentKundeByTlf(string k)
+        public Kunde HentKundeByTlf(string tlf)
         {
-            throw new NotImplementedException();
+            Kunde k = null;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                conn.Open();
+                try
+                {
+                    string commandtxt = $"Select * from Kunde where Tlf like '{tlf}'";
+                    SqlCommand command = new SqlCommand(commandtxt, conn);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        k.Id = (int)reader["KundeId"];
+                        k.Fnavn = (string)reader["Fnavn"];
+                        k.Lnavn = (string)reader["Lnavn"];
+                        k.Adresse = (string)reader["Adresse"];
+                        k.Tlf = (string)reader["Tlf"];
+                        k.Kundetype = (string)reader["Kundetype"];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return k;
         }
 
         public List<Kunde> HentAlleKunder()
         {
-            throw new NotImplementedException();
+            List<Kunde> results = new List<Kunde>();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                conn.Open();
+                try
+                {
+                    string commandtxt = $"Select * from Kunde";
+                    SqlCommand command = new SqlCommand(commandtxt, conn);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Kunde k = new Kunde();
+                        k.Id = (int)reader["KundeId"];
+                        k.Fnavn = (string)reader["Fnavn"];
+                        k.Lnavn = (string)reader["Lnavn"];
+                        k.Adresse = (string)reader["Adresse"];
+                        k.Tlf = (string)reader["Tlf"];
+                        k.Kundetype = (string)reader["Kundetype"];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return results;
         }
     }
 }
