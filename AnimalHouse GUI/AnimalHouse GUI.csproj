@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimalHouseGui_DyrRegister.cs" />
+    <Compile Include="AnimalHouseGui_DyrRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AnimalHouseGui_DyrRegister.Designer.cs">
       <DependentUpon>AnimalHouseGui_DyrRegister.cs</DependentUpon>
     </Compile>
