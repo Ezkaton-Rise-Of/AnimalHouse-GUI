@@ -18,9 +18,12 @@ namespace AnimalHouse_GUI
         string strconn = @"Data Source=den1.mssql8.gear.host;Initial Catalog=test102;User Id=test102; Password=Ld8m8N!-wV0V";
 
 
+
         public AnimalHouseGui_Main()
         {
             InitializeComponent();
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,3 +37,4 @@ namespace AnimalHouse_GUI
         }
     }
 }
+

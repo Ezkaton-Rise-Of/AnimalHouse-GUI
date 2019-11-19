@@ -16,5 +16,10 @@ namespace AnimalHouse_GUI
         {
             InitializeComponent();
         }
+
+        private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
