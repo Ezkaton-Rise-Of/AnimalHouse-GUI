@@ -36,10 +36,10 @@ namespace AnimalHouseBLL
 
         public string SletKunde(int id)
         {
-            return KundeDB.DeleteKunde(id);
+            return KundeDB.SletKunde(id);
         }
 
-        public Kunde UpdateKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string e_mail)
+        public String UpdateKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string e_mail)
         {
             Kunde k = new Kunde( fnavn, lnavn, adresse, postnummer, tlf,kundetype, by, oprettet,e_mail);
             return KundeDB.UpdateKunde(k);

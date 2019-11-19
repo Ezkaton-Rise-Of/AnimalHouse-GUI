@@ -10,9 +10,9 @@ namespace AnimalHouseDB
     {
         string OpretKunde(Kunde k);
         Kunde HentKundeById(int id);
-        string DeleteKunde(int id);
-        string UpdateKunde(Kunde k, int id);
-        Kunde HentKundeByTlf(string k);
+        string SletKunde(int id);
+        string UpdateKunde(Kunde k);
+        Kunde HentKundeByTlf(string tlf);
         List<Kunde> HentAlleKunder();
 
     }
