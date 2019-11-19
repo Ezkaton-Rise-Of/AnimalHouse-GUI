@@ -49,7 +49,7 @@ namespace AnimalHouseDB
                 }
                 catch(Exception e)
                 {
-                    
+                    Console.WriteLine(e.Message);
                 }
                 finally
                 {
@@ -173,8 +173,10 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("Update Dyr SET ");
+                    SqlCommand command = new SqlCommand("Update Dyr SET KundeId = @KundeId, Art = @Art, Race= @Race, Alder = @Alder, sex = @sex where DyrId = @DyrId");
+                    command.Parameters.Add(new SqlParameter("@DyrId", d.DyrId));
                     command.Parameters.Add(new SqlParameter("@KundeId", d.KundeId));
+                    command.Parameters.Add(new SqlParameter("@Art", d.Art));
                     command.Parameters.Add(new SqlParameter("@Race", d.Race));
                     command.Parameters.Add(new SqlParameter("@Alder", d.Alder));
                     command.Parameters.Add(new SqlParameter("@Race", d.Race));

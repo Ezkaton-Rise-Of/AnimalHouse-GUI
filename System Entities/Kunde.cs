@@ -20,7 +20,8 @@ namespace AnimalHouse_Entities
         public DateTime Oprettet;
         public string E_mail;
 
-        // Class Constructor
+        // Class Constructors
+        public Kunde() { }
         public Kunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string e_mail)
         {
             Fnavn = fnavn;
