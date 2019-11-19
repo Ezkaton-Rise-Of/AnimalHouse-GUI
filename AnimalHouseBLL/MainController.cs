@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
+using AnimalHouse_Entites;
 namespace AnimalHouseBLL
 {
     public class MainController
@@ -30,9 +31,30 @@ namespace AnimalHouseBLL
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
         }
 
-        public string OpretKunde(string text1, string text2, string text3, string text4, string text5, string text6, string v, string text7, string text8)
+        public List<Dyr> HentAlleDyr()
         {
-            throw new NotImplementedException();
+            return Dc.HentAlleDyr();
         }
+
+        public List<Dyr> HentAlleKundesDyr(int kundeId)
+        {
+            return Dc.HentAlleKundesDyr(kundeId);
+        }
+
+        public Dyr HentDyr(int id)
+        {
+            return Dc.HentDyr(id);
+        }
+
+        public string SletDyr(int id)
+        {
+            return Dc.SletDyr(id);
+        }
+
+        public string UpdateDyr(int dyrId, int kundeId, string art, string race, int alder, char sex)
+        {
+            return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
+        }
+
     }
 }
