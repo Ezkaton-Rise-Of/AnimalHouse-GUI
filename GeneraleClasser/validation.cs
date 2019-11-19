@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeneraleClasser
 {
-    public class Class1
+    public class validation
     {
     }
 }
