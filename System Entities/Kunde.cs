@@ -22,7 +22,7 @@ namespace AnimalHouse_Entities
 
         // Class Constructors
         public Kunde() { }
-        public Kunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string e_mail)
+        public Kunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string e_mail)
         {
             Fnavn = fnavn;
             Lnavn = lnavn;
@@ -31,7 +31,6 @@ namespace AnimalHouse_Entities
             Tlf = tlf;
             Kundetype = kundetype;
             By = by;
-            Oprettet = oprettet;
             E_mail = e_mail;
         }
     }
