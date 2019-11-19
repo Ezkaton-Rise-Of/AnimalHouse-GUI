@@ -13,21 +13,98 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseDyrDatabase: IDyrDB
     {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connectionstring"].ConnectionString);
+
         public AnimalhouseDyrDatabase()
         {
         }
 
+        public List<Dyr> HentAlleDyr()
+        {
+            List<Dyr> ld = null;
+            SqlTransaction transaction = null;
+            using (conn)
+            {
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr");
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    ld = new List<Dyr>();
+                    while (reader.Read())
+                    {
+                        Dyr d = new Dyr();
+                        d.DyrId = Convert.ToInt32(reader["DyrID"]);
+                        d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                        d.Race = Convert.ToString(reader["Race"]);
+                        d.Art = Convert.ToString(reader["Art"]);
+                        d.Alder = Convert.ToInt32(reader["Alder"]);
+                        d.Sex = Convert.ToChar(reader["Sex"]);
+                        ld.Add(d);
+                    }
+                    reader.Close();
+                    return ld;
+                }
+                catch(Exception e)
+                {
+                    
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return ld;
+        }
         public Dyr HentDyr(int Id)
         {
-            throw new NotImplementedException();
+            Dyr d = null;
+            SqlTransaction transaction = null;
+            using (conn)
+            {
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr");
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    d = new Dyr();
+                    if (reader.Read())
+                    {
 
+                        d.DyrId = Convert.ToInt32(reader["DyrID"]);
+                        d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                        d.Race = Convert.ToString(reader["Race"]);
+                        d.Art = Convert.ToString(reader["Art"]);
+                        d.Alder = Convert.ToInt32(reader["Alder"]);
+                        d.Sex = Convert.ToChar(reader["Sex"]);
+
+
+                        reader.Close();
+                    }
+                    
+                }
+                catch (Exception e)
+                {
+                   
+                    return d;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return d;
         }
 
         public string OpretDyr(Dyr d)
         {
             string result;
             SqlTransaction transaction = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connectionstring"].ConnectionString))
+            using (conn)
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -59,17 +136,105 @@ namespace AnimalHouseDB
 
         public string SletDyr(int Id)
         {
-            throw new NotImplementedException();
+            string result;
+            SqlTransaction transaction = null;
+            using (conn)
+            {
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("DELETE Dyr WHERE DyrId = @DyrId");
+                    command.Parameters.Add(new SqlParameter("@DyrId", Id));
+                    command.Transaction = transaction;
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                    result = "Dyret er Slettet";
+                }
+                catch (Exception e)
+                {
+                    transaction.Rollback();
+                    return Convert.ToString(e);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
         }
 
         public string UpdaterDyr(Dyr d)
         {
-            throw new NotImplementedException();
+            
+            SqlTransaction transaction = null;
+            using (conn){
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("Update Dyr SET ");
+                    command.Parameters.Add(new SqlParameter("@KundeId", d.KundeId));
+                    command.Parameters.Add(new SqlParameter("@Race", d.Race));
+                    command.Parameters.Add(new SqlParameter("@Alder", d.Alder));
+                    command.Parameters.Add(new SqlParameter("@Race", d.Race));
+                    command.Parameters.Add(new SqlParameter("@sex", d.Sex));
+                    command.Transaction = transaction;
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                    return "Dyret er Updateret";
+                }
+                catch (Exception e)
+                {
+                    transaction.Rollback();
+                    return Convert.ToString(e);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         List<Dyr> IDyrDB.HentDyrByKundeId(int KId)
         {
-            throw new NotImplementedException();
+            List<Dyr> ld = null;
+            SqlTransaction transaction = null;
+            using (conn)
+            {
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr WHERE KundeId = @KundeId");
+                    command.Parameters.Add(new SqlParameter("@KundeId", KId));
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    ld = new List<Dyr>();
+                    while (reader.Read())
+                    {
+                        Dyr d = new Dyr();
+                        d.DyrId = Convert.ToInt32(reader["DyrID"]);
+                        d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                        d.Race = Convert.ToString(reader["Race"]);
+                        d.Art = Convert.ToString(reader["Art"]);
+                        d.Alder = Convert.ToInt32(reader["Alder"]);
+                        d.Sex = Convert.ToChar(reader["Sex"]);
+                        ld.Add(d);
+                    }
+                    reader.Close();
+                   
+                }
+                catch (Exception e)
+                {
+                    return ld;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return ld;
         }
     }
 }

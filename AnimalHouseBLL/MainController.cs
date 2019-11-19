@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AnimalHouse_Entites;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 namespace AnimalHouseBLL
@@ -29,6 +29,31 @@ namespace AnimalHouseBLL
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
+        }
+
+        public List<Dyr> HentAlleDyr()
+        {
+            return Dc.HentAlleDyr();
+        }
+
+        public List<Dyr> HentAlleKundesDyr(int kundeId)
+        {
+            return Dc.HentAlleKundesDyr(kundeId);
+        }
+
+        public Dyr HentDyr(int id)
+        {
+            return Dc.HentDyr(id);
+        }
+
+        public string SletDyr(int id)
+        {
+            return Dc.SletDyr(id);
+        }
+
+        public string UpdateDyr(int dyrId, int kundeId, string art, string race, int alder, char sex)
+        {
+            return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
         }
 
 

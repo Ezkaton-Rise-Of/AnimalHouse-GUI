@@ -14,5 +14,6 @@ namespace AnimalHouseDB
         string UpdateKunde(Kunde k, int id);
         Kunde HentKundeByTlf(string k);
         List<Kunde> HentAlleKunder();
+
     }
 }
