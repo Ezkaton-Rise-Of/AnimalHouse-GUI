@@ -9,22 +9,6 @@ namespace GeneraleClasser
     public static class Validation
     {
         //tjekker om der kun er 0-9 i en string
-        public static bool IsAnumber(string s)
-        {
-            bool result = true;
-            string[] arrays = s.Split();
-            foreach (var item in arrays)
-            {
-                if()
-               
-            }
-
-
-            return result;
-        }
-
-
-
         //tjekker om der kun er a-å, umlaut
         //tjekker om det er en gylding adresse (0-9 og a-å, komma, umlaut);
         //tjekker om en string har en max længe
