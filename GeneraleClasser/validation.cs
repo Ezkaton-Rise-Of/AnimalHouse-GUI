@@ -9,7 +9,19 @@ namespace GeneraleClasser
     public static class Validation
     {
         //tjekker om der kun er 0-9 i en string
+        public static bool IsAnumber(string s)
+        {
+            bool result = true;
+            string[] arrays = s.Split();
+            foreach (var item in arrays)
+            {
+                if()
+               
+            }
 
+
+            return result;
+        }
 
 
 
