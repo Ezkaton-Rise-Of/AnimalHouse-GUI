@@ -58,7 +58,7 @@ namespace AnimalHouseDB
                 conn.Open();
                 try
                 {
-                    SqlCommand command = new SqlCommand("Update kunde Set Fnavn = @Fnavn, Lnavn = @Lnavn, Adresse = @Adresse, Postnummer = @Postnummer,Tlf= @Tlf, Kundetype= @kundetype, E_mail = @E_mail,Oprettet = @Oprettet where KundeId = @kundeId");
+                    SqlCommand command = new SqlCommand("Update kunde Set Fnavn = @Fnavn, Lnavn = @Lnavn, Adresse = @Adresse, Postnummer = @Postnummer,Tlf= @Tlf, Kundetype= @kundetype, E_mail = @E_mail where KundeId = @kundeId");
                     command.Parameters.Add(new SqlParameter("@KundeId", k.Id));
                     command.Parameters.Add(new SqlParameter("@Fnavn", k.Fnavn));
                     command.Parameters.Add(new SqlParameter("@Lnavn", k.Lnavn));
@@ -67,7 +67,6 @@ namespace AnimalHouseDB
                     command.Parameters.Add(new SqlParameter("@Tlf", k.Tlf));
                     command.Parameters.Add(new SqlParameter("@kundetype", k.Kundetype));
                     command.Parameters.Add(new SqlParameter("@E_mail", k.E_mail));
-                    command.Parameters.Add(new SqlParameter("@Oprettet", k.Oprettet));
                     command.ExecuteNonQuery();
                 }
                 catch (Exception e)
@@ -117,7 +116,7 @@ namespace AnimalHouseDB
                 conn.Open();
                 try
                 {
-                    string commandtxt = $"Select * from Kunde left joinwhere KundeId ={id}";
+                    string commandtxt = $"Select * from Kunde left join Postnr on Kunde.Postnummer = Postnr.Postnummer where KundeId ={id}";
                     SqlCommand command = new SqlCommand(commandtxt, conn);
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
@@ -126,8 +125,12 @@ namespace AnimalHouseDB
                         k.Fnavn = (string)reader["Fnavn"];
                         k.Lnavn = (string)reader["Lnavn"];
                         k.Adresse = (string)reader["Adresse"];
+                        k.Postnummer = (string)reader["Postnummer"];
                         k.Tlf = (string)reader["Tlf"];
                         k.Kundetype = (string)reader["Kundetype"];
+                        k.By = (string)reader["Bynavn"];
+                        k.Oprettet = (DateTime)reader["Oprettet"];
+                        k.E_mail = (string)reader["E_mail"];
                     }
                 }
                 catch (Exception e)

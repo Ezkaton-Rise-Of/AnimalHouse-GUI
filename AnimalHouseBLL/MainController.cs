@@ -10,10 +10,6 @@ namespace AnimalHouseBLL
 {
     public class MainController
     {
-
-        List<Dyr> D = new List<Dyr>();
-        List<Kunde> K = new List<Kunde>();
-
         KundeController Kc;
         DyrController Dc;
         public MainController()
@@ -23,9 +19,11 @@ namespace AnimalHouseBLL
 
         }
 
-        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, DateTime oprettet, string email)
+        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
         {
-            return Kc.OpretKunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, oprettet, email);
+
+
+            return Kc.OpretKunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
         }
 
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
