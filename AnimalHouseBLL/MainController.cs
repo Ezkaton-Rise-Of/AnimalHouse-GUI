@@ -10,6 +10,10 @@ namespace AnimalHouseBLL
 {
     public class MainController
     {
+
+        List<Dyr> D = new List<Dyr>();
+        List<Kunde> K = new List<Kunde>();
+
         KundeController Kc;
         DyrController Dc;
         public MainController()
