@@ -17,9 +17,9 @@ namespace AnimalHouseBLL
             KundeDB = persistensFactory.GetKundeDB();
         }
 
-        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
+        public string OpretKunde(Kunde k)
         {
-            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, oprettet, email);
+            
             return KundeDB.OpretKunde(k);
 
         }
@@ -43,6 +43,11 @@ namespace AnimalHouseBLL
         {
             Kunde k = new Kunde( fnavn, lnavn, adresse, postnummer, tlf,kundetype, by,e_mail);
             return KundeDB.UpdateKunde(k);
+        }
+
+        public string HentByNavn(string postnr)
+        {
+            return KundeDB.HentByNavn(postnr);
         }
     }
 }

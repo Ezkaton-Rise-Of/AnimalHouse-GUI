@@ -22,8 +22,13 @@ namespace AnimalHouseBLL
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
         {
 
+            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
+            return Kc.OpretKunde(k);
+        }
 
-            return Kc.OpretKunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
+        public string HentBynavn(string postnr)
+        {
+            return Kc.HentByNavn(postnr);
         }
 
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)

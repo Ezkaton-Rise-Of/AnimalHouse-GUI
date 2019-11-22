@@ -43,8 +43,10 @@ namespace AnimalHouse_GUI
 
         private void button_RegEjer_Click(object sender, EventArgs e)
         {
-            string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text,  textBox_By.Text, "Erhverv", textBox_Email.Text, textBox_EjerType.Text);
+            //string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email
+            string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text,textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, textBox_EjerType.Text, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text);
             MessageBox.Show(answer);
+            ; 
         }
 
         private void button_SletEjer_Click(object sender, EventArgs e)

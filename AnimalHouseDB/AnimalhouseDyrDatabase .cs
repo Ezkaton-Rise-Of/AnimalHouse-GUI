@@ -13,7 +13,7 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseDyrDatabase: IDyrDB
     {
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connectionstring"].ConnectionString);
+        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
         public AnimalhouseDyrDatabase()
         {

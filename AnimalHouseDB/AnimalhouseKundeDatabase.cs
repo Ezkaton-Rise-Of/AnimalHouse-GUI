@@ -219,5 +219,34 @@ namespace AnimalHouseDB
             }
             return results;
         }
+
+        public string HentByNavn(string postnr)
+        {
+            string bynavn = null;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                conn.Open();
+                try
+                {
+                    string commandtxt = $"Select * from Postnr " +
+                        $"where Postnummer like '{postnr}'";
+                    SqlCommand command = new SqlCommand(commandtxt, conn);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        bynavn = (string)reader["Bynavn"];
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return bynavn;
+        }
     }
 }

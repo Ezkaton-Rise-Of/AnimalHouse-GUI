@@ -12,13 +12,7 @@ using System.Windows.Forms;
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Main : Form
-
-
     {
-        string strconn = @"Data Source=den1.mssql8.gear.host;Initial Catalog=test102;User Id=test102; Password=Ld8m8N!-wV0V";
-
-
-
         public AnimalHouseGui_Main()
         {
             InitializeComponent();
@@ -34,6 +28,13 @@ namespace AnimalHouse_GUI
         private void label_AnimalHouse1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_EjerReg_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            AnimalHouseGui_Register ejerRegister = new AnimalHouseGui_Register();
+            ejerRegister.Visible = true;
         }
     }
 }
