@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnsatController.cs" />
     <Compile Include="KundePersistensFactory.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="DyrController.cs" />

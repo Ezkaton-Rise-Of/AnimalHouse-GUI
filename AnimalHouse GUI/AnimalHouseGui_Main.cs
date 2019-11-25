@@ -36,6 +36,13 @@ namespace AnimalHouse_GUI
             AnimalHouseGui_Register ejerRegister = new AnimalHouseGui_Register();
             ejerRegister.Visible = true;
         }
+
+        private void button_DyrReg_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
+            dyrRegister.ShowDialog();
+        }
     }
 }
 

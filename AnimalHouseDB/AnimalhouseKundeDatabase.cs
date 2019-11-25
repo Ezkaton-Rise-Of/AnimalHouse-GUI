@@ -20,9 +20,9 @@ namespace AnimalHouseDB
         // Opretelse af en kunde.
         public string OpretKunde( Kunde k) 
         {
-            using(SqlConnection conn = new SqlConnection( ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                conn.Open();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
                 try
                 {
                     string commandtxt = $"Insert into Kunde (Fnavn,Lnavn,Adresse,Postnummer,Tlf,Kundetype,E_mail) values (@Fnavn,@Lnavn,@Adresse,@Postnummer,@Tlf,@Kundetype,@E_mail)";
@@ -46,15 +46,17 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return "Kunde oprettet!";
         }
 
         // Update en kunde info
         public string UpdateKunde(Kunde k)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
+            
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+
                 conn.Open();
                 try
                 {
@@ -78,16 +80,16 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return "Kunde updatet!";
         }
 
         // Kundesletning
         public string SletKunde(int id)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                conn.Open();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
                 try
                 {
                     string commandtxt = $"Delete from Kunde where KundeId ={id}";
@@ -103,7 +105,7 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return "Kunde blev slettet!";
         }
 
@@ -111,9 +113,9 @@ namespace AnimalHouseDB
         public Kunde HentKundeById(int id)
         {
             Kunde k = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                conn.Open();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
                 try
                 {
                     string commandtxt = $"Select * from Kunde left join Postnr on Kunde.Postnummer = Postnr.Postnummer where KundeId ={id}";
@@ -141,7 +143,7 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return k;
         }
 
@@ -149,9 +151,9 @@ namespace AnimalHouseDB
         public Kunde HentKundeByTlf(string tlf)
         {
             Kunde k = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                conn.Open();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
                 try
                 {
                     string commandtxt = $"Select * from Kunde where Tlf like '{tlf}'";
@@ -175,16 +177,16 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return k;
         }
 
         public List<Kunde> HentAlleKunder()
         {
             List<Kunde> results = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                conn.Open();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
                 try
                 {
                     string commandtxt = $"Select * from Kunde " +
@@ -216,16 +218,16 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return results;
         }
 
         public string HentByNavn(string postnr)
         {
             string bynavn = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                conn.Open();
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
                 try
                 {
                     string commandtxt = $"Select * from Postnr " +
@@ -245,7 +247,7 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
-            }
+            
             return bynavn;
         }
     }

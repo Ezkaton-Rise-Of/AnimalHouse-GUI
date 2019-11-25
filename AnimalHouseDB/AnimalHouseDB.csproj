@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalHouseAnsatDataBase.cs" />
     <Compile Include="AnimalhouseDyrDatabase .cs" />
     <Compile Include="AnimalhouseKundeDatabase.cs" />
+    <Compile Include="IAnsatDB.cs" />
     <Compile Include="IDyrDB.cs" />
     <Compile Include="IKundeDB.cs" />
     <Compile Include="Program.cs" />

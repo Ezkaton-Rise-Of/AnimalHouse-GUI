@@ -120,6 +120,10 @@
       <Project>{bb4b345f-39af-49eb-837f-e0368802e375}</Project>
       <Name>AnimalHouseBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\System Entities\AnimalHouse_Entities.csproj">
+      <Project>{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}</Project>
+      <Name>AnimalHouse_Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
