@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AnimalHouseDB;
 using System_Entities;
 
-namespace AnimalHousePersistenslag
+namespace AnimalHouseBLL
 {
     public class AnsatController
     {
