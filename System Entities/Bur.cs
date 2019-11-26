@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace System_Entities
+namespace AnimalHouse_Entities
 {
-    class Bur
+    public class Bur
     {
     }
 }

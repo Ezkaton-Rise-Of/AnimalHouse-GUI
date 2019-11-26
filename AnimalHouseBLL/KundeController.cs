@@ -20,6 +20,8 @@ namespace AnimalHouseBLL
         public string OpretKunde(Kunde k)
         {
             
+
+
             return KundeDB.OpretKunde(k);
 
         }
