@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimaHouseGui_AnsatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimaHouseGui_AnsatForm.Designer.cs">
+      <DependentUpon>AnimaHouseGui_AnsatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AnimalHouseGui_DyrRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnimaHouseGui_AnsatForm.resx">
+      <DependentUpon>AnimaHouseGui_AnsatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Booking.resx">
       <DependentUpon>AnimalHouseGui_Booking.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +129,13 @@
       <Project>{bb4b345f-39af-49eb-837f-e0368802e375}</Project>
       <Name>AnimalHouseBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\System Entities\AnimalHouse_Entities.csproj">
+      <Project>{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}</Project>
+      <Name>AnimalHouse_Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

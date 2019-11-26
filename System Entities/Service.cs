@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace System_Entities
+namespace AnimalHouse_Entities
 {
-    class Service
+    public class Service
     {
+        public int ServiceId;
+        public double Price;
+        public string ServiceType;
+        public string Beskrivelse;
 
+        public Service()
+        {
+
+        }
 
 
     }

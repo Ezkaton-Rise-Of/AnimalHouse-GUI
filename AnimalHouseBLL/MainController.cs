@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 using AnimalHouse_Entites;
+using System_Entities;
+using AnimalHouseBLL;
+
 namespace AnimalHouseBLL
 {
     public class MainController
@@ -16,11 +19,12 @@ namespace AnimalHouseBLL
 
         KundeController Kc;
         DyrController Dc;
+        AnsatController Ac;
         public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
-
+            Ac = new AnsatController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -30,11 +34,24 @@ namespace AnimalHouseBLL
             return Kc.OpretKunde(k);
         }
 
+        public List<Ansat> HentAlleAnsate()
+        {
+            return Ac.HentAlleAnsate();
+        }
+
         public string HentBynavn(string postnr)
         {
             return Kc.HentByNavn(postnr);
         }
 
+        public List<Kunde> HentAlleKunde()
+        {
+            return Kc.HentAlleKunde();
+        }
+        public string SletEjer(int id)
+        {
+            return Kc.SletKunde(id);
+        }
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
@@ -65,5 +82,9 @@ namespace AnimalHouseBLL
             return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
         }
 
+        public string UpdateKunde(int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
+        {
+            return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
+        }
     }
 }

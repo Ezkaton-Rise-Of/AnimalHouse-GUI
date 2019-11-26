@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimalHouseBurDatabase.cs" />
+    <Compile Include="AnimalHouseAnsatDataBase.cs" />
+    <Compile Include="AnimalhouseBookingDB.cs" />
     <Compile Include="AnimalhouseDyrDatabase .cs" />
     <Compile Include="AnimalhouseKundeDatabase.cs" />
-    <Compile Include="IBookingBurDB.cs" />
+    <Compile Include="IAnsatDB.cs" />
+    <Compile Include="IBookingDB.cs" />
     <Compile Include="IDyrDB.cs" />
     <Compile Include="IKundeDB.cs" />
     <Compile Include="Program.cs" />
