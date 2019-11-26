@@ -35,6 +35,14 @@ namespace AnimalHouseBLL
             return Kc.HentByNavn(postnr);
         }
 
+        public List<Kunde> HentAlleKunde()
+        {
+            return Kc.HentAlleKunde();
+        }
+        public string SletEjer(int id)
+        {
+            return Kc.SletKunde(id);
+        }
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex);

@@ -13,7 +13,7 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseDyrDatabase: IDyrDB
     {
-        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        
 
         public AnimalhouseDyrDatabase()
         {
@@ -23,7 +23,7 @@ namespace AnimalHouseDB
         {
             List<Dyr> ld = null;
             SqlTransaction transaction = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -62,7 +62,7 @@ namespace AnimalHouseDB
         {
             Dyr d = null;
             SqlTransaction transaction = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -104,7 +104,7 @@ namespace AnimalHouseDB
         {
             string result;
             SqlTransaction transaction = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -138,7 +138,7 @@ namespace AnimalHouseDB
         {
             string result;
             SqlTransaction transaction = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -168,7 +168,8 @@ namespace AnimalHouseDB
         {
             
             SqlTransaction transaction = null;
-            using (conn){
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
                 conn.Open();
                 transaction = conn.BeginTransaction();
                 try
@@ -202,7 +203,7 @@ namespace AnimalHouseDB
         {
             List<Dyr> ld = null;
             SqlTransaction transaction = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();

@@ -30,5 +30,12 @@ namespace AnimalHouse_GUI
             //string answer = controller.OpretDyr(textBox_EjerNavn.Text, textBox_Art.Text, textBox_Race.Text, textBox_Køn.Text, textBox_Alder.Text);
             //MessageBox.Show(answer);
         }
+
+        private void TilbageBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGui_Main main = new AnimalHouseGui_Main();
+            main.ShowDialog();
+        }
     }
 }
