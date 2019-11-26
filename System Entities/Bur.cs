@@ -4,9 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace System_Entities
+namespace AnimalHouse_Entities
 {
-    class Bur
+    public class Bur
     {
+        // attributes 
+        public int Id;
+        public string Art;
+        public char Booket;
+
+        // Class Constructors
+        public Bur() { }
+        public Bur(string art, char booket)
+        {
+            Art = art;
+            Booket = booket;
+        }
     }
 }

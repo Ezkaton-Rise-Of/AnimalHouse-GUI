@@ -32,9 +32,26 @@ namespace AnimalHouse_GUI
 
         private void button_EjerReg_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            AnimalHouseGui_Register ejerRegister = new AnimalHouseGui_Register();
-            ejerRegister.Visible = true;
+            AnimalHouseGui_Register formR = new AnimalHouseGui_Register();
+            formR.ShowDialog();
+        }
+
+        private void button_DyrReg_Click(object sender, EventArgs e)
+        {
+            AnimalHouseGui_DyrRegister formDR = new AnimalHouseGui_DyrRegister();
+            formDR.ShowDialog();
+        }
+
+        private void button_Booking_Click(object sender, EventArgs e)
+        {
+            AnimalHouseGui_Booking formB = new AnimalHouseGui_Booking();
+            formB.ShowDialog();
+        }
+
+        private void button_Salg_Click(object sender, EventArgs e)
+        {
+            AnimalHouseGui_Sales formS = new AnimalHouseGui_Sales();
+            formS.ShowDialog();
         }
     }
 }
