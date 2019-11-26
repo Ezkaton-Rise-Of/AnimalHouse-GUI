@@ -10,18 +10,21 @@ namespace System_Entities
     {
         public int Id { get; set; }
         public string Navn { get; set; }
-        public int Ansattype { get; set; }
+        public string Stelling { get; set; }
+        public string Tlf { get; set; }
         public Ansat() { }
-        public Ansat(int id, string navn, int ansattype)
+        public Ansat(int id, string navn, string stelling, string tlf)
         {
             this.Id = id;
             this.Navn = navn;
-            this.Ansattype = ansattype;
+            this.Stelling = stelling;
+            this.Tlf = tlf;
         }
-        public Ansat(string navn ,int ansattype)
+        public Ansat(string navn ,string stelling, string tlf)
         {
             this.Navn = navn;
-            this.Ansattype = ansattype;
+            this.Stelling = stelling;
+            this.Tlf = tlf;
         }
     }
 }

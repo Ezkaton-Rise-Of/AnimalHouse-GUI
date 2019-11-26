@@ -87,7 +87,7 @@ namespace AnimalHouseDB
                     }
                     
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                    
                     return d;
@@ -228,7 +228,7 @@ namespace AnimalHouseDB
                     reader.Close();
                    
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return ld;
                 }

@@ -40,7 +40,7 @@ namespace AnimalHouse_GUI
 
         private void button_SletEjer_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure?", "Delete customer", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Er du sikker?", "Slette kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                MessageBox.Show(controller.SletEjer(id), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FillDataGridView();
