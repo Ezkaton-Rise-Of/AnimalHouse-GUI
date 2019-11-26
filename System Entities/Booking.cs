@@ -4,9 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace System_Entities
+namespace AnimalHouse_Entities
 {
-    class Booking
+    public class Booking
     {
+        public int BookingId;
+        public int DyrId;
+        public int AnsatId;
+        public string Notat;
+        public DateTime StartDato;
+        public DateTime SlutDato;
+        public Service service;
+
+        public Booking()
+        {
+            
+        }
+
+
     }
 }
