@@ -8,5 +8,17 @@ namespace AnimalHouse_Entities
 {
     public class Bur
     {
+        // attributes 
+        public int Id;
+        public string Art;
+        public char Booket;
+
+        // Class Constructors
+        public Bur() { }
+        public Bur(string art, char booket)
+        {
+            Art = art;
+            Booket = booket;
+        }
     }
 }
