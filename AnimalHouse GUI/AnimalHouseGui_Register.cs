@@ -60,7 +60,7 @@ namespace AnimalHouse_GUI
 
         private void TilbageBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             AnimalHouseGui_Main main = new AnimalHouseGui_Main();
             main.ShowDialog();
         }

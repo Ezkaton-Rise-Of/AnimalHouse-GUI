@@ -94,7 +94,7 @@
             this.button_DyrReg.TabIndex = 33;
             this.button_DyrReg.Text = "Registrere Dyr";
             this.button_DyrReg.UseVisualStyleBackColor = true;
-            
+            this.button_DyrReg.Click += new System.EventHandler(this.button_DyrReg_Click_1);
             // 
             // button_Booking
             // 
