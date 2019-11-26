@@ -15,7 +15,7 @@ namespace AnimalHousePersistenslag
 
         public AnsatController()
         {
-            A = ansatDB.HentAlleAnsate();
+            //A = ansatDB.HentAlleAnsate();
         }
 
         public string OpretAnsat(Ansat a)

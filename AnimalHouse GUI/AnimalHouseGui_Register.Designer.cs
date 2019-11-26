@@ -35,7 +35,6 @@
             this.label_Email = new System.Windows.Forms.Label();
             this.label_Fornavn = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.label_AnimalHouse2 = new System.Windows.Forms.Label();
             this.button_RegEjer = new System.Windows.Forms.Button();
             this.textBox_Vejnavn = new System.Windows.Forms.TextBox();
             this.label_Vejnavn = new System.Windows.Forms.Label();
@@ -55,6 +54,8 @@
             this.radioButton_Private = new System.Windows.Forms.RadioButton();
             this.radioButton_Erhverv = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.UpdateEjerBtn = new System.Windows.Forms.Button();
+            this.label_Help = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ejer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -64,7 +65,7 @@
             // 
             this.dataGridView_Ejer.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView_Ejer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Ejer.Location = new System.Drawing.Point(616, 277);
+            this.dataGridView_Ejer.Location = new System.Drawing.Point(542, 116);
             this.dataGridView_Ejer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView_Ejer.Name = "dataGridView_Ejer";
             this.dataGridView_Ejer.ReadOnly = true;
@@ -76,7 +77,7 @@
             // textBox_Email
             // 
             this.textBox_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Email.Location = new System.Drawing.Point(33, 482);
+            this.textBox_Email.Location = new System.Drawing.Point(28, 306);
             this.textBox_Email.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Email.Name = "textBox_Email";
             this.textBox_Email.Size = new System.Drawing.Size(481, 30);
@@ -85,7 +86,7 @@
             // textBox_Fornavn
             // 
             this.textBox_Fornavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Fornavn.Location = new System.Drawing.Point(33, 380);
+            this.textBox_Fornavn.Location = new System.Drawing.Point(28, 204);
             this.textBox_Fornavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Fornavn.Name = "textBox_Fornavn";
             this.textBox_Fornavn.Size = new System.Drawing.Size(235, 30);
@@ -95,7 +96,7 @@
             // 
             this.label_Email.AutoSize = true;
             this.label_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Email.Location = new System.Drawing.Point(28, 452);
+            this.label_Email.Location = new System.Drawing.Point(23, 276);
             this.label_Email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Email.Name = "label_Email";
             this.label_Email.Size = new System.Drawing.Size(73, 25);
@@ -106,36 +107,24 @@
             // 
             this.label_Fornavn.AutoSize = true;
             this.label_Fornavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Fornavn.Location = new System.Drawing.Point(28, 351);
+            this.label_Fornavn.Location = new System.Drawing.Point(23, 175);
             this.label_Fornavn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Fornavn.Name = "label_Fornavn";
             this.label_Fornavn.Size = new System.Drawing.Size(91, 25);
             this.label_Fornavn.TabIndex = 13;
             this.label_Fornavn.Text = "Fornavn";
-            this.label_Fornavn.Click += new System.EventHandler(this.Label_ForNavn_Click);
             // 
             // fileSystemWatcher1
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // label_AnimalHouse2
-            // 
-            this.label_AnimalHouse2.AutoSize = true;
-            this.label_AnimalHouse2.Font = new System.Drawing.Font("Haettenschweiler", 48F);
-            this.label_AnimalHouse2.Location = new System.Drawing.Point(18, 14);
-            this.label_AnimalHouse2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_AnimalHouse2.Name = "label_AnimalHouse2";
-            this.label_AnimalHouse2.Size = new System.Drawing.Size(424, 101);
-            this.label_AnimalHouse2.TabIndex = 27;
-            this.label_AnimalHouse2.Text = "Animal House";
-            // 
             // button_RegEjer
             // 
             this.button_RegEjer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_RegEjer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_RegEjer.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_RegEjer.Location = new System.Drawing.Point(862, 820);
+            this.button_RegEjer.Location = new System.Drawing.Point(813, 674);
             this.button_RegEjer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_RegEjer.Name = "button_RegEjer";
             this.button_RegEjer.Size = new System.Drawing.Size(237, 83);
@@ -147,7 +136,7 @@
             // textBox_Vejnavn
             // 
             this.textBox_Vejnavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Vejnavn.Location = new System.Drawing.Point(33, 669);
+            this.textBox_Vejnavn.Location = new System.Drawing.Point(28, 493);
             this.textBox_Vejnavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Vejnavn.Name = "textBox_Vejnavn";
             this.textBox_Vejnavn.Size = new System.Drawing.Size(481, 30);
@@ -157,7 +146,7 @@
             // 
             this.label_Vejnavn.AutoSize = true;
             this.label_Vejnavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Vejnavn.Location = new System.Drawing.Point(28, 645);
+            this.label_Vejnavn.Location = new System.Drawing.Point(23, 469);
             this.label_Vejnavn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Vejnavn.Name = "label_Vejnavn";
             this.label_Vejnavn.Size = new System.Drawing.Size(91, 25);
@@ -167,9 +156,10 @@
             // button_SletEjer
             // 
             this.button_SletEjer.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_SletEjer.Enabled = false;
             this.button_SletEjer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_SletEjer.ForeColor = System.Drawing.Color.Red;
-            this.button_SletEjer.Location = new System.Drawing.Point(1108, 820);
+            this.button_SletEjer.Location = new System.Drawing.Point(1108, 674);
             this.button_SletEjer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_SletEjer.Name = "button_SletEjer";
             this.button_SletEjer.Size = new System.Drawing.Size(237, 83);
@@ -183,7 +173,7 @@
             this.label_Ejer.AutoSize = true;
             this.label_Ejer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Ejer.ForeColor = System.Drawing.Color.Red;
-            this.label_Ejer.Location = new System.Drawing.Point(606, 211);
+            this.label_Ejer.Location = new System.Drawing.Point(532, 50);
             this.label_Ejer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Ejer.Name = "label_Ejer";
             this.label_Ejer.Size = new System.Drawing.Size(113, 55);
@@ -193,7 +183,7 @@
             // textBox_Telefon
             // 
             this.textBox_Telefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Telefon.Location = new System.Drawing.Point(33, 577);
+            this.textBox_Telefon.Location = new System.Drawing.Point(28, 401);
             this.textBox_Telefon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Telefon.Name = "textBox_Telefon";
             this.textBox_Telefon.Size = new System.Drawing.Size(481, 30);
@@ -203,7 +193,7 @@
             // 
             this.label_Telefon.AutoSize = true;
             this.label_Telefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Telefon.Location = new System.Drawing.Point(28, 548);
+            this.label_Telefon.Location = new System.Drawing.Point(23, 372);
             this.label_Telefon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Telefon.Name = "label_Telefon";
             this.label_Telefon.Size = new System.Drawing.Size(85, 25);
@@ -214,7 +204,7 @@
             // 
             this.label_EjerReg.AutoSize = true;
             this.label_EjerReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_EjerReg.Location = new System.Drawing.Point(716, 231);
+            this.label_EjerReg.Location = new System.Drawing.Point(642, 70);
             this.label_EjerReg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_EjerReg.Name = "label_EjerReg";
             this.label_EjerReg.Size = new System.Drawing.Size(103, 29);
@@ -224,7 +214,7 @@
             // textBox_Efternavn
             // 
             this.textBox_Efternavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Efternavn.Location = new System.Drawing.Point(284, 380);
+            this.textBox_Efternavn.Location = new System.Drawing.Point(279, 204);
             this.textBox_Efternavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Efternavn.Name = "textBox_Efternavn";
             this.textBox_Efternavn.Size = new System.Drawing.Size(235, 30);
@@ -234,7 +224,7 @@
             // 
             this.label_Efternavn.AutoSize = true;
             this.label_Efternavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Efternavn.Location = new System.Drawing.Point(279, 351);
+            this.label_Efternavn.Location = new System.Drawing.Point(274, 175);
             this.label_Efternavn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Efternavn.Name = "label_Efternavn";
             this.label_Efternavn.Size = new System.Drawing.Size(104, 25);
@@ -244,7 +234,7 @@
             // textBox_By
             // 
             this.textBox_By.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_By.Location = new System.Drawing.Point(33, 869);
+            this.textBox_By.Location = new System.Drawing.Point(28, 693);
             this.textBox_By.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_By.Name = "textBox_By";
             this.textBox_By.Size = new System.Drawing.Size(481, 30);
@@ -253,7 +243,7 @@
             // textBox_Postnummer
             // 
             this.textBox_Postnummer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Postnummer.Location = new System.Drawing.Point(33, 771);
+            this.textBox_Postnummer.Location = new System.Drawing.Point(28, 595);
             this.textBox_Postnummer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Postnummer.Name = "textBox_Postnummer";
             this.textBox_Postnummer.Size = new System.Drawing.Size(481, 30);
@@ -264,19 +254,18 @@
             // 
             this.label_Postnummer.AutoSize = true;
             this.label_Postnummer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Postnummer.Location = new System.Drawing.Point(28, 742);
+            this.label_Postnummer.Location = new System.Drawing.Point(23, 566);
             this.label_Postnummer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Postnummer.Name = "label_Postnummer";
             this.label_Postnummer.Size = new System.Drawing.Size(132, 25);
             this.label_Postnummer.TabIndex = 57;
             this.label_Postnummer.Text = "Postnummer";
-            this.label_Postnummer.Click += new System.EventHandler(this.label4_Click);
             // 
             // label_By
             // 
             this.label_By.AutoSize = true;
             this.label_By.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_By.Location = new System.Drawing.Point(28, 840);
+            this.label_By.Location = new System.Drawing.Point(23, 664);
             this.label_By.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_By.Name = "label_By";
             this.label_By.Size = new System.Drawing.Size(37, 25);
@@ -288,7 +277,7 @@
             this.button_Søgning.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Søgning.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Søgning.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_Søgning.Location = new System.Drawing.Point(616, 820);
+            this.button_Søgning.Location = new System.Drawing.Point(542, 674);
             this.button_Søgning.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Søgning.Name = "button_Søgning";
             this.button_Søgning.Size = new System.Drawing.Size(237, 83);
@@ -302,7 +291,7 @@
             this.TilbageBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.TilbageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TilbageBtn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TilbageBtn.Location = new System.Drawing.Point(1368, 820);
+            this.TilbageBtn.Location = new System.Drawing.Point(1413, 830);
             this.TilbageBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TilbageBtn.Name = "TilbageBtn";
             this.TilbageBtn.Size = new System.Drawing.Size(237, 83);
@@ -322,12 +311,13 @@
             this.radioButton_Private.TabStop = true;
             this.radioButton_Private.Text = "Private";
             this.radioButton_Private.UseVisualStyleBackColor = true;
+            this.radioButton_Private.CheckedChanged += new System.EventHandler(this.radioButton_Private_CheckedChanged);
             // 
             // radioButton_Erhverv
             // 
             this.radioButton_Erhverv.AutoSize = true;
             this.radioButton_Erhverv.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_Erhverv.Location = new System.Drawing.Point(238, 45);
+            this.radioButton_Erhverv.Location = new System.Drawing.Point(176, 45);
             this.radioButton_Erhverv.Name = "radioButton_Erhverv";
             this.radioButton_Erhverv.Size = new System.Drawing.Size(95, 28);
             this.radioButton_Erhverv.TabIndex = 18;
@@ -340,18 +330,45 @@
             this.groupBox1.Controls.Add(this.radioButton_Erhverv);
             this.groupBox1.Controls.Add(this.radioButton_Private);
             this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(38, 225);
+            this.groupBox1.Location = new System.Drawing.Point(33, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 98);
+            this.groupBox1.Size = new System.Drawing.Size(325, 98);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ejer type";
+            // 
+            // UpdateEjerBtn
+            // 
+            this.UpdateEjerBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.UpdateEjerBtn.Enabled = false;
+            this.UpdateEjerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEjerBtn.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.UpdateEjerBtn.Location = new System.Drawing.Point(1413, 674);
+            this.UpdateEjerBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.UpdateEjerBtn.Name = "UpdateEjerBtn";
+            this.UpdateEjerBtn.Size = new System.Drawing.Size(237, 83);
+            this.UpdateEjerBtn.TabIndex = 61;
+            this.UpdateEjerBtn.Text = "Update";
+            this.UpdateEjerBtn.UseVisualStyleBackColor = false;
+            this.UpdateEjerBtn.Click += new System.EventHandler(this.UpdateEjerBtn_Click);
+            // 
+            // label_Help
+            // 
+            this.label_Help.AutoSize = true;
+            this.label_Help.Location = new System.Drawing.Point(24, 992);
+            this.label_Help.Name = "label_Help";
+            this.label_Help.Size = new System.Drawing.Size(18, 20);
+            this.label_Help.TabIndex = 62;
+            this.label_Help.Text = "?";
+            this.label_Help.Click += new System.EventHandler(this.label_Help_Click);
             // 
             // AnimalHouseGui_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.Controls.Add(this.label_Help);
+            this.Controls.Add(this.UpdateEjerBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TilbageBtn);
             this.Controls.Add(this.button_Søgning);
@@ -368,7 +385,6 @@
             this.Controls.Add(this.button_SletEjer);
             this.Controls.Add(this.label_Vejnavn);
             this.Controls.Add(this.textBox_Vejnavn);
-            this.Controls.Add(this.label_AnimalHouse2);
             this.Controls.Add(this.dataGridView_Ejer);
             this.Controls.Add(this.textBox_Email);
             this.Controls.Add(this.textBox_Fornavn);
@@ -397,7 +413,6 @@
         private System.Windows.Forms.Label label_Email;
         private System.Windows.Forms.Label label_Fornavn;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.Label label_AnimalHouse2;
         private System.Windows.Forms.Button button_RegEjer;
         private System.Windows.Forms.TextBox textBox_Vejnavn;
         private System.Windows.Forms.Label label_Vejnavn;
@@ -417,5 +432,7 @@
         private System.Windows.Forms.RadioButton radioButton_Erhverv;
         private System.Windows.Forms.RadioButton radioButton_Private;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button UpdateEjerBtn;
+        private System.Windows.Forms.Label label_Help;
     }
 }
