@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimaHouseGui_AnsatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimaHouseGui_AnsatForm.Designer.cs">
+      <DependentUpon>AnimaHouseGui_AnsatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AnimalHouseGui_DyrRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AnimaHouseGui_AnsatForm.resx">
+      <DependentUpon>AnimaHouseGui_AnsatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Booking.resx">
       <DependentUpon>AnimalHouseGui_Booking.cs</DependentUpon>
     </EmbeddedResource>

@@ -43,6 +43,13 @@ namespace AnimalHouse_GUI
             AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
             dyrRegister.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            AnimaHouseGui_AnsatForm ansatForm = new AnimaHouseGui_AnsatForm();
+            ansatForm.ShowDialog();
+        }
     }
 }
 

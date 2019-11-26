@@ -35,6 +35,7 @@
             this.button_Salg = new System.Windows.Forms.Button();
             this.button_DyrReg = new System.Windows.Forms.Button();
             this.button_Booking = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_AnimalHouse1
@@ -53,7 +54,7 @@
             // 
             this.label_HovedMenu.AutoSize = true;
             this.label_HovedMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_HovedMenu.Location = new System.Drawing.Point(298, 245);
+            this.label_HovedMenu.Location = new System.Drawing.Point(297, 171);
             this.label_HovedMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_HovedMenu.Name = "label_HovedMenu";
             this.label_HovedMenu.Size = new System.Drawing.Size(179, 33);
@@ -63,7 +64,7 @@
             // button_EjerReg
             // 
             this.button_EjerReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_EjerReg.Location = new System.Drawing.Point(176, 338);
+            this.button_EjerReg.Location = new System.Drawing.Point(175, 264);
             this.button_EjerReg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_EjerReg.Name = "button_EjerReg";
             this.button_EjerReg.Size = new System.Drawing.Size(412, 71);
@@ -75,7 +76,7 @@
             // button_Salg
             // 
             this.button_Salg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Salg.Location = new System.Drawing.Point(176, 578);
+            this.button_Salg.Location = new System.Drawing.Point(175, 504);
             this.button_Salg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Salg.Name = "button_Salg";
             this.button_Salg.Size = new System.Drawing.Size(412, 71);
@@ -86,7 +87,7 @@
             // button_DyrReg
             // 
             this.button_DyrReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_DyrReg.Location = new System.Drawing.Point(176, 418);
+            this.button_DyrReg.Location = new System.Drawing.Point(175, 344);
             this.button_DyrReg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_DyrReg.Name = "button_DyrReg";
             this.button_DyrReg.Size = new System.Drawing.Size(412, 71);
@@ -98,7 +99,7 @@
             // button_Booking
             // 
             this.button_Booking.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Booking.Location = new System.Drawing.Point(176, 498);
+            this.button_Booking.Location = new System.Drawing.Point(175, 424);
             this.button_Booking.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Booking.Name = "button_Booking";
             this.button_Booking.Size = new System.Drawing.Size(412, 71);
@@ -106,12 +107,25 @@
             this.button_Booking.Text = "Booking";
             this.button_Booking.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(175, 585);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(412, 71);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Ansate";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AnimalHouseGui_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(764, 740);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_Booking);
             this.Controls.Add(this.button_DyrReg);
             this.Controls.Add(this.button_Salg);
@@ -136,6 +150,7 @@
         private System.Windows.Forms.Button button_Salg;
         private System.Windows.Forms.Button button_DyrReg;
         private System.Windows.Forms.Button button_Booking;
+        private System.Windows.Forms.Button button1;
     }
 }
 

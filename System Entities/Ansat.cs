@@ -8,10 +8,9 @@ namespace System_Entities
 {
     public class Ansat
     {
-        public int Id;
-        public string Navn;
-        public int Ansattype;
-
+        public int Id { get; set; }
+        public string Navn { get; set; }
+        public int Ansattype { get; set; }
         public Ansat() { }
         public Ansat(int id, string navn, int ansattype)
         {

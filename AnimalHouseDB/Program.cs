@@ -11,7 +11,10 @@ namespace AnimalHouseDB
     {
         static void Main(string[] args)
         {
-            
+            Kunde k = new Kunde(4, "Red", "def", "adresse", "6000", "4567890", "Erhverv", "Kolding", "Red@test.dk");
+            AnimalhouseKundeDatabase db = new AnimalhouseKundeDatabase();
+            Console.WriteLine(db.UpdateKunde(k));
+            Console.ReadLine();
         }
     }
 }
