@@ -16,6 +16,8 @@ namespace AnimalHouseBLL
         public BookingController()
         {
             PersistensFactory persistensFactory = PersistensFactory.GetInstance();
+            BookingDB = persistensFactory.GetBookingDB();
+
         }
 
         public string OpretBooking(Booking k)
@@ -23,7 +25,6 @@ namespace AnimalHouseBLL
             return BookingDB.OpretBooking(k);
         }
 
-        public void 
 
         public void HentBookingByKundeId(int id)
         {
@@ -33,9 +34,8 @@ namespace AnimalHouseBLL
 
         public void HentBookingByKunde(int Kundeid)
         {
-            bookings = null;
-            bookings = new List<Booking>();
-            bookings = add(BookingDB.HentBookingByKunde(kundeid));
+
+            bookings = BookingDB.HentBookingByKunde(Kundeid);
         } 
 
         public void HentAlleBooking()
@@ -51,7 +51,7 @@ namespace AnimalHouseBLL
 
         public String UpdateKunde(Booking b)
         {
-            return BookingDB.UpdateBooking(b);
+            return BookingDB.UpdaterBooking(b);
         }
 
 
