@@ -95,6 +95,11 @@ namespace AnimalHouseDB
             return d;
         }
 
+        public List<Booking> HentBookingByKunde(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Booking> HentDyrByKunde(int Id)
         {
             List<Booking> ld = null;
@@ -136,7 +141,7 @@ namespace AnimalHouseDB
             return ld;
         }
 
-        public string OpretDBooking(Booking b)
+        public string OpretBooking(Booking b)
         {
             throw new NotImplementedException();
         }

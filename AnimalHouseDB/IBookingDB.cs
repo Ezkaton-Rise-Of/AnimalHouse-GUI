@@ -8,7 +8,7 @@ namespace AnimalHouseDB
 {
     public interface IBookingDB
     {
-        string OpretDBooking(Booking b);
+        string OpretBooking(Booking b);
         string UpdaterBooking(Booking b);
         string SletBooking(int id);
         Booking HentBooking(int Id);
