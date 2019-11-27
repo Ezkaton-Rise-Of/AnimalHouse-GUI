@@ -143,7 +143,35 @@ namespace AnimalHouseDB
 
         public string OpretBooking(Booking b)
         {
-            throw new NotImplementedException();
+            SqlTransaction transaction = null;
+            using (conn)
+            {
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato)");
+                    command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                    command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
+                    command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
+                    command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
+                    command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato));
+                    command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato));
+                    command.Transaction = transaction;
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                    return "Booking er oprettet";
+                }
+                catch (Exception e)
+                {
+                    transaction.Rollback();
+                    return Convert.ToString(e);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
         public string SletBooking(int id)

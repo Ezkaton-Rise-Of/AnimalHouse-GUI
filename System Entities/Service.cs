@@ -12,7 +12,7 @@ namespace AnimalHouse_Entities
         public double Price;
         public string ServiceType;
         public string Beskrivelse;
-
+        public Bur bur;
         public Service()
         {
 

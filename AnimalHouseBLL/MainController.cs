@@ -20,11 +20,13 @@ namespace AnimalHouseBLL
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
+        BookingController Bc;
         public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
             Ac = new AnsatController();
+            Bc = new BookingController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -33,6 +35,18 @@ namespace AnimalHouseBLL
             Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
             return Kc.OpretKunde(k);
         }
+
+        public string Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
+        {
+            Booking k = new Booking();
+            k.AnsatId = ansatId;
+            k.StartDato = slutDato;
+            k.Notat = notat;
+            k.SlutDato = slutDato;
+            k.DyrId = dyrId;
+            return Bc.OpretBooking(k);
+        }
+
 
         public List<Ansat> HentAlleAnsate()
         {

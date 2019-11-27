@@ -48,10 +48,12 @@
     <Compile Include="AnimalhouseBookingDB.cs" />
     <Compile Include="AnimalhouseDyrDatabase .cs" />
     <Compile Include="AnimalhouseKundeDatabase.cs" />
+    <Compile Include="AnimalhouseServiceDatabase.cs" />
     <Compile Include="IAnsatDB.cs" />
     <Compile Include="IBookingDB.cs" />
     <Compile Include="IDyrDB.cs" />
     <Compile Include="IKundeDB.cs" />
+    <Compile Include="IServiceDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

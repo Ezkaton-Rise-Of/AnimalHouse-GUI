@@ -35,5 +35,10 @@ namespace AnimalHouseBLL
         {
             return new AnimalhouseBookingDB();
         }
+
+        public IServiceDB GetServiceDB()
+        {
+            return new AnimalhouseServiceDatabase();
+        }
     }
 }
