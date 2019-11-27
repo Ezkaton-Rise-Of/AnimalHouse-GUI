@@ -36,9 +36,9 @@ namespace AnimalHouseBLL
             return new AnimalhouseBookingDB();
         }
 
-        public IServiceDB GetServiceDB()
+        public IAnsatDB GetAnsatDB()
         {
-            return new AnimalhouseServiceDatabase();
+            return new AnimalHouseAnsatDataBase();
         }
     }
 }

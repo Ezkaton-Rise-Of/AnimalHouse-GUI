@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AnimalHouseDB;
 using System_Entities;
 
-namespace AnimalHousePersistenslag
+namespace AnimalHouseBLL
 {
     public class AnsatController
     {
@@ -16,6 +16,8 @@ namespace AnimalHousePersistenslag
         public AnsatController()
         {
             //A = ansatDB.HentAlleAnsate();
+            PersistensFactory persistensFactory = PersistensFactory.GetInstance();
+            ansatDB = persistensFactory.GetAnsatDB();
         }
 
         public string OpretAnsat(Ansat a)
@@ -27,8 +29,9 @@ namespace AnimalHousePersistenslag
             return ansatDB.SletAnsat(ansatId);
         }
 
-        public string UpdateAnsat(Ansat a)
+        public string UpdateAnsat(int id, string navn, string stelling, string tlf)
         {
+            Ansat a = new Ansat(id, navn, stelling, tlf);
             return ansatDB.UpdateAnsat(a);
         }
         public Ansat HentAnsatById(int ansatid)
@@ -43,7 +46,7 @@ namespace AnimalHousePersistenslag
         {
             return ansatDB.HentAnsateByType(ansattype);
         }
-        public Ansat HentAnsatByName(string navn)
+        public List<Ansat> HentAnsatByName(string navn)
         {
             return ansatDB.HentAnsatByNavn(navn);
         }

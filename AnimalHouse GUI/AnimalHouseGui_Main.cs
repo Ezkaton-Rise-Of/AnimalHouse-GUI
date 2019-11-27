@@ -32,16 +32,21 @@ namespace AnimalHouse_GUI
 
         private void button_EjerReg_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            AnimalHouseGui_Register ejerRegister = new AnimalHouseGui_Register();
-            ejerRegister.Visible = true;
+            this.Hide();
+            AnimalHouseGui_Register formR = new AnimalHouseGui_Register();
+            formR.ShowDialog();
         }
 
-        private void button_DyrReg_Click(object sender, EventArgs e)
+        private void button_Booking_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
-            dyrRegister.ShowDialog();
+            AnimalHouseGui_Booking formB = new AnimalHouseGui_Booking();
+            formB.ShowDialog();
+        }
+
+        private void button_Salg_Click(object sender, EventArgs e)
+        {
+            AnimalHouseGui_Sales formS = new AnimalHouseGui_Sales();
+            formS.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,6 +54,13 @@ namespace AnimalHouse_GUI
             this.Visible = false;
             AnimaHouseGui_AnsatForm ansatForm = new AnimaHouseGui_AnsatForm();
             ansatForm.ShowDialog();
+        }
+
+        private void button_DyrReg_Click_1(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
+            dyrRegister.ShowDialog();
         }
     }
 }

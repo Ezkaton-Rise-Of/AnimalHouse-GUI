@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System_Entities;
 using System.Data.SqlClient;
-using System.Configuration;
-using AnimalHouseDB;
+using System_Entities;
 
-namespace AnimalHouseDataBase
+namespace AnimalHouseDB
 {
     public class AnimalHouseAnsatDataBase : IAnsatDB
     {
@@ -19,202 +14,209 @@ namespace AnimalHouseDataBase
         public List<Ansat> HentAlleAnsate()
         {
             List<Ansat> a = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
+                string commandtxt = $"select * from Ansat;";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                a = new List<Ansat>();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    string commandtxt = $"select * from Ansat;";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    a = new List<Ansat>();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Ansat ansat = new Ansat();
-                        ansat.Id = (int)reader["AnsatId"];
-                        ansat.Navn = (string)reader["Navn"];
-                        ansat.Ansattype = (int)reader["Ansattype"];
-                        a.Add(ansat);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    conn.Close();
+                    Ansat ansat = new Ansat();
+                    ansat.Id = (int)reader["AnsatId"];
+                    ansat.Navn = (string)reader["Navn"];
+                    ansat.Stelling = (string)reader["Stelling"];
+                    ansat.Tlf = (string)reader["Tlf"];
+                    a.Add(ansat);
                 }
             }
+            catch (Exception)
+            {
+               
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return a;
         }
 
         public Ansat HentAnsatById(int ansatId)
         {
             Ansat a = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
+                string commandtxt = $"select * from Ansat where AnsatId = {ansatId};";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    string commandtxt = $"select * from Ansat where AnsatId = {ansatId};";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        a.Id = (int)reader["AnsatId"];
-                        a.Navn = (string)reader["Navn"];
-                        a.Ansattype = (int)reader["Ansattype"];
-                    }
-                } catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    conn.Close();
+                    a.Id = (int)reader["AnsatId"];
+                    a.Navn = (string)reader["Navn"];
+                    a.Stelling = (string)reader["Stelling"];
                 }
             }
+            catch (Exception)
+            {
+                
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return a;
         }
 
-        public Ansat HentAnsatByNavn(string ansatNavn)
+        public List<Ansat> HentAnsatByNavn(string ansatNavn)
         {
-            Ansat a = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            List<Ansat> a = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            a = new List<Ansat>();
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
+                string commandtxt = $"select * from Ansat where Navn like '%{ansatNavn}%';";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    string commandtxt = $"select * from Ansat where Navn = {ansatNavn};";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        a.Id = (int)reader["AnsatId"];
-                        a.Navn = (string)reader["Navn"];
-                        a.Ansattype = (int)reader["Ansattype"];
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    conn.Close();
+                    Ansat ansat = new Ansat();
+                    ansat.Id = (int)reader["AnsatId"];
+                    ansat.Navn = (string)reader["Navn"];
+                    ansat.Stelling = (string)reader["Stelling"];
+                    ansat.Tlf = (string)reader["Tlf"];
+                    a.Add(ansat);
                 }
             }
+            catch (Exception)
+            {
+                
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return a;
         }
 
         public List<Ansat> HentAnsateByType(int ansattype)
         {
-          List<Ansat> a = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            List<Ansat> a = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
+                string commandtxt = $"select * from Ansat where Ansattype = {ansattype};";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                a = new List<Ansat>();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    string commandtxt = $"select * from Ansat where Ansattype = {ansattype};";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    a = new List<Ansat>();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Ansat ansat = new Ansat();
-                        ansat.Id = (int)reader["AnsatId"];
-                        ansat.Navn = (string)reader["Navn"];
-                        ansat.Ansattype = (int)reader["Ansattype"];
-                        a.Add(ansat);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    conn.Close();
+                    Ansat ansat = new Ansat();
+                    ansat.Id = (int)reader["AnsatId"];
+                    ansat.Navn = (string)reader["Navn"];
+                    ansat.Stelling = (string)reader["Stelling"];
+                    ansat.Tlf = (string)reader["Tlf"];
+                    a.Add(ansat);
                 }
             }
+            catch (Exception)
+            {
+                
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return a;
         }
 
         public string OpretAnsat(Ansat a)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
-                {
-                    string commandtxt = $"Insert into Ansat (Navn,Ansattype) values (@Navn,@Ansattype)";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    command.Parameters.Add(new SqlParameter("@Navn", a.Navn));
-                    command.Parameters.Add(new SqlParameter("@Ansattype",a.Ansattype));
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    //throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                string commandtxt = $"Insert into Ansat(Navn,Stelling,Tlf) values (@Navn,@Stelling,@Tlf)";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                command.Parameters.Add(new SqlParameter("@Navn", a.Navn));
+                command.Parameters.Add(new SqlParameter("@Stelling", a.Stelling));
+                command.Parameters.Add(new SqlParameter("@Tlf", a.Tlf));
+                command.ExecuteNonQuery();
             }
-            return "Kunde oprettet!";
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return "Ansat blev oprettet!";
         }
 
         public string SletAnsat(int ansatId)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
-                {
-                    string commandtxt = $"Delete from Ansat where AnsatId =@AnsatId";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    command.Parameters.Add(new SqlParameter("@AnsatId", ansatId));
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    //throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                string commandtxt = $"Delete from Ansat where AnsatId =@AnsatId";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                command.Parameters.Add(new SqlParameter("@AnsatId", ansatId));
+                command.ExecuteNonQuery();
             }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return "Ansat blev slettet!";
         }
 
         public string UpdateAnsat(Ansat a)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
             {
-                conn.Open();
-                try
-                {
-                    SqlCommand command = new SqlCommand("Update Ansat Set Navn = @Navn, Ansattype = @Ansattype where AnsatId = @AnsatId");
-                    command.Parameters.Add(new SqlParameter("@AnsatId", a.Id));
-                    command.Parameters.Add(new SqlParameter("@Navn", a.Navn));
-                    command.Parameters.Add(new SqlParameter("@Ansattype", a.Ansattype));
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    //throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                string commandtxt = "Update Ansat set Navn = @Navn, Stelling = @Stelling ,Tlf = @Tlf where AnsatId = @AnsatId ";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                command.Parameters.Add(new SqlParameter("@AnsatId", a.Id));
+                command.Parameters.Add(new SqlParameter("@Navn", a.Navn));
+                command.Parameters.Add(new SqlParameter("@Stelling", a.Stelling));
+                command.Parameters.Add(new SqlParameter("@Tlf", a.Tlf));
+                command.ExecuteNonQuery();
             }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return "Ansat blev updatet!";
         }
     }

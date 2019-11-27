@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 using AnimalHouse_Entites;
-using AnimalHousePersistenslag;
 using System_Entities;
+using AnimalHouseBLL;
 
 namespace AnimalHouseBLL
 {
@@ -53,9 +53,20 @@ namespace AnimalHouseBLL
             return Ac.HentAlleAnsate();
         }
 
+        public object HentAnsatByNavn(string v)
+        {
+            return Ac.HentAnsatByName(v);
+        }
+
         public string HentBynavn(string postnr)
         {
             return Kc.HentByNavn(postnr);
+        }
+
+        public string OpretAnsat(string navn, string Stelling, string tlf)
+        {
+            Ansat a = new Ansat(navn, Stelling, tlf);
+            return Ac.OpretAnsat(a);
         }
 
         public List<Kunde> HentAlleKunde()
@@ -74,6 +85,11 @@ namespace AnimalHouseBLL
         public List<Dyr> HentAlleDyr()
         {
             return Dc.HentAlleDyr();
+        }
+
+        public string SletAnsat(int id)
+        {
+            return Ac.SeltAnsat(id);
         }
 
         public List<Dyr> HentAlleKundesDyr(int kundeId)
@@ -99,6 +115,11 @@ namespace AnimalHouseBLL
         public string UpdateKunde(int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
         {
             return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
+        }
+
+        public string UpdateAnsat(int id, string navn, string stelling, string tlf)
+        { 
+            return Ac.UpdateAnsat(id, navn, stelling,tlf);
         }
     }
 }
