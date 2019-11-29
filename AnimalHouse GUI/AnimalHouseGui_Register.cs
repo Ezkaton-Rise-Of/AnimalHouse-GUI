@@ -55,6 +55,7 @@ namespace AnimalHouse_GUI
 
         private void button_Søgning_Click(object sender, EventArgs e)
         {
+            dataGridView_Ejer.DataSource = controller.HentAlleDyr();
             FillDataGridView();
         }
 
@@ -131,6 +132,15 @@ namespace AnimalHouse_GUI
             {
                 radioButton_Private.Checked = false;
                 kundetype = "Erhverv";
+            }
+        }
+
+        private void button_Søg_Click(object sender, EventArgs e)
+        {
+            dataGridView_Ejer.DataSource = controller.HentKundByTlf(textBox_Søg.Text.Trim());
+            if (dataGridView_Ejer.Rows.Count == 0)
+            {
+                MessageBox.Show("Kunden kunne ikke findes!");
             }
         }
     }

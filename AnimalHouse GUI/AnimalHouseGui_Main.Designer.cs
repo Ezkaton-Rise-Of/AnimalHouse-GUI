@@ -36,6 +36,9 @@
             this.button_DyrReg = new System.Windows.Forms.Button();
             this.button_Booking = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_lagerStatus = new System.Windows.Forms.Button();
+            this.button_mail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_AnimalHouse1
@@ -64,7 +67,7 @@
             // button_EjerReg
             // 
             this.button_EjerReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_EjerReg.Location = new System.Drawing.Point(175, 264);
+            this.button_EjerReg.Location = new System.Drawing.Point(176, 272);
             this.button_EjerReg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_EjerReg.Name = "button_EjerReg";
             this.button_EjerReg.Size = new System.Drawing.Size(412, 71);
@@ -76,7 +79,7 @@
             // button_Salg
             // 
             this.button_Salg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Salg.Location = new System.Drawing.Point(175, 504);
+            this.button_Salg.Location = new System.Drawing.Point(176, 515);
             this.button_Salg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Salg.Name = "button_Salg";
             this.button_Salg.Size = new System.Drawing.Size(412, 71);
@@ -87,7 +90,7 @@
             // button_DyrReg
             // 
             this.button_DyrReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_DyrReg.Location = new System.Drawing.Point(175, 344);
+            this.button_DyrReg.Location = new System.Drawing.Point(175, 353);
             this.button_DyrReg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_DyrReg.Name = "button_DyrReg";
             this.button_DyrReg.Size = new System.Drawing.Size(412, 71);
@@ -99,7 +102,7 @@
             // button_Booking
             // 
             this.button_Booking.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Booking.Location = new System.Drawing.Point(175, 424);
+            this.button_Booking.Location = new System.Drawing.Point(175, 434);
             this.button_Booking.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Booking.Name = "button_Booking";
             this.button_Booking.Size = new System.Drawing.Size(412, 71);
@@ -110,7 +113,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(175, 585);
+            this.button1.Location = new System.Drawing.Point(176, 596);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(412, 71);
@@ -119,12 +122,50 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 857);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 24);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "?";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // button_lagerStatus
+            // 
+            this.button_lagerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_lagerStatus.Location = new System.Drawing.Point(175, 758);
+            this.button_lagerStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_lagerStatus.Name = "button_lagerStatus";
+            this.button_lagerStatus.Size = new System.Drawing.Size(412, 71);
+            this.button_lagerStatus.TabIndex = 37;
+            this.button_lagerStatus.Text = "Lager status";
+            this.button_lagerStatus.UseVisualStyleBackColor = true;
+            this.button_lagerStatus.Click += new System.EventHandler(this.button_lagerStatus_Click);
+            // 
+            // button_mail
+            // 
+            this.button_mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_mail.Location = new System.Drawing.Point(175, 677);
+            this.button_mail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_mail.Name = "button_mail";
+            this.button_mail.Size = new System.Drawing.Size(412, 71);
+            this.button_mail.TabIndex = 38;
+            this.button_mail.Text = "Mail System";
+            this.button_mail.UseVisualStyleBackColor = true;
+            this.button_mail.Click += new System.EventHandler(this.button_mail_Click);
+            // 
             // AnimalHouseGui_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(764, 740);
+            this.ClientSize = new System.Drawing.Size(764, 890);
+            this.Controls.Add(this.button_mail);
+            this.Controls.Add(this.button_lagerStatus);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_Booking);
             this.Controls.Add(this.button_DyrReg);
@@ -151,6 +192,9 @@
         private System.Windows.Forms.Button button_DyrReg;
         private System.Windows.Forms.Button button_Booking;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_lagerStatus;
+        private System.Windows.Forms.Button button_mail;
     }
 }
 

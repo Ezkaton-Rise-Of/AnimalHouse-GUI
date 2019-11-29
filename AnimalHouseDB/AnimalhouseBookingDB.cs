@@ -1,56 +1,49 @@
-﻿using System;
+﻿using AnimalHouse_Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Configuration;
-using AnimalHouse_Entities;
-using AnimalHouse_Entites;
 namespace AnimalHouseDB
 {
     public class AnimalhouseBookingDB : IBookingDB
     {
-        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
         public List<Booking> HentAlleBooking()
         {
             List<Booking> ld = null;
             SqlTransaction transaction = null;
-            using (conn)
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
             {
-                conn.Open();
-                transaction = conn.BeginTransaction();
-                try
+                SqlCommand command = new SqlCommand("SELECT * FROM Booking");
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                ld = new List<Booking>();
+                while (reader.Read())
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Booking");
-                    command.Transaction = transaction;
-                    SqlDataReader reader = command.ExecuteReader();
-                    ld = new List<Booking>();
-                    while (reader.Read())
-                    {
-                        Booking d = new Booking();
-                        d.BookingId = Convert.ToInt32(reader["BookingId"]);
-                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                        d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
-                        d.Notat = Convert.ToString(reader["Notat"]);
-                        d.StartDato = Convert.ToDateTime(reader["StartDato"]);
-                        d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
-                       
-                        ld.Add(d);
-                    }
-                    reader.Close();
-                    return ld;
+                    Booking d = new Booking();
+                    d.BookingId = Convert.ToInt32(reader["BookingId"]);
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
+                    d.Notat = Convert.ToString(reader["Notat"]);
+                    d.StartDato = Convert.ToDateTime(reader["StartDato"]);
+                    d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
+
+                    ld.Add(d);
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                reader.Close();
+                return ld;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return ld;
         }
 
@@ -58,40 +51,40 @@ namespace AnimalHouseDB
         {
             Booking d = null;
             SqlTransaction transaction = null;
-            using (conn)
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
             {
-                conn.Open();
-                transaction = conn.BeginTransaction();
-                try
-                {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Booking Where BookingId = "+Id);
-                    command.Transaction = transaction;
-                    SqlDataReader reader = command.ExecuteReader();
-                   
-                    while (reader.Read())
-                    {
-                         d = new Booking();
-                        d.BookingId = Convert.ToInt32(reader["BookingId"]);
-                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                        d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
-                        d.Notat = Convert.ToString(reader["Notat"]);
-                        d.StartDato = Convert.ToDateTime(reader["StartDato"]);
-                        d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
+                SqlCommand command = new SqlCommand("SELECT * FROM Booking Where BookingId = " + Id);
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
 
-              
-                    }
-                    reader.Close();
-                    return d;
-                }
-                catch (Exception e)
+                while (reader.Read())
                 {
-                    Console.WriteLine(e.Message);
+                    d = new Booking();
+                    d.BookingId = Convert.ToInt32(reader["BookingId"]);
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
+                    d.Notat = Convert.ToString(reader["Notat"]);
+                    d.StartDato = Convert.ToDateTime(reader["StartDato"]);
+                    d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
+
+
                 }
-                finally
-                {
-                    conn.Close();
-                }
+                reader.Close();
+                return d;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return d;
         }
 
@@ -104,103 +97,103 @@ namespace AnimalHouseDB
         {
             List<Booking> ld = null;
             SqlTransaction transaction = null;
-            using (conn)
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
             {
-                conn.Open();
-                transaction = conn.BeginTransaction();
-                try
+                SqlCommand command = new SqlCommand("SELECT * FROM Booking");
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                ld = new List<Booking>();
+                while (reader.Read())
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Booking");
-                    command.Transaction = transaction;
-                    SqlDataReader reader = command.ExecuteReader();
-                    ld = new List<Booking>();
-                    while (reader.Read())
-                    {
-                        Booking d = new Booking();
-                        d.BookingId = Convert.ToInt32(reader["BookingId"]);
-                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                        d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
-                        d.Notat = Convert.ToString(reader["Notat"]);
-                        d.StartDato = Convert.ToDateTime(reader["StartDato"]);
-                        d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
+                    Booking d = new Booking();
+                    d.BookingId = Convert.ToInt32(reader["BookingId"]);
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
+                    d.Notat = Convert.ToString(reader["Notat"]);
+                    d.StartDato = Convert.ToDateTime(reader["StartDato"]);
+                    d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
 
-                        ld.Add(d);
-                    }
-                    reader.Close();
-                    return ld;
+                    ld.Add(d);
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                reader.Close();
+                return ld;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return ld;
         }
 
         public string OpretBooking(Booking b)
         {
             SqlTransaction transaction = null;
-            using (conn)
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
             {
-                conn.Open();
-                transaction = conn.BeginTransaction();
-                try
-                {
-                    SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato)");
-                    command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
-                    command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
-                    command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
-                    command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
-                    command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato));
-                    command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato));
-                    command.Transaction = transaction;
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    return "Booking er oprettet";
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    return Convert.ToString(e);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato)");
+                command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
+                command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
+                command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
+                command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato));
+                command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato));
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                return "Booking er oprettet";
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                return Convert.ToString(e);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
+
 
         public string SletBooking(int id)
         {
             string result;
             SqlTransaction transaction = null;
-            using (conn)
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
             {
-                conn.Open();
-                transaction = conn.BeginTransaction();
-                try
-                {
-                    SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId");
-                    command.Parameters.Add(new SqlParameter("@BookingId", id));
-                    command.Transaction = transaction;
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    result = "Booking er Slettet";
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    return Convert.ToString(e);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId");
+                command.Parameters.Add(new SqlParameter("@BookingId", id));
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                result = "Booking er Slettet";
             }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                return Convert.ToString(e);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
             return result;
         }
 
@@ -208,34 +201,34 @@ namespace AnimalHouseDB
         {
 
             SqlTransaction transaction = null;
-            using (conn)
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
             {
-                conn.Open();
-                transaction = conn.BeginTransaction();
-                try
-                {
-                    SqlCommand command = new SqlCommand("Update Booking SET DyrId = @DyrId, AnsatId = @AnsatId, Notat= @Notat, StartDato = @StartDato, SlutDato = @SlutDato where BookingId = @BookingId");
-                    command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
-                    command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
-                    command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
-                    command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
-                    command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato));
-                    command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato));
-                    command.Transaction = transaction;
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    return "Booking er Updateret";
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    return Convert.ToString(e);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                SqlCommand command = new SqlCommand("Update Booking SET DyrId = @DyrId, AnsatId = @AnsatId, Notat= @Notat, StartDato = @StartDato, SlutDato = @SlutDato where BookingId = @BookingId");
+                command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
+                command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
+                command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
+                command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato));
+                command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato));
+                command.Transaction = transaction;
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                return "Booking er Updateret";
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                return Convert.ToString(e);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }
 }
+

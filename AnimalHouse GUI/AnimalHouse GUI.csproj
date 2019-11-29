@@ -82,6 +82,18 @@
     <Compile Include="AnimalHouseGui_Sales.Designer.cs">
       <DependentUpon>AnimalHouseGui_Sales.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnimalHouse_LagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimalHouse_LagerForm.Designer.cs">
+      <DependentUpon>AnimalHouse_LagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnimalHouse_MailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimalHouse_MailForm.Designer.cs">
+      <DependentUpon>AnimalHouse_MailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AnimaHouseGui_AnsatForm.resx">
@@ -101,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Sales.resx">
       <DependentUpon>AnimalHouseGui_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnimalHouse_LagerForm.resx">
+      <DependentUpon>AnimalHouse_LagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnimalHouse_MailForm.resx">
+      <DependentUpon>AnimalHouse_MailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

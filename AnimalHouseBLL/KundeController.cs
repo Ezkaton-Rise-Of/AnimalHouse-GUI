@@ -19,7 +19,7 @@ namespace AnimalHouseBLL
 
         public string OpretKunde(Kunde k)
         {
-            
+
 
 
             return KundeDB.OpretKunde(k);
@@ -43,8 +43,13 @@ namespace AnimalHouseBLL
 
         public String UpdateKunde(int id, string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string e_mail)
         {
-            Kunde k = new Kunde(id, fnavn, lnavn, adresse, postnummer, tlf,kundetype, by,e_mail);
+            Kunde k = new Kunde(id, fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, e_mail);
             return KundeDB.UpdateKunde(k);
+        }
+
+        public List<Kunde> HenKundetByTlf(string tlf)
+        {
+            return KundeDB.HentKundeByTlfEllerNavn(tlf);
         }
 
         public string HentByNavn(string postnr)

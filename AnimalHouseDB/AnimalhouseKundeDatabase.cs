@@ -56,7 +56,7 @@ namespace AnimalHouseDB
             try
             {
                 string commandtxt = "update Kunde set Fnavn = @Fnavn,Lnavn=@Lnavn ,Adresse=@Adresse,Postnummer=@Postnummer,Tlf=@Tlf,Kundetype=@Kundetype,E_mail=@E_mail where KundeId = @KundeId;";
-                SqlCommand command = new SqlCommand(commandtxt,conn);
+                SqlCommand command = new SqlCommand(commandtxt, conn);
                 command.Parameters.Add(new SqlParameter("@KundeId", k.Id));
                 command.Parameters.Add(new SqlParameter("@Fnavn", k.Fnavn));
                 command.Parameters.Add(new SqlParameter("@Lnavn", k.Lnavn));
@@ -92,10 +92,9 @@ namespace AnimalHouseDB
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 command.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //throw;
+                return "slette kundernes dyr først!";
             }
             finally
             {
@@ -144,25 +143,30 @@ namespace AnimalHouseDB
         }
 
         // Søge en Kunde via ders telfon nummer.
-        public Kunde HentKundeByTlf(string tlf)
+        public List<Kunde> HentKundeByTlfEllerNavn(string s)
         {
-            Kunde k = null;
+            List<Kunde> k = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             conn.Open();
             try
             {
-                string commandtxt = $"Select * from Kunde where Tlf like '{tlf}'";
+                string commandtxt = $"select * from Kunde where Tlf Like '%{s}%' or Fnavn like'%{s}%';";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
+                k = new List<Kunde>();
                 if (reader.Read())
                 {
-                    k.Id = (int)reader["KundeId"];
-                    k.Fnavn = (string)reader["Fnavn"];
-                    k.Lnavn = (string)reader["Lnavn"];
-                    k.Adresse = (string)reader["Adresse"];
-                    k.Tlf = (string)reader["Tlf"];
-                    k.Kundetype = (string)reader["Kundetype"];
+                    Kunde kunde = new Kunde();
+                    kunde.Id = (int)reader["KundeId"];
+                    kunde.Fnavn = (string)reader["Fnavn"];
+                    kunde.Lnavn = (string)reader["Lnavn"];
+                    kunde.Adresse = (string)reader["Adresse"];
+                    kunde.Tlf = (string)reader["Tlf"];
+                    kunde.Kundetype = (string)reader["Kundetype"];
+                    kunde.E_mail = (string)reader["E_mail"];
+                    kunde.Oprettet = (DateTime)reader["Oprettet"];
+                    k.Add(kunde);
                 }
             }
             catch (Exception e)

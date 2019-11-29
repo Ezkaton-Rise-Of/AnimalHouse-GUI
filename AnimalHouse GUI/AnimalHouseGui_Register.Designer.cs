@@ -56,6 +56,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.UpdateEjerBtn = new System.Windows.Forms.Button();
             this.label_Help = new System.Windows.Forms.Label();
+            this.textBox_Søg = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_Søg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ejer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -65,12 +68,12 @@
             // 
             this.dataGridView_Ejer.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView_Ejer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Ejer.Location = new System.Drawing.Point(542, 116);
+            this.dataGridView_Ejer.Location = new System.Drawing.Point(630, 238);
             this.dataGridView_Ejer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView_Ejer.Name = "dataGridView_Ejer";
             this.dataGridView_Ejer.ReadOnly = true;
             this.dataGridView_Ejer.RowHeadersWidth = 62;
-            this.dataGridView_Ejer.Size = new System.Drawing.Size(1108, 528);
+            this.dataGridView_Ejer.Size = new System.Drawing.Size(1108, 639);
             this.dataGridView_Ejer.TabIndex = 22;
             this.dataGridView_Ejer.DoubleClick += new System.EventHandler(this.dataGridView_Ejer_DoubleClick);
             // 
@@ -124,7 +127,7 @@
             this.button_RegEjer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_RegEjer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_RegEjer.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_RegEjer.Location = new System.Drawing.Point(813, 674);
+            this.button_RegEjer.Location = new System.Drawing.Point(141, 755);
             this.button_RegEjer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_RegEjer.Name = "button_RegEjer";
             this.button_RegEjer.Size = new System.Drawing.Size(237, 83);
@@ -136,7 +139,7 @@
             // textBox_Vejnavn
             // 
             this.textBox_Vejnavn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Vejnavn.Location = new System.Drawing.Point(28, 493);
+            this.textBox_Vejnavn.Location = new System.Drawing.Point(28, 499);
             this.textBox_Vejnavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Vejnavn.Name = "textBox_Vejnavn";
             this.textBox_Vejnavn.Size = new System.Drawing.Size(481, 30);
@@ -159,11 +162,11 @@
             this.button_SletEjer.Enabled = false;
             this.button_SletEjer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_SletEjer.ForeColor = System.Drawing.Color.Red;
-            this.button_SletEjer.Location = new System.Drawing.Point(1108, 674);
+            this.button_SletEjer.Location = new System.Drawing.Point(944, 887);
             this.button_SletEjer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_SletEjer.Name = "button_SletEjer";
             this.button_SletEjer.Size = new System.Drawing.Size(237, 83);
-            this.button_SletEjer.TabIndex = 31;
+            this.button_SletEjer.TabIndex = 27;
             this.button_SletEjer.Text = "Slet";
             this.button_SletEjer.UseVisualStyleBackColor = false;
             this.button_SletEjer.Click += new System.EventHandler(this.button_SletEjer_Click);
@@ -238,7 +241,7 @@
             this.textBox_By.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_By.Name = "textBox_By";
             this.textBox_By.Size = new System.Drawing.Size(481, 30);
-            this.textBox_By.TabIndex = 55;
+            this.textBox_By.TabIndex = 24;
             // 
             // textBox_Postnummer
             // 
@@ -247,7 +250,7 @@
             this.textBox_Postnummer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Postnummer.Name = "textBox_Postnummer";
             this.textBox_Postnummer.Size = new System.Drawing.Size(481, 30);
-            this.textBox_Postnummer.TabIndex = 24;
+            this.textBox_Postnummer.TabIndex = 23;
             this.textBox_Postnummer.Leave += new System.EventHandler(this.textBox_Postnummer_Leave);
             // 
             // label_Postnummer
@@ -277,11 +280,11 @@
             this.button_Søgning.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Søgning.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Søgning.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_Søgning.Location = new System.Drawing.Point(542, 674);
+            this.button_Søgning.Location = new System.Drawing.Point(630, 887);
             this.button_Søgning.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Søgning.Name = "button_Søgning";
             this.button_Søgning.Size = new System.Drawing.Size(237, 83);
-            this.button_Søgning.TabIndex = 59;
+            this.button_Søgning.TabIndex = 28;
             this.button_Søgning.Text = "Søgning";
             this.button_Søgning.UseVisualStyleBackColor = false;
             this.button_Søgning.Click += new System.EventHandler(this.button_Søgning_Click);
@@ -291,11 +294,11 @@
             this.TilbageBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.TilbageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TilbageBtn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TilbageBtn.Location = new System.Drawing.Point(1413, 830);
+            this.TilbageBtn.Location = new System.Drawing.Point(1501, 887);
             this.TilbageBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TilbageBtn.Name = "TilbageBtn";
             this.TilbageBtn.Size = new System.Drawing.Size(237, 83);
-            this.TilbageBtn.TabIndex = 26;
+            this.TilbageBtn.TabIndex = 30;
             this.TilbageBtn.Text = "Tilbage";
             this.TilbageBtn.UseVisualStyleBackColor = false;
             this.TilbageBtn.Click += new System.EventHandler(this.TilbageBtn_Click);
@@ -304,7 +307,7 @@
             // 
             this.radioButton_Private.AutoSize = true;
             this.radioButton_Private.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_Private.Location = new System.Drawing.Point(25, 44);
+            this.radioButton_Private.Location = new System.Drawing.Point(69, 44);
             this.radioButton_Private.Name = "radioButton_Private";
             this.radioButton_Private.Size = new System.Drawing.Size(88, 28);
             this.radioButton_Private.TabIndex = 17;
@@ -317,7 +320,7 @@
             // 
             this.radioButton_Erhverv.AutoSize = true;
             this.radioButton_Erhverv.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton_Erhverv.Location = new System.Drawing.Point(176, 45);
+            this.radioButton_Erhverv.Location = new System.Drawing.Point(235, 44);
             this.radioButton_Erhverv.Name = "radioButton_Erhverv";
             this.radioButton_Erhverv.Size = new System.Drawing.Size(95, 28);
             this.radioButton_Erhverv.TabIndex = 18;
@@ -332,7 +335,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(33, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(325, 98);
+            this.groupBox1.Size = new System.Drawing.Size(476, 98);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ejer type";
@@ -343,11 +346,11 @@
             this.UpdateEjerBtn.Enabled = false;
             this.UpdateEjerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateEjerBtn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.UpdateEjerBtn.Location = new System.Drawing.Point(1413, 674);
+            this.UpdateEjerBtn.Location = new System.Drawing.Point(1226, 887);
             this.UpdateEjerBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.UpdateEjerBtn.Name = "UpdateEjerBtn";
             this.UpdateEjerBtn.Size = new System.Drawing.Size(237, 83);
-            this.UpdateEjerBtn.TabIndex = 61;
+            this.UpdateEjerBtn.TabIndex = 26;
             this.UpdateEjerBtn.Text = "Update";
             this.UpdateEjerBtn.UseVisualStyleBackColor = false;
             this.UpdateEjerBtn.Click += new System.EventHandler(this.UpdateEjerBtn_Click);
@@ -355,18 +358,56 @@
             // label_Help
             // 
             this.label_Help.AutoSize = true;
-            this.label_Help.Location = new System.Drawing.Point(24, 992);
+            this.label_Help.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Help.Location = new System.Drawing.Point(12, 1010);
             this.label_Help.Name = "label_Help";
-            this.label_Help.Size = new System.Drawing.Size(18, 20);
+            this.label_Help.Size = new System.Drawing.Size(22, 24);
             this.label_Help.TabIndex = 62;
             this.label_Help.Text = "?";
             this.label_Help.Click += new System.EventHandler(this.label_Help_Click);
+            // 
+            // textBox_Søg
+            // 
+            this.textBox_Søg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Søg.Location = new System.Drawing.Point(877, 184);
+            this.textBox_Søg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_Søg.Name = "textBox_Søg";
+            this.textBox_Søg.Size = new System.Drawing.Size(291, 30);
+            this.textBox_Søg.TabIndex = 63;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(695, 187);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 25);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "Kunde Tlf / Navn:";
+            // 
+            // button_Søg
+            // 
+            this.button_Søg.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_Søg.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Søg.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_Søg.Location = new System.Drawing.Point(1176, 174);
+            this.button_Søg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_Søg.Name = "button_Søg";
+            this.button_Søg.Size = new System.Drawing.Size(167, 49);
+            this.button_Søg.TabIndex = 29;
+            this.button_Søg.Text = "Søg";
+            this.button_Søg.UseVisualStyleBackColor = false;
+            this.button_Søg.Click += new System.EventHandler(this.button_Søg_Click);
             // 
             // AnimalHouseGui_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.Controls.Add(this.button_Søg);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox_Søg);
             this.Controls.Add(this.label_Help);
             this.Controls.Add(this.UpdateEjerBtn);
             this.Controls.Add(this.groupBox1);
@@ -434,5 +475,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button UpdateEjerBtn;
         private System.Windows.Forms.Label label_Help;
+        private System.Windows.Forms.Button button_Søg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_Søg;
     }
 }

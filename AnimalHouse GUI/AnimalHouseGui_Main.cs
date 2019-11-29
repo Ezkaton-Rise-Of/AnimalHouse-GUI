@@ -62,6 +62,25 @@ namespace AnimalHouse_GUI
             AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
             dyrRegister.ShowDialog();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_mail_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouse_MailForm mailForm = new AnimalHouse_MailForm();
+            mailForm.ShowDialog();
+        }
+
+        private void button_lagerStatus_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouse_LagerForm lagerForm = new AnimalHouse_LagerForm();
+            lagerForm.ShowDialog();
+        }
     }
 }
 

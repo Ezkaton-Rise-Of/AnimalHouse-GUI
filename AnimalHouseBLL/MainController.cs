@@ -58,6 +58,11 @@ namespace AnimalHouseBLL
             return Ac.HentAnsatByName(v);
         }
 
+        public List<Kunde> HentKundByTlf(string v)
+        {
+            return Kc.HenKundetByTlf(v);
+        }
+
         public string HentBynavn(string postnr)
         {
             return Kc.HentByNavn(postnr);
