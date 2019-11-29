@@ -11,10 +11,12 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseBookingDB : IBookingDB
     {
-        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
         public List<Booking> HentAlleBooking()
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+
             List<Booking> ld = null;
             SqlTransaction transaction = null;
             using (conn)
@@ -56,6 +58,9 @@ namespace AnimalHouseDB
 
         public Booking HentBooking(int Id)
         {
+
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             Booking d = null;
             SqlTransaction transaction = null;
             using (conn)
@@ -97,11 +102,15 @@ namespace AnimalHouseDB
 
         public List<Booking> HentBookingByKunde(int Id)
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             throw new NotImplementedException();
         }
 
         public List<Booking> HentDyrByKunde(int Id)
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             List<Booking> ld = null;
             SqlTransaction transaction = null;
             using (conn)
@@ -143,6 +152,8 @@ namespace AnimalHouseDB
 
         public string OpretBooking(Booking b)
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             SqlTransaction transaction = null;
             using (conn)
             {
@@ -176,6 +187,8 @@ namespace AnimalHouseDB
 
         public string SletBooking(int id)
         {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             string result;
             SqlTransaction transaction = null;
             using (conn)
@@ -206,7 +219,8 @@ namespace AnimalHouseDB
 
         public string UpdaterBooking(Booking b)
         {
-
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             SqlTransaction transaction = null;
             using (conn)
             {

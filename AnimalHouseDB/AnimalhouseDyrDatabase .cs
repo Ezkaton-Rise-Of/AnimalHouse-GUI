@@ -29,14 +29,14 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr");
+                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     ld = new List<Dyr>();
                     while (reader.Read())
                     {
                         Dyr d = new Dyr();
-                        d.DyrId = Convert.ToInt32(reader["DyrID"]);
+                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
                         d.KundeId = Convert.ToInt32(reader["KundeId"]);
                         d.Race = Convert.ToString(reader["Race"]);
                         d.Art = Convert.ToString(reader["Art"]);
@@ -68,7 +68,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr");
+                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     d = new Dyr();
@@ -110,7 +110,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("INSERT INTO Dyr (KundeId, Art, Race, Alder, sex) values (@KundeId, @Art, @Race, @Alder, @sex)");
+                    SqlCommand command = new SqlCommand("INSERT INTO Dyr (KundeId, Art, Race, Alder, sex) values (@KundeId, @Art, @Race, @Alder, @sex)", conn);
                     command.Parameters.Add(new SqlParameter("@KundeId", d.KundeId));
                     command.Parameters.Add(new SqlParameter("@Race", d.Race));
                     command.Parameters.Add(new SqlParameter("@Alder", d.Alder));
@@ -144,7 +144,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("DELETE Dyr WHERE DyrId = @DyrId");
+                    SqlCommand command = new SqlCommand("DELETE Dyr WHERE DyrId = @DyrId", conn);
                     command.Parameters.Add(new SqlParameter("@DyrId", Id));
                     command.Transaction = transaction;
                     command.ExecuteNonQuery();
@@ -174,7 +174,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("Update Dyr SET KundeId = @KundeId, Art = @Art, Race= @Race, Alder = @Alder, sex = @sex where DyrId = @DyrId");
+                    SqlCommand command = new SqlCommand("Update Dyr SET KundeId = @KundeId, Art = @Art, Race= @Race, Alder = @Alder, sex = @sex where DyrId = @DyrId", conn);
                     command.Parameters.Add(new SqlParameter("@DyrId", d.DyrId));
                     command.Parameters.Add(new SqlParameter("@KundeId", d.KundeId));
                     command.Parameters.Add(new SqlParameter("@Art", d.Art));
@@ -199,17 +199,17 @@ namespace AnimalHouseDB
             }
         }
 
-        List<Dyr> IDyrDB.HentDyrByKundeId(int KId)
+        public List<Dyr> HentDyrByKundeId(int KId)
         {
             List<Dyr> ld = null;
             SqlTransaction transaction = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            
                 conn.Open();
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr WHERE KundeId = @KundeId");
+                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr WHERE KundeId = @KundeId", conn);
                     command.Parameters.Add(new SqlParameter("@KundeId", KId));
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
@@ -217,7 +217,7 @@ namespace AnimalHouseDB
                     while (reader.Read())
                     {
                         Dyr d = new Dyr();
-                        d.DyrId = Convert.ToInt32(reader["DyrID"]);
+                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
                         d.KundeId = Convert.ToInt32(reader["KundeId"]);
                         d.Race = Convert.ToString(reader["Race"]);
                         d.Art = Convert.ToString(reader["Art"]);
@@ -226,18 +226,19 @@ namespace AnimalHouseDB
                         ld.Add(d);
                     }
                     reader.Close();
-                   
-                }
-                catch (Exception)
-                {
                     return ld;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                    
                 }
                 finally
                 {
                     conn.Close();
                 }
             }
-            return ld;
-        }
+            
+        
     }
 }

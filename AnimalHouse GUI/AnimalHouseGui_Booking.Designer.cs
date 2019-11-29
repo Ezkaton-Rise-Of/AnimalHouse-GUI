@@ -64,6 +64,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.Navn_empty = new System.Windows.Forms.Label();
+            this.Addresse_empty = new System.Windows.Forms.Label();
+            this.By_empty = new System.Windows.Forms.Label();
+            this.Postnummer_empty = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -100,6 +104,7 @@
             this.textBox_EjerIdBooking.Name = "textBox_EjerIdBooking";
             this.textBox_EjerIdBooking.Size = new System.Drawing.Size(200, 20);
             this.textBox_EjerIdBooking.TabIndex = 113;
+            this.textBox_EjerIdBooking.TextChanged += new System.EventHandler(this.textBox_EjerIdBooking_TextChanged);
             // 
             // label_BehandlerIdBooking
             // 
@@ -241,6 +246,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 132;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -343,30 +349,30 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 235);
+            this.label4.Location = new System.Drawing.Point(40, 235);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 143;
-            this.label4.Text = "data";
+            this.label4.Text = "Navn:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 281);
+            this.label5.Location = new System.Drawing.Point(40, 256);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 144;
-            this.label5.Text = "data";
+            this.label5.Text = "Addresse:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(43, 318);
+            this.label6.Location = new System.Drawing.Point(40, 279);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 145;
-            this.label6.Text = "data";
+            this.label6.Text = "By";
             // 
             // label8
             // 
@@ -390,11 +396,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(44, 352);
+            this.label10.Location = new System.Drawing.Point(40, 305);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.Size = new System.Drawing.Size(68, 13);
             this.label10.TabIndex = 150;
-            this.label10.Text = "data";
+            this.label10.Text = "Postnummer:";
             // 
             // button3
             // 
@@ -427,11 +433,51 @@
             this.label7.Text = "Notat";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
+            // Navn_empty
+            // 
+            this.Navn_empty.AutoSize = true;
+            this.Navn_empty.Location = new System.Drawing.Point(131, 235);
+            this.Navn_empty.Name = "Navn_empty";
+            this.Navn_empty.Size = new System.Drawing.Size(36, 13);
+            this.Navn_empty.TabIndex = 154;
+            this.Navn_empty.Text = "Empty";
+            // 
+            // Addresse_empty
+            // 
+            this.Addresse_empty.AutoSize = true;
+            this.Addresse_empty.Location = new System.Drawing.Point(131, 256);
+            this.Addresse_empty.Name = "Addresse_empty";
+            this.Addresse_empty.Size = new System.Drawing.Size(36, 13);
+            this.Addresse_empty.TabIndex = 155;
+            this.Addresse_empty.Text = "Empty";
+            // 
+            // By_empty
+            // 
+            this.By_empty.AutoSize = true;
+            this.By_empty.Location = new System.Drawing.Point(131, 279);
+            this.By_empty.Name = "By_empty";
+            this.By_empty.Size = new System.Drawing.Size(36, 13);
+            this.By_empty.TabIndex = 156;
+            this.By_empty.Text = "Empty";
+            // 
+            // Postnummer_empty
+            // 
+            this.Postnummer_empty.AutoSize = true;
+            this.Postnummer_empty.Location = new System.Drawing.Point(131, 305);
+            this.Postnummer_empty.Name = "Postnummer_empty";
+            this.Postnummer_empty.Size = new System.Drawing.Size(36, 13);
+            this.Postnummer_empty.TabIndex = 157;
+            this.Postnummer_empty.Text = "Empty";
+            // 
             // AnimalHouseGui_Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 678);
+            this.Controls.Add(this.Postnummer_empty);
+            this.Controls.Add(this.By_empty);
+            this.Controls.Add(this.Addresse_empty);
+            this.Controls.Add(this.Navn_empty);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button3);
@@ -503,5 +549,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Navn_empty;
+        private System.Windows.Forms.Label Addresse_empty;
+        private System.Windows.Forms.Label By_empty;
+        private System.Windows.Forms.Label Postnummer_empty;
     }
 }

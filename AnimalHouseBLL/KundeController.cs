@@ -31,6 +31,8 @@ namespace AnimalHouseBLL
             return KundeDB.HentKundeById(id);
         }
 
+
+
         public List<Kunde> HentAlleKunde()
         {
             return KundeDB.HentAlleKunder();
@@ -51,5 +53,12 @@ namespace AnimalHouseBLL
         {
             return KundeDB.HentByNavn(postnr);
         }
+
+        public Kunde HentKundeByTlf(string tlf)
+        {
+            return KundeDB.HentKundeByTlf(tlf);
+        }
+
+
     }
 }

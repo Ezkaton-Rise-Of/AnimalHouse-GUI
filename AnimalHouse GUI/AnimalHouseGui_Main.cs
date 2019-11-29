@@ -62,6 +62,13 @@ namespace AnimalHouse_GUI
             AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
             dyrRegister.ShowDialog();
         }
+
+        private void button_Booking_Click_1(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            AnimalHouseGui_Booking booking = new AnimalHouseGui_Booking();
+            booking.ShowDialog();
+        }
     }
 }
 
