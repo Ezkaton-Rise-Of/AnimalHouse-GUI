@@ -63,7 +63,7 @@ namespace AnimalHouse_GUI
 
         private void textBox_EjerNavn_Leave(object sender, EventArgs e)
         {
-            k = controller.HentKundByTlf(textBox_EjerTlf.Text.Trim());
+            k = controller.HentKundeByTlforNavn(textBox_EjerTlf.Text.Trim());
             if (k is null)
             {
                 MessageBox.Show("Kunde er ikk registeret!");

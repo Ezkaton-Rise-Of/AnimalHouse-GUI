@@ -16,7 +16,7 @@ namespace AnimalHouseDB
         Kunde HentKundeByTlf(string tlf);
         List<Kunde> HentAlleKunder();
         string HentByNavn(string postnr);
-        
 
+        List<Kunde> HentKunderByTlfOrNavn(string input);
     }
 }

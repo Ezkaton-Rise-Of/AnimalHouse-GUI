@@ -58,9 +58,9 @@ namespace AnimalHouseBLL
             return Ac.HentAnsatByName(v);
         }
 
-        public List<Kunde> HentKundByTlf(string v)
+        public Kunde HentKundByTlf(string tlf)
         {
-            return Kc.HenKundetByTlf(v);
+            return Kc.HenKundetByTlf(tlf);
         }
 
         public string HentBynavn(string postnr)
@@ -138,9 +138,12 @@ namespace AnimalHouseBLL
 
         public void HentKundeByTlf(string tlf)
         {
-            K = null;
-            K = new List<Kunde>();
-            K.Add(Kc.HentKundeByTlf(tlf));
+             K.Add(Kc.HenKundetByTlf(tlf));
+        }
+
+        public List<Kunde> HentKundeByTlforNavn(string input)
+        {
+            return Kc.HentKundeByTlforNavn(input);
         }
     }
 }

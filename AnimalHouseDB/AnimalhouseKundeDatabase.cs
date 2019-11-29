@@ -142,45 +142,6 @@ namespace AnimalHouseDB
             return k;
         }
 
-        // Søge en Kunde via ders telfon nummer.
-        public List<Kunde> HentKundeByTlfEllerNavn(string s)
-        {
-            List<Kunde> k = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            try
-            {
-                string commandtxt = $"select * from Kunde where Tlf Like '%{s}%' or Fnavn like'%{s}%';";
-                SqlCommand command = new SqlCommand(commandtxt, conn);
-                SqlDataReader reader = command.ExecuteReader();
-                k = new List<Kunde>();
-                if (reader.Read())
-                {
-                    Kunde kunde = new Kunde();
-                    kunde.Id = (int)reader["KundeId"];
-                    kunde.Fnavn = (string)reader["Fnavn"];
-                    kunde.Lnavn = (string)reader["Lnavn"];
-                    kunde.Adresse = (string)reader["Adresse"];
-                    kunde.Tlf = (string)reader["Tlf"];
-                    kunde.Kundetype = (string)reader["Kundetype"];
-                    kunde.E_mail = (string)reader["E_mail"];
-                    kunde.Oprettet = (DateTime)reader["Oprettet"];
-                    k.Add(kunde);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return k;
-        }
-
         public List<Kunde> HentAlleKunder()
         {
             List<Kunde> results = null;
@@ -249,6 +210,83 @@ namespace AnimalHouseDB
             }
 
             return bynavn;
+        }
+
+        public Kunde HentKundeByTlf(string tlf)
+        {
+            Kunde kunde = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
+            {
+                string commandtxt = $"select * from Kunde where Tlf Like '%{tlf}%;";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    kunde = new Kunde();
+                    kunde.Id = (int)reader["KundeId"];
+                    kunde.Fnavn = (string)reader["Fnavn"];
+                    kunde.Lnavn = (string)reader["Lnavn"];
+                    kunde.Adresse = (string)reader["Adresse"];
+                    kunde.Tlf = (string)reader["Tlf"];
+                    kunde.Kundetype = (string)reader["Kundetype"];
+                    kunde.E_mail = (string)reader["E_mail"];
+                    kunde.Oprettet = (DateTime)reader["Oprettet"];
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return kunde;
+        }
+
+        public List<Kunde> HentKunderByTlfOrNavn(string input)
+        {
+            List<Kunde> results = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
+            {
+                string commandtxt = $"Select * from Kunde " +
+                    $"join Postnr on Postnr.Postnummer = Kunde.Postnummer where Tlf like '%{input}%' or Fnavn like '%{input}%';";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                results = new List<Kunde>();
+                while (reader.Read())
+                {
+                    Kunde k = new Kunde();
+                    k.Id = (int)reader["KundeId"];
+                    k.Fnavn = (string)reader["Fnavn"];
+                    k.Lnavn = (string)reader["Lnavn"];
+                    k.Adresse = (string)reader["Adresse"];
+                    k.Postnummer = (string)reader["Postnummer"];
+                    k.Tlf = (string)reader["Tlf"];
+                    k.Kundetype = (string)reader["Kundetype"];
+                    k.By = (string)reader["Bynavn"];
+                    k.Oprettet = (DateTime)reader["Oprettet"];
+                    k.E_mail = (string)reader["E_mail"];
+                    results.Add(k);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return results;
         }
     }
 }

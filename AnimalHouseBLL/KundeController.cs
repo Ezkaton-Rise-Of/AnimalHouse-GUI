@@ -49,9 +49,9 @@ namespace AnimalHouseBLL
             return KundeDB.UpdateKunde(k);
         }
 
-        public List<Kunde> HenKundetByTlf(string tlf)
+        public Kunde HenKundetByTlf(string tlf)
         {
-            return KundeDB.HentKundeByTlfEllerNavn(tlf);
+            return KundeDB.HentKundeByTlf(tlf);
         }
 
         public string HentByNavn(string postnr)
@@ -59,11 +59,9 @@ namespace AnimalHouseBLL
             return KundeDB.HentByNavn(postnr);
         }
 
-        public Kunde HentKundeByTlf(string tlf)
+        public List<Kunde> HentKundeByTlforNavn(string input)
         {
-            return KundeDB.HentKundeByTlf(tlf);
+            return KundeDB.HentKunderByTlfOrNavn(input);
         }
-
-
     }
 }
