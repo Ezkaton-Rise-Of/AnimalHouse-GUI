@@ -14,8 +14,8 @@ namespace AnimalHouseBLL
     public class MainController
     {
 
-        List<Dyr> D = new List<Dyr>();
-        List<Kunde> K = new List<Kunde>();
+        public List<Dyr> D = new List<Dyr>();
+        public List<Kunde> K = new List<Kunde>();
 
         KundeController Kc;
         DyrController Dc;
@@ -97,9 +97,18 @@ namespace AnimalHouseBLL
             return Ac.SeltAnsat(id);
         }
 
-        public List<Dyr> HentAlleKundesDyr(int kundeId)
+        public void HentAlleKundesDyr(int kundeId)
         {
-            return Dc.HentAlleKundesDyr(kundeId);
+            try
+            {
+                D = Dc.HentAlleKundesDyr(kundeId);
+            }
+            catch (Exception et)
+            {
+
+                throw et;
+            }
+           
         }
 
         public Dyr HentDyr(int id)
@@ -125,6 +134,13 @@ namespace AnimalHouseBLL
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
         { 
             return Ac.UpdateAnsat(id, navn, stelling,tlf);
+        }
+
+        public void HentKundeByTlf(string tlf)
+        {
+            K = null;
+            K = new List<Kunde>();
+            K.Add(Kc.HentKundeByTlf(tlf));
         }
     }
 }

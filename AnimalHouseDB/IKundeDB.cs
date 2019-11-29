@@ -13,8 +13,10 @@ namespace AnimalHouseDB
         Kunde HentKundeById(int id);
         string SletKunde(int id);
         string UpdateKunde(Kunde k);
-        List<Kunde> HentKundeByTlfEllerNavn(string tlf);
+        Kunde HentKundeByTlf(string tlf);
         List<Kunde> HentAlleKunder();
         string HentByNavn(string postnr);
+        
+
     }
 }
