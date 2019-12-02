@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AnimalHouseDB;
-using System_Entities;
+using AnimalHouse_Entities;
 
 namespace AnimalHouseBLL
 {
@@ -24,7 +24,7 @@ namespace AnimalHouseBLL
         {
             return ansatDB.OpretAnsat(a);
         }
-        public string SeltAnsat(int ansatId)
+        public string SletAnsat(int ansatId)
         {
             return ansatDB.SletAnsat(ansatId);
         }
@@ -38,9 +38,9 @@ namespace AnimalHouseBLL
         {
             return ansatDB.HentAnsatById(ansatid);
         }
-        public List<Ansat> HentAlleAnsate()
+        public List<Ansat> HentAlleAnsatte()
         {
-            return ansatDB.HentAlleAnsate();
+            return ansatDB.HentAlleAnsatte();
         }
         public List<Ansat> HentAnsateByType(int ansattype)
         {

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnimalHouseBLL;
 using AnimalHouse_Entities;
-using AnimalHouse_Entites;
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Booking : Form
