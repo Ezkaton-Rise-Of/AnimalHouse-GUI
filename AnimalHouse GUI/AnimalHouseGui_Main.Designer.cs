@@ -167,7 +167,7 @@
             this.button_Journal.TabIndex = 39;
             this.button_Journal.Text = "Journalisering";
             this.button_Journal.UseVisualStyleBackColor = true;
-            this.button_Journal.Click += new System.EventHandler(this.button_Journal_Click);
+            //this.button_Journal.Click += new System.EventHandler(this.button_Journal_Click);
             // 
             // AnimalHouseGui_Main
             // 

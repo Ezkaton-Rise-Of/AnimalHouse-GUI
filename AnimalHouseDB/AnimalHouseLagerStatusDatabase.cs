@@ -192,6 +192,11 @@ namespace AnimalHouseDB
         {
             throw new NotImplementedException();
         }
+
+        public List<LagerStatus> HentLagerVareByNavn(string varenavn)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
