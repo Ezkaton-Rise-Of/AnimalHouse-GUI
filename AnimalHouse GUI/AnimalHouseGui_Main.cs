@@ -21,6 +21,16 @@ namespace AnimalHouse_GUI
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label_AnimalHouse1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button_EjerReg_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -69,16 +79,16 @@ namespace AnimalHouse_GUI
         private void button_lagerStatus_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AnimalHouse_LagerForm lagerForm = new AnimalHouse_LagerForm();
+            AnimalHouseGui_LagerStatus lagerForm = new AnimalHouseGui_LagerStatus();
             lagerForm.ShowDialog();
         }
 
-        private void button_Journal_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
-            journalForm.ShowDialog();
-        }
+       // private void button_Journal_Click(object sender, EventArgs e)
+       // {
+            //this.Hide();
+            //AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
+            //journalForm.ShowDialog();
+        //}
     }
 }
 
