@@ -84,12 +84,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\System Entities\AnimalHouse_Entities.csproj">
-      <Project>{c3032e28-caf4-4537-ada4-ffb47c6b06f7}</Project>
-      <Name>AnimalHouse_Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -100,6 +94,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\System Entities\AnimalHouse_Entities.csproj">
+      <Project>{c3032e28-caf4-4537-ada4-ffb47c6b06f7}</Project>
+      <Name>AnimalHouse_Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

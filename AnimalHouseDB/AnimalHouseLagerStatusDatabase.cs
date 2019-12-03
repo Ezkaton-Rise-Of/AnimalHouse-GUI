@@ -1,7 +1,8 @@
-﻿using AnimalHouse_Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using AnimalHouse_Entities;
+using AnimalHouseDB;
 
 namespace AnimalHouseDB
 {
