@@ -16,19 +16,17 @@ namespace AnimalHouseDB
         {
         }
 
-        public List<Email> HentEmail(int id)
+        public Email HentEmail()
         {
             using (conn)
             {
                 SqlTransaction transaction = null;
-                List<Email> el = new List<Email>();
                 Email e = null;
                 conn.Open();
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Email where EmailId = @EmailId", conn);
-                    command.Parameters.Add(new SqlParameter("@EmailId", id));
+                    SqlCommand command = new SqlCommand("SELECT * FROM Email Join Kunde on Email.KundeId = Kunde.KundeId where EmailId = @EmailId", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     
@@ -39,7 +37,7 @@ namespace AnimalHouseDB
                         e.DyrId = Convert.ToInt32(reader["KundeId"]);
                         e.Title = Convert.ToString(reader["Title"]);
                         e.Indhold = Convert.ToString(reader["Indhold"]);
-                        el.Add(e);
+                        
                     }
                     reader.Close();
 
@@ -53,7 +51,7 @@ namespace AnimalHouseDB
                     conn.Close();
 
                 }
-                return el;
+                return e;
             }
         }
 
@@ -67,7 +65,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Email", conn);
+                    SqlCommand command = new SqlCommand("SELECT * FROM Email Join Kunde on Email.KundeId = Kunde.KundeId", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     el = new List<Email>();

@@ -8,7 +8,7 @@ namespace AnimalHouseDB
 {
     public interface IEmail
     {
-        List<Email> HentEmail(int id);
+        Email HentEmail();
         List<Email> HentEmails();
         List<Email> HentEmailsByKunde(int id);
         bool InsertMail(Email E);
