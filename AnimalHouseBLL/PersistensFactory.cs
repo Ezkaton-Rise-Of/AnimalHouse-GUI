@@ -40,5 +40,10 @@ namespace AnimalHouseBLL
         {
             return new AnimalHouseAnsatDataBase();
         }
+
+        public ILagerStatusDB GetLagerStatusDB()
+        {
+            return new AnimalHouseLagerStatusDatabase();
+        }
     }
 }

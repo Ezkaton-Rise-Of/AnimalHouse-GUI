@@ -48,6 +48,7 @@
     <Compile Include="Bur.cs" />
     <Compile Include="Dyr.cs" />
     <Compile Include="Kunde.cs" />
+    <Compile Include="Lagerstatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
