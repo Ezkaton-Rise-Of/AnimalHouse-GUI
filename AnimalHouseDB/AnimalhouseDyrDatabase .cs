@@ -237,7 +237,45 @@ namespace AnimalHouseDB
                     conn.Close();
                 }
             }
-            
-        
+
+        public List<Dyr> HentDyrDerSkalHaveEmail(int dage)
+        {
+            List<Dyr> ld = null;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+                SqlCommand command = new SqlCommand("SELECT * FROM Dyr left join Journal on Dyr.  where   WHERE KundeId = @KundeId", conn);
+                command.Parameters.Add(new SqlParameter("@KundeId", dage));
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                ld = new List<Dyr>();
+                while (reader.Read())
+                {
+                    Dyr d = new Dyr();
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                    d.Race = Convert.ToString(reader["Race"]);
+                    d.Art = Convert.ToString(reader["Art"]);
+                    d.Alder = Convert.ToInt32(reader["Alder"]);
+                    d.Sex = Convert.ToChar(reader["Sex"]);
+                    ld.Add(d);
+                }
+                reader.Close();
+                return ld;
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
