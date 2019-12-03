@@ -50,6 +50,7 @@
     <Compile Include="Email.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Lagerstatus.cs" />
+    <Compile Include="Produkt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />

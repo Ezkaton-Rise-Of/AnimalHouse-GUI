@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
+
 namespace AnimaleHouseModel
 {
     
@@ -13,8 +14,11 @@ namespace AnimaleHouseModel
         MailMessage mail = new MailMessage();
         SmtpClient client;
         string OwnerEmail;
-        
-        public Email(string password = "Ld8m8N!-wV0V", string ownerEmail = "AnimalHouseHRK@gmail.com")
+        private string password = "Ld8m8N!-wV0V";
+        private string ownerEmail = "AnimalHouseHRK@gmail.com";
+
+
+        public Email()
         {
             OwnerEmail = ownerEmail;
             client = new SmtpClient("smtp.gmail.com");
