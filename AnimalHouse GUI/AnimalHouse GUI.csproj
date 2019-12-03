@@ -58,12 +58,6 @@
     <Compile Include="AnimalHouseGui_DyrRegister.Designer.cs">
       <DependentUpon>AnimalHouseGui_DyrRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnimalHouseGui_LagerStatus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AnimalHouseGui_LagerStatus.Designer.cs">
-      <DependentUpon>AnimalHouseGui_LagerStatus.cs</DependentUpon>
-    </Compile>
     <Compile Include="AnimalHouseGui_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +94,12 @@
     <Compile Include="AnimalHouseGui_Mail.Designer.cs">
       <DependentUpon>AnimalHouseGui_Mail.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnimalHouse_LagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimalHouse_LagerForm.Designer.cs">
+      <DependentUpon>AnimalHouse_LagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AnimalHouse_MailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,11 +113,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>test102DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Test_LagerDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test_LagerDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AnimaHouseGui_AnsatForm.resx">
       <DependentUpon>AnimaHouseGui_AnsatForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,9 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_DyrRegister.resx">
       <DependentUpon>AnimalHouseGui_DyrRegister.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AnimalHouseGui_LagerStatus.resx">
-      <DependentUpon>AnimalHouseGui_LagerStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Main.resx">
       <DependentUpon>AnimalHouseGui_Main.cs</DependentUpon>
@@ -141,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Service.resx">
       <DependentUpon>AnimalHouseGui_Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnimalHouse_LagerForm.resx">
+      <DependentUpon>AnimalHouse_LagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouse_MailForm.resx">
       <DependentUpon>AnimalHouse_MailForm.cs</DependentUpon>
@@ -174,17 +169,6 @@
     </None>
     <None Include="test102DataSet.xss">
       <DependentUpon>test102DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Test_LagerDataSet.xsc">
-      <DependentUpon>Test_LagerDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Test_LagerDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Test_LagerDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Test_LagerDataSet.xss">
-      <DependentUpon>Test_LagerDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

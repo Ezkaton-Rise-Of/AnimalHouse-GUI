@@ -10,13 +10,5 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=den1.mssql8.gear.host;Initial Catalog=test102;Persist Security Info=True;User ID=test102;Password=Ld8m8N!-wV0V</Value>
     </Setting>
-    <Setting Name="Test_LagerConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=LAPTOP-HRSD512S;Initial Catalog=Test_Lager;Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=LAPTOP-HRSD512S;Initial Catalog=Test_Lager;Integrated Security=True</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
