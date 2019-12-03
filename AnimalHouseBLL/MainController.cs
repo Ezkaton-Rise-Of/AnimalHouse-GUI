@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
-using AnimalHouse_Entites;
-using System_Entities;
 using AnimalHouseBLL;
 
 namespace AnimalHouseBLL
@@ -50,7 +48,7 @@ namespace AnimalHouseBLL
 
         public List<Ansat> HentAlleAnsate()
         {
-            return Ac.HentAlleAnsate();
+            return Ac.HentAlleAnsatte();
         }
 
         public object HentAnsatByNavn(string v)
@@ -94,21 +92,21 @@ namespace AnimalHouseBLL
 
         public string SletAnsat(int id)
         {
-            return Ac.SeltAnsat(id);
+            return Ac.SletAnsat(id);
         }
 
-        public void HentAlleKundesDyr(int kundeId)
+        public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
-            try
-            {
-                D = Dc.HentAlleKundesDyr(kundeId);
-            }
-            catch (Exception et)
-            {
+            //try
+            //{
+            //    D = Dc.HentAlleKundesDyr(kundeId);
+            //}
+            //catch (Exception et)
+            //{
 
-                throw et;
-            }
-           
+            //    throw et;
+            //}
+           return Dc.HentAlleKundesDyr(kundeId);
         }
 
         public Dyr HentDyr(int id)

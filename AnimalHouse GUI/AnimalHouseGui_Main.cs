@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace AnimalHouse_GUI
 {
@@ -17,16 +18,6 @@ namespace AnimalHouse_GUI
         {
             InitializeComponent();
             
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_AnimalHouse1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -65,7 +56,7 @@ namespace AnimalHouse_GUI
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\obj\Debug\Main Form.txt");
         }
 
         private void button_mail_Click(object sender, EventArgs e)
@@ -80,6 +71,13 @@ namespace AnimalHouse_GUI
             this.Hide();
             AnimalHouse_LagerForm lagerForm = new AnimalHouse_LagerForm();
             lagerForm.ShowDialog();
+        }
+
+        private void button_Journal_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
+            journalForm.ShowDialog();
         }
     }
 }

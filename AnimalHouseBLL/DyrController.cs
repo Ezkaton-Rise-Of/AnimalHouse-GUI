@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AnimalHouse_Entites;
+using AnimalHouse_Entities;
 using AnimalHouseDB;
 
 namespace AnimalHouseBLL
@@ -53,5 +53,10 @@ namespace AnimalHouseBLL
             d.Sex = sex;
             return DyrDB.UpdaterDyr(d);
                 }
+
+        public List<Dyr> HentDyrDerskalHaveMaile(int maildage, int visitdage)
+        {
+            return DyrDB.HentDyrDerSkalHaveEmail(maildage, visitdage);
+        }
     }
 }

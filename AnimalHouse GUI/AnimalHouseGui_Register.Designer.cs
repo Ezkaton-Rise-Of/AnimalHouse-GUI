@@ -369,17 +369,17 @@
             // textBox_Søg
             // 
             this.textBox_Søg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Søg.Location = new System.Drawing.Point(877, 184);
+            this.textBox_Søg.Location = new System.Drawing.Point(815, 184);
             this.textBox_Søg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_Søg.Name = "textBox_Søg";
-            this.textBox_Søg.Size = new System.Drawing.Size(291, 30);
+            this.textBox_Søg.Size = new System.Drawing.Size(324, 30);
             this.textBox_Søg.TabIndex = 63;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(695, 187);
+            this.label1.Location = new System.Drawing.Point(625, 184);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 25);
@@ -391,7 +391,7 @@
             this.button_Søg.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Søg.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Søg.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_Søg.Location = new System.Drawing.Point(1176, 174);
+            this.button_Søg.Location = new System.Drawing.Point(1147, 174);
             this.button_Søg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Søg.Name = "button_Søg";
             this.button_Søg.Size = new System.Drawing.Size(167, 49);

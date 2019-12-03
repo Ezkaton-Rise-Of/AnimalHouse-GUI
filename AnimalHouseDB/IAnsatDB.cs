@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System_Entities;
+using AnimalHouse_Entities;
 
 namespace AnimalHouseDB
 {
@@ -14,7 +14,7 @@ namespace AnimalHouseDB
         string SletAnsat(int ansatId);
         Ansat HentAnsatById(int ansatId);
         List<Ansat> HentAnsatByNavn (string ansatNavn);
-        List<Ansat> HentAlleAnsate();
+        List<Ansat> HentAlleAnsatte();
         List<Ansat> HentAnsateByType(int ansattype);
     }
 }

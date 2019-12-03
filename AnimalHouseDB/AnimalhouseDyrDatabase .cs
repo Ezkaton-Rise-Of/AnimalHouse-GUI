@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using AnimalHouse_Entities;
-using AnimalHouse_Entites;
 
 namespace AnimalHouseDB
 {
@@ -238,7 +237,56 @@ namespace AnimalHouseDB
                     conn.Close();
                 }
             }
-            
-        
+
+        public List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage)
+        {
+            List<Dyr> ld = null;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+
+                //ændre til negativ værdig
+                mailDage = mailDage * -1;
+                visitDage = visitDage * -1;
+
+                //outer joiner to views
+                SqlCommand command = new SqlCommand("select LastVisit.DyrId from LastVisit " +
+                    "full outer join LastMail on LastVisit.DyrId = LastMail.DyrId " +
+                    "where (LastVisit.DyrId is null or LastMail.DyrId is null) " +
+                    //sætter tre begrænsning på hvor tidlig mail skaL sendes ud
+                    //en for hvornår de der været sidste på besøg får email
+                    //en for hvornår de der sidste har fået email (ingen grund til at sende mail ud hver dag)
+                    //en for hvis det er længe sidden de har været på besøg og aldrig har fået mail.
+                    "and (LastVisit.created_at < DATEADD(DAY, @mailDage, GETDATE()) " +
+                    "and LastMail.created_at < DATEADD(DAY, @visitDage, GETDATE() or ((LastVisit.DyrId is null or LastMail.DyrId is null) " +
+"and LastVisit.created_at < DATEADD(DAY, @visitDage, GETDATE()) and LastMail.DyrId is null)", conn);
+                command.Parameters.Add(new SqlParameter("@mailDage", mailDage));
+                command.Parameters.Add(new SqlParameter("@visitDage", visitDage));
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                ld = new List<Dyr>();
+                while (reader.Read())
+                {
+                    Dyr d = new Dyr();
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    ld.Add(d);
+                }
+                reader.Close();
+                return ld;
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

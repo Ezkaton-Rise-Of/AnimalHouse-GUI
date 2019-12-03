@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AnimalHouse_Entites;
+using AnimalHouse_Entities;
 namespace AnimalHouseDB
 {
     public interface IDyrDB
@@ -15,8 +15,8 @@ namespace AnimalHouseDB
             List<Dyr> HentDyrByKundeId(int KId);
             List<Dyr> HentAlleDyr();
 
-
-
+            List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage); 
+            
 
     }
 }
