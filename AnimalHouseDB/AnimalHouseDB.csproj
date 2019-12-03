@@ -65,12 +65,14 @@
     <Compile Include="AnimalHouseBurDatabase.cs" />
     <Compile Include="AnimalHouseDataBase.cs" />
     <Compile Include="AnimalhouseDyrDatabase .cs" />
+    <Compile Include="AnimalHouseEmailDB.cs" />
     <Compile Include="AnimalhouseKundeDatabase.cs" />
     <Compile Include="AnimalhouseServiceDatabase.cs" />
     <Compile Include="IAnsatDB.cs" />
     <Compile Include="IBookingBurDB.cs" />
     <Compile Include="IBookingDB.cs" />
     <Compile Include="IDyrDB.cs" />
+    <Compile Include="IEmail.cs" />
     <Compile Include="IKundeDB.cs" />
     <Compile Include="IServiceDB.cs" />
     <Compile Include="Program.cs" />

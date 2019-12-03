@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
-using AnimalHouse_Entites;
 namespace AnimalHouseDB
 {
     class Program
