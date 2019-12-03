@@ -15,7 +15,7 @@ namespace AnimaleHouseModel
                 t.Start();
             }
         }
-        private void SendEmail(AnimalHouse_Entities.Email e)
+        public void SendEmail(AnimalHouse_Entities.Email e)
         {
             Email email = new Email();
             email.SendEmail(e.Title, e.Indhold, e.ModtagerEmaiL);
