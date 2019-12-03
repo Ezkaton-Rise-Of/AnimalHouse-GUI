@@ -21,6 +21,11 @@ namespace AnimalHouseBLL
             else return _instance;
         }
 
+        public IEmail GetEmailDB()
+        {
+            return new AnimalHouseEmailDB();
+        }
+
         public IKundeDB GetKundeDB()
         {
             return new AnimalhouseKundeDatabase();

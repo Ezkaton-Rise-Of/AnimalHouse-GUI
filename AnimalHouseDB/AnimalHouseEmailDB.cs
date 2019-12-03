@@ -16,12 +16,12 @@ namespace AnimalHouseDB
         {
         }
 
-        public Email HentEmail()
+        public List<Email> HentEmail(int id)
         {
             using (conn)
             {
                 SqlTransaction transaction = null;
-                Email e = null;
+                List<Email> el = null;
                 conn.Open();
                 transaction = conn.BeginTransaction();
                 try
@@ -29,15 +29,15 @@ namespace AnimalHouseDB
                     SqlCommand command = new SqlCommand("SELECT * FROM Email Join Kunde on Email.KundeId = Kunde.KundeId where EmailId = @EmailId", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
-                    
+                    el = new List<Email>();
                     while (reader.Read())
                     {
-                         e = new Email();
+                         Email e = new Email();
                         e.EmailId = Convert.ToInt32(reader["EmailId"]);
                         e.DyrId = Convert.ToInt32(reader["KundeId"]);
                         e.Title = Convert.ToString(reader["Title"]);
                         e.Indhold = Convert.ToString(reader["Indhold"]);
-                        
+                        el.Add(e);
                     }
                     reader.Close();
 
@@ -51,7 +51,7 @@ namespace AnimalHouseDB
                     conn.Close();
 
                 }
-                return e;
+                return el;
             }
         }
 
