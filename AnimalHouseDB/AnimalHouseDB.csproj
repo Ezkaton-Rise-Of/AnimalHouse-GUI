@@ -63,6 +63,7 @@
     <Compile Include="AnimalHouseAnsatDataBase.cs" />
     <Compile Include="AnimalhouseBookingDB.cs" />
     <Compile Include="AnimalHouseBurDatabase.cs" />
+    <Compile Include="AnimalHouseDataBase.cs" />
     <Compile Include="AnimalhouseDyrDatabase .cs" />
     <Compile Include="AnimalhouseKundeDatabase.cs" />
     <Compile Include="AnimalhouseServiceDatabase.cs" />

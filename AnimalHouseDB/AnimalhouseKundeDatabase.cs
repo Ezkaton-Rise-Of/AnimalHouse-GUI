@@ -35,7 +35,7 @@ namespace AnimalHouseDB
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                return "Der sket en fejl!";
                 //throw;
             }
             finally
@@ -69,7 +69,7 @@ namespace AnimalHouseDB
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                return "Der sket en fejl!";
                 //throw;
             }
             finally

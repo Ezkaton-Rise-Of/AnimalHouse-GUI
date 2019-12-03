@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalHouseBLL;
+using System;
 using System.Windows.Forms;
-using AnimalHouseBLL;
 
 namespace AnimalHouse_GUI
 {
@@ -31,19 +24,30 @@ namespace AnimalHouse_GUI
         private void button_RegEjer_Click(object sender, EventArgs e)
         {
             //string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email
-            string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text,textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text);
+            string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text);
             MessageBox.Show(answer);
             FillDataGridView();
             ClearForm();
-            ; 
+            ;
         }
 
         private void button_SletEjer_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Er du sikker?", "Slette kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-               MessageBox.Show(controller.SletEjer(id), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FillDataGridView();
+                if (controller.SletEjer(id) == "slette kundernes dyr først!")
+                    if (MessageBox.Show(controller.SletEjer(id), "Slette kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+
+                        this.Visible = false;
+                        AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
+                        dyrRegister.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show(controller.SletEjer(id), "Slette kunde", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FillDataGridView();
+                    }
             }
         }
 
@@ -105,9 +109,9 @@ namespace AnimalHouse_GUI
             try
             {
                 //int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email
-                MessageBox.Show(controller.UpdateKunde(id,textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text));
+                MessageBox.Show(controller.UpdateKunde(id, textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text));
                 ClearForm();
-               FillDataGridView();
+                FillDataGridView();
             }
             catch (Exception ex)
             {

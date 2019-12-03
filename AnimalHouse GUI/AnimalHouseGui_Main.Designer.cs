@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_lagerStatus = new System.Windows.Forms.Button();
             this.button_mail = new System.Windows.Forms.Button();
+            this.button_Journal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_AnimalHouse1
@@ -51,7 +52,6 @@
             this.label_AnimalHouse1.Size = new System.Drawing.Size(424, 101);
             this.label_AnimalHouse1.TabIndex = 26;
             this.label_AnimalHouse1.Text = "Animal House";
-            this.label_AnimalHouse1.Click += new System.EventHandler(this.label_AnimalHouse1_Click);
             // 
             // label_HovedMenu
             // 
@@ -126,7 +126,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 857);
+            this.label1.Location = new System.Drawing.Point(12, 902);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 24);
             this.label1.TabIndex = 36;
@@ -157,12 +157,25 @@
             this.button_mail.UseVisualStyleBackColor = true;
             this.button_mail.Click += new System.EventHandler(this.button_mail_Click);
             // 
+            // button_Journal
+            // 
+            this.button_Journal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Journal.Location = new System.Drawing.Point(175, 842);
+            this.button_Journal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_Journal.Name = "button_Journal";
+            this.button_Journal.Size = new System.Drawing.Size(412, 71);
+            this.button_Journal.TabIndex = 39;
+            this.button_Journal.Text = "Journalisering";
+            this.button_Journal.UseVisualStyleBackColor = true;
+            this.button_Journal.Click += new System.EventHandler(this.button_Journal_Click);
+            // 
             // AnimalHouseGui_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(764, 890);
+            this.ClientSize = new System.Drawing.Size(764, 935);
+            this.Controls.Add(this.button_Journal);
             this.Controls.Add(this.button_mail);
             this.Controls.Add(this.button_lagerStatus);
             this.Controls.Add(this.label1);
@@ -177,7 +190,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AnimalHouseGui_Main";
             this.Text = "Animal House";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,6 +207,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_lagerStatus;
         private System.Windows.Forms.Button button_mail;
+        private System.Windows.Forms.Button button_Journal;
     }
 }
 

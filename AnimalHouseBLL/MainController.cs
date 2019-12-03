@@ -97,18 +97,18 @@ namespace AnimalHouseBLL
             return Ac.SeltAnsat(id);
         }
 
-        public void HentAlleKundesDyr(int kundeId)
+        public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
-            try
-            {
-                D = Dc.HentAlleKundesDyr(kundeId);
-            }
-            catch (Exception et)
-            {
+            //try
+            //{
+            //    D = Dc.HentAlleKundesDyr(kundeId);
+            //}
+            //catch (Exception et)
+            //{
 
-                throw et;
-            }
-           
+            //    throw et;
+            //}
+           return Dc.HentAlleKundesDyr(kundeId);
         }
 
         public Dyr HentDyr(int id)

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnimalHouse_Entities;
 using AnimalHouseBLL;
+using System.Diagnostics;
 
 namespace AnimalHouse_GUI
 {
@@ -66,7 +67,12 @@ namespace AnimalHouse_GUI
             k = controller.HentKundeByTlforNavn(textBox_EjerTlf.Text.Trim());
             if (k is null)
             {
-                MessageBox.Show("Kunde er ikk registeret!");
+                if (MessageBox.Show("Kunde er ikke registeret!", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    this.Hide();
+                    AnimalHouseGui_Register register = new AnimalHouseGui_Register();
+                    register.ShowDialog();
+                }
             }
         }
 
@@ -106,6 +112,11 @@ namespace AnimalHouse_GUI
         private void label_hjælpe_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button_Søg_Click(object sender, EventArgs e)
+        {
+            dataGridView_Dyr.DataSource = controller.HentAlleKundesDyr(k[0].Id);
         }
     }
 }
