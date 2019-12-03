@@ -31,12 +31,12 @@
             this.button_Send = new System.Windows.Forms.Button();
             this.button_Tilbage = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Lable_To = new System.Windows.Forms.Label();
-            this.label_Subjekt = new System.Windows.Forms.Label();
-            this.Lable_Body = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.To_listBox = new System.Windows.Forms.ListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Lable_Body = new System.Windows.Forms.Label();
+            this.label_Subjekt = new System.Windows.Forms.Label();
+            this.Lable_To = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -63,6 +63,7 @@
             this.button_Send.TabIndex = 0;
             this.button_Send.Text = "Send";
             this.button_Send.UseVisualStyleBackColor = false;
+            this.button_Send.Click += new System.EventHandler(this.button_Send_Click);
             // 
             // button_Tilbage
             // 
@@ -80,7 +81,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.To_listBox);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.Lable_Body);
@@ -96,23 +97,29 @@
             this.groupBox1.Text = "Email info";
             this.groupBox1.UseCompatibleTextRendering = true;
             // 
-            // Lable_To
+            // To_listBox
             // 
-            this.Lable_To.AutoSize = true;
-            this.Lable_To.Location = new System.Drawing.Point(106, 42);
-            this.Lable_To.Name = "Lable_To";
-            this.Lable_To.Size = new System.Drawing.Size(44, 29);
-            this.Lable_To.TabIndex = 1;
-            this.Lable_To.Text = "To:";
+            this.To_listBox.FormattingEnabled = true;
+            this.To_listBox.ItemHeight = 29;
+            this.To_listBox.Location = new System.Drawing.Point(156, 42);
+            this.To_listBox.Name = "To_listBox";
+            this.To_listBox.Size = new System.Drawing.Size(583, 149);
+            this.To_listBox.TabIndex = 6;
             // 
-            // label_Subjekt
+            // textBox2
             // 
-            this.label_Subjekt.AutoSize = true;
-            this.label_Subjekt.Location = new System.Drawing.Point(60, 253);
-            this.label_Subjekt.Name = "label_Subjekt";
-            this.label_Subjekt.Size = new System.Drawing.Size(91, 29);
-            this.label_Subjekt.TabIndex = 2;
-            this.label_Subjekt.Text = "Subjekt:";
+            this.textBox2.Location = new System.Drawing.Point(11, 328);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(728, 577);
+            this.textBox2.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(156, 251);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(583, 35);
+            this.textBox1.TabIndex = 4;
             // 
             // Lable_Body
             // 
@@ -123,29 +130,23 @@
             this.Lable_Body.TabIndex = 3;
             this.Lable_Body.Text = "Meddelelsen:";
             // 
-            // textBox1
+            // label_Subjekt
             // 
-            this.textBox1.Location = new System.Drawing.Point(156, 251);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(583, 35);
-            this.textBox1.TabIndex = 4;
+            this.label_Subjekt.AutoSize = true;
+            this.label_Subjekt.Location = new System.Drawing.Point(60, 253);
+            this.label_Subjekt.Name = "label_Subjekt";
+            this.label_Subjekt.Size = new System.Drawing.Size(91, 29);
+            this.label_Subjekt.TabIndex = 2;
+            this.label_Subjekt.Text = "Subjekt:";
             // 
-            // textBox2
+            // Lable_To
             // 
-            this.textBox2.Location = new System.Drawing.Point(11, 328);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(728, 577);
-            this.textBox2.TabIndex = 5;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(156, 42);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(583, 149);
-            this.listBox1.TabIndex = 6;
+            this.Lable_To.AutoSize = true;
+            this.Lable_To.Location = new System.Drawing.Point(106, 42);
+            this.Lable_To.Name = "Lable_To";
+            this.Lable_To.Size = new System.Drawing.Size(44, 29);
+            this.Lable_To.TabIndex = 1;
+            this.Lable_To.Text = "To:";
             // 
             // dataGridView1
             // 
@@ -205,6 +206,7 @@
             this.button_tilføj.TabIndex = 7;
             this.button_tilføj.Text = "Tilføj";
             this.button_tilføj.UseVisualStyleBackColor = false;
+            this.button_tilføj.Click += new System.EventHandler(this.button_tilføj_Click);
             // 
             // textBox3
             // 
@@ -265,7 +267,7 @@
         private System.Windows.Forms.Button button_Send;
         private System.Windows.Forms.Button button_Tilbage;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox To_listBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label Lable_Body;
