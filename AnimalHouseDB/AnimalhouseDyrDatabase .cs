@@ -257,11 +257,13 @@ namespace AnimalHouseDB
                 SqlCommand command = new SqlCommand("select LastVisit.DyrId from LastVisit " +
                     "full outer join LastMail on LastVisit.DyrId = LastMail.DyrId " +
                     "where (LastVisit.DyrId is null or LastMail.DyrId is null) " +
-                    //sætter To begrænsning på hvor tidlig mail skaL sendes ud
+                    //sætter tre begrænsning på hvor tidlig mail skaL sendes ud
                     //en for hvornår de der været sidste på besøg får email
                     //en for hvornår de der sidste har fået email (ingen grund til at sende mail ud hver dag)
+                    //en for hvis det er længe sidden de har været på besøg og aldrig har fået mail.
                     "and (LastVisit.created_at < DATEADD(DAY, @mailDage, GETDATE()) " +
-                    "and LastMail.created_at < DATEADD(DAY, @visitDage, GETDATE()", conn);
+                    "and LastMail.created_at < DATEADD(DAY, @visitDage, GETDATE() or ((LastVisit.DyrId is null or LastMail.DyrId is null) " +
+"and LastVisit.created_at < DATEADD(DAY, @visitDage, GETDATE()) and LastMail.DyrId is null)", conn);
                 command.Parameters.Add(new SqlParameter("@mailDage", mailDage));
                 command.Parameters.Add(new SqlParameter("@visitDage", visitDage));
                 command.Transaction = transaction;
