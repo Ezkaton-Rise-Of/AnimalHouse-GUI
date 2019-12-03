@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
+
 namespace AnimalHouseBLL
 {
     public class KundeController
@@ -49,7 +50,7 @@ namespace AnimalHouseBLL
             return KundeDB.UpdateKunde(k);
         }
 
-        public Kunde HenKundetByTlf(string tlf)
+        public Kunde HentKundetByTlf(string tlf)
         {
             return KundeDB.HentKundeByTlf(tlf);
         }
