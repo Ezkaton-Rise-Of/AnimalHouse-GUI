@@ -194,6 +194,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnimaleHouseModel\AnimaleHouseModel.csproj">
+      <Project>{1269935a-78a6-46bd-939d-6729051fe282}</Project>
+      <Name>AnimaleHouseModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnimalHouseBLL\AnimalHouseBLL.csproj">
       <Project>{bb4b345f-39af-49eb-837f-e0368802e375}</Project>
       <Name>AnimalHouseBLL</Name>
