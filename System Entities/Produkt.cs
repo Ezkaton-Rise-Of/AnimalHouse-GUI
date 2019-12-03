@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace AnimalHouse_Entities
 {
-    public class Service
+    public class Produkt
     {
-        public int ServiceId;
-        public string ServiceType;
-        public Produkt produkt;
-        public Bur bur;
-        public Service()
+        public int ProduktId;
+        public string beskrivelser;
+        public double Pris;
+        public Produkt()
         {
-           
+
         }
+
 
 
     }

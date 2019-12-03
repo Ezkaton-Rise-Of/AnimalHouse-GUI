@@ -15,8 +15,8 @@ namespace AnimalHouseDB
             List<Dyr> HentDyrByKundeId(int KId);
             List<Dyr> HentAlleDyr();
 
-            List<Dyr> HentDyrDerSkalHaveEmail(int dage) ; 
-               
+            List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage); 
+            
 
     }
 }
