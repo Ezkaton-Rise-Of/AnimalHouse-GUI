@@ -94,12 +94,6 @@
     <Compile Include="AnimalHouseGui_Service.Designer.cs">
       <DependentUpon>AnimalHouseGui_Service.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnimalHouseGui_Mail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AnimalHouseGui_Mail.Designer.cs">
-      <DependentUpon>AnimalHouseGui_Mail.cs</DependentUpon>
-    </Compile>
     <Compile Include="AnimalHouse_MailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +149,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
