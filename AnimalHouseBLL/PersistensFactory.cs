@@ -40,5 +40,10 @@ namespace AnimalHouseBLL
         {
             return new AnimalHouseAnsatDataBase();
         }
+
+        public IEmail GetEmailDB()
+        {
+            return new AnimalHouseEmailDB();
+        }
     }
 }
