@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="AnsatController.cs" />
     <Compile Include="BookingController.cs" />
+    <Compile Include="LagerStatusController.cs" />
+    <Compile Include="MailController.cs" />
     <Compile Include="PersistensFactory.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="DyrController.cs" />

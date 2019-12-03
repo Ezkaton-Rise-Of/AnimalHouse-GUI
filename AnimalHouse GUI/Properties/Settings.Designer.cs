@@ -33,5 +33,15 @@ namespace AnimalHouse_GUI.Properties {
                 return ((string)(this["test102ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-HRSD512S;Initial Catalog=Test_Lager;Integrated Security=True")]
+        public string Test_LagerConnectionString {
+            get {
+                return ((string)(this["Test_LagerConnectionString"]));
+            }
+        }
     }
 }
