@@ -238,7 +238,7 @@ namespace AnimalHouseDB
                 }
             }
 
-        public List<Dyr> HentDyrDerSkalHaveEmail(int dage)
+        public List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage)
         {
             List<Dyr> ld = null;
             SqlTransaction transaction = null;
@@ -248,8 +248,22 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM Dyr left join Journal on Dyr.  where   WHERE KundeId = @KundeId", conn);
-                command.Parameters.Add(new SqlParameter("@KundeId", dage));
+
+                //ændre til negativ værdig
+                mailDage = mailDage * -1;
+                visitDage = visitDage * -1;
+
+                //outer joiner to views
+                SqlCommand command = new SqlCommand("select LastVisit.DyrId from LastVisit " +
+                    "full outer join LastMail on LastVisit.DyrId = LastMail.DyrId " +
+                    "where (LastVisit.DyrId is null or LastMail.DyrId is null) " +
+                    //sætter To begrænsning på hvor tidlig mail skaL sendes ud
+                    //en for hvornår de der været sidste på besøg får email
+                    //en for hvornår de der sidste har fået email (ingen grund til at sende mail ud hver dag)
+                    "and (LastVisit.created_at < DATEADD(DAY, @mailDage, GETDATE()) " +
+                    "and LastMail.created_at < DATEADD(DAY, @visitDage, GETDATE()", conn);
+                command.Parameters.Add(new SqlParameter("@mailDage", mailDage));
+                command.Parameters.Add(new SqlParameter("@visitDage", visitDage));
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
                 ld = new List<Dyr>();
@@ -257,11 +271,6 @@ namespace AnimalHouseDB
                 {
                     Dyr d = new Dyr();
                     d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                    d.KundeId = Convert.ToInt32(reader["KundeId"]);
-                    d.Race = Convert.ToString(reader["Race"]);
-                    d.Art = Convert.ToString(reader["Art"]);
-                    d.Alder = Convert.ToInt32(reader["Alder"]);
-                    d.Sex = Convert.ToChar(reader["Sex"]);
                     ld.Add(d);
                 }
                 reader.Close();

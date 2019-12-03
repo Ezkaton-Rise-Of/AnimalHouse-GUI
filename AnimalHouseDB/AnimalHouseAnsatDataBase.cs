@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System_Entities;
+using AnimalHouse_Entities;
 
 namespace AnimalHouseDB
 {
@@ -11,7 +11,7 @@ namespace AnimalHouseDB
         {
         }
 
-        public List<Ansat> HentAlleAnsate()
+        public List<Ansat> HentAlleAnsatte()
         {
             List<Ansat> a = null;
             SqlConnection conn = new SqlConnection();
