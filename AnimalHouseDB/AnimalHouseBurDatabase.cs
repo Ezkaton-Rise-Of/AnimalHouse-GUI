@@ -150,5 +150,53 @@ namespace AnimalHouseDB
             }
             return results;
         }
+        // Holger 
+        public List<Bur> HentFribure(DateTime startdato, DateTime slutdato) { 
+
+            List<Bur> results = null;
+            SqlTransaction transaction;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+                    SqlCommand command = new SqlCommand("select * from Bur " +
+                        $"where not exists(select '' from Booking " +
+                        $"inner join Booking_Has_Bur " +
+                        $"on Booking.BookingId = Booking_Has_Bur.BookingId " +
+                        $"where @startdato <= Booking.StartDatoTid " +
+                        $"and @slutdato >= Booking.SlutDatoTid and Bur.BurId = Booking_Has_Bur.BurId)", conn);
+                    command.Parameters.Add(new SqlParameter("@startdato", startdato.ToString()));
+                    command.Parameters.Add(new SqlParameter("@slutdato", slutdato.ToString()));
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    results = new List<Bur>();
+                    while (reader.Read())
+                    {
+                        Bur b = new Bur();
+                        b.Id = (int)reader["BurId"];
+                        b.Art = (string)reader["Art"];
+                        results.Add(b);
+                    }
+                    reader.Close();
+                    transaction.Commit();
+                }
+                catch (Exception ErrorHentFriBure)
+                {
+                    transaction.Rollback();
+                    throw ErrorHentFriBure;
+                }
+                finally
+                {   
+                    conn.Close();
+                }
+            }
+            return results;
+        }
+
+
+
     }
 }

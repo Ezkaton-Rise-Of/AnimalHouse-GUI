@@ -16,28 +16,30 @@ namespace AnimalHouseDB
         {
         }
 
-        public Email HentEmail()
+        public List<Email> HentEmail(int id)
         {
             using (conn)
             {
                 SqlTransaction transaction = null;
-                Email e = null;
+                List<Email> el = null;
                 conn.Open();
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Email Join Kunde on Email.KundeId = Kunde.KundeId where EmailId = @EmailId", conn);
+                    SqlCommand command = new SqlCommand("SELECT * FROM Email where EmailId = @EmailId", conn);
+                    command.Parameters.Add(new SqlParameter("@emailId", id));
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
-                    
+                    el = new List<Email>();
                     while (reader.Read())
                     {
-                         e = new Email();
+                         Email e = new Email();
                         e.EmailId = Convert.ToInt32(reader["EmailId"]);
                         e.DyrId = Convert.ToInt32(reader["KundeId"]);
                         e.Title = Convert.ToString(reader["Title"]);
                         e.Indhold = Convert.ToString(reader["Indhold"]);
-                        
+                        e.Dato = Convert.ToDateTime(reader["Dato"]);
+                        el.Add(e);
                     }
                     reader.Close();
 
@@ -51,7 +53,7 @@ namespace AnimalHouseDB
                     conn.Close();
 
                 }
-                return e;
+                return el;
             }
         }
 
@@ -65,7 +67,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Email Join Kunde on Email.KundeId = Kunde.KundeId", conn);
+                    SqlCommand command = new SqlCommand("SELECT * FROM Email", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     el = new List<Email>();
@@ -105,6 +107,7 @@ namespace AnimalHouseDB
                 try
                 {
                     SqlCommand command = new SqlCommand("SELECT * FROM Email Join Kunde on Email.KundeId = Kunde.KundeId where KundeId = @KundeId", conn);
+                    command.Parameters.Add(new SqlParameter("@KundeId", id));
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     el = new List<Email>();

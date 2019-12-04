@@ -52,6 +52,11 @@ namespace AnimalHouseBLL
             d.Race = race;
             d.Sex = sex;
             return DyrDB.UpdaterDyr(d);
+                }
+
+        public List<Dyr> HentDyrDerskalHaveMaile(int maildage, int visitdage)
+        {
+            return DyrDB.HentDyrDerSkalHaveEmail(maildage, visitdage);
         }
     }
 }

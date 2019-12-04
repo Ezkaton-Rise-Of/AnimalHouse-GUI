@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
+using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
 {
@@ -14,17 +15,20 @@ namespace AnimalHouseBLL
 
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
+        public List<LagerStatus> L = new List<LagerStatus>();
 
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
         BookingController Bc;
+        LagerStatusController Lc;
         public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
             Ac = new AnsatController();
             Bc = new BookingController();
+            Lc = new LagerStatusController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -34,7 +38,7 @@ namespace AnimalHouseBLL
             return Kc.OpretKunde(k);
         }
 
-        public string Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
+        public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
         {
             Booking k = new Booking();
             k.AnsatId = ansatId;
@@ -61,7 +65,7 @@ namespace AnimalHouseBLL
 
         public Kunde HentKundByTlf(string tlf)
         {
-            return Kc.HenKundetByTlf(tlf);
+            return Kc.HentKundetByTlf(tlf);
         }
 
         public string HentBynavn(string postnr)
@@ -103,15 +107,7 @@ namespace AnimalHouseBLL
         }
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
-            //try
-            //{
-            //    D = Dc.HentAlleKundesDyr(kundeId);
-            //}
-            //catch (Exception et)
-            //{
 
-            //    throw et;
-            //}
            return Dc.HentAlleKundesDyr(kundeId);
         }
 
@@ -142,12 +138,38 @@ namespace AnimalHouseBLL
 
         public void HentKundeByTlf(string tlf)
         {
-             K.Add(Kc.HenKundetByTlf(tlf));
+             K.Add(Kc.HentKundetByTlf(tlf));
         }
 
         public List<Kunde> HentKundeByTlforNavn(string input)
         {
             return Kc.HentKundeByTlforNavn(input);
+        }
+
+        //LagerStatus
+        public List<LagerStatus> HentLagerByNavnEllerVarenummer(string input)
+        {
+            return Lc.HentLagerByNavnEllerVarenummer(input);
+        }
+
+        public List<LagerStatus> HentLagerStatuses()
+        {
+            return Lc.HentLagerStatuses();
+        }
+
+        public LagerStatus SøgStatusById(int id)
+        {
+            return Lc.SøgStatusById(id);
+        }
+
+        public LagerStatus HentLagerByVarenummer(string varenummer)
+        {
+            return Lc.HentLagerByVarenummer(varenummer);
+        }
+
+        public List<LagerStatus> HentLagerVareByNavn(string varenavn)
+        {
+            return Lc.HentLagerVareByNavn(varenavn);
         }
     }
 }

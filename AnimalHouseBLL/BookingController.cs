@@ -11,7 +11,7 @@ namespace AnimalHouseBLL
     {
         IBookingDB BookingDB;
 
-        List<Booking> bookings = new List<Booking>();
+        public List<Booking> bookings = new List<Booking>();
 
         public BookingController()
         {
@@ -20,7 +20,7 @@ namespace AnimalHouseBLL
 
         }
 
-        public string OpretBooking(Booking k)
+        public bool OpretBooking(Booking k)
         {
             return BookingDB.OpretBooking(k);
         }
@@ -44,12 +44,12 @@ namespace AnimalHouseBLL
             bookings = BookingDB.HentAlleBooking();
         }
 
-        public string SletKunde(int id)
+        public bool SletBooking(int id)
         {
             return BookingDB.SletBooking(id);
         }
 
-        public String UpdateKunde(Booking b)
+        public bool UpdateBooking(Booking b)
         {
             return BookingDB.UpdaterBooking(b);
         }

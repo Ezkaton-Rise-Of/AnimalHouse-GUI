@@ -128,14 +128,16 @@ namespace AnimalHouseDB
             }
             finally
             {
+                transaction.Commit();
                 conn.Close();
             }
 
             return ld;
         }
 
-        public string OpretBooking(Booking b)
+        public bool OpretBooking(Booking b)
         {
+            bool answer = false;
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
@@ -153,23 +155,25 @@ namespace AnimalHouseDB
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();
-                return "Booking er oprettet";
+                answer= true;
             }
             catch (Exception e)
             {
                 transaction.Rollback();
-                return Convert.ToString(e);
+                throw e;
+                
             }
             finally
             {
                 conn.Close();
             }
+            return answer;
         }
 
 
-        public string SletBooking(int id)
+        public bool SletBooking(int id)
         {
-            string result;
+            bool result = false ;
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
@@ -182,12 +186,12 @@ namespace AnimalHouseDB
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();
-                result = "Booking er Slettet";
+                result = true;
             }
             catch (Exception e)
             {
                 transaction.Rollback();
-                return Convert.ToString(e);
+                throw e;
             }
             finally
             {
@@ -197,9 +201,9 @@ namespace AnimalHouseDB
             return result;
         }
 
-        public string UpdaterBooking(Booking b)
+        public bool UpdaterBooking(Booking b)
         {
-
+            bool answer = false;
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
@@ -217,17 +221,18 @@ namespace AnimalHouseDB
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();
-                return "Booking er Updateret";
+                answer = true;
             }
             catch (Exception e)
             {
                 transaction.Rollback();
-                return Convert.ToString(e);
+                throw e;
             }
             finally
             {
                 conn.Close();
             }
+            return answer;
         }
     }
 }

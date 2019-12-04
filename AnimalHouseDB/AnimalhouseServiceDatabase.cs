@@ -19,17 +19,17 @@ namespace AnimalHouseDB
             throw new NotImplementedException();
         }
 
-        public string OpretService(Service s)
+        public bool OpretService(Service s)
         {
             throw new NotImplementedException();
         }
 
-        public string SletService(int s)
+        public bool SletService(int s)
         {
             throw new NotImplementedException();
         }
 
-        public string UpdateService(Service s)
+        public bool UpdateService(Service s)
         {
             throw new NotImplementedException();
         }
