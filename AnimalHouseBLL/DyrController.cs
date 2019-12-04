@@ -52,6 +52,6 @@ namespace AnimalHouseBLL
             d.Race = race;
             d.Sex = sex;
             return DyrDB.UpdaterDyr(d);
-                }
+        }
     }
 }

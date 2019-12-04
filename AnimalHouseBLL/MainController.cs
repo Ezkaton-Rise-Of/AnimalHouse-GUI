@@ -50,10 +50,13 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAlleAnsatte();
         }
-
-        public object HentAnsatByNavn(string v)
+        public int HentAnsatId(string navn)
         {
-            return Ac.HentAnsatByName(v);
+            return Ac.HentAnsatId(navn);
+        }
+        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        {
+            return Ac.HentAnsateByNavn(ansatNavn);
         }
 
         public Kunde HentKundByTlf(string tlf)
@@ -94,7 +97,10 @@ namespace AnimalHouseBLL
         {
             return Ac.SletAnsat(id);
         }
-
+        public Ansat HentAnsatByNavn(string navn)
+        {
+            return Ac.HentAnsatByName(navn);
+        }
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
             //try

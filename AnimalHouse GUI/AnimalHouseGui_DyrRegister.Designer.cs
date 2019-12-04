@@ -52,6 +52,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Søg = new System.Windows.Forms.TextBox();
             this.button_Søg = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Dyr)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +73,7 @@
             // textBox_Art
             // 
             this.textBox_Art.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Art.Location = new System.Drawing.Point(33, 449);
+            this.textBox_Art.Location = new System.Drawing.Point(33, 310);
             this.textBox_Art.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Art.Name = "textBox_Art";
             this.textBox_Art.Size = new System.Drawing.Size(486, 30);
@@ -79,7 +82,7 @@
             // textBox_EjerTlf
             // 
             this.textBox_EjerTlf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EjerTlf.Location = new System.Drawing.Point(35, 328);
+            this.textBox_EjerTlf.Location = new System.Drawing.Point(35, 189);
             this.textBox_EjerTlf.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_EjerTlf.Name = "textBox_EjerTlf";
             this.textBox_EjerTlf.Size = new System.Drawing.Size(486, 30);
@@ -104,7 +107,7 @@
             // 
             this.label_Art.AutoSize = true;
             this.label_Art.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Art.Location = new System.Drawing.Point(30, 409);
+            this.label_Art.Location = new System.Drawing.Point(30, 270);
             this.label_Art.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Art.Name = "label_Art";
             this.label_Art.Size = new System.Drawing.Size(40, 25);
@@ -115,7 +118,7 @@
             // 
             this.label_EjerIdDyr.AutoSize = true;
             this.label_EjerIdDyr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_EjerIdDyr.Location = new System.Drawing.Point(30, 288);
+            this.label_EjerIdDyr.Location = new System.Drawing.Point(30, 149);
             this.label_EjerIdDyr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_EjerIdDyr.Name = "label_EjerIdDyr";
             this.label_EjerIdDyr.Size = new System.Drawing.Size(139, 25);
@@ -165,7 +168,7 @@
             // textBox_Race
             // 
             this.textBox_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Race.Location = new System.Drawing.Point(35, 549);
+            this.textBox_Race.Location = new System.Drawing.Point(35, 410);
             this.textBox_Race.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Race.Name = "textBox_Race";
             this.textBox_Race.Size = new System.Drawing.Size(486, 30);
@@ -175,7 +178,7 @@
             // 
             this.label_Race.AutoSize = true;
             this.label_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Race.Location = new System.Drawing.Point(30, 510);
+            this.label_Race.Location = new System.Drawing.Point(30, 371);
             this.label_Race.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Race.Name = "label_Race";
             this.label_Race.Size = new System.Drawing.Size(61, 25);
@@ -211,7 +214,7 @@
             // textBox_Alder
             // 
             this.textBox_Alder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Alder.Location = new System.Drawing.Point(33, 796);
+            this.textBox_Alder.Location = new System.Drawing.Point(33, 657);
             this.textBox_Alder.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Alder.Name = "textBox_Alder";
             this.textBox_Alder.Size = new System.Drawing.Size(486, 30);
@@ -221,7 +224,7 @@
             // 
             this.label_Alder.AutoSize = true;
             this.label_Alder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Alder.Location = new System.Drawing.Point(28, 767);
+            this.label_Alder.Location = new System.Drawing.Point(28, 628);
             this.label_Alder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Alder.Name = "label_Alder";
             this.label_Alder.Size = new System.Drawing.Size(63, 25);
@@ -247,7 +250,7 @@
             this.groupBox1.Controls.Add(this.radioButton_female);
             this.groupBox1.Controls.Add(this.radioButton_male);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(35, 617);
+            this.groupBox1.Location = new System.Drawing.Point(35, 478);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(484, 134);
             this.groupBox1.TabIndex = 95;
@@ -324,11 +327,44 @@
             this.button_Søg.UseVisualStyleBackColor = false;
             this.button_Søg.Click += new System.EventHandler(this.button_Søg_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(28, 748);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(208, 25);
+            this.label2.TabIndex = 100;
+            this.label2.Text = "Tilknyt en behandler";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(254, 753);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(22, 21);
+            this.checkBox1.TabIndex = 101;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(35, 807);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(329, 28);
+            this.comboBox1.TabIndex = 102;
+            this.comboBox1.Visible = false;
+            // 
             // AnimalHouseGui_DyrRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button_Søg);
             this.Controls.Add(this.textBox_Søg);
             this.Controls.Add(this.label1);
@@ -387,5 +423,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_Søg;
         private System.Windows.Forms.Button button_Søg;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

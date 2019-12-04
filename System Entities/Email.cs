@@ -8,12 +8,12 @@ namespace AnimalHouse_Entities
 {
     public class Email
     {
-        public int EmailId;
-        public int DyrId;
-        public string Title;
-        public string Indhold;
-        public DateTime Dato;
-        public string ModtagerEmaiL;
+        public int EmailId { get; set; }
+        public int DyrId { get; set; }
+        public string Title { get; set; }
+        public string Indhold { get; set; }
+        public DateTime Dato { get; set; }
+        public string ModtagerEmail { get; set; }
         public Email()
         {
         }
