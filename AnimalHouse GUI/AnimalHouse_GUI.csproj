@@ -64,11 +64,11 @@
     <Compile Include="AnimalHouseGUI_JournalForm.Designer.cs">
       <DependentUpon>AnimalHouseGUI_JournalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnimalHouseGui_LagerStatus.cs">
+    <Compile Include="AnimalHouseGui_Lager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnimalHouseGui_LagerStatus.Designer.cs">
-      <DependentUpon>AnimalHouseGui_LagerStatus.cs</DependentUpon>
+    <Compile Include="AnimalHouseGui_Lager.Designer.cs">
+      <DependentUpon>AnimalHouseGui_Lager.cs</DependentUpon>
     </Compile>
     <Compile Include="AnimalHouseGui_Main.cs">
       <SubType>Form</SubType>
@@ -130,8 +130,8 @@
     <EmbeddedResource Include="AnimalHouseGUI_JournalForm.resx">
       <DependentUpon>AnimalHouseGUI_JournalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AnimalHouseGui_LagerStatus.resx">
-      <DependentUpon>AnimalHouseGui_LagerStatus.cs</DependentUpon>
+    <EmbeddedResource Include="AnimalHouseGui_Lager.resx">
+      <DependentUpon>AnimalHouseGui_Lager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Main.resx">
       <DependentUpon>AnimalHouseGui_Main.cs</DependentUpon>

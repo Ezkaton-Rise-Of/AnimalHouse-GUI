@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AnimaleHouseModel;
 using System.Diagnostics;
+using AnimaleHouseModel;
 
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouse_MailForm : Form
     {
-        EmailSystem email = new EmailSystem();
+        EmailSystem emailSystem = new EmailSystem();
+        
         public AnimalHouse_MailForm()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace AnimalHouse_GUI
 
         private void label_hjælpe_Click(object sender, EventArgs e)
         {
-
+            //Process.Start();
         }
 
         private void button_Tilbage_Click(object sender, EventArgs e)
@@ -34,13 +35,7 @@ namespace AnimalHouse_GUI
 
         private void button_Send_Click(object sender, EventArgs e)
         {
-            
-            email.CreateEmail();
-        }
-
-        private void button_tilføj_Click(object sender, EventArgs e)
-        {
-            //email.EmailList.Add();
+           
         }
     }
 }

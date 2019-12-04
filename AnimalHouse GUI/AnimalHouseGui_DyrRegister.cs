@@ -20,6 +20,7 @@ namespace AnimalHouse_GUI
         private char sex;
         private List<Kunde> k;
         private int id;
+        private int BehandlerId;
         public AnimalHouseGui_DyrRegister()
         {
             InitializeComponent();
@@ -117,6 +118,22 @@ namespace AnimalHouse_GUI
         private void button_Søg_Click(object sender, EventArgs e)
         {
             dataGridView_Dyr.DataSource = controller.HentAlleKundesDyr(k[0].Id);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                comboBox1.Visible = true;
+                comboBox1.DataSource = controller.HentAlleAnsate();
+                comboBox1.DisplayMember = "GetName";
+                BehandlerId = controller.HentAnsatId(comboBox1.Text.Trim());
+
+            }
+            else
+            {
+                comboBox1.Visible = false;
+            }
         }
     }
 }

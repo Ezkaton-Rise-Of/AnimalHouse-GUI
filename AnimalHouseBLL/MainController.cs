@@ -14,51 +14,29 @@ namespace AnimalHouseBLL
 
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
-        public List<LagerStatus> L = new List<LagerStatus>();
+        public List<Lager> L = new List<Lager>();
 
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
-        BookingController Bc;
-        LagerStatusController Lc;
-        JournalController Jc;
+        LagerController Lc;
+
         public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
             Ac = new AnsatController();
             Bc = new BookingController();
-            Lc = new LagerStatusController();
-            Jc = new JournalController();
+            Lc = new LagerController();
         }
 
+        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
+        {
 
-        /// Journalisering Functions
-        public List<Journal> HentAlleJournal()
-        {
-            return Jc.HentAlleJournial();
-        }
-
-        public List<Journal> HentAlleAnsatJournal(int ansatid)
-        {
-            return Jc.HentAlleAnsatJournial(ansatid);
-        }
-        public List<Journal> HentAlleDyrJournal(int dyrid)
-        {
-            return Jc.HentAlleDyrJournial(dyrid);
-        }
-        public string OpretJournal(int dyrid, int ansatid, string beskrivelse)
-        {
-            Journal j = new Journal(ansatid, dyrid, beskrivelse);
-            return Jc.OpretJournal(j);
-        }
-        public string SletJournal(int id)
-        {
-            return Jc.SletJournal(id);
+            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
+            return Kc.OpretKunde(k);
         }
 
-
-        /// Booking Fuctions
         public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
         {
             Booking k = new Booking();
@@ -74,10 +52,17 @@ namespace AnimalHouseBLL
 
         /// Kunde Functions
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
+        public List<Ansat> HentAlleAnsate()
         {
-
-            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
-            return Kc.OpretKunde(k);
+            return Ac.HentAlleAnsatte();
+        }
+        public int HentAnsatId(string navn)
+        {
+            return Ac.HentAnsatId(navn);
+        }
+        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        {
+            return Ac.HentAnsateByNavn(ansatNavn);
         }
 
         public Kunde HentKundByTlf(string tlf)
@@ -89,65 +74,21 @@ namespace AnimalHouseBLL
         {
             return Kc.HentByNavn(postnr);
         }
-        public List<Kunde> HentAlleKunde()
-        {
-            return Kc.HentAlleKunde();
-        }
-
-        public string SletEjer(int id)
-        {
-            return Kc.SletKunde(id);
-        }
-        public List<Dyr> HentAlleKundesDyr(int kundeId)
-        {
-
-            return Dc.HentAlleKundesDyr(kundeId);
-        }
-        public string UpdateKunde(int id, string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
-        {
-            return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
-        }
-        public void HentKundeByTlf(string tlf)
-        {
-            K.Add(Kc.HentKundetByTlf(tlf));
-        }
-        public List<Kunde> HentKundeByTlforNavn(string input)
-        {
-            return Kc.HentKundeByTlforNavn(input);
-        }
-
-
-        /// Ansate Fuctions
-        public List<Ansat> HentAlleAnsate()
-        {
-            return Ac.HentAlleAnsatte();
-        }
-        public int HentAnsatId(string navn)
-        {
-            return Ac.HentAnsatId(navn);
-        }
-
-        public object HentAnsatByNavn(string v)
-        {
-            return Ac.HentAnsatByName(v);
-        }
-        public string SletAnsat(int id)
-        {
-            return Ac.SletAnsat(id);
-        }
 
         public string OpretAnsat(string navn, string Stelling, string tlf)
         {
             Ansat a = new Ansat(navn, Stelling, tlf);
             return Ac.OpretAnsat(a);
         }
-        public string UpdateAnsat(int id, string navn, string stelling, string tlf)
+
+        public List<Kunde> HentAlleKunde()
         {
-            return Ac.UpdateAnsat(id, navn, stelling, tlf);
+            return Kc.HentAlleKunde();
         }
-
-        /// Dyr Functions
-
+        public string SletEjer(int id)
+        {
+            return Kc.SletKunde(id);
+        }
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
@@ -156,6 +97,22 @@ namespace AnimalHouseBLL
         public List<Dyr> HentAlleDyr()
         {
             return Dc.HentAlleDyr();
+        }
+
+        public string SletAnsat(int id)
+        {
+            return Ac.SletAnsat(id);
+        }
+
+        public string OpretAnsat(string navn, string Stelling, string tlf)
+        public Ansat HentAnsatByNavn(string navn)
+        {
+            return Ac.HentAnsatByName(navn);
+        }
+        public List<Dyr> HentAlleKundesDyr(int kundeId)
+        {
+
+           return Dc.HentAlleKundesDyr(kundeId);
         }
 
         public Dyr HentDyr(int id)
@@ -173,31 +130,49 @@ namespace AnimalHouseBLL
             return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
         }
 
-
-        //LagerStatus Functions
-        public List<LagerStatus> HentLagerByNavnEllerVarenummer(string input)
+        public string UpdateKunde(int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
         {
-            return Lc.HentLagerByNavnEllerVarenummer(input);
+            return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
 
-        public List<LagerStatus> HentLagerStatuses()
-        {
-            return Lc.HentLagerStatuses();
+        public string UpdateAnsat(int id, string navn, string stelling, string tlf)
+        { 
+            return Ac.UpdateAnsat(id, navn, stelling,tlf);
         }
 
-        public LagerStatus SøgStatusById(int id)
+        public void HentKundeByTlf(string tlf)
         {
-            return Lc.SøgStatusById(id);
+             K.Add(Kc.HentKundetByTlf(tlf));
         }
 
-        public LagerStatus HentLagerByVarenummer(string varenummer)
+        public List<Kunde> HentKundeByTlforNavn(string input)
         {
-            return Lc.HentLagerByVarenummer(varenummer);
+            return Kc.HentKundeByTlforNavn(input);
         }
 
-        public List<LagerStatus> HentLagerVareByNavn(string varenavn)
+        public List<Lager> HentLagerVareNavn(string varenavn)
         {
-            return Lc.HentLagerVareByNavn(varenavn);
+            return Lc.HentLagerVareNavn(varenavn);
+        }
+
+        public Lager HentLagerVareNummer(string varenummer)
+        {
+            return Lc.HentLagerVareNummer(varenummer);
+        }
+
+        public Lager SøgId(int id)
+        {
+            return Lc.SøgId(id);
+        }
+
+        public List<Lager> HentLager()
+        {
+            return Lc.HentLager();
+        }
+
+        public List<Lager> HentLagerNavnEllerVareNummer(string input)
+        {
+            return Lc.HentLagerNavnEllerVareNummer(input);
         }
     }
 }

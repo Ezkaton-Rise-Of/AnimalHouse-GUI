@@ -10,12 +10,13 @@ namespace AnimalHouse_Entities
     {
         // attributes
         public int DyrId { get; set; }
+
+        public Kunde kunde;
         public int KundeId { get; set; }
         public string Art { get; set; }
         public string Race { get; set; }
         public int  Alder { get; set; }
         public char Sex { get; set; }
-
 
         // Class Constructors
         public Dyr() { }

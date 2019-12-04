@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{BB4B345F-39AF-49EB-837F-E0368802E375}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AnimalHousePersistenslag</RootNamespace>
-    <AssemblyName>AnimalHousePersistenslag</AssemblyName>
+    <RootNamespace>AnimalHouseBLL</RootNamespace>
+    <AssemblyName>AnimalHouseBLL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,7 +47,7 @@
     <Compile Include="BookingController.cs" />
     <Compile Include="EmailController.cs" />
     <Compile Include="JournalController.cs" />
-    <Compile Include="LagerStatusController.cs" />
+    <Compile Include="LagerController.cs" />
     <Compile Include="PersistensFactory.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="DyrController.cs" />

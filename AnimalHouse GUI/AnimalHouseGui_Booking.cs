@@ -111,7 +111,7 @@ namespace AnimalHouse_GUI
             {
                 MessageBox.Show("vælg en Kunde først");
             }
-           
+ 
 
         }
     }

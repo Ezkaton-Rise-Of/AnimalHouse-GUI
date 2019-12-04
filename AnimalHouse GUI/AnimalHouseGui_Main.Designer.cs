@@ -49,7 +49,7 @@
             this.label_AnimalHouse1.Location = new System.Drawing.Point(158, 14);
             this.label_AnimalHouse1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_AnimalHouse1.Name = "label_AnimalHouse1";
-            this.label_AnimalHouse1.Size = new System.Drawing.Size(639, 108);
+            this.label_AnimalHouse1.Size = new System.Drawing.Size(287, 67);
             this.label_AnimalHouse1.TabIndex = 26;
             this.label_AnimalHouse1.Text = "Animal House";
             // 
@@ -129,7 +129,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 902);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 25);
+            this.label1.Size = new System.Drawing.Size(15, 17);
             this.label1.TabIndex = 36;
             this.label1.Text = "?";
             this.label1.Click += new System.EventHandler(this.label1_Click);

@@ -31,14 +31,16 @@ namespace AnimalHouse_GUI
         {
             dataGridView1.DataSource = controller.HentAlleAnsate();
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                dataGridView1.DataSource = controller.HentAnsatByNavn(textBox_ansatNavn.Text.Trim());
+                dataGridView1.DataSource = controller.HentAnsateByNavn(textBox_ansatNavn.Text.Trim());
                 dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
             }
             catch (Exception ex)
             {
