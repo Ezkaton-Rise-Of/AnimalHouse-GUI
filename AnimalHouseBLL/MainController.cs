@@ -38,7 +38,7 @@ namespace AnimalHouseBLL
             return Kc.OpretKunde(k);
         }
 
-        public string Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
+        public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
         {
             Booking k = new Booking();
             k.AnsatId = ansatId;
@@ -101,15 +101,7 @@ namespace AnimalHouseBLL
 
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
-            //try
-            //{
-            //    D = Dc.HentAlleKundesDyr(kundeId);
-            //}
-            //catch (Exception et)
-            //{
 
-            //    throw et;
-            //}
            return Dc.HentAlleKundesDyr(kundeId);
         }
 

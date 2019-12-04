@@ -47,7 +47,6 @@
     <Compile Include="BookingController.cs" />
     <Compile Include="EmailController.cs" />
     <Compile Include="LagerStatusController.cs" />
-    <Compile Include="MailController.cs" />
     <Compile Include="PersistensFactory.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="DyrController.cs" />

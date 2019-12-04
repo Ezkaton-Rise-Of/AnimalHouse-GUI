@@ -83,11 +83,18 @@ namespace AnimalHouse_GUI
             lagerForm.ShowDialog();
         }
 
-       // private void button_Journal_Click(object sender, EventArgs e)
-       // {
-            //this.Hide();
-            //AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
-            //journalForm.ShowDialog();
+        private void button_Booking_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGui_Booking Booking = new AnimalHouseGui_Booking();
+            Booking.ShowDialog();
+        }
+
+        // private void button_Journal_Click(object sender, EventArgs e)
+        // {
+        //this.Hide();
+        //AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
+        //journalForm.ShowDialog();
         //}
     }
 }

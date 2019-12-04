@@ -8,10 +8,8 @@ namespace AnimalHouse_Entities
 {
     public class Service
     {
-        public int ServiceId;
         public string ServiceType;
         public Produkt produkt;
-        public Bur bur;
         public Service()
         {
            

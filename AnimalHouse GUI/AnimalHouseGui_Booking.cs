@@ -16,7 +16,7 @@ namespace AnimalHouse_GUI
     public partial class AnimalHouseGui_Booking : Form
     {
         MainController controller = new MainController();
-
+        List<Dyr> dyr = null;
 
         public AnimalHouseGui_Booking()
         {
@@ -67,20 +67,20 @@ namespace AnimalHouse_GUI
         {
 
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
-        {
+        {//holger 
             try
             {
+                //henter kunder
                 controller.HentKundeByTlf(Convert.ToString(textBox_EjerIdBooking.Text));
+                //henter dyr for kunden.
+                dyr = controller.HentAlleKundesDyr(controller.K[0].Id);
 
-                controller.HentAlleKundesDyr(controller.K[0].Id);
-
-                foreach (Dyr item in controller.D)
+                foreach (Dyr item in dyr)
                 {
                     comboBox1.Items.Add(item.DyrId + " " + item.Art + " " + item.Race);
                 }
-
                 Navn_empty.Text = controller.K[0].Fnavn + " " + controller.K[0].Lnavn;
                 Addresse_empty.Text = controller.K[0].Adresse;
                 By_empty.Text = controller.K[0].By;
@@ -88,11 +88,8 @@ namespace AnimalHouse_GUI
             }
             catch (Exception)
             {
-                
                 throw;
             }
-
-
         }
 
         private void textBox_EjerIdBooking_TextChanged(object sender, EventArgs e)
@@ -102,6 +99,19 @@ namespace AnimalHouse_GUI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            //holger
+            //tjekker om der er tilføjes en kunde
+            if (comboBox1.SelectedValue ==  null)
+            {
+                MessageBox.Show("vælg en Kunde først");
+            }
+            controller.
 
         }
     }

@@ -238,6 +238,8 @@ namespace AnimalHouseDB
                 }
             }
 
+
+        //holger;
         public List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage)
         {
             List<Dyr> ld = null;
