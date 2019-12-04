@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
+using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
 {
@@ -19,12 +20,15 @@ namespace AnimalHouseBLL
         DyrController Dc;
         AnsatController Ac;
         BookingController Bc;
+        LagerController Lc;
+
         public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
             Ac = new AnsatController();
             Bc = new BookingController();
+            Lc = new LagerController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -142,6 +146,31 @@ namespace AnimalHouseBLL
         public List<Kunde> HentKundeByTlforNavn(string input)
         {
             return Kc.HentKundeByTlforNavn(input);
+        }
+
+        public List<Lager> HentLagerVareNavn(string varenavn)
+        {
+            return Lc.HentLagerVareNavn(varenavn);
+        }
+
+        public Lager HentLagerVareNummer(string varenummer)
+        {
+            return Lc.HentLagerVareNummer(varenummer);
+        }
+
+        public Lager SøgId(int id)
+        {
+            return Lc.SøgId(id);
+        }
+
+        public List<Lager> HentLager()
+        {
+            return Lc.HentLager();
+        }
+
+        public List<Lager> HentLagerNavnEllerVareNummer(string input)
+        {
+            return Lc.HentLagerNavnEllerVareNummer(input);
         }
     }
 }

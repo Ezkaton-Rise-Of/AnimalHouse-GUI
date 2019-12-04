@@ -66,18 +66,19 @@ namespace AnimalHouse_GUI
             mailForm.ShowDialog();
         }
 
-        private void button_lagerStatus_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AnimalHouse_LagerForm lagerForm = new AnimalHouse_LagerForm();
-            lagerForm.ShowDialog();
-        }
-
         private void button_Journal_Click(object sender, EventArgs e)
         {
             this.Hide();
             AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
             journalForm.ShowDialog();
+        }
+
+        private void button_lagerStatus_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGui_Lager lager = new AnimalHouseGui_Lager();
+            lager.ShowDialog();
+
         }
     }
 }

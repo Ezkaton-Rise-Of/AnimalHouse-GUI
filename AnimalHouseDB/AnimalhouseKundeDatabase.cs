@@ -33,7 +33,7 @@ namespace AnimalHouseDB
 
                 command.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "Der sket en fejl!";
                 //throw;
@@ -67,8 +67,9 @@ namespace AnimalHouseDB
                 command.Parameters.Add(new SqlParameter("@E_mail", k.E_mail));
                 command.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                
                 return "Der sket en fejl!";
                 //throw;
             }
