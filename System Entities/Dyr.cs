@@ -10,6 +10,8 @@ namespace AnimalHouse_Entities
     {
         // attributes
         public int DyrId { get; set; }
+
+        public Kunde kunde;
         public int KundeId { get; set; }
         public string Art { get; set; }
         public string Race { get; set; }
