@@ -142,6 +142,33 @@ namespace AnimalHouseDB
             return a;
         }
 
+        public int HentAnsatId(string navn)
+        {
+            int id = 0;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
+            {
+                string commandtxt = $"select AnsatId from Ansat where AnsatId = {navn};";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["AnsatId"];
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return id;
+        }
+
         public string OpretAnsat(Ansat a)
         {
             SqlConnection conn = new SqlConnection();

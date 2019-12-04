@@ -50,5 +50,10 @@ namespace AnimalHouseBLL
         {
             return new AnimalHouseLagerStatusDatabase();
         }
+
+        public IJournal GetJournalDB()
+        {
+            return new AnimalHouseJournalDataBase();
+        }
     }
 }

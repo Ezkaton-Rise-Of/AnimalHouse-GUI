@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
-using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
 {
@@ -22,6 +21,7 @@ namespace AnimalHouseBLL
         AnsatController Ac;
         BookingController Bc;
         LagerStatusController Lc;
+        JournalController Jc;
         public MainController()
         {
             Kc = new KundeController();
@@ -29,15 +29,36 @@ namespace AnimalHouseBLL
             Ac = new AnsatController();
             Bc = new BookingController();
             Lc = new LagerStatusController();
+            Jc = new JournalController();
         }
 
-        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
+
+        /// Journalisering Functions
+        public List<Journal> HentAlleJournal()
         {
-
-            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
-            return Kc.OpretKunde(k);
+            return Jc.HentAlleJournial();
         }
 
+        public List<Journal> HentAlleAnsatJournal(int ansatid)
+        {
+            return Jc.HentAlleAnsatJournial(ansatid);
+        }
+        public List<Journal> HentAlleDyrJournal(int dyrid)
+        {
+            return Jc.HentAlleDyrJournial(dyrid);
+        }
+        public string OpretJournal(int dyrid, int ansatid, string beskrivelse)
+        {
+            Journal j = new Journal(ansatid, dyrid, beskrivelse);
+            return Jc.OpretJournal(j);
+        }
+        public string SletJournal(int id)
+        {
+            return Jc.SletJournal(id);
+        }
+
+
+        /// Booking Fuctions
         public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
         {
             Booking k = new Booking();
@@ -50,14 +71,13 @@ namespace AnimalHouseBLL
         }
 
 
-        public List<Ansat> HentAlleAnsate()
-        {
-            return Ac.HentAlleAnsatte();
-        }
 
-        public object HentAnsatByNavn(string v)
+        /// Kunde Functions
+        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
         {
-            return Ac.HentAnsatByName(v);
+
+            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
+            return Kc.OpretKunde(k);
         }
 
         public Kunde HentKundByTlf(string tlf)
@@ -69,21 +89,65 @@ namespace AnimalHouseBLL
         {
             return Kc.HentByNavn(postnr);
         }
+        public List<Kunde> HentAlleKunde()
+        {
+            return Kc.HentAlleKunde();
+        }
+
+        public string SletEjer(int id)
+        {
+            return Kc.SletKunde(id);
+        }
+        public List<Dyr> HentAlleKundesDyr(int kundeId)
+        {
+
+            return Dc.HentAlleKundesDyr(kundeId);
+        }
+        public string UpdateKunde(int id, string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
+        {
+            return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
+        }
+        public void HentKundeByTlf(string tlf)
+        {
+            K.Add(Kc.HentKundetByTlf(tlf));
+        }
+        public List<Kunde> HentKundeByTlforNavn(string input)
+        {
+            return Kc.HentKundeByTlforNavn(input);
+        }
+
+
+        /// Ansate Fuctions
+        public List<Ansat> HentAlleAnsate()
+        {
+            return Ac.HentAlleAnsatte();
+        }
+        public int HentAnsatId(string navn)
+        {
+            return Ac.HentAnsatId(navn);
+        }
+
+        public object HentAnsatByNavn(string v)
+        {
+            return Ac.HentAnsatByName(v);
+        }
+        public string SletAnsat(int id)
+        {
+            return Ac.SletAnsat(id);
+        }
 
         public string OpretAnsat(string navn, string Stelling, string tlf)
         {
             Ansat a = new Ansat(navn, Stelling, tlf);
             return Ac.OpretAnsat(a);
         }
+        public string UpdateAnsat(int id, string navn, string stelling, string tlf)
+        {
+            return Ac.UpdateAnsat(id, navn, stelling, tlf);
+        }
 
-        public List<Kunde> HentAlleKunde()
-        {
-            return Kc.HentAlleKunde();
-        }
-        public string SletEjer(int id)
-        {
-            return Kc.SletKunde(id);
-        }
+        /// Dyr Functions
+
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
@@ -92,17 +156,6 @@ namespace AnimalHouseBLL
         public List<Dyr> HentAlleDyr()
         {
             return Dc.HentAlleDyr();
-        }
-
-        public string SletAnsat(int id)
-        {
-            return Ac.SletAnsat(id);
-        }
-
-        public List<Dyr> HentAlleKundesDyr(int kundeId)
-        {
-
-           return Dc.HentAlleKundesDyr(kundeId);
         }
 
         public Dyr HentDyr(int id)
@@ -120,27 +173,8 @@ namespace AnimalHouseBLL
             return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
         }
 
-        public string UpdateKunde(int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
-        {
-            return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
-        }
 
-        public string UpdateAnsat(int id, string navn, string stelling, string tlf)
-        { 
-            return Ac.UpdateAnsat(id, navn, stelling,tlf);
-        }
-
-        public void HentKundeByTlf(string tlf)
-        {
-             K.Add(Kc.HentKundetByTlf(tlf));
-        }
-
-        public List<Kunde> HentKundeByTlforNavn(string input)
-        {
-            return Kc.HentKundeByTlforNavn(input);
-        }
-
-        //LagerStatus
+        //LagerStatus Functions
         public List<LagerStatus> HentLagerByNavnEllerVarenummer(string input)
         {
             return Lc.HentLagerByNavnEllerVarenummer(input);

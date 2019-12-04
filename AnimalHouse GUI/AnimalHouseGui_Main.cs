@@ -90,12 +90,12 @@ namespace AnimalHouse_GUI
             Booking.ShowDialog();
         }
 
-        // private void button_Journal_Click(object sender, EventArgs e)
-        // {
-        //this.Hide();
-        //AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
-        //journalForm.ShowDialog();
-        //}
+        private void button_Journal_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
+            journalForm.ShowDialog();
+        }
     }
 }
 

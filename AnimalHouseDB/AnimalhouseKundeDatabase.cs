@@ -33,7 +33,7 @@ namespace AnimalHouseDB
 
                 command.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return "Der sket en fejl!";
                 //throw;
