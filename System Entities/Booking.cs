@@ -8,6 +8,7 @@ namespace AnimalHouse_Entities
 {
     public class Booking
     {
+
         public int BookingId;
         public int DyrId;
         public int AnsatId;
@@ -15,6 +16,7 @@ namespace AnimalHouse_Entities
         public DateTime StartDato;
         public DateTime SlutDato;
         public Service service;
+        public Bur bur;
 
         public Booking()
         {

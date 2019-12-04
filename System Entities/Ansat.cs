@@ -26,5 +26,13 @@ namespace AnimalHouse_Entities
             this.Stelling = stelling;
             this.Tlf = tlf;
         }
+
+        public string GetName
+        {
+            get
+            {
+                return $"{Navn}";
+            }
+        }
     }
 }

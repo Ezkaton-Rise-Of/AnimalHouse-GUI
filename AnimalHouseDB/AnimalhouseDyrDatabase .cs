@@ -41,6 +41,7 @@ namespace AnimalHouseDB
                         d.Art = Convert.ToString(reader["Art"]);
                         d.Alder = Convert.ToInt32(reader["Alder"]);
                         d.Sex = Convert.ToChar(reader["Sex"]);
+                      
                         ld.Add(d);
                     }
                     reader.Close();
@@ -80,8 +81,6 @@ namespace AnimalHouseDB
                         d.Art = Convert.ToString(reader["Art"]);
                         d.Alder = Convert.ToInt32(reader["Alder"]);
                         d.Sex = Convert.ToChar(reader["Sex"]);
-
-
                         reader.Close();
                     }
                     
@@ -111,9 +110,9 @@ namespace AnimalHouseDB
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO Dyr (KundeId, Art, Race, Alder, sex) values (@KundeId, @Art, @Race, @Alder, @sex)", conn);
                     command.Parameters.Add(new SqlParameter("@KundeId", d.KundeId));
+                    command.Parameters.Add(new SqlParameter("@Art", d.Art));
                     command.Parameters.Add(new SqlParameter("@Race", d.Race));
                     command.Parameters.Add(new SqlParameter("@Alder", d.Alder));
-                    command.Parameters.Add(new SqlParameter("@Race", d.Race));
                     command.Parameters.Add(new SqlParameter("@sex", d.Sex));
                     command.Transaction = transaction;
                     command.ExecuteNonQuery();
@@ -213,16 +212,16 @@ namespace AnimalHouseDB
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     ld = new List<Dyr>();
-                    while (reader.Read())
-                    {
-                        Dyr d = new Dyr();
-                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                        d.KundeId = Convert.ToInt32(reader["KundeId"]);
-                        d.Race = Convert.ToString(reader["Race"]);
-                        d.Art = Convert.ToString(reader["Art"]);
-                        d.Alder = Convert.ToInt32(reader["Alder"]);
-                        d.Sex = Convert.ToChar(reader["Sex"]);
-                        ld.Add(d);
+                while (reader.Read())
+                {
+                    Dyr d = new Dyr();
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                    d.Race = Convert.ToString(reader["Race"]);
+                    d.Art = Convert.ToString(reader["Art"]);
+                    d.Alder = Convert.ToInt32(reader["Alder"]);
+                    d.Sex = Convert.ToChar(reader["Sex"]);   
+                    ld.Add(d);
                     }
                     reader.Close();
                     return ld;
@@ -238,6 +237,8 @@ namespace AnimalHouseDB
                 }
             }
 
+
+        //holger;
         public List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage)
         {
             List<Dyr> ld = null;
@@ -257,11 +258,17 @@ namespace AnimalHouseDB
                 SqlCommand command = new SqlCommand("select LastVisit.DyrId from LastVisit " +
                     "full outer join LastMail on LastVisit.DyrId = LastMail.DyrId " +
                     "where (LastVisit.DyrId is null or LastMail.DyrId is null) " +
+                    //sætter tre begrænsning på hvor tidlig mail skaL sendes ud
+                    "where ((LastVisit.DyrId is null or LastMail.DyrId is null) " +
                     //sætter To begrænsning på hvor tidlig mail skaL sendes ud
                     //en for hvornår de der været sidste på besøg får email
                     //en for hvornår de der sidste har fået email (ingen grund til at sende mail ud hver dag)
+                    //en for hvis det er længe sidden de har været på besøg og aldrig har fået mail.
                     "and (LastVisit.created_at < DATEADD(DAY, @mailDage, GETDATE()) " +
-                    "and LastMail.created_at < DATEADD(DAY, @visitDage, GETDATE()", conn);
+                    "and LastMail.created_at < DATEADD(DAY, @visitDage, GETDATE()) " +
+                    "or ((LastVisit.DyrId is null or LastMail.DyrId is null) " +
+                    "and LastVisit.created_at < DATEADD(DAY, visitDage, GETDATE()) " +
+                    "and LastMail.DyrId is null)", conn);
                 command.Parameters.Add(new SqlParameter("@mailDage", mailDage));
                 command.Parameters.Add(new SqlParameter("@visitDage", visitDage));
                 command.Transaction = transaction;

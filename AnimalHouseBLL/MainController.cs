@@ -15,6 +15,7 @@ namespace AnimalHouseBLL
 
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
+        public List<LagerStatus> L = new List<LagerStatus>();
 
         KundeController Kc;
         DyrController Dc;
@@ -38,7 +39,7 @@ namespace AnimalHouseBLL
             return Kc.OpretKunde(k);
         }
 
-        public string Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
+        public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
         {
             Booking k = new Booking();
             k.AnsatId = ansatId;
@@ -54,15 +55,18 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAlleAnsatte();
         }
-
-        public object HentAnsatByNavn(string v)
+        public int HentAnsatId(string navn)
         {
-            return Ac.HentAnsatByName(v);
+            return Ac.HentAnsatId(navn);
+        }
+        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        {
+            return Ac.HentAnsateByNavn(ansatNavn);
         }
 
         public Kunde HentKundByTlf(string tlf)
         {
-            return Kc.HenKundetByTlf(tlf);
+            return Kc.HentKundetByTlf(tlf);
         }
 
         public string HentBynavn(string postnr)
@@ -98,18 +102,13 @@ namespace AnimalHouseBLL
         {
             return Ac.SletAnsat(id);
         }
-
+        public Ansat HentAnsatByNavn(string navn)
+        {
+            return Ac.HentAnsatByName(navn);
+        }
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
-            //try
-            //{
-            //    D = Dc.HentAlleKundesDyr(kundeId);
-            //}
-            //catch (Exception et)
-            //{
 
-            //    throw et;
-            //}
            return Dc.HentAlleKundesDyr(kundeId);
         }
 
@@ -140,7 +139,7 @@ namespace AnimalHouseBLL
 
         public void HentKundeByTlf(string tlf)
         {
-             K.Add(Kc.HenKundetByTlf(tlf));
+             K.Add(Kc.HentKundetByTlf(tlf));
         }
 
         public List<Kunde> HentKundeByTlforNavn(string input)

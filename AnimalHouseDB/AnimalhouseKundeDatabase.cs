@@ -221,7 +221,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"select * from Kunde where Tlf Like '%{tlf}%;";
+                string commandtxt = $"select * from Kunde Join Postnr on Kunde.Postnummer = Postnr.Postnummer where Tlf Like '%{tlf}%'";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
@@ -231,15 +231,17 @@ namespace AnimalHouseDB
                     kunde.Fnavn = (string)reader["Fnavn"];
                     kunde.Lnavn = (string)reader["Lnavn"];
                     kunde.Adresse = (string)reader["Adresse"];
+                    kunde.Postnummer = (string)reader["Postnummer"];
+                    kunde.By = (string)reader["Bynavn"];
                     kunde.Tlf = (string)reader["Tlf"];
                     kunde.Kundetype = (string)reader["Kundetype"];
                     kunde.E_mail = (string)reader["E_mail"];
                     kunde.Oprettet = (DateTime)reader["Oprettet"];
                 }
             }
-            catch (Exception e)
+            catch (Exception et)
             {
-                Console.WriteLine(e.Message);
+                throw et;
             }
             finally
             {

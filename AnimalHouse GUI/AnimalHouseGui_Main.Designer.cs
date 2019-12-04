@@ -45,7 +45,7 @@
             // label_AnimalHouse1
             // 
             this.label_AnimalHouse1.AutoSize = true;
-            this.label_AnimalHouse1.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_AnimalHouse1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_AnimalHouse1.Location = new System.Drawing.Point(105, 9);
             this.label_AnimalHouse1.Name = "label_AnimalHouse1";
             this.label_AnimalHouse1.Size = new System.Drawing.Size(287, 67);
@@ -103,6 +103,7 @@
             this.button_Booking.TabIndex = 34;
             this.button_Booking.Text = "Booking";
             this.button_Booking.UseVisualStyleBackColor = true;
+            this.button_Booking.Click += new System.EventHandler(this.button_Booking_Click_1);
             // 
             // button1
             // 
@@ -118,7 +119,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 586);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -158,7 +159,6 @@
             this.button_Journal.TabIndex = 39;
             this.button_Journal.Text = "Journalisering";
             this.button_Journal.UseVisualStyleBackColor = true;
-            this.button_Journal.Click += new System.EventHandler(this.button_Journal_Click);
             // 
             // AnimalHouseGui_Main
             // 

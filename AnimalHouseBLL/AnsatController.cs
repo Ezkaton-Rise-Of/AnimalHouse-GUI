@@ -28,7 +28,10 @@ namespace AnimalHouseBLL
         {
             return ansatDB.SletAnsat(ansatId);
         }
-
+        public int HentAnsatId(string navn)
+        {
+            return ansatDB.HentAnsatId(navn);
+        }
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
         {
             Ansat a = new Ansat(id, navn, stelling, tlf);
@@ -46,10 +49,14 @@ namespace AnimalHouseBLL
         {
             return ansatDB.HentAnsateByType(ansattype);
         }
-        public List<Ansat> HentAnsatByName(string navn)
+        public Ansat HentAnsatByName(string navn)
         {
             return ansatDB.HentAnsatByNavn(navn);
         }
 
+        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        {
+            return ansatDB.HentAnsateByNavn(ansatNavn);
+        }
     }
 }
