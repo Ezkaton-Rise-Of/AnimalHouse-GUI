@@ -54,6 +54,11 @@ namespace AnimalHouseBLL
             return ansatDB.HentAnsatByNavn(navn);
         }
 
+        public int HentAnsatId(string navn)
+        {
+            return ansatDB.HentAnsatId(navn);
+        }
+
         public List<Ansat> HentAnsateByNavn(string ansatNavn)
         {
             return ansatDB.HentAnsateByNavn(ansatNavn);

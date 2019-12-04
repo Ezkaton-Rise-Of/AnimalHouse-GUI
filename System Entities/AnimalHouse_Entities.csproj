@@ -48,6 +48,7 @@
     <Compile Include="Bur.cs" />
     <Compile Include="Dyr.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Journial.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Lager.cs" />
     <Compile Include="Produkt.cs" />

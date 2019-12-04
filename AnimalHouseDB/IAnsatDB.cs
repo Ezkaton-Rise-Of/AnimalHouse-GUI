@@ -16,8 +16,6 @@ namespace AnimalHouseDB
         Ansat HentAnsatByNavn (string ansatNavn);
         List<Ansat> HentAlleAnsatte();
         List<Ansat> HentAnsateByType(int ansattype);
-
-        List<Ansat> HentAnsateByNavn(string ansatNavn);
         int HentAnsatId(string navn);
     }
 }
