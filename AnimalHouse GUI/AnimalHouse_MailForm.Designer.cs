@@ -31,7 +31,7 @@
             this.button_Send = new System.Windows.Forms.Button();
             this.button_Tilbage = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.To_listBox = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Lable_Body = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.To_listBox);
+            this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.Lable_Body);
@@ -97,14 +97,14 @@
             this.groupBox1.Text = "Email info";
             this.groupBox1.UseCompatibleTextRendering = true;
             // 
-            // To_listBox
+            // listBox1
             // 
-            this.To_listBox.FormattingEnabled = true;
-            this.To_listBox.ItemHeight = 29;
-            this.To_listBox.Location = new System.Drawing.Point(156, 42);
-            this.To_listBox.Name = "To_listBox";
-            this.To_listBox.Size = new System.Drawing.Size(583, 149);
-            this.To_listBox.TabIndex = 6;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 29;
+            this.listBox1.Location = new System.Drawing.Point(156, 42);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(583, 149);
+            this.listBox1.TabIndex = 6;
             // 
             // textBox2
             // 
@@ -206,7 +206,6 @@
             this.button_tilføj.TabIndex = 7;
             this.button_tilføj.Text = "Tilføj";
             this.button_tilføj.UseVisualStyleBackColor = false;
-            this.button_tilføj.Click += new System.EventHandler(this.button_tilføj_Click);
             // 
             // textBox3
             // 
@@ -267,7 +266,7 @@
         private System.Windows.Forms.Button button_Send;
         private System.Windows.Forms.Button button_Tilbage;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox To_listBox;
+        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label Lable_Body;

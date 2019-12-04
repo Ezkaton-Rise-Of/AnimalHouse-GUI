@@ -41,6 +41,7 @@ namespace AnimalHouseDB
                         d.Art = Convert.ToString(reader["Art"]);
                         d.Alder = Convert.ToInt32(reader["Alder"]);
                         d.Sex = Convert.ToChar(reader["Sex"]);
+                      
                         ld.Add(d);
                     }
                     reader.Close();
@@ -80,8 +81,6 @@ namespace AnimalHouseDB
                         d.Art = Convert.ToString(reader["Art"]);
                         d.Alder = Convert.ToInt32(reader["Alder"]);
                         d.Sex = Convert.ToChar(reader["Sex"]);
-
-
                         reader.Close();
                     }
                     
@@ -111,9 +110,9 @@ namespace AnimalHouseDB
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO Dyr (KundeId, Art, Race, Alder, sex) values (@KundeId, @Art, @Race, @Alder, @sex)", conn);
                     command.Parameters.Add(new SqlParameter("@KundeId", d.KundeId));
+                    command.Parameters.Add(new SqlParameter("@Art", d.Art));
                     command.Parameters.Add(new SqlParameter("@Race", d.Race));
                     command.Parameters.Add(new SqlParameter("@Alder", d.Alder));
-                    command.Parameters.Add(new SqlParameter("@Race", d.Race));
                     command.Parameters.Add(new SqlParameter("@sex", d.Sex));
                     command.Transaction = transaction;
                     command.ExecuteNonQuery();
@@ -213,16 +212,16 @@ namespace AnimalHouseDB
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     ld = new List<Dyr>();
-                    while (reader.Read())
-                    {
-                        Dyr d = new Dyr();
-                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                        d.KundeId = Convert.ToInt32(reader["KundeId"]);
-                        d.Race = Convert.ToString(reader["Race"]);
-                        d.Art = Convert.ToString(reader["Art"]);
-                        d.Alder = Convert.ToInt32(reader["Alder"]);
-                        d.Sex = Convert.ToChar(reader["Sex"]);
-                        ld.Add(d);
+                while (reader.Read())
+                {
+                    Dyr d = new Dyr();
+                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                    d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                    d.Race = Convert.ToString(reader["Race"]);
+                    d.Art = Convert.ToString(reader["Art"]);
+                    d.Alder = Convert.ToInt32(reader["Alder"]);
+                    d.Sex = Convert.ToChar(reader["Sex"]);   
+                    ld.Add(d);
                     }
                     reader.Close();
                     return ld;

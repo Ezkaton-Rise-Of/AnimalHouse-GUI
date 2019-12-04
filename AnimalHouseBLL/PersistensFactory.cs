@@ -21,11 +21,6 @@ namespace AnimalHouseBLL
             else return _instance;
         }
 
-        public IEmail GetEmailDB()
-        {
-            return new AnimalHouseEmailDB();
-        }
-
         public IKundeDB GetKundeDB()
         {
             return new AnimalhouseKundeDatabase();
@@ -46,9 +41,14 @@ namespace AnimalHouseBLL
             return new AnimalHouseAnsatDataBase();
         }
 
-        public ILagerStatusDB GetLagerStatusDB()
+        public IEmail GetEmailDB()
         {
-            return new AnimalHouseLagerStatusDatabase();
+            return new AnimalHouseEmailDB();
+        }
+
+        public ILagerDB GetLagerDB()
+        {
+            return new AnimalHouseLagerDatabase();
         }
     }
 }

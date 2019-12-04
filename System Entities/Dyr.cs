@@ -18,7 +18,6 @@ namespace AnimalHouse_Entities
         public int  Alder { get; set; }
         public char Sex { get; set; }
 
-
         // Class Constructors
         public Dyr() { }
         public Dyr(int kundeid, string art, string race, int alder, char sex)

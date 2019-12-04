@@ -21,14 +21,15 @@ namespace AnimalHouseBLL
         DyrController Dc;
         AnsatController Ac;
         BookingController Bc;
-        LagerStatusController Lc;
+        LagerController Lc;
+
         public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
             Ac = new AnsatController();
             Bc = new BookingController();
-            Lc = new LagerStatusController();
+            Lc = new LagerController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -54,10 +55,13 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAlleAnsatte();
         }
-
-        public object HentAnsatByNavn(string v)
+        public int HentAnsatId(string navn)
         {
-            return Ac.HentAnsatByName(v);
+            return Ac.HentAnsatId(navn);
+        }
+        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        {
+            return Ac.HentAnsateByNavn(ansatNavn);
         }
 
         public Kunde HentKundByTlf(string tlf)
@@ -98,7 +102,10 @@ namespace AnimalHouseBLL
         {
             return Ac.SletAnsat(id);
         }
-
+        public Ansat HentAnsatByNavn(string navn)
+        {
+            return Ac.HentAnsatByName(navn);
+        }
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
 
@@ -140,30 +147,29 @@ namespace AnimalHouseBLL
             return Kc.HentKundeByTlforNavn(input);
         }
 
-        //LagerStatus
-        public List<LagerStatus> HentLagerByNavnEllerVarenummer(string input)
+        public List<Lager> HentLagerVareNavn(string varenavn)
         {
-            return Lc.HentLagerByNavnEllerVarenummer(input);
+            return Lc.HentLagerVareNavn(varenavn);
         }
 
-        public List<LagerStatus> HentLagerStatuses()
+        public Lager HentLagerVareNummer(string varenummer)
         {
-            return Lc.HentLagerStatuses();
+            return Lc.HentLagerVareNummer(varenummer);
         }
 
-        public LagerStatus SøgStatusById(int id)
+        public Lager SøgId(int id)
         {
-            return Lc.SøgStatusById(id);
+            return Lc.SøgId(id);
         }
 
-        public LagerStatus HentLagerByVarenummer(string varenummer)
+        public List<Lager> HentLager()
         {
-            return Lc.HentLagerByVarenummer(varenummer);
+            return Lc.HentLager();
         }
 
-        public List<LagerStatus> HentLagerVareByNavn(string varenavn)
+        public List<Lager> HentLagerNavnEllerVareNummer(string input)
         {
-            return Lc.HentLagerVareByNavn(varenavn);
+            return Lc.HentLagerNavnEllerVareNummer(input);
         }
     }
 }

@@ -79,8 +79,8 @@ namespace AnimalHouse_GUI
         private void button_lagerStatus_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AnimalHouseGui_LagerStatus lagerForm = new AnimalHouseGui_LagerStatus();
-            lagerForm.ShowDialog();
+            AnimalHouseGui_Lager lager = new AnimalHouseGui_Lager();
+            lager.ShowDialog();
         }
 
         private void button_Booking_Click_1(object sender, EventArgs e)
@@ -88,6 +88,8 @@ namespace AnimalHouse_GUI
             this.Hide();
             AnimalHouseGui_Booking Booking = new AnimalHouseGui_Booking();
             Booking.ShowDialog();
+
+
         }
 
         // private void button_Journal_Click(object sender, EventArgs e)
