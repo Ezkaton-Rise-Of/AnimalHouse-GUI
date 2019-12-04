@@ -195,6 +195,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\AnimaleHouseModel\AnimaleHouseModel.csproj">
       <Project>{1269935a-78a6-46bd-939d-6729051fe282}</Project>
       <Name>AnimaleHouseModel</Name>
@@ -204,12 +207,9 @@
       <Name>AnimalHouseBLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\System Entities\AnimalHouse_Entities.csproj">
-      <Project>{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}</Project>
+      <Project>{c3032e28-caf4-4537-ada4-ffb47c6b06f7}</Project>
       <Name>AnimalHouse_Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

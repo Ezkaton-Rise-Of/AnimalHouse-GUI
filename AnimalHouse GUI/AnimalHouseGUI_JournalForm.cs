@@ -72,8 +72,8 @@ namespace AnimalHouse_GUI
             comboBox_dyr.DataSource = controller.HentAlleKundesDyr(5);
             int dyrid = 18;
             string beskrivelse = textBox_beskrivelse.Text.Trim();
-            string res = controller.OpretJournal(dyrid, ansatid, beskrivelse);
-            MessageBox.Show(res);
+            //string res = controller.OpretJournal(dyrid, ansatid, beskrivelse);
+            //MessageBox.Show(res);
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)

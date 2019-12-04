@@ -20,7 +20,7 @@ namespace AnimalHouseBLL
         DyrController Dc;
         AnsatController Ac;
         LagerController Lc;
-
+        BookingController Bc;
         public MainController()
         {
             Kc = new KundeController();
@@ -51,7 +51,7 @@ namespace AnimalHouseBLL
 
 
         /// Kunde Functions
-        public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
+
         public List<Ansat> HentAlleAnsate()
         {
             return Ac.HentAlleAnsatte();
@@ -60,9 +60,9 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatId(navn);
         }
-        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        public Ansat HentAnsateByNavn(string ansatNavn)
         {
-            return Ac.HentAnsateByNavn(ansatNavn);
+            return Ac.HentAnsatteByNavn(ansatNavn);
         }
 
         public Kunde HentKundByTlf(string tlf)
@@ -104,7 +104,7 @@ namespace AnimalHouseBLL
             return Ac.SletAnsat(id);
         }
 
-        public string OpretAnsat(string navn, string Stelling, string tlf)
+
         public Ansat HentAnsatByNavn(string navn)
         {
             return Ac.HentAnsatByName(navn);
