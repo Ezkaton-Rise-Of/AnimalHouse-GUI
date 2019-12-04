@@ -15,7 +15,7 @@ namespace AnimalHouseBLL
 
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
-        public List<LagerStatus> L = new List<LagerStatus>();
+        public List<Lager> L = new List<Lager>();
 
         KundeController Kc;
         DyrController Dc;
