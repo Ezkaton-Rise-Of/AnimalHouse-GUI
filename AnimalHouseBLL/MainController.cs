@@ -60,9 +60,9 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatId(navn);
         }
-        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        public Ansat HentAnsateByNavn(string ansatNavn)
         {
-            return Ac.HentAnsateByNavn(ansatNavn);
+            return Ac.HentAnsatteByNavn(ansatNavn);
         }
 
         public Kunde HentKundByTlf(string tlf)
