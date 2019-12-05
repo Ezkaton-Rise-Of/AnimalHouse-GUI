@@ -188,7 +188,7 @@ namespace AnimalHouseDB
             }
             catch (Exception)
             {
-
+                throw;
             }
             finally
             {

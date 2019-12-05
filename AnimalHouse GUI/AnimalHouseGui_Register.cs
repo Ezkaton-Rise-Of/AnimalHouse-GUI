@@ -55,6 +55,7 @@ namespace AnimalHouse_GUI
         {
             dataGridView_Ejer.DataSource = controller.HentAlleKunde();
             dataGridView_Ejer.Columns[0].Visible = false;
+            dataGridView_Ejer.Columns[10].Visible = false;
         }
 
         private void button_Søgning_Click(object sender, EventArgs e)

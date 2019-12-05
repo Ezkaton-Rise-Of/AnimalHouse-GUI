@@ -68,6 +68,7 @@
     <Compile Include="AnimalHouseDataBase.cs" />
     <Compile Include="AnimalhouseDyrDatabase .cs" />
     <Compile Include="AnimalHouseEmailDB.cs" />
+    <Compile Include="AnimalHouseJournalDataBase.cs" />
     <Compile Include="AnimalhouseKundeDatabase.cs" />
     <Compile Include="AnimalHouseLagerDatabase.cs" />
     <Compile Include="AnimalhouseServiceDatabase.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="IBookingDB.cs" />
     <Compile Include="IDyrDB.cs" />
     <Compile Include="IEmail.cs" />
+    <Compile Include="IJournal.cs" />
     <Compile Include="IKundeDB.cs" />
     <Compile Include="ILagerDB.cs" />
     <Compile Include="IServiceDB.cs" />

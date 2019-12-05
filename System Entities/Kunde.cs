@@ -46,5 +46,13 @@ namespace AnimalHouse_Entities
             By = by;
             E_mail = e_mail;
         }
+
+        public string GetName
+        {
+            get
+            {
+                return $"{Fnavn} {Lnavn}";
+            }
+        }
     }
 }

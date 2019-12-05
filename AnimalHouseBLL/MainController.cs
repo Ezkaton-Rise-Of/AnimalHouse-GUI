@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
+using System_Entities;
 using AnimalHouseDB;
-using AnimalHouseBLL;
 using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
@@ -22,6 +22,7 @@ namespace AnimalHouseBLL
         AnsatController Ac;
         BookingController Bc;
         LagerController Lc;
+        JournalController Jc;
 
         public MainController()
         {
@@ -30,6 +31,7 @@ namespace AnimalHouseBLL
             Ac = new AnsatController();
             Bc = new BookingController();
             Lc = new LagerController();
+            Jc = new JournalController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -49,7 +51,6 @@ namespace AnimalHouseBLL
             k.DyrId = dyrId;
             return Bc.OpretBooking(k);
         }
-
 
         public List<Ansat> HentAlleAnsate()
         {
@@ -142,9 +143,9 @@ namespace AnimalHouseBLL
              K.Add(Kc.HentKundetByTlf(tlf));
         }
 
-        public List<Kunde> HentKundeByTlforNavn(string input)
+        public void HentKundeByTlforNavn(string input)
         {
-            return Kc.HentKundeByTlforNavn(input);
+            K= Kc.HentKundeByTlforNavn(input);
         }
 
         public List<Lager> HentLagerVareNavn(string varenavn)
@@ -170,6 +171,47 @@ namespace AnimalHouseBLL
         public List<Lager> HentLagerNavnEllerVareNummer(string input)
         {
             return Lc.HentLagerNavnEllerVareNummer(input);
+        }
+
+        public int HentKundeId(string navn)
+        {
+            return Kc.HentKundeId(navn);
+        }
+
+        public Ansat HentAnsatById(int id)
+        {
+            return Ac.HentAnsatById(id);
+        }
+
+        //Journal Funktioner
+        public string Opretjournal(int ansatid, int dyrid, string beskrivelse)
+        {
+            return Jc.OpretJournal(ansatid, dyrid, beskrivelse);
+        }
+
+        public string SletJournal(int id)
+        {
+            return Jc.SletJournal(id);
+        }
+
+        public List<Journal> HentAlleJournale()
+        {
+            return Jc.HentAlleJournale();
+        }
+
+        public List<Journal> HentAlleDyrJournale(int dyrid)
+        {
+            return Jc.HentAlleDyrJournale(dyrid);
+        }
+        
+        public List<Journal> HentAlleAnsateJournale(int ansatId)
+        {
+            return Jc.HentAlleAnsatJournal(ansatId);
+        }
+
+        public Journal HentJournal(int id)
+        {
+            return Jc.HentJournal(id);
         }
     }
 }

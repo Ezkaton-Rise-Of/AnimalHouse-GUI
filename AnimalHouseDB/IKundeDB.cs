@@ -18,5 +18,6 @@ namespace AnimalHouseDB
         string HentByNavn(string postnr);
 
         List<Kunde> HentKunderByTlfOrNavn(string input);
+        int HentKundeId(string navn);
     }
 }

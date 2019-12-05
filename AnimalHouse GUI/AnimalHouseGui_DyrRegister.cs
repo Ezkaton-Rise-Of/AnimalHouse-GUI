@@ -65,7 +65,7 @@ namespace AnimalHouse_GUI
 
         private void textBox_EjerNavn_Leave(object sender, EventArgs e)
         {
-            k = controller.HentKundeByTlforNavn(textBox_EjerTlf.Text.Trim());
+            k = controller.K;
             if (k is null)
             {
                 if (MessageBox.Show("Kunde er ikke registeret!", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)

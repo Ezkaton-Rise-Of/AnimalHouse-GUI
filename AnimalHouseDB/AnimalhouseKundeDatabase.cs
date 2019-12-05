@@ -69,7 +69,7 @@ namespace AnimalHouseDB
             }
             catch (Exception)
             {
-                
+
                 return "Der sket en fejl!";
                 //throw;
             }
@@ -290,6 +290,33 @@ namespace AnimalHouseDB
             }
 
             return results;
+        }
+
+        public int HentKundeId(string navn)
+        {
+            int id = 0;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
+            {
+                string commandtxt = $"select KundeId from Kunde where Fnavn Like '%{navn}%'";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    id = (int)reader["KundeId"];
+                }
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return id;
         }
     }
 }
