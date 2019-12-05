@@ -27,7 +27,7 @@ namespace AnimalHouse_Entities
             this.Tlf = tlf;
         }
 
-        public string GetName
+        public string HentNavn
         {
             get
             {

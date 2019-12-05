@@ -76,7 +76,7 @@
             // 
             // dateTimePicker_StartDato
             // 
-            this.dateTimePicker_StartDato.Location = new System.Drawing.Point(15, 73);
+            this.dateTimePicker_StartDato.Location = new System.Drawing.Point(15, 35);
             this.dateTimePicker_StartDato.Name = "dateTimePicker_StartDato";
             this.dateTimePicker_StartDato.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker_StartDato.TabIndex = 107;
@@ -85,7 +85,7 @@
             // 
             this.label_StartDato.AutoSize = true;
             this.label_StartDato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_StartDato.Location = new System.Drawing.Point(22, 40);
+            this.label_StartDato.Location = new System.Drawing.Point(14, 16);
             this.label_StartDato.Name = "label_StartDato";
             this.label_StartDato.Size = new System.Drawing.Size(77, 16);
             this.label_StartDato.TabIndex = 109;
@@ -110,7 +110,7 @@
             // 
             this.label_BehandlerIdBooking.AutoSize = true;
             this.label_BehandlerIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_BehandlerIdBooking.Location = new System.Drawing.Point(231, 40);
+            this.label_BehandlerIdBooking.Location = new System.Drawing.Point(231, 20);
             this.label_BehandlerIdBooking.Name = "label_BehandlerIdBooking";
             this.label_BehandlerIdBooking.Size = new System.Drawing.Size(115, 16);
             this.label_BehandlerIdBooking.TabIndex = 114;
@@ -177,7 +177,7 @@
             // 
             this.label_BookingType.AutoSize = true;
             this.label_BookingType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_BookingType.Location = new System.Drawing.Point(231, 105);
+            this.label_BookingType.Location = new System.Drawing.Point(231, 77);
             this.label_BookingType.Name = "label_BookingType";
             this.label_BookingType.Size = new System.Drawing.Size(95, 16);
             this.label_BookingType.TabIndex = 123;
@@ -251,16 +251,17 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(234, 72);
+            this.comboBox2.Location = new System.Drawing.Point(234, 39);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(200, 21);
             this.comboBox2.TabIndex = 133;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 105);
+            this.label1.Location = new System.Drawing.Point(14, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 16);
             this.label1.TabIndex = 134;

@@ -178,12 +178,12 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"select AnsatId from Ansat where Navn Like '%{navn}%';";
+                string commandtxt = $"select AnsatId from Ansat where AnsatId = {navn};";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                while (reader.Read())
                 {
-                   id = (int) reader["AnsatId"];
+                    id = (int)reader["AnsatId"];
                 }
             }
             catch (Exception)

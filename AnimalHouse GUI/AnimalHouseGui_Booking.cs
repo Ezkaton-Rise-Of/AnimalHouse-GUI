@@ -21,6 +21,10 @@ namespace AnimalHouse_GUI
         public AnimalHouseGui_Booking()
         {
             InitializeComponent();
+
+            dateTimePicker_SlutDato.Format = DateTimePickerFormat.Time;
+            dateTimePicker_SlutDato.ShowUpDown = true;
+            
         }
 
         private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)
@@ -104,6 +108,9 @@ namespace AnimalHouse_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
+  
+
+
 
             //holger
             //tjekker om der er tilføjes en kunde
@@ -112,6 +119,11 @@ namespace AnimalHouse_GUI
                 MessageBox.Show("vælg en Kunde først");
             }
  
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

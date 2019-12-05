@@ -7,7 +7,7 @@ using AnimalHouse_Entities;
 using AnimalHouseBLL;
 using AnimalHouseDB;
 
-namespace AnimalHousePersistenslag
+namespace AnimalHouseBLL
 {
     public class LagerStatusController
     {
