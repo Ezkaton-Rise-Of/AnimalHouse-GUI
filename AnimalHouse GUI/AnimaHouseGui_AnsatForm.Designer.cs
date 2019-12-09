@@ -31,7 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox_ansatNavn = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_stelling = new System.Windows.Forms.ComboBox();
             this.buttonTilbage = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button_Hent = new System.Windows.Forms.Button();
@@ -41,10 +41,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_tlf = new System.Windows.Forms.TextBox();
             this.button_Register = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_tlf = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,18 +83,18 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // comboBox_stelling
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_stelling.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox_stelling.FormattingEnabled = true;
+            this.comboBox_stelling.Items.AddRange(new object[] {
             "Dyrlæge",
             "Reciptionist",
             "veterinærsygeplejerske"});
-            this.comboBox1.Location = new System.Drawing.Point(164, 137);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(263, 32);
-            this.comboBox1.TabIndex = 3;
+            this.comboBox_stelling.Location = new System.Drawing.Point(164, 137);
+            this.comboBox_stelling.Name = "comboBox_stelling";
+            this.comboBox_stelling.Size = new System.Drawing.Size(263, 32);
+            this.comboBox_stelling.TabIndex = 3;
             // 
             // buttonTilbage
             // 
@@ -202,7 +202,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox_tlf);
             this.groupBox1.Controls.Add(this.button_Register);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBox_stelling);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox_navn);
             this.groupBox1.Controls.Add(this.label2);
@@ -213,6 +213,25 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ansat Register";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 230);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 24);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Tlf.";
+            // 
+            // textBox_tlf
+            // 
+            this.textBox_tlf.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_tlf.Location = new System.Drawing.Point(152, 224);
+            this.textBox_tlf.Name = "textBox_tlf";
+            this.textBox_tlf.Size = new System.Drawing.Size(275, 30);
+            this.textBox_tlf.TabIndex = 14;
             // 
             // button_Register
             // 
@@ -238,25 +257,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // textBox_tlf
-            // 
-            this.textBox_tlf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_tlf.Location = new System.Drawing.Point(152, 224);
-            this.textBox_tlf.Name = "textBox_tlf";
-            this.textBox_tlf.Size = new System.Drawing.Size(275, 30);
-            this.textBox_tlf.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(25, 230);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 24);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Tlf.";
             // 
             // AnimaHouseGui_AnsatForm
             // 
@@ -291,7 +291,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox_ansatNavn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_stelling;
         private System.Windows.Forms.Button buttonTilbage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Hent;

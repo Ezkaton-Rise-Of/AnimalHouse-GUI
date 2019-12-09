@@ -27,27 +27,18 @@ namespace AnimalHouse_GUI
             string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text);
             MessageBox.Show(answer);
             FillDataGridView();
+            button_tilføje.Enabled = true;
             ClearForm();
             ;
         }
 
         private void button_SletEjer_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Er du sikker?", "Slette kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Er du sikker? Alle de dyr, der er rigistret under denne kunde, vil blive slettet!", "Slette kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (controller.SletEjer(id) == "slette kundernes dyr først!")
-                    if (MessageBox.Show(controller.SletEjer(id), "Slette kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-
-                        this.Visible = false;
-                        AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
-                        dyrRegister.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show(controller.SletEjer(id), "Slette kunde", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FillDataGridView();
-                    }
+                MessageBox.Show(controller.SletEjer(id), "Slette kunde", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
+                FillDataGridView();
             }
         }
 
@@ -60,7 +51,6 @@ namespace AnimalHouse_GUI
 
         private void button_Søgning_Click(object sender, EventArgs e)
         {
-            dataGridView_Ejer.DataSource = controller.HentAlleDyr();
             FillDataGridView();
         }
 
@@ -94,8 +84,26 @@ namespace AnimalHouse_GUI
                 if (dataGridView_Ejer.CurrentRow.Index != -1)
                 {
                     id = Convert.ToInt32(dataGridView_Ejer.CurrentRow.Cells[0].Value.ToString());
+                    textBox_Fornavn.Text = dataGridView_Ejer.CurrentRow.Cells[1].Value.ToString();
+                    textBox_Efternavn.Text = dataGridView_Ejer.CurrentRow.Cells[2].Value.ToString();
+                    textBox_By.Text = dataGridView_Ejer.CurrentRow.Cells[6].Value.ToString();
+                    textBox_Email.Text = dataGridView_Ejer.CurrentRow.Cells[9].Value.ToString();
+                    textBox_Postnummer.Text = dataGridView_Ejer.CurrentRow.Cells[4].Value.ToString();
+                    textBox_Telefon.Text = dataGridView_Ejer.CurrentRow.Cells[5].Value.ToString();
+                    textBox_Vejnavn.Text = dataGridView_Ejer.CurrentRow.Cells[3].Value.ToString();
+                    if (dataGridView_Ejer.CurrentRow.Cells[7].Value.ToString() == "Private")
+                    {
+                        radioButton_Private.Checked = true;
+                        radioButton_Erhverv.Checked = false;
+                    }
+                    else
+                    {
+                        radioButton_Private.Checked = false;
+                        radioButton_Erhverv.Checked = true; 
+                    }
                     button_SletEjer.Enabled = true;
                     UpdateEjerBtn.Enabled = true;
+                    button_tilføje.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -109,8 +117,7 @@ namespace AnimalHouse_GUI
         {
             try
             {
-                //int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email
-                MessageBox.Show(controller.UpdateKunde(id, textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text));
+                MessageBox.Show(controller.UpdateKunde(Convert.ToInt32(dataGridView_Ejer.CurrentRow.Cells[0].Value.ToString()), textBox_Fornavn.Text.Trim(), textBox_Efternavn.Text.Trim(), textBox_Vejnavn.Text.Trim(), textBox_Postnummer.Text.Trim(), textBox_Telefon.Text.Trim(), kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text).Trim(), textBox_Email.Text.Trim()));
                 ClearForm();
                 FillDataGridView();
             }
@@ -142,11 +149,19 @@ namespace AnimalHouse_GUI
 
         private void button_Søg_Click(object sender, EventArgs e)
         {
-            dataGridView_Ejer.DataSource = controller.HentKundByTlf(textBox_Søg.Text.Trim());
+            dataGridView_Ejer.DataSource = controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim());
             if (dataGridView_Ejer.Rows.Count == 0)
             {
                 MessageBox.Show("Kunden kunne ikke findes!");
             }
+        }
+
+        private void button_tilføje_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
+            dyrRegister.ReturnKundeId(int.Parse(dataGridView_Ejer.CurrentRow.Cells[0].Value.ToString()));
+            dyrRegister.ShowDialog();
         }
     }
 }

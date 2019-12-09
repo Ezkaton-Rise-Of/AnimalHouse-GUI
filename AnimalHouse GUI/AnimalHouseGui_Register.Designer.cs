@@ -59,6 +59,7 @@
             this.textBox_Søg = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_Søg = new System.Windows.Forms.Button();
+            this.button_tilføje = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ejer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -162,10 +163,10 @@
             this.button_SletEjer.Enabled = false;
             this.button_SletEjer.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_SletEjer.ForeColor = System.Drawing.Color.Red;
-            this.button_SletEjer.Location = new System.Drawing.Point(944, 887);
+            this.button_SletEjer.Location = new System.Drawing.Point(838, 895);
             this.button_SletEjer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_SletEjer.Name = "button_SletEjer";
-            this.button_SletEjer.Size = new System.Drawing.Size(237, 83);
+            this.button_SletEjer.Size = new System.Drawing.Size(186, 66);
             this.button_SletEjer.TabIndex = 27;
             this.button_SletEjer.Text = "Slet";
             this.button_SletEjer.UseVisualStyleBackColor = false;
@@ -280,10 +281,10 @@
             this.button_Søgning.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Søgning.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Søgning.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_Søgning.Location = new System.Drawing.Point(630, 887);
+            this.button_Søgning.Location = new System.Drawing.Point(630, 895);
             this.button_Søgning.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Søgning.Name = "button_Søgning";
-            this.button_Søgning.Size = new System.Drawing.Size(237, 83);
+            this.button_Søgning.Size = new System.Drawing.Size(186, 66);
             this.button_Søgning.TabIndex = 28;
             this.button_Søgning.Text = "Søgning";
             this.button_Søgning.UseVisualStyleBackColor = false;
@@ -294,10 +295,10 @@
             this.TilbageBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.TilbageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TilbageBtn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TilbageBtn.Location = new System.Drawing.Point(1501, 887);
+            this.TilbageBtn.Location = new System.Drawing.Point(1518, 893);
             this.TilbageBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TilbageBtn.Name = "TilbageBtn";
-            this.TilbageBtn.Size = new System.Drawing.Size(237, 83);
+            this.TilbageBtn.Size = new System.Drawing.Size(186, 71);
             this.TilbageBtn.TabIndex = 30;
             this.TilbageBtn.Text = "Tilbage";
             this.TilbageBtn.UseVisualStyleBackColor = false;
@@ -346,10 +347,10 @@
             this.UpdateEjerBtn.Enabled = false;
             this.UpdateEjerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateEjerBtn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.UpdateEjerBtn.Location = new System.Drawing.Point(1226, 887);
+            this.UpdateEjerBtn.Location = new System.Drawing.Point(1057, 893);
             this.UpdateEjerBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.UpdateEjerBtn.Name = "UpdateEjerBtn";
-            this.UpdateEjerBtn.Size = new System.Drawing.Size(237, 83);
+            this.UpdateEjerBtn.Size = new System.Drawing.Size(186, 71);
             this.UpdateEjerBtn.TabIndex = 26;
             this.UpdateEjerBtn.Text = "Update";
             this.UpdateEjerBtn.UseVisualStyleBackColor = false;
@@ -400,11 +401,27 @@
             this.button_Søg.UseVisualStyleBackColor = false;
             this.button_Søg.Click += new System.EventHandler(this.button_Søg_Click);
             // 
+            // button_tilføje
+            // 
+            this.button_tilføje.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_tilføje.Enabled = false;
+            this.button_tilføje.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_tilføje.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_tilføje.Location = new System.Drawing.Point(1270, 895);
+            this.button_tilføje.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_tilføje.Name = "button_tilføje";
+            this.button_tilføje.Size = new System.Drawing.Size(215, 66);
+            this.button_tilføje.TabIndex = 65;
+            this.button_tilføje.Text = "Tilføj dyr";
+            this.button_tilføje.UseVisualStyleBackColor = false;
+            this.button_tilføje.Click += new System.EventHandler(this.button_tilføje_Click);
+            // 
             // AnimalHouseGui_Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.Controls.Add(this.button_tilføje);
             this.Controls.Add(this.button_Søg);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_Søg);
@@ -478,5 +495,6 @@
         private System.Windows.Forms.Button button_Søg;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_Søg;
+        private System.Windows.Forms.Button button_tilføje;
     }
 }

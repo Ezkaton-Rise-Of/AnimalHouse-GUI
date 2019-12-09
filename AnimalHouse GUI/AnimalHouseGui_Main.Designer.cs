@@ -46,7 +46,7 @@
             // 
             this.label_AnimalHouse1.AutoSize = true;
             this.label_AnimalHouse1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_AnimalHouse1.Location = new System.Drawing.Point(158, 14);
+            this.label_AnimalHouse1.Location = new System.Drawing.Point(55, 28);
             this.label_AnimalHouse1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_AnimalHouse1.Name = "label_AnimalHouse1";
             this.label_AnimalHouse1.Size = new System.Drawing.Size(639, 108);

@@ -10,7 +10,7 @@ namespace AnimalHouse_Entities
     {
         public int ProduktId;
         public string Beskrivelse;
-        public decimal Pris;
+        public double Pris;
         public int KategoriId;
         public Service Service;
         public Produkt()
@@ -18,7 +18,7 @@ namespace AnimalHouse_Entities
 
         }
 
-        public Produkt(int produktId, string beskrivelse, decimal pris, int kategoriId)
+        public Produkt(int produktId, string beskrivelse, double pris, int kategoriId)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
@@ -26,7 +26,7 @@ namespace AnimalHouse_Entities
             KategoriId = kategoriId;
         }
 
-        public Produkt(int produktId, string beskrivelse, decimal pris, int kategoriId, Service service) : this(produktId, beskrivelse, pris, kategoriId)
+        public Produkt(int produktId, string beskrivelse, double pris, int kategoriId, Service service) : this(produktId, beskrivelse, pris, kategoriId)
         {
             Service = service;
         }

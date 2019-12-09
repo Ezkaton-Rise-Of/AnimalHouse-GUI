@@ -44,7 +44,8 @@ namespace AnimalHouseDB
             return a;
         }
 
-        public Ansat HentAnsatById(int ansatId)
+       
+        public Ansat HentAnsat(int ansatId)
         {
             Ansat a = null;
             SqlConnection conn = new SqlConnection();
@@ -57,6 +58,7 @@ namespace AnimalHouseDB
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    a = new Ansat();
                     a.Id = (int)reader["AnsatId"];
                     a.Navn = (string)reader["Navn"];
                     a.Stelling = (string)reader["Stelling"];
@@ -105,7 +107,7 @@ namespace AnimalHouseDB
             return null;
         }
 
-        public List<Ansat> HentAnsateByNavn(string ansatNavn)
+        public List<Ansat> HentAnsatByNavn2(string ansatNavn)
         {
             List<Ansat> a = new List<Ansat>();
             SqlConnection conn = new SqlConnection();
@@ -178,7 +180,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"select AnsatId from Ansat where AnsatId = {navn};";
+                string commandtxt = $"select AnsatId from Ansat where Navn Like '%{navn}%';";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -195,6 +197,32 @@ namespace AnimalHouseDB
                 conn.Close();
             }
             return id;
+        }
+
+        public string HentAnsatNavn(int id)
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
+            {
+                string commandtxt = $"select Navn from Ansat where AnsatId= {id};";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    return (string)reader["Navn"];
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
         }
 
         public string OpretAnsat(Ansat a)
@@ -273,5 +301,40 @@ namespace AnimalHouseDB
 
             return "Ansat blev updatet!";
         }
+
+        public List<Ansat> HentAlleBehandler()
+        {
+            List<Ansat> a = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            try
+            {
+                string commandtxt = $"select * from Ansat	where Stelling Not Like '%reciptionist%';";
+                SqlCommand command = new SqlCommand(commandtxt, conn);
+                a = new List<Ansat>();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Ansat ansat = new Ansat();
+                    ansat.Id = (int)reader["AnsatId"];
+                    ansat.Navn = (string)reader["Navn"];
+                    ansat.Stelling = (string)reader["Stelling"];
+                    ansat.Tlf = (string)reader["Tlf"];
+                    a.Add(ansat);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return a;
+        }
+
     }
 }

@@ -18,29 +18,23 @@ namespace AnimalHouse_GUI
 
         MainController controller = new MainController();
         private char sex;
-        private List<Kunde> k;
-        private int id;
         private int BehandlerId;
         public AnimalHouseGui_DyrRegister()
         {
             InitializeComponent();
         }
 
-        private void label_Underart_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_RegDyr_Click(object sender, EventArgs e)
         {
-            string answer = controller.OpretDyr(k[0].Id, textBox_Art.Text, textBox_Race.Text,int.Parse(textBox_Alder.Text.Trim()), sex);
+            string answer = controller.OpretDyr(controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id, textBox_Art.Text, textBox_Race.Text,int.Parse(textBox_Alder.Text.Trim()), sex);
             MessageBox.Show(answer);
             FilleDataGridView();
         }
 
         private void FilleDataGridView()
         {
-            dataGridView_Dyr.DataSource = controller.HentAlleDyr();
+            controller.HentAlleDyr();
+            dataGridView_Dyr.DataSource = controller.D;
             dataGridView_Dyr.Columns[0].Visible = false;
         }
 
@@ -63,39 +57,6 @@ namespace AnimalHouse_GUI
             sex = 'f';
         }
 
-        private void textBox_EjerNavn_Leave(object sender, EventArgs e)
-        {
-            k = controller.K;
-            if (k is null)
-            {
-                if (MessageBox.Show("Kunde er ikke registeret!", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    this.Hide();
-                    AnimalHouseGui_Register register = new AnimalHouseGui_Register();
-                    register.ShowDialog();
-                }
-            }
-        }
-
-        private void dataGridView_Dyr_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dataGridView_Dyr.CurrentRow.Index != -1)
-                {
-                    id = Convert.ToInt32(dataGridView_Dyr.CurrentRow.Cells[0].Value.ToString());
-                    dataGridView_Dyr.Enabled = true;
-                    dataGridView_Dyr.Enabled = true;
-                    button_SletDyr.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void button_SøgningDyr_Click(object sender, EventArgs e)
         {
             FilleDataGridView();
@@ -105,8 +66,7 @@ namespace AnimalHouse_GUI
         {
             if (MessageBox.Show("Er du sikker?", "Slette Dyr", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(controller.SletDyr(id), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FilleDataGridView();
+                MessageBox.Show(controller.SletDyr(int.Parse(dataGridView_Dyr.CurrentRow.Cells[0].Value.ToString())), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -117,7 +77,9 @@ namespace AnimalHouse_GUI
 
         private void button_Søg_Click(object sender, EventArgs e)
         {
-            dataGridView_Dyr.DataSource = controller.HentAlleKundesDyr(k[0].Id);
+            int kundeid = controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id;
+            dataGridView_Dyr.DataSource = controller.HentAlleKundesDyr(kundeid);
+            dataGridView_Dyr.Columns[0].Visible = false;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -125,8 +87,8 @@ namespace AnimalHouse_GUI
             if (checkBox1.Checked)
             {
                 comboBox1.Visible = true;
-                comboBox1.DataSource = controller.HentAlleAnsate();
-                comboBox1.DisplayMember = "GetName";
+                comboBox1.DataSource = controller.HentAlleBehandler();
+                comboBox1.DisplayMember = "HentNavn";
                 BehandlerId = controller.HentAnsatId(comboBox1.Text.Trim());
 
             }
@@ -134,6 +96,21 @@ namespace AnimalHouse_GUI
             {
                 comboBox1.Visible = false;
             }
+        }
+
+        public void ReturnKundeId(int id)
+        {
+            int KundeId = id;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView_Dyr_DoubleClick(object sender, EventArgs e)
+        {
+            button_SletDyr.Enabled = true;
         }
     }
 }

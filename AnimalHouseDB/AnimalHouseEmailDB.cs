@@ -125,7 +125,11 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    if (transaction != null)
+                    {
+                        transaction.Rollback();
+                    }
+                    throw e;
                 }
                 finally
                 {

@@ -34,9 +34,9 @@ namespace AnimalHouseBLL
             Ansat a = new Ansat(id, navn, stelling, tlf);
             return ansatDB.UpdateAnsat(a);
         }
-        public Ansat HentAnsatById(int ansatid)
+        public Ansat HentAnsat(int ansatid)
         {
-            return ansatDB.HentAnsatById(ansatid);
+            return ansatDB.HentAnsat(ansatid);
         }
         public List<Ansat> HentAlleAnsatte()
         {
@@ -56,9 +56,19 @@ namespace AnimalHouseBLL
             return ansatDB.HentAnsatId(navn);
         }
 
-        public Ansat HentAnsatteByNavn(string ansatNavn)
+        public List<Ansat> HentAlleBehandler()
         {
-            return ansatDB.HentAnsatByNavn(ansatNavn);
+            return ansatDB.HentAlleBehandler();
+        }
+
+        public string HentAnsatNavn(int id)
+        {
+            return ansatDB.HentAnsatNavn(id);
+        }
+
+        internal List<Ansat> HentAnsatByNanv2(string navn)
+        {
+            return ansatDB.HentAnsatByNavn2(navn);
         }
     }
 }

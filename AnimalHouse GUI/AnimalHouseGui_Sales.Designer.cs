@@ -97,7 +97,6 @@
             this.dataGridView_Historik.Name = "dataGridView_Historik";
             this.dataGridView_Historik.Size = new System.Drawing.Size(240, 454);
             this.dataGridView_Historik.TabIndex = 30;
-            this.dataGridView_Historik.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
@@ -241,7 +240,6 @@
             this.label_Total.Size = new System.Drawing.Size(68, 29);
             this.label_Total.TabIndex = 65;
             this.label_Total.Text = "Total";
-            this.label_Total.Click += new System.EventHandler(this.label4_Click);
             // 
             // label_DKKBytte
             // 
@@ -650,7 +648,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnimalHouseGui_Sales";
             this.Text = "Animal House";
-            this.Load += new System.EventHandler(this.AnimalHouseGui_Sales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Historik)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Order)).EndInit();
             this.ResumeLayout(false);

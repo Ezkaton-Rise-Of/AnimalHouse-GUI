@@ -31,10 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGui_DyrRegister));
             this.label_AnimalHouse3 = new System.Windows.Forms.Label();
             this.textBox_Art = new System.Windows.Forms.TextBox();
-            this.textBox_EjerTlf = new System.Windows.Forms.TextBox();
             this.button_RegDyr = new System.Windows.Forms.Button();
             this.label_Art = new System.Windows.Forms.Label();
-            this.label_EjerIdDyr = new System.Windows.Forms.Label();
             this.dataGridView_Dyr = new System.Windows.Forms.DataGridView();
             this.button_SletDyr = new System.Windows.Forms.Button();
             this.label_Dyr = new System.Windows.Forms.Label();
@@ -73,21 +71,11 @@
             // textBox_Art
             // 
             this.textBox_Art.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Art.Location = new System.Drawing.Point(33, 310);
+            this.textBox_Art.Location = new System.Drawing.Point(33, 375);
             this.textBox_Art.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Art.Name = "textBox_Art";
             this.textBox_Art.Size = new System.Drawing.Size(486, 30);
             this.textBox_Art.TabIndex = 74;
-            // 
-            // textBox_EjerTlf
-            // 
-            this.textBox_EjerTlf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_EjerTlf.Location = new System.Drawing.Point(35, 189);
-            this.textBox_EjerTlf.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_EjerTlf.Name = "textBox_EjerTlf";
-            this.textBox_EjerTlf.Size = new System.Drawing.Size(486, 30);
-            this.textBox_EjerTlf.TabIndex = 73;
-            this.textBox_EjerTlf.Leave += new System.EventHandler(this.textBox_EjerNavn_Leave);
             // 
             // button_RegDyr
             // 
@@ -107,23 +95,12 @@
             // 
             this.label_Art.AutoSize = true;
             this.label_Art.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Art.Location = new System.Drawing.Point(30, 270);
+            this.label_Art.Location = new System.Drawing.Point(30, 335);
             this.label_Art.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Art.Name = "label_Art";
             this.label_Art.Size = new System.Drawing.Size(40, 25);
             this.label_Art.TabIndex = 71;
             this.label_Art.Text = "Art";
-            // 
-            // label_EjerIdDyr
-            // 
-            this.label_EjerIdDyr.AutoSize = true;
-            this.label_EjerIdDyr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_EjerIdDyr.Location = new System.Drawing.Point(30, 149);
-            this.label_EjerIdDyr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_EjerIdDyr.Name = "label_EjerIdDyr";
-            this.label_EjerIdDyr.Size = new System.Drawing.Size(139, 25);
-            this.label_EjerIdDyr.TabIndex = 70;
-            this.label_EjerIdDyr.Text = "Ejer tlf / navn";
             // 
             // dataGridView_Dyr
             // 
@@ -168,7 +145,7 @@
             // textBox_Race
             // 
             this.textBox_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Race.Location = new System.Drawing.Point(35, 410);
+            this.textBox_Race.Location = new System.Drawing.Point(35, 475);
             this.textBox_Race.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Race.Name = "textBox_Race";
             this.textBox_Race.Size = new System.Drawing.Size(486, 30);
@@ -178,13 +155,12 @@
             // 
             this.label_Race.AutoSize = true;
             this.label_Race.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Race.Location = new System.Drawing.Point(30, 371);
+            this.label_Race.Location = new System.Drawing.Point(30, 436);
             this.label_Race.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Race.Name = "label_Race";
             this.label_Race.Size = new System.Drawing.Size(61, 25);
             this.label_Race.TabIndex = 83;
             this.label_Race.Text = "Race";
-            this.label_Race.Click += new System.EventHandler(this.label_Underart_Click);
             // 
             // label_DyrReg
             // 
@@ -214,7 +190,7 @@
             // textBox_Alder
             // 
             this.textBox_Alder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Alder.Location = new System.Drawing.Point(33, 657);
+            this.textBox_Alder.Location = new System.Drawing.Point(33, 722);
             this.textBox_Alder.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Alder.Name = "textBox_Alder";
             this.textBox_Alder.Size = new System.Drawing.Size(486, 30);
@@ -224,7 +200,7 @@
             // 
             this.label_Alder.AutoSize = true;
             this.label_Alder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Alder.Location = new System.Drawing.Point(28, 628);
+            this.label_Alder.Location = new System.Drawing.Point(28, 693);
             this.label_Alder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Alder.Name = "label_Alder";
             this.label_Alder.Size = new System.Drawing.Size(63, 25);
@@ -250,7 +226,7 @@
             this.groupBox1.Controls.Add(this.radioButton_female);
             this.groupBox1.Controls.Add(this.radioButton_male);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(35, 478);
+            this.groupBox1.Location = new System.Drawing.Point(35, 543);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(484, 134);
             this.groupBox1.TabIndex = 95;
@@ -297,20 +273,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(611, 229);
+            this.label1.Location = new System.Drawing.Point(30, 160);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(139, 25);
             this.label1.TabIndex = 97;
             this.label1.Text = "Ejer tlf / navn";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox_Søg
             // 
             this.textBox_Søg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Søg.Location = new System.Drawing.Point(758, 229);
+            this.textBox_Søg.Location = new System.Drawing.Point(33, 205);
             this.textBox_Søg.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Søg.Name = "textBox_Søg";
-            this.textBox_Søg.Size = new System.Drawing.Size(381, 30);
+            this.textBox_Søg.Size = new System.Drawing.Size(488, 30);
             this.textBox_Søg.TabIndex = 98;
             // 
             // button_Søg
@@ -318,7 +295,7 @@
             this.button_Søg.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Søg.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Søg.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_Søg.Location = new System.Drawing.Point(1147, 214);
+            this.button_Søg.Location = new System.Drawing.Point(170, 260);
             this.button_Søg.Margin = new System.Windows.Forms.Padding(4);
             this.button_Søg.Name = "button_Søg";
             this.button_Søg.Size = new System.Drawing.Size(168, 58);
@@ -331,7 +308,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 748);
+            this.label2.Location = new System.Drawing.Point(28, 813);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 25);
@@ -341,7 +318,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(254, 753);
+            this.checkBox1.Location = new System.Drawing.Point(254, 818);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(22, 21);
             this.checkBox1.TabIndex = 101;
@@ -351,7 +328,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(35, 807);
+            this.comboBox1.Location = new System.Drawing.Point(35, 872);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(329, 28);
             this.comboBox1.TabIndex = 102;
@@ -381,10 +358,8 @@
             this.Controls.Add(this.button_SletDyr);
             this.Controls.Add(this.dataGridView_Dyr);
             this.Controls.Add(this.textBox_Art);
-            this.Controls.Add(this.textBox_EjerTlf);
             this.Controls.Add(this.button_RegDyr);
             this.Controls.Add(this.label_Art);
-            this.Controls.Add(this.label_EjerIdDyr);
             this.Controls.Add(this.label_AnimalHouse3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -402,10 +377,8 @@
         #endregion
         private System.Windows.Forms.Label label_AnimalHouse3;
         private System.Windows.Forms.TextBox textBox_Art;
-        private System.Windows.Forms.TextBox textBox_EjerTlf;
         private System.Windows.Forms.Button button_RegDyr;
         private System.Windows.Forms.Label label_Art;
-        private System.Windows.Forms.Label label_EjerIdDyr;
         private System.Windows.Forms.DataGridView dataGridView_Dyr;
         private System.Windows.Forms.Button button_SletDyr;
         private System.Windows.Forms.Label label_Dyr;

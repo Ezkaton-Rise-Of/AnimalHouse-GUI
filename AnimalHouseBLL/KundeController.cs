@@ -27,9 +27,9 @@ namespace AnimalHouseBLL
 
         }
 
-        public int HentKundeId(string nanv)
+        public int HentKundeId(string tlf)
         {
-            return KundeDB.HentKundeId(nanv);
+            return KundeDB.HentKundeId(tlf);
         }
         public Kunde SøgeKundeById(int id)
         {

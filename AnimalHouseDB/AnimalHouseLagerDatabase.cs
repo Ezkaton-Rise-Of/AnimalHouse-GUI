@@ -46,7 +46,7 @@ namespace AnimalHouseDB
                     Produkt p = new Produkt();
                     p.ProduktId = (int)reader["ProduktId"];
                     p.Beskrivelse = (string)reader["Beskrivelse"];
-                    p.Pris = (decimal)reader["Price"];
+                    p.Pris = (double)reader["Price"];
                     p.KategoriId = (int)reader["KategoriId"];
                     Lager lagervare = new Lager();
                     lagervare.produkt = p;

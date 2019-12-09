@@ -35,7 +35,21 @@ namespace AnimalHouse_GUI
 
         private void button_Send_Click(object sender, EventArgs e)
         {
-           
+            var modtagerList = listBox_modtager_list.Items.Cast<String>().ToList();
+            bool res =emailSystem.CreateEmail(textBox_subjekt.Text,textBox_inhold.Text,modtagerList);
+            if (res is true)
+            {
+                MessageBox.Show("mail blev sendt");
+            }
+            else
+            {
+                MessageBox.Show("der sket en fejl!");
+            }
+        }
+
+        private void button_tilføj_Click(object sender, EventArgs e)
+        {
+            listBox_modtager_list.Items.Add(textBox4.Text);
         }
     }
 }

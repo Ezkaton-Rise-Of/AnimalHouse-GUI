@@ -17,18 +17,15 @@ namespace AnimalHouse_GUI
     {
         private int id;
         private MainController controller;
-        private List<Dyr> d;
-        private int kundeid;
 
         public AnimalHouseGUI_JournalForm()
         {
             InitializeComponent();
             controller = new MainController();
-            comboBox_behandler.DataSource = controller.HentAlleAnsate();
-            comboBox_behandler.DisplayMember = "GetName";
-            comboBox_behandler2.DataSource = controller.HentAlleAnsate();
-            comboBox_behandler2.DisplayMember = "GetName";
-            d = new List<Dyr>();
+            comboBox_behandler.DataSource = controller.HentAlleBehandler();
+            comboBox_behandler.DisplayMember = "HentNavn";
+            comboBox_behandler2.DataSource = controller.HentAlleBehandler();
+            comboBox_behandler2.DisplayMember = "HentNavn";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,7 +59,7 @@ namespace AnimalHouse_GUI
             {
 
                 int ansatid = controller.HentAnsatId(comboBox_behandler.Text.Trim());
-                int dyrid = d[comboBox_dyr.SelectedIndex].DyrId;
+                int dyrid = controller.D[comboBox_dyr.SelectedIndex].DyrId;
                 string beskrivelse = textBox_beskrivelse.Text.Trim();
                 string res = controller.Opretjournal(ansatid, dyrid, beskrivelse);
                 MessageBox.Show(res);
@@ -75,18 +72,6 @@ namespace AnimalHouse_GUI
 
         }
 
-        private void test()
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ejer er ikke registeret!");
-            }
-        }
-
         private void button_slet_Click(object sender, EventArgs e)
         {
             try
@@ -95,6 +80,7 @@ namespace AnimalHouse_GUI
                 {
                     MessageBox.Show(controller.SletJournal(id), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FillDataGridView();
+                    ClearForm();
                 }
             }
             catch (Exception exe)
@@ -116,15 +102,18 @@ namespace AnimalHouse_GUI
             comboBox_dyr.Text = "";
             comboBox_ejer.Text = "";
             comboBox_behandler2.Text = "";
+            textBox_info1.Text = "";
+            textBox_info2.Text = "";
+            textBox_info3.Text = "";
+            textBox_info4.Text = "";
         }
 
         private void button_søg_Click(object sender, EventArgs e)
         {
             //henter Kunder iden
             var kundenavn = comboBox_ejer.Text.Split(' ');
-            kundeid = controller.HentKundeId(kundenavn[0]);
-            d = controller.HentAlleKundesDyr(kundeid);
-            foreach (Dyr item in d)
+            int  kundeid = controller.HentKundeId(kundenavn[0]);
+            foreach (Dyr item in controller.HentAlleKundesDyr(kundeid))
             {
                 comboBox_dyr.Items.Add(item.DyrId + " " + item.Art + " " + item.Race);
             }
@@ -160,16 +149,23 @@ namespace AnimalHouse_GUI
         {
             if (dataGridView1.CurrentRow != null)
             {
-                Ansat a = controller.HentAnsatById(int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()));
-                textBox_info1.Text = a.Navn;
-                Dyr d = controller.HentDyr(int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()));
-                textBox_info2.Text = d.DyrId + " " + d.Art + " " + d.Race + " " + d.Alder;
+                controller.HentAlleDyr();
+               
+                textBox_info1.Text = controller.HentAnsatNavn((int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString())));
+               
+                foreach (var item in controller.D)
+                {
+                    if (item.DyrId == int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString()))
+                    {
+                        textBox_info2.Text = item.Art + " " + item.Race + " " + item.Alder;
+                    }
+                }
                 textBox_info3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 textBox_info4.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString(); 
             }
             else
             {
-                throw new Exception("No row is selected!");
+                throw new Exception("No row was selected!");
             }
         }
 

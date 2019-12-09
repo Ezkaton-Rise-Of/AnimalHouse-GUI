@@ -31,9 +31,9 @@
             this.button_Send = new System.Windows.Forms.Button();
             this.button_Tilbage = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listBox_modtager_list = new System.Windows.Forms.ListBox();
+            this.textBox_inhold = new System.Windows.Forms.TextBox();
+            this.textBox_subjekt = new System.Windows.Forms.TextBox();
             this.Lable_Body = new System.Windows.Forms.Label();
             this.label_Subjekt = new System.Windows.Forms.Label();
             this.Lable_To = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label_hjælpe = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -81,9 +82,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.listBox_modtager_list);
+            this.groupBox1.Controls.Add(this.textBox_inhold);
+            this.groupBox1.Controls.Add(this.textBox_subjekt);
             this.groupBox1.Controls.Add(this.Lable_Body);
             this.groupBox1.Controls.Add(this.label_Subjekt);
             this.groupBox1.Controls.Add(this.Lable_To);
@@ -97,29 +98,29 @@
             this.groupBox1.Text = "Email info";
             this.groupBox1.UseCompatibleTextRendering = true;
             // 
-            // listBox1
+            // listBox_modtager_list
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(156, 42);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(583, 149);
-            this.listBox1.TabIndex = 6;
+            this.listBox_modtager_list.FormattingEnabled = true;
+            this.listBox_modtager_list.ItemHeight = 29;
+            this.listBox_modtager_list.Location = new System.Drawing.Point(156, 42);
+            this.listBox_modtager_list.Name = "listBox_modtager_list";
+            this.listBox_modtager_list.Size = new System.Drawing.Size(583, 149);
+            this.listBox_modtager_list.TabIndex = 6;
             // 
-            // textBox2
+            // textBox_inhold
             // 
-            this.textBox2.Location = new System.Drawing.Point(11, 328);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(728, 577);
-            this.textBox2.TabIndex = 5;
+            this.textBox_inhold.Location = new System.Drawing.Point(11, 328);
+            this.textBox_inhold.Multiline = true;
+            this.textBox_inhold.Name = "textBox_inhold";
+            this.textBox_inhold.Size = new System.Drawing.Size(728, 577);
+            this.textBox_inhold.TabIndex = 5;
             // 
-            // textBox1
+            // textBox_subjekt
             // 
-            this.textBox1.Location = new System.Drawing.Point(156, 251);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(583, 35);
-            this.textBox1.TabIndex = 4;
+            this.textBox_subjekt.Location = new System.Drawing.Point(156, 251);
+            this.textBox_subjekt.Name = "textBox_subjekt";
+            this.textBox_subjekt.Size = new System.Drawing.Size(583, 35);
+            this.textBox_subjekt.TabIndex = 4;
             // 
             // Lable_Body
             // 
@@ -206,6 +207,7 @@
             this.button_tilføj.TabIndex = 7;
             this.button_tilføj.Text = "Tilføj";
             this.button_tilføj.UseVisualStyleBackColor = false;
+            this.button_tilføj.Click += new System.EventHandler(this.button_tilføj_Click);
             // 
             // textBox3
             // 
@@ -236,11 +238,19 @@
             this.label_hjælpe.Text = "?";
             this.label_hjælpe.Click += new System.EventHandler(this.label_hjælpe_Click);
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(807, 359);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(178, 26);
+            this.textBox4.TabIndex = 11;
+            // 
             // AnimalHouse_MailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label_hjælpe);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -266,9 +276,9 @@
         private System.Windows.Forms.Button button_Send;
         private System.Windows.Forms.Button button_Tilbage;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listBox_modtager_list;
+        private System.Windows.Forms.TextBox textBox_inhold;
+        private System.Windows.Forms.TextBox textBox_subjekt;
         private System.Windows.Forms.Label Lable_Body;
         private System.Windows.Forms.Label label_Subjekt;
         private System.Windows.Forms.Label Lable_To;
@@ -281,5 +291,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_hjælpe;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
