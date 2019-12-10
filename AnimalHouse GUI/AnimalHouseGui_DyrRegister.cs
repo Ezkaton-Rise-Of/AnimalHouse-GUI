@@ -77,9 +77,17 @@ namespace AnimalHouse_GUI
 
         private void button_Søg_Click(object sender, EventArgs e)
         {
-            int kundeid = controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id;
-            dataGridView_Dyr.DataSource = controller.HentAlleKundesDyr(kundeid);
-            dataGridView_Dyr.Columns[0].Visible = false;
+            try
+            {
+                int kundeid = controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id;
+                dataGridView_Dyr.DataSource = controller.HentAlleKundesDyr(kundeid);
+                dataGridView_Dyr.Columns[0].Visible = false;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Kunde er ikke registeret i systemet!");
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

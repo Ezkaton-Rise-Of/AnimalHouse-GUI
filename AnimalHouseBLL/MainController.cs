@@ -7,6 +7,7 @@ using AnimalHouse_Entities;
 using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
+using System.Data;
 
 namespace AnimalHouseBLL
 {
@@ -70,6 +71,11 @@ namespace AnimalHouseBLL
         {
             Ansat a = new Ansat(navn, Stelling, tlf);
             return Ac.OpretAnsat(a);
+        }
+
+        public DataSet Test2(int days)
+        {
+            return Jc.Test2(days);
         }
 
         public List<Kunde> HentAlleKunde()
@@ -220,6 +226,10 @@ namespace AnimalHouseBLL
         public List<Ansat> HentAnsatByNavn2(string navn)
         {
             return Ac.HentAnsatByNanv2(navn);
+        }
+        public DataSet Test()
+        {
+            return Jc.Test();
         }
     }
 }

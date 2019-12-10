@@ -66,7 +66,7 @@ namespace AnimalHouse_GUI
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\obj\Debug\Main Form.txt");
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Main Form.txt");
         }
 
         private void button_mail_Click(object sender, EventArgs e)

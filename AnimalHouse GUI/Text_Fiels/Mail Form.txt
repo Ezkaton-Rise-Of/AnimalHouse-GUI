@@ -1,0 +1,13 @@
+Her har du mulighed for at Send et mail til kunderne, for et overblik over kundernes sidste besøg, og print
+et List af dem.
+
+- Først indtast antallet af dage siden sidste besøg, og tryk derefter på Vis.
+- vælg den ønskede Kunde via et doubletklik på ders record i datagridviewet.
+- Tryk på tilføj for at tilføj ders email adresse til listen over kunder, du vil sende en e-mail til.
+- For at fjerne en e-mail fra listen, klik på e-mailen på listen og tryk derefter på fjern.
+- Indtast Emailens Emne i emnefeltet.
+- Indtast Emailens inhold i Meddelelsenfeltet.
+- Tryk på Send for at sende emailen.
+- Tryk på annllere for at annullere.
+- Tryk på Print list for at print listen ud.
+- For at vise alle records tryk på vis alle.

@@ -43,10 +43,14 @@
             this.button_fjern = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button_tilføj = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_days = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label_hjælpe = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button_visAlle = new System.Windows.Forms.Button();
+            this.button_print = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button_annullere = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -82,6 +86,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button_annullere);
             this.groupBox1.Controls.Add(this.listBox_modtager_list);
             this.groupBox1.Controls.Add(this.textBox_inhold);
             this.groupBox1.Controls.Add(this.textBox_subjekt);
@@ -181,6 +186,7 @@
             this.button_fjern.TabIndex = 6;
             this.button_fjern.Text = "Fjern";
             this.button_fjern.UseVisualStyleBackColor = false;
+            this.button_fjern.Click += new System.EventHandler(this.button_fjern_Click);
             // 
             // button2
             // 
@@ -188,12 +194,13 @@
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button2.Location = new System.Drawing.Point(1111, 857);
+            this.button2.Location = new System.Drawing.Point(1114, 834);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 48);
+            this.button2.Size = new System.Drawing.Size(130, 48);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Send påmindelse";
+            this.button2.Text = "Vis";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button_tilføj
             // 
@@ -209,19 +216,19 @@
             this.button_tilføj.UseVisualStyleBackColor = false;
             this.button_tilføj.Click += new System.EventHandler(this.button_tilføj_Click);
             // 
-            // textBox3
+            // textBox_days
             // 
-            this.textBox3.Location = new System.Drawing.Point(1005, 871);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 26);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.Text = "365";
+            this.textBox_days.Location = new System.Drawing.Point(1008, 848);
+            this.textBox_days.Name = "textBox_days";
+            this.textBox_days.Size = new System.Drawing.Size(100, 26);
+            this.textBox_days.TabIndex = 8;
+            this.textBox_days.Text = "365";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1001, 830);
+            this.label1.Location = new System.Drawing.Point(1004, 807);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(201, 24);
             this.label1.TabIndex = 9;
@@ -245,16 +252,75 @@
             this.textBox4.Size = new System.Drawing.Size(178, 26);
             this.textBox4.TabIndex = 11;
             // 
+            // button_visAlle
+            // 
+            this.button_visAlle.AutoSize = true;
+            this.button_visAlle.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_visAlle.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_visAlle.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_visAlle.Location = new System.Drawing.Point(1266, 834);
+            this.button_visAlle.Name = "button_visAlle";
+            this.button_visAlle.Size = new System.Drawing.Size(138, 48);
+            this.button_visAlle.TabIndex = 12;
+            this.button_visAlle.Text = "Vis alle";
+            this.button_visAlle.UseVisualStyleBackColor = false;
+            this.button_visAlle.Click += new System.EventHandler(this.button_visAlle_Click);
+            // 
+            // button_print
+            // 
+            this.button_print.AutoSize = true;
+            this.button_print.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_print.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_print.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_print.Location = new System.Drawing.Point(1424, 834);
+            this.button_print.Name = "button_print";
+            this.button_print.Size = new System.Drawing.Size(138, 48);
+            this.button_print.TabIndex = 13;
+            this.button_print.Text = "Print list";
+            this.button_print.UseVisualStyleBackColor = false;
+            this.button_print.Click += new System.EventHandler(this.button_print_Click);
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button1.Location = new System.Drawing.Point(828, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 48);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button_annullere
+            // 
+            this.button_annullere.AutoSize = true;
+            this.button_annullere.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_annullere.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_annullere.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_annullere.Location = new System.Drawing.Point(342, 911);
+            this.button_annullere.Name = "button_annullere";
+            this.button_annullere.Size = new System.Drawing.Size(136, 48);
+            this.button_annullere.TabIndex = 7;
+            this.button_annullere.Text = "Annullere";
+            this.button_annullere.UseVisualStyleBackColor = false;
+            this.button_annullere.Click += new System.EventHandler(this.button_annullere_Click);
+            // 
             // AnimalHouse_MailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_print);
+            this.Controls.Add(this.button_visAlle);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label_hjælpe);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_days);
             this.Controls.Add(this.button_tilføj);
             this.Controls.Add(this.button_fjern);
             this.Controls.Add(this.groupBox2);
@@ -288,9 +354,13 @@
         private System.Windows.Forms.Button button_fjern;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_tilføj;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_days;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_hjælpe;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button_visAlle;
+        private System.Windows.Forms.Button button_print;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_annullere;
     }
 }

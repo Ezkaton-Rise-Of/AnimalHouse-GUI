@@ -1,0 +1,27 @@
+Her har du mulighed for at tilføj til journal, Slet fra journal, og har et overblik over alle de journaliseringer
+der findes i systemet.
+
+- For at tilføj et nt journal record:
+	1- vælg behanlders navn fra dropbox listen.
+	2- vælg kundes navn fra dropbox listen og tryk på søg.
+	3- vælg dyret der skal tilføje ny record til.
+	4- i beskrivelsen kan du tiløje hvad for noget behandling blev genmført, og hvilken medicin der blev 
+  	ordineret
+	5- for at geme recoredet skal du tryk på Gem knap.
+	6- for at annullere tryk på Annulere.
+
+- For at søge for alle journaliseringer for en bestemt behandler
+	1- vælg behanlders navn fra dropbox listen.
+	2- tryk på Søgning knap.
+
+- For at vise alle journaliseringer tryk på Vis alle.
+- For at vis information for et bestemt record.
+	1- doubletklik på et record ind i datagridviewet.
+	2- tryk på Hent record knap under datagridviewet.
+
+- For at slette et journaliserings record
+	1- doubletklik på et record ind i datagridviewet.
+	2- tryk på Slet knap under datagridviewet.
+	3- tyrk Yes i MessageBox window for at bekræfte.
+
+- For at vende tilbage til hovedmenuen, tryk på Tilbage-knappen.

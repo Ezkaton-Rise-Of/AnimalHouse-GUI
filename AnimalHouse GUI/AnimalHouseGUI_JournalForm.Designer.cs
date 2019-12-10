@@ -242,6 +242,7 @@
             this.label5.Size = new System.Drawing.Size(22, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "?";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBox_behandler2
             // 
@@ -271,7 +272,7 @@
             this.button_annulere.Name = "button_annulere";
             this.button_annulere.Size = new System.Drawing.Size(137, 68);
             this.button_annulere.TabIndex = 10;
-            this.button_annulere.Text = "Annulere";
+            this.button_annulere.Text = "Annullere";
             this.button_annulere.UseVisualStyleBackColor = false;
             this.button_annulere.Click += new System.EventHandler(this.button_annulere_Click);
             // 

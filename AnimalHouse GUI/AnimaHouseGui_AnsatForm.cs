@@ -53,12 +53,13 @@ namespace AnimalHouse_GUI
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Ansat Form.txt");
         }
 
         private void button_Register_Click(object sender, EventArgs e)
         {
             MessageBox.Show(controller.OpretAnsat(textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString(),textBox_tlf.Text.Trim()), "Oprettelse af ny ansat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ClearForm();
             FillDataGridView();
         }
 
@@ -86,6 +87,9 @@ namespace AnimalHouse_GUI
                     id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     button_Slet.Enabled = true;
                     button_Update.Enabled = true;
+                    textBox_navn.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    comboBox_stelling.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    textBox_tlf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 }
             }
             catch (Exception ex)

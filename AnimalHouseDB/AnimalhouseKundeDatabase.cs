@@ -295,7 +295,7 @@ namespace AnimalHouseDB
             return results;
         }
 
-        public int HentKundeId(string tlf)
+        public int HentKundeId(string input)
         {
             int id = 0;
             SqlConnection conn = new SqlConnection();
@@ -303,7 +303,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"select KundeId from Kunde where Tlf Like '%{tlf}%'";
+                string commandtxt = $"select KundeId from Kunde where Tlf Like '%{input}%' or Fnavn Like '%{input}%'";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
