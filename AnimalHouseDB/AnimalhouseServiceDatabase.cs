@@ -24,7 +24,7 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("Select * from Service join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId;");
+                SqlCommand command = new SqlCommand("Select * from Service left join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId;");
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
                 ld = new List<Service>();

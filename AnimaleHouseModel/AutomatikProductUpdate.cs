@@ -11,7 +11,7 @@ namespace AnimaleHouseModel
     {
         string Path;
         string ThisPath;
-        List<string> Line; 
+        public List<string> Line = new List<string>(); 
  
        public AutomatikProductUpdate(string path = @"\MedicinPriser")
         {

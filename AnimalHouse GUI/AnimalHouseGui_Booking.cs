@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using AnimalHouseBLL;
 using AnimalHouse_Entities;
 using System.Diagnostics;
-
+using System_Entities;
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Booking : Form
@@ -21,17 +21,6 @@ namespace AnimalHouse_GUI
         public AnimalHouseGui_Booking()
         {
             InitializeComponent();
-
-
-            ansatte = controller.HentAlleAnsate();
-            foreach (Ansat ansat in ansatte)
-            {
-                comboBox2.Items.Add(ansat.Navn + " (" + ansat.Stelling + ")");
-            }
-
-            //foreach (An item in dyr)
-            //{
-            //    comboBox1.Items.Add(item.DyrId + " " + item.Art + " " + item.Race);
 
 
 
@@ -103,19 +92,30 @@ namespace AnimalHouse_GUI
 
                 foreach (Ansat item in controller.HentAlleAnsate())
                 {
-                    comboBox2.Items.Add(item);
+                    ComboBoxItem citem = new ComboBoxItem();
+                    citem.Text = item.Navn + " (" + item.Stelling + ")";
+                    citem.Value = item;
+                    comboBox2.Items.Add(citem);
                 }
 
-                foreach(Service item in controller.HentAlleService())
-                {
-                    comboBox1.Items.Add(item);
-                }
+
+                //foreach(Service item in controller.HentAlleService())
+                //{
+                //    ComboBoxItem citem = new ComboBoxItem();
+                //    citem.Text = item.ServiceType;
+                //    citem.Value = item;
+                //    comboBox1.Items.Add(citem);
+                //}
 
                 //foreach (Booking item in controller.HentFrieTider(comboBox1.Items.))
                 //{
 
                 //}
 
+                //foreach (Booking item in controller.HentFrieTider(comboBox1.Items.))
+                //{
+
+                //}
 
 
             }
@@ -178,5 +178,6 @@ namespace AnimalHouse_GUI
         {
 
         }
+
     }
 }

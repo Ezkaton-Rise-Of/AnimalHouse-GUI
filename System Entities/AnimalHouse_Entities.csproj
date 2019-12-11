@@ -47,6 +47,7 @@
     <Compile Include="Booking.cs" />
     <Compile Include="BookingTime.cs" />
     <Compile Include="Bur.cs" />
+    <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Dyr.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Journal.cs" />

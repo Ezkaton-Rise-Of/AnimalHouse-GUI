@@ -155,7 +155,7 @@
             this.button_Søgning.Name = "button_Søgning";
             this.button_Søgning.Size = new System.Drawing.Size(98, 41);
             this.button_Søgning.TabIndex = 118;
-            this.button_Søgning.Text = "Søgning";
+            this.button_Søgning.Text = "TilFøj";
             this.button_Søgning.UseVisualStyleBackColor = false;
             // 
             // label_DyrIdBooking

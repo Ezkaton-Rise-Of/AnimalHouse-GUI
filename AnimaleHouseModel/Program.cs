@@ -10,9 +10,9 @@ namespace AnimaleHouseModel
     {
         static void Main(string[] args)
         {
-            AutomatikProductUpdate auto = new AutomatikProductUpdate();
-            auto.CheckForFiles();
-            Console.ReadKey();
+            //AutomatikProductUpdate auto = new AutomatikProductUpdate();
+            //auto.CheckForFiles();
+            //Console.ReadKey();
 
 
         }
