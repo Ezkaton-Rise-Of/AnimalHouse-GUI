@@ -10,6 +10,10 @@ namespace AnimalHouse_Entities
     {
         public string ServiceType;
 
+        public Service()
+        {
+        }
+
         public Service(int produktId, string beskrivelse, double pris, int kategoriId) : base(produktId, beskrivelse, pris, kategoriId)
         {
         }

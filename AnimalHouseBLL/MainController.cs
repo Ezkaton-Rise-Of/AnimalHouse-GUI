@@ -77,10 +77,10 @@ namespace AnimalHouseBLL
             return Ac.OpretAnsat(a);
         }
 
-        public DataSet Test2(int days)
-        {
-            return Jc.Test2(days);
-        }
+        //public DataSet Test2(int days)
+        //{
+        //    return Jc.Test2(days);
+        //}
 
         public List<Kunde> HentAlleKunde()
         {
@@ -100,7 +100,7 @@ namespace AnimalHouseBLL
             return Bc.HentAlleFritider(ansat, datetime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int dateTime)
         {
             return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime);
         }
@@ -257,9 +257,9 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatByNanv2(navn);
         }
-        public DataSet Test()
-        {
-            return Jc.Test();
-        }
+        //public DataSet Test()
+        //{
+        //    return Jc.Test();
+        //}
     }
 }

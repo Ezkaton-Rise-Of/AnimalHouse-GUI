@@ -49,7 +49,7 @@ namespace AnimalHouseBLL
             return BookingDB.HentAlleFritider(ansat, dateTime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int dateTime)
         {
             return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime);
         }

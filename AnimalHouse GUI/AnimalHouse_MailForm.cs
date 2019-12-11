@@ -56,21 +56,21 @@ namespace AnimalHouse_GUI
             listBox_modtager_list.Items.Add(dataGridView1.CurrentRow.Cells[2].Value.ToString());
         }
 
-        private void button_visAlle_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = controller.Test().Tables[0].DefaultView;
-        }
+        //private void button_visAlle_Click(object sender, EventArgs e)
+        //{
+        //    dataGridView1.DataSource = controller.Test().Tables[0].DefaultView;
+        //}
 
         private void button_fjern_Click(object sender, EventArgs e)
         {
             listBox_modtager_list.Items.Remove(listBox_modtager_list.SelectedItem);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = controller.Test2(int.Parse(textBox_days.Text.Trim())).Tables[0].DefaultView;
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    dataGridView1.DataSource = controller.Test2(int.Parse(textBox_days.Text.Trim())).Tables[0].DefaultView;
 
-        }
+        //}
 
         private void button_print_Click(object sender, EventArgs e)
         {

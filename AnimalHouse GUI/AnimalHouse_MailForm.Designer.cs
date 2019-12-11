@@ -200,7 +200,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Vis";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button_tilføj
             // 
@@ -264,7 +264,7 @@
             this.button_visAlle.TabIndex = 12;
             this.button_visAlle.Text = "Vis alle";
             this.button_visAlle.UseVisualStyleBackColor = false;
-            this.button_visAlle.Click += new System.EventHandler(this.button_visAlle_Click);
+            //this.button_visAlle.Click += new System.EventHandler(this.button_visAlle_Click);
             // 
             // button_print
             // 
