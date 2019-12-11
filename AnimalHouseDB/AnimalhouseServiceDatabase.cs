@@ -4,15 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
-
+using System.Data.SqlClient;
+using System.Configuration;
 namespace AnimalHouseDB
 {
     public class AnimalhouseServiceDatabase : IServiceDB
     {
+        public AnimalhouseServiceDatabase()
+        {
+        }
+
         public List<Service> HentAlleService()
         {
-            throw new NotImplementedException();
+            List<Service> ld = null;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+                SqlCommand command = new SqlCommand("Select * from Service join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId;");
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                ld = new List<Service>();
+                while (reader.Read())
+                {
+                    Service d = new Service();
+                    d.ServiceType = Convert.ToString(reader["ServiceType"]);
+                    ld.Add(d);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return ld;
         }
+
 
         public Service HentService(int s)
         {

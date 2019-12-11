@@ -1,0 +1,3 @@
+#Medicin#smertestillede#100#mumletekst
+#Medicin#antibiotika#200#mumletekst
+

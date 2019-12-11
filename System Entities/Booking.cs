@@ -9,14 +9,14 @@ namespace AnimalHouse_Entities
     public class Booking
     {
 
-        public int BookingId;
-        public int DyrId;
-        public int AnsatId;
-        public string Notat;
-        public DateTime StartDato;
-        public DateTime SlutDato;
-        public Service service;
-        public Bur bur;
+        public int BookingId { get; set; }
+        public int DyrId { get; set; }
+        public int AnsatId { get; set; }
+        public string Notat { get; set; }
+        public DateTime StartDato { get; set; }
+        public DateTime SlutDato { get; set; }
+        public Service service { get; set; }
+        public Bur bur { get; set; } 
 
         public Booking()
         {

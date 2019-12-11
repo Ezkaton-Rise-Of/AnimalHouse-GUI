@@ -14,5 +14,8 @@ namespace AnimalHouseDB
         string UpdateBur(Bur b);
         Bur HentBurByID(int id);
         List<Bur> HentAlleBure();
+
+        //Holger
+        List<Bur> HentFribure(DateTime startdato, DateTime slutdato);
     }   
 }

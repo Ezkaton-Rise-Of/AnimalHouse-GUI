@@ -21,6 +21,11 @@ namespace AnimalHouseBLL
             else return _instance;
         }
 
+        public IBookingBurDB GetBurDB()
+        {
+            return new AnimalHouseBurDatabase();
+        }
+
         public IKundeDB GetKundeDB()
         {
             return new AnimalhouseKundeDatabase();
@@ -55,5 +60,11 @@ namespace AnimalHouseBLL
         {
             return new AnimalHouseJournalDataBase();
         }
+
+        public IServiceDB GetServiceDB()
+        {
+            return new AnimalhouseServiceDatabase();
+        }
+
     }
 }

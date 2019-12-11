@@ -1,12 +1,7 @@
-﻿using System;
+﻿using AnimalHouse_Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AnimalHouse_Entities;
 using System_Entities;
-using AnimalHouseDB;
-using AnimalHouseBLL;
 
 namespace AnimalHouseBLL
 {
@@ -16,14 +11,17 @@ namespace AnimalHouseBLL
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
         public List<Lager> L = new List<Lager>();
-
+        public List<Booking> B = new List<Booking>();
+        public List<Bur> Bur = new List<Bur>();
+        public List<Service> S = new List<Service>();
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
         BookingController Bc;
         LagerController Lc;
         JournalController Jc;
-
+        BurController BurC;
+        ServiceController ServiceC;
         public MainController()
         {
             Kc = new KundeController();
@@ -32,6 +30,8 @@ namespace AnimalHouseBLL
             Bc = new BookingController();
             Lc = new LagerController();
             Jc = new JournalController();
+            BurC = new BurController();
+            ServiceC = new ServiceController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -92,6 +92,23 @@ namespace AnimalHouseBLL
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
+        }
+
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime)
+        {
+            return Bc.HentAlleFritider(ansat, datetime);
+        }
+
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, DateTime dateTime)
+        {
+            return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime);
+        }
+
+        
+
+        public List<Service> HentAlleService()
+        {
+            return ServiceC.HentAlleService();
         }
 
         public List<Dyr> HentAlleDyr()
@@ -213,5 +230,14 @@ namespace AnimalHouseBLL
         {
             return Jc.HentJournal(id);
         }
+
+
+        public void BookingHentFriBur(DateTime start, DateTime slut)
+        {
+
+            Bur = BurC.BookingHentFriBur(start, slut);
+        }
+
+
     }
 }

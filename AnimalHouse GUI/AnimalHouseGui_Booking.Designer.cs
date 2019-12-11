@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGui_Booking));
             this.dateTimePicker_StartDato = new System.Windows.Forms.DateTimePicker();
             this.label_StartDato = new System.Windows.Forms.Label();
-            this.dateTimePicker_SlutDato = new System.Windows.Forms.DateTimePicker();
             this.textBox_EjerIdBooking = new System.Windows.Forms.TextBox();
             this.label_BehandlerIdBooking = new System.Windows.Forms.Label();
             this.label_EjerIdBooking = new System.Windows.Forms.Label();
@@ -40,7 +39,7 @@
             this.button_Søgning = new System.Windows.Forms.Button();
             this.label_DyrIdBooking = new System.Windows.Forms.Label();
             this.label_BookingType = new System.Windows.Forms.Label();
-            this.comboBox_BookingType = new System.Windows.Forms.ComboBox();
+            this.comboBox_ServiceType = new System.Windows.Forms.ComboBox();
             this.label_BookingBur = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -54,6 +53,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.StartTime_Combo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -90,13 +92,6 @@
             this.label_StartDato.Size = new System.Drawing.Size(77, 16);
             this.label_StartDato.TabIndex = 109;
             this.label_StartDato.Text = "Start Dato";
-            // 
-            // dateTimePicker_SlutDato
-            // 
-            this.dateTimePicker_SlutDato.Location = new System.Drawing.Point(15, 124);
-            this.dateTimePicker_SlutDato.Name = "dateTimePicker_SlutDato";
-            this.dateTimePicker_SlutDato.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker_SlutDato.TabIndex = 112;
             // 
             // textBox_EjerIdBooking
             // 
@@ -177,23 +172,23 @@
             // 
             this.label_BookingType.AutoSize = true;
             this.label_BookingType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_BookingType.Location = new System.Drawing.Point(231, 77);
+            this.label_BookingType.Location = new System.Drawing.Point(231, 100);
             this.label_BookingType.Name = "label_BookingType";
             this.label_BookingType.Size = new System.Drawing.Size(95, 16);
             this.label_BookingType.TabIndex = 123;
             this.label_BookingType.Text = "Service type";
             // 
-            // comboBox_BookingType
+            // comboBox_ServiceType
             // 
-            this.comboBox_BookingType.FormattingEnabled = true;
-            this.comboBox_BookingType.Items.AddRange(new object[] {
+            this.comboBox_ServiceType.FormattingEnabled = true;
+            this.comboBox_ServiceType.Items.AddRange(new object[] {
             "Konsultation",
             "Behandling",
             "Operation"});
-            this.comboBox_BookingType.Location = new System.Drawing.Point(234, 124);
-            this.comboBox_BookingType.Name = "comboBox_BookingType";
-            this.comboBox_BookingType.Size = new System.Drawing.Size(200, 21);
-            this.comboBox_BookingType.TabIndex = 124;
+            this.comboBox_ServiceType.Location = new System.Drawing.Point(234, 124);
+            this.comboBox_ServiceType.Name = "comboBox_ServiceType";
+            this.comboBox_ServiceType.Size = new System.Drawing.Size(200, 21);
+            this.comboBox_ServiceType.TabIndex = 124;
             // 
             // label_BookingBur
             // 
@@ -261,11 +256,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 77);
+            this.label1.Location = new System.Drawing.Point(12, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
+            this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 134;
-            this.label1.Text = "slut Dato";
+            this.label1.Text = "Start Tid";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -292,7 +288,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(13, 158);
+            this.dateTimePicker1.Location = new System.Drawing.Point(23, 116);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 137;
@@ -301,7 +297,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 74);
+            this.label3.Location = new System.Drawing.Point(20, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 16);
             this.label3.TabIndex = 136;
@@ -309,21 +305,24 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(13, 107);
+            this.dateTimePicker2.Location = new System.Drawing.Point(23, 158);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 135;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.StartTime_Combo);
             this.groupBox1.Controls.Add(this.label_StartDato);
             this.groupBox1.Controls.Add(this.dateTimePicker_StartDato);
-            this.groupBox1.Controls.Add(this.dateTimePicker_SlutDato);
             this.groupBox1.Controls.Add(this.label_BehandlerIdBooking);
             this.groupBox1.Controls.Add(this.button_Søgning);
             this.groupBox1.Controls.Add(this.label_BookingType);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox_BookingType);
+            this.groupBox1.Controls.Add(this.comboBox_ServiceType);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Location = new System.Drawing.Point(316, 12);
             this.groupBox1.Name = "groupBox1";
@@ -332,6 +331,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(16, 113);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 16);
+            this.label11.TabIndex = 137;
+            this.label11.Text = "Slut Tid ";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(15, 132);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 136;
+            // 
+            // StartTime_Combo
+            // 
+            this.StartTime_Combo.FormattingEnabled = true;
+            this.StartTime_Combo.Location = new System.Drawing.Point(13, 77);
+            this.StartTime_Combo.Name = "StartTime_Combo";
+            this.StartTime_Combo.Size = new System.Drawing.Size(121, 21);
+            this.StartTime_Combo.TabIndex = 135;
+            this.StartTime_Combo.SelectedIndexChanged += new System.EventHandler(this.StartTime_Combo_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -518,7 +545,6 @@
         #endregion
         private System.Windows.Forms.DateTimePicker dateTimePicker_StartDato;
         private System.Windows.Forms.Label label_StartDato;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_SlutDato;
         private System.Windows.Forms.TextBox textBox_EjerIdBooking;
         private System.Windows.Forms.Label label_BehandlerIdBooking;
         private System.Windows.Forms.Label label_EjerIdBooking;
@@ -527,7 +553,7 @@
         private System.Windows.Forms.Button button_Søgning;
         private System.Windows.Forms.Label label_DyrIdBooking;
         private System.Windows.Forms.Label label_BookingType;
-        private System.Windows.Forms.ComboBox comboBox_BookingType;
+        private System.Windows.Forms.ComboBox comboBox_ServiceType;
         private System.Windows.Forms.Label label_BookingBur;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -555,5 +581,8 @@
         private System.Windows.Forms.Label Addresse_empty;
         private System.Windows.Forms.Label By_empty;
         private System.Windows.Forms.Label Postnummer_empty;
+        private System.Windows.Forms.ComboBox StartTime_Combo;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label11;
     }
 }

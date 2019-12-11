@@ -6,6 +6,10 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseBookingDB : IBookingDB
     {
+        public AnimalhouseBookingDB()
+        {
+        }
+
         public List<Booking> HentAlleBooking()
         {
             List<Booking> ld = null;
@@ -45,6 +49,88 @@ namespace AnimalHouseDB
             }
 
             return ld;
+        }
+
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
+        {
+            List<BookingTime> bookingTimes = null;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+
+                SqlCommand command = new SqlCommand("select * from BookingTimer " +
+                    "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
+                    "and BookingTimer.BookingTimerId < Booking.SlutTid " +
+                    "and Booking.Startdato = @dato' AND Booking.AnsatId = @AnsatId);");
+                command.Parameters.Add(new SqlParameter("@dato", ansat.Id));
+                command.Parameters.Add(new SqlParameter("@AnsatId", dateTime.ToString("yyyy-MM-dd")));
+
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                bookingTimes = new List<BookingTime>();
+                while (reader.Read())
+                {
+                    BookingTime d = new BookingTime();
+                    d.timeId = Convert.ToInt32(reader["BookingTimerId"]);
+                    d.time = Convert.ToString(reader["TimeRange"]);
+                    bookingTimes.Add(d);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return bookingTimes;
+        }
+
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int starttime)
+        {
+            List<BookingTime> bookingTimes = null;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+
+                SqlCommand command = new SqlCommand("select * from BookingTimer " +
+                    "where BookingTimer.BookingTimerId between @starttime and(select top 1 Booking.StartTid from Booking where Booking.StartTid > @starttime order by Booking.StartTid asc) AND AnsatId = @ansat;");
+                command.Parameters.Add(new SqlParameter("@Ansat", ansat.Id));
+                command.Parameters.Add(new SqlParameter("@starttime", starttime));
+
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                bookingTimes = new List<BookingTime>();
+                while (reader.Read())
+                {
+                    BookingTime d = new BookingTime();
+                    d.timeId = Convert.ToInt32(reader["BookingTimerId"]);
+                    d.time = Convert.ToString(reader["TimeRange"]);
+                    bookingTimes.Add(d);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return bookingTimes;
         }
 
         public Booking HentBooking(int Id)
@@ -234,6 +320,8 @@ namespace AnimalHouseDB
             }
             return answer;
         }
+
+
     }
 }
 

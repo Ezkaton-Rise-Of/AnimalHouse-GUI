@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Ansat.cs" />
     <Compile Include="Booking.cs" />
+    <Compile Include="BookingTime.cs" />
     <Compile Include="Bur.cs" />
     <Compile Include="Dyr.cs" />
     <Compile Include="Email.cs" />

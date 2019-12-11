@@ -17,17 +17,27 @@ namespace AnimalHouse_GUI
     {
         MainController controller = new MainController();
         List<Dyr> dyr = null;
-
+        List<Ansat> ansatte = null;
         public AnimalHouseGui_Booking()
         {
             InitializeComponent();
 
-            dateTimePicker_SlutDato.Format = DateTimePickerFormat.Time;
-            dateTimePicker_SlutDato.ShowUpDown = true;
-            
+
+            ansatte = controller.HentAlleAnsate();
+            foreach (Ansat ansat in ansatte)
+            {
+                comboBox2.Items.Add(ansat.Navn + " (" + ansat.Stelling + ")");
+            }
+
+            //foreach (An item in dyr)
+            //{
+            //    comboBox1.Items.Add(item.DyrId + " " + item.Art + " " + item.Race);
+
+
+
         }
 
-        private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)
+            private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)
         {
 
         }
@@ -89,6 +99,25 @@ namespace AnimalHouse_GUI
                 Addresse_empty.Text = controller.K[0].Adresse;
                 By_empty.Text = controller.K[0].By;
                 Postnummer_empty.Text = controller.K[0].Postnummer;
+                
+
+                foreach (Ansat item in controller.HentAlleAnsate())
+                {
+                    comboBox2.Items.Add(item);
+                }
+
+                foreach(Service item in controller.HentAlleService())
+                {
+                    comboBox1.Items.Add(item);
+                }
+
+                //foreach (Booking item in controller.HentFrieTider(comboBox1.Items.))
+                //{
+
+                //}
+
+
+
             }
             catch (Exception)
             {
@@ -108,21 +137,44 @@ namespace AnimalHouse_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-  
+
 
 
 
             //holger
             //tjekker om der er tilføjes en kunde
-            if (comboBox1.SelectedValue ==  null)
-            {
-                MessageBox.Show("vælg en Kunde først");
-            }
+            //if (comboBox1.SelectedValue. ==  null)
+            //{
+            //    MessageBox.Show("vælg en Kunde først");
+            //}
+            controller.BookingHentFriBur(dateTimePicker1.Value, dateTimePicker2.Value);
+
+            dataGridView1.DataSource = controller.Bur;
  
 
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartTime_Combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
 
         }

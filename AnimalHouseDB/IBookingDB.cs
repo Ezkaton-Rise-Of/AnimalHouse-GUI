@@ -14,5 +14,7 @@ namespace AnimalHouseDB
         Booking HentBooking(int Id);
         List<Booking> HentBookingByKunde(int KundeId);
         List<Booking> HentAlleBooking();
+        List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime);
+        List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int dateTime);
     }
 }
