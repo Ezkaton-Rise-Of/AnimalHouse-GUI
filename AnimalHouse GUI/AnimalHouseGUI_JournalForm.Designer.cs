@@ -50,14 +50,14 @@
             this.button_hent_record = new System.Windows.Forms.Button();
             this.button_hent_alle = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox_info1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox_info2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox_info3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.textBox_info4 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_info3 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox_info2 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_info1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -196,7 +196,7 @@
             this.button_søgning.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_søgning.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_søgning.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_søgning.Location = new System.Drawing.Point(793, 147);
+            this.button_søgning.Location = new System.Drawing.Point(1180, 136);
             this.button_søgning.Name = "button_søgning";
             this.button_søgning.Size = new System.Drawing.Size(137, 51);
             this.button_søgning.TabIndex = 4;
@@ -242,11 +242,12 @@
             this.label5.Size = new System.Drawing.Size(22, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "?";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBox_behandler2
             // 
             this.comboBox_behandler2.FormattingEnabled = true;
-            this.comboBox_behandler2.Location = new System.Drawing.Point(793, 97);
+            this.comboBox_behandler2.Location = new System.Drawing.Point(812, 147);
             this.comboBox_behandler2.Name = "comboBox_behandler2";
             this.comboBox_behandler2.Size = new System.Drawing.Size(347, 28);
             this.comboBox_behandler2.TabIndex = 9;
@@ -255,7 +256,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(672, 105);
+            this.label6.Location = new System.Drawing.Point(713, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 24);
             this.label6.TabIndex = 8;
@@ -271,7 +272,7 @@
             this.button_annulere.Name = "button_annulere";
             this.button_annulere.Size = new System.Drawing.Size(137, 68);
             this.button_annulere.TabIndex = 10;
-            this.button_annulere.Text = "Annulere";
+            this.button_annulere.Text = "Annullere";
             this.button_annulere.UseVisualStyleBackColor = false;
             this.button_annulere.Click += new System.EventHandler(this.button_annulere_Click);
             // 
@@ -322,57 +323,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Journal information";
             // 
-            // textBox_info1
+            // textBox_info4
             // 
-            this.textBox_info1.Location = new System.Drawing.Point(137, 34);
-            this.textBox_info1.Name = "textBox_info1";
-            this.textBox_info1.ReadOnly = true;
-            this.textBox_info1.Size = new System.Drawing.Size(207, 26);
-            this.textBox_info1.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 37);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 19);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Behandler";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(76, 80);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 19);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Dyr";
-            // 
-            // textBox_info2
-            // 
-            this.textBox_info2.Location = new System.Drawing.Point(137, 77);
-            this.textBox_info2.Name = "textBox_info2";
-            this.textBox_info2.ReadOnly = true;
-            this.textBox_info2.Size = new System.Drawing.Size(207, 26);
-            this.textBox_info2.TabIndex = 3;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 129);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 19);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Beskrivelse";
-            // 
-            // textBox_info3
-            // 
-            this.textBox_info3.Location = new System.Drawing.Point(137, 131);
-            this.textBox_info3.Multiline = true;
-            this.textBox_info3.Name = "textBox_info3";
-            this.textBox_info3.ReadOnly = true;
-            this.textBox_info3.Size = new System.Drawing.Size(850, 117);
-            this.textBox_info3.TabIndex = 5;
+            this.textBox_info4.Location = new System.Drawing.Point(495, 32);
+            this.textBox_info4.Name = "textBox_info4";
+            this.textBox_info4.ReadOnly = true;
+            this.textBox_info4.Size = new System.Drawing.Size(207, 26);
+            this.textBox_info4.TabIndex = 7;
             // 
             // label10
             // 
@@ -383,13 +340,57 @@
             this.label10.TabIndex = 6;
             this.label10.Text = "Dato";
             // 
-            // textBox_info4
+            // textBox_info3
             // 
-            this.textBox_info4.Location = new System.Drawing.Point(495, 32);
-            this.textBox_info4.Name = "textBox_info4";
-            this.textBox_info4.ReadOnly = true;
-            this.textBox_info4.Size = new System.Drawing.Size(207, 26);
-            this.textBox_info4.TabIndex = 7;
+            this.textBox_info3.Location = new System.Drawing.Point(137, 131);
+            this.textBox_info3.Multiline = true;
+            this.textBox_info3.Name = "textBox_info3";
+            this.textBox_info3.ReadOnly = true;
+            this.textBox_info3.Size = new System.Drawing.Size(850, 117);
+            this.textBox_info3.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 129);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(98, 19);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Beskrivelse";
+            // 
+            // textBox_info2
+            // 
+            this.textBox_info2.Location = new System.Drawing.Point(137, 77);
+            this.textBox_info2.Name = "textBox_info2";
+            this.textBox_info2.ReadOnly = true;
+            this.textBox_info2.Size = new System.Drawing.Size(207, 26);
+            this.textBox_info2.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(76, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 19);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Dyr";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 19);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Behandler";
+            // 
+            // textBox_info1
+            // 
+            this.textBox_info1.Location = new System.Drawing.Point(137, 34);
+            this.textBox_info1.Name = "textBox_info1";
+            this.textBox_info1.ReadOnly = true;
+            this.textBox_info1.Size = new System.Drawing.Size(207, 26);
+            this.textBox_info1.TabIndex = 0;
             // 
             // AnimalHouseGUI_JournalForm
             // 

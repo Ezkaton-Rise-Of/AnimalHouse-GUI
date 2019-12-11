@@ -8,7 +8,6 @@ using System.Net.Mail;
 namespace AnimaleHouseModel
 {
     
-    
     public class Email
     {
         MailMessage mail = new MailMessage();

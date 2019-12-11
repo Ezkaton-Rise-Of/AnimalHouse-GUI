@@ -55,6 +55,8 @@
     <Compile Include="Produkt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Salg.cs" />
+    <Compile Include="SalgItemLine.cs" />
     <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>

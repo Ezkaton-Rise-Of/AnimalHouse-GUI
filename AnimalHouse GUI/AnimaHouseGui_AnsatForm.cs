@@ -39,26 +39,27 @@ namespace AnimalHouse_GUI
         {
             try
             {
-                dataGridView1.DataSource = controller.HentAnsateByNavn(textBox_ansatNavn.Text.Trim());
+                dataGridView1.DataSource = controller.HentAnsatByNavn2(textBox_ansatNavn.Text.Trim());
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[4].Visible = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message);
+                throw;
             }
             
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Ansat Form.txt");
         }
 
         private void button_Register_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(controller.OpretAnsat(textBox_navn.Text.Trim(), comboBox1.SelectedItem.ToString(),textBox_tlf.Text.Trim()), "Oprettelse af ny ansat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(controller.OpretAnsat(textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString(),textBox_tlf.Text.Trim()), "Oprettelse af ny ansat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ClearForm();
             FillDataGridView();
         }
 
@@ -72,6 +73,7 @@ namespace AnimalHouse_GUI
             if (MessageBox.Show("Er du sikker?", "Slette ansat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 MessageBox.Show(controller.SletAnsat(id), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
                 FillDataGridView();
             }
         }
@@ -85,6 +87,9 @@ namespace AnimalHouse_GUI
                     id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     button_Slet.Enabled = true;
                     button_Update.Enabled = true;
+                    textBox_navn.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    comboBox_stelling.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    textBox_tlf.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -98,9 +103,16 @@ namespace AnimalHouse_GUI
         {
             if (MessageBox.Show("Er du sikker?", "Update ansat information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(controller.UpdateAnsat(id,textBox_navn.Text.Trim(), comboBox1.SelectedItem.ToString().Trim(), textBox_tlf.Text.Trim()), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(controller.UpdateAnsat(id,textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString().Trim(), textBox_tlf.Text.Trim()), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FillDataGridView();
             }
+        }
+
+        private void ClearForm()
+        {
+            textBox_navn.Text = "";
+            comboBox_stelling.Text = "";
+            textBox_tlf.Text = "";
         }
     }
 }

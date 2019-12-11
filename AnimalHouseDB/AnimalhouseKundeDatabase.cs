@@ -55,16 +55,8 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = "update Kunde set Fnavn = @Fnavn,Lnavn=@Lnavn ,Adresse=@Adresse,Postnummer=@Postnummer,Tlf=@Tlf,Kundetype=@Kundetype,E_mail=@E_mail where KundeId = @KundeId;";
+                string commandtxt = $"Update Kunde Set Fnavn ='{k.Fnavn}',Lnavn='{k.Lnavn}', Adresse='{k.Adresse}', Postnummer='{k.Postnummer}', Tlf='{k.Tlf}', Kundetype='{k.Kundetype}', E_mail='{k.E_mail}' where KundeId ={k.Id}";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
-                command.Parameters.Add(new SqlParameter("@KundeId", k.Id));
-                command.Parameters.Add(new SqlParameter("@Fnavn", k.Fnavn));
-                command.Parameters.Add(new SqlParameter("@Lnavn", k.Lnavn));
-                command.Parameters.Add(new SqlParameter("@Adresse", k.Adresse));
-                command.Parameters.Add(new SqlParameter("@Postnummer", k.Postnummer));
-                command.Parameters.Add(new SqlParameter("@Tlf", k.Tlf));
-                command.Parameters.Add(new SqlParameter("@kundetype", k.Kundetype));
-                command.Parameters.Add(new SqlParameter("@E_mail", k.E_mail));
                 command.ExecuteNonQuery();
             }
             catch (Exception)
@@ -84,25 +76,36 @@ namespace AnimalHouseDB
         // Kundesletning
         public string SletKunde(int id)
         {
+            SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
+            SqlCommand command2 = new SqlCommand($"Delete from Kunde where KundeId ={id}", conn);
+            SqlCommand command1   = new SqlCommand($"Delete from Dyr where KundeId = {id}",conn);
+            
             try
             {
-                string commandtxt = $"Delete from Kunde where KundeId ={id}";
-                SqlCommand command = new SqlCommand(commandtxt, conn);
-                command.ExecuteNonQuery();
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                command1.Transaction = transaction;
+                command2.Transaction = transaction;
+                command1.ExecuteNonQuery();
+                command2.ExecuteNonQuery();
+                transaction.Commit();
+                return "Kunde blev slettet!";
             }
             catch (Exception)
             {
-                return "slette kundernes dyr først!";
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+                throw;
+                //return "slette kundernes dyr først!";
             }
             finally
             {
                 conn.Close();
             }
-
-            return "Kunde blev slettet!";
         }
 
         //KundeSøning
@@ -292,7 +295,7 @@ namespace AnimalHouseDB
             return results;
         }
 
-        public int HentKundeId(string navn)
+        public int HentKundeId(string input)
         {
             int id = 0;
             SqlConnection conn = new SqlConnection();
@@ -300,7 +303,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"select KundeId from Kunde where Fnavn Like '%{navn}%'";
+                string commandtxt = $"select KundeId from Kunde where Tlf Like '%{input}%' or Fnavn Like '%{input}%'";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System_Entities;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System_Entities;
 
 namespace AnimalHouseDB
 {
@@ -177,7 +175,7 @@ namespace AnimalHouseDB
                 try
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO Journial (DyrId, AnsatId,beskrivelse) values (@DyrId, @AnsatId, @Beskrivelse)", conn);
-                    command.Parameters.Add(new SqlParameter("@DyrId",j.dyrId));
+                    command.Parameters.Add(new SqlParameter("@DyrId", j.dyrId));
                     command.Parameters.Add(new SqlParameter("@AnsatId", j.behandlerId));
                     command.Parameters.Add(new SqlParameter("@Beskrivelse", j.beskrivelse));
                     command.Transaction = transaction;
@@ -226,6 +224,67 @@ namespace AnimalHouseDB
                 }
             }
             return result;
+        }
+
+        public DataSet Test()
+        {
+            DataSet e = new DataSet();
+            SqlTransaction transaction = null;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("select Kunde.Fnavn, kunde.Lnavn, Kunde.E_mail, Journial.Dato,Journial.DyrId, Dyr.Art, Dyr.Race from Journial join Dyr on Dyr.DyrId = Journial.DyrId join Kunde on Kunde.KundeId = Dyr.KundeId;", conn);
+                SqlDataAdapter adap = new SqlDataAdapter(command);
+                try
+                {
+                    conn.Open();
+                    command.Transaction = transaction;
+                    DataSet ds = new DataSet();
+                    adap.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+        public DataSet Test2(int days)
+        {
+            DataSet e = new DataSet();
+            SqlTransaction transaction = null;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("select  Kunde.Fnavn, kunde.Lnavn, Kunde.E_mail, Journial.Dato,Journial.DyrId, Dyr.Art, Dyr.Race from Journial join Dyr on Dyr.DyrId = Journial.DyrId join Kunde on Kunde.KundeId = Dyr.KundeId " +
+                    $"WHERE Journial.Dato <= DATEADD(DAY, -{days}, GETDATE()); ", conn);
+                SqlDataAdapter adap = new SqlDataAdapter(command);
+                try
+                {
+                    conn.Open();
+                    command.Transaction = transaction;
+                    DataSet ds = new DataSet();
+                    adap.Fill(ds);
+                    return ds;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
         }
     }
 }

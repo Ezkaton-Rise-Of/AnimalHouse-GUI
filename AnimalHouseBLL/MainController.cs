@@ -1,7 +1,12 @@
-﻿using AnimalHouse_Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AnimalHouse_Entities;
 using System_Entities;
+using AnimalHouseDB;
+using AnimalHouseBLL;
 
 namespace AnimalHouseBLL
 {
@@ -52,19 +57,10 @@ namespace AnimalHouseBLL
             return Bc.OpretBooking(k);
         }
 
-        public List<Ansat> HentAlleAnsate()
-        {
-            return Ac.HentAlleAnsatte();
-        }
         public int HentAnsatId(string navn)
         {
             return Ac.HentAnsatId(navn);
         }
-        public Ansat HentAnsateByNavn(string ansatNavn)
-        {
-            return Ac.HentAnsatteByNavn(ansatNavn);
-        }
-
         public Kunde HentKundByTlf(string tlf)
         {
             return Kc.HentKundetByTlf(tlf);
@@ -79,6 +75,11 @@ namespace AnimalHouseBLL
         {
             Ansat a = new Ansat(navn, Stelling, tlf);
             return Ac.OpretAnsat(a);
+        }
+
+        public DataSet Test2(int days)
+        {
+            return Jc.Test2(days);
         }
 
         public List<Kunde> HentAlleKunde()
@@ -160,9 +161,9 @@ namespace AnimalHouseBLL
              K.Add(Kc.HentKundetByTlf(tlf));
         }
 
-        public void HentKundeByTlforNavn(string input)
+        public List<Kunde> HentKundeByTlforNavn(string input)
         {
-            K= Kc.HentKundeByTlforNavn(input);
+              return Kc.HentKundeByTlforNavn(input);
         }
 
         public List<Lager> HentLagerVareNavn(string varenavn)
@@ -190,14 +191,14 @@ namespace AnimalHouseBLL
             return Lc.HentLagerNavnEllerVareNummer(input);
         }
 
-        public int HentKundeId(string navn)
+        public int HentKundeId(string tlf)
         {
-            return Kc.HentKundeId(navn);
+            return Kc.HentKundeId(tlf);
         }
 
-        public Ansat HentAnsatById(int id)
+        public Ansat HentAnsat(int id)
         {
-            return Ac.HentAnsatById(id);
+            return Ac.HentAnsat(id);
         }
 
         //Journal Funktioner
@@ -239,5 +240,26 @@ namespace AnimalHouseBLL
         }
 
 
+
+        public string HentAnsatNavn(int id)
+        {
+            return Ac.HentAnsatNavn(id);
+        }
+        public List<Ansat> HentAlleBehandler()
+        {
+            return Ac.HentAlleBehandler();
+        }
+        public List<Ansat> HentAlleAnsate()
+        {
+            return Ac.HentAlleAnsatte();
+        }
+        public List<Ansat> HentAnsatByNavn2(string navn)
+        {
+            return Ac.HentAnsatByNanv2(navn);
+        }
+        public DataSet Test()
+        {
+            return Jc.Test();
+        }
     }
 }

@@ -12,10 +12,13 @@ namespace AnimalHouseDB
         string OpretAnsat(Ansat a);
         string UpdateAnsat(Ansat a);
         string SletAnsat(int ansatId);
-        Ansat HentAnsatById(int ansatId);
+        Ansat HentAnsat(int ansatId);
         Ansat HentAnsatByNavn (string ansatNavn);
         List<Ansat> HentAlleAnsatte();
         List<Ansat> HentAnsateByType(int ansattype);
         int HentAnsatId(string navn);
+        string HentAnsatNavn(int id);
+        List<Ansat> HentAlleBehandler();
+        List<Ansat> HentAnsatByNavn2(string ansatNavn);
     }
 }

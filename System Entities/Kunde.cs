@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalHouse_Entities
 {
@@ -13,10 +9,11 @@ namespace AnimalHouse_Entities
         public string Fnavn { get; set; }
         public string Lnavn { get; set; }
         public string Adresse { get; set; }
-        public string  Postnummer { get; set; }
-        public string  Tlf { get; set; }
-        public string  Kundetype { get; set; }
-        public string  By { get; set; }
+        public string Postnummer { get; set; }
+        public string Tlf { get; set; }
+        public string Kundetype { get; set; }
+        public string By { get; set; }
+        private double discount;
 
         public DateTime Oprettet { get; set; }
         public string E_mail { get; set; }
@@ -54,5 +51,25 @@ namespace AnimalHouse_Entities
                 return $"{Fnavn} {Lnavn}";
             }
         }
+
+
+        public void SetDiscount(string kundetype)
+        {
+            if (this.Kundetype == "Erhverv")
+            {
+                discount = 19;
+            }
+            else
+            {
+                discount = 0;
+
+            }
+        }
+        public double GetDiscount()
+        {
+            return discount;
+        }
+
     }
 }
+

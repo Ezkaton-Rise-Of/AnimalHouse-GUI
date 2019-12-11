@@ -1,25 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
-using AnimalHouse_Entities;
 
 namespace AnimaleHouseModel
 {
     public class EmailSystem
     {
-        public List<Email> EmailList = new List<Email>();
+        
         public EmailSystem() { }
-        public void CreateEmail()
+        public bool CreateEmail(string subjekt, string inhold,List<string> emaillist)
         {
-            foreach (Email email in EmailList)
+            try
             {
-                Thread t = new Thread(() => SendEmail(email));
-                t.Start();
+                foreach (var modtager in emaillist)
+                {
+                    Email e = new Email();
+                    Thread t = new Thread(() => SendEmail(subjekt, inhold, modtager));
+                    t.Start();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                //throw;
+                return false;
+                
             }
         }
-        private void SendEmail(Email e)
+        private bool SendEmail(string subjekt, string inhold, string modtager)
         {
             Email email = new Email();
-            //email.SendEmail(e.Title, e.Indhold, e.ModtagerEmaiL);
+            return email.SendEmail(subjekt,inhold,modtager);
         }
     }
 }
