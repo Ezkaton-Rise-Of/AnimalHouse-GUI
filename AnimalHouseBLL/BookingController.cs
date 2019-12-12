@@ -44,12 +44,12 @@ namespace AnimalHouseBLL
             return BookingDB.HentAlleBooking();
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(int ansat, DateTime dateTime)
         {
             return BookingDB.HentAlleFritider(ansat, dateTime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(int ansat, int dateTime)
         {
             return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime);
         }

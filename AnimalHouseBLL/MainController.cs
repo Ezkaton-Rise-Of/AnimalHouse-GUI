@@ -95,12 +95,12 @@ namespace AnimalHouseBLL
             return Dc.OpretDyr(kundeId, art, race, alder, sex);
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime)
+        public List<BookingTime> HentAlleFritider(int ansat, DateTime datetime)
         {
             return Bc.HentAlleFritider(ansat, datetime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(int ansat, int dateTime)
         {
             return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime);
         }
@@ -121,6 +121,12 @@ namespace AnimalHouseBLL
         {
             return Ac.SletAnsat(id);
         }
+
+        public List<Service> HentAlleServiceType()
+        {
+            return ServiceC.HentAlleServiceType();
+        }
+
         public Ansat HentAnsatByNavn(string navn)
         {
             return Ac.HentAnsatByName(navn);

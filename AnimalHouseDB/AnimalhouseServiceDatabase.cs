@@ -24,7 +24,7 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("Select * from Service left join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId;");
+                SqlCommand command = new SqlCommand("Select * from Service left join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId;", conn);
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
                 ld = new List<Service>();
@@ -45,9 +45,14 @@ namespace AnimalHouseDB
                 conn.Close();
             }
 
+
             return ld;
         }
 
+        public List<Service> HentAlleServiceType()
+        {
+            throw new NotImplementedException();
+        }
 
         public Service HentService(int s)
         {

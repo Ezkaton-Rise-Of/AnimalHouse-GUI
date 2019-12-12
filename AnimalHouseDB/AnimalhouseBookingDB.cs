@@ -51,7 +51,7 @@ namespace AnimalHouseDB
             return ld;
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(int ansat, DateTime dateTime)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
@@ -66,7 +66,7 @@ namespace AnimalHouseDB
                     "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
                     "and BookingTimer.BookingTimerId < Booking.SlutTid " +
                     "and Booking.Startdato = @dato' AND Booking.AnsatId = @AnsatId);");
-                command.Parameters.Add(new SqlParameter("@dato", ansat.Id));
+                command.Parameters.Add(new SqlParameter("@dato", ansat));
                 command.Parameters.Add(new SqlParameter("@AnsatId", dateTime.ToString("yyyy-MM-dd")));
 
                 command.Transaction = transaction;
@@ -93,7 +93,7 @@ namespace AnimalHouseDB
             return bookingTimes;
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int starttime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(int ansat, int starttime)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
@@ -106,7 +106,7 @@ namespace AnimalHouseDB
 
                 SqlCommand command = new SqlCommand("select * from BookingTimer " +
                     "where BookingTimer.BookingTimerId between @starttime and(select top 1 Booking.StartTid from Booking where Booking.StartTid > @starttime order by Booking.StartTid asc) AND AnsatId = @ansat;");
-                command.Parameters.Add(new SqlParameter("@Ansat", ansat.Id));
+                command.Parameters.Add(new SqlParameter("@Ansat", ansat));
                 command.Parameters.Add(new SqlParameter("@starttime", starttime));
 
                 command.Transaction = transaction;

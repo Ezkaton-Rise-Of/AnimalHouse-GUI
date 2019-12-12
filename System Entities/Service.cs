@@ -9,7 +9,7 @@ namespace AnimalHouse_Entities
     public class Service :Produkt
     {
         public string ServiceType;
-
+        public int ServiceTypeId;
         public Service()
         {
         }

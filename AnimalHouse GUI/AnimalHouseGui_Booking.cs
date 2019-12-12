@@ -17,7 +17,6 @@ namespace AnimalHouse_GUI
     {
         MainController controller = new MainController();
         List<Dyr> dyr = null;
-        List<Ansat> ansatte = null;
         public AnimalHouseGui_Booking()
         {
             InitializeComponent();
@@ -88,36 +87,6 @@ namespace AnimalHouse_GUI
                 Addresse_empty.Text = controller.K[0].Adresse;
                 By_empty.Text = controller.K[0].By;
                 Postnummer_empty.Text = controller.K[0].Postnummer;
-                
-
-                foreach (Ansat item in controller.HentAlleAnsate())
-                {
-                    ComboBoxItem citem = new ComboBoxItem();
-                    citem.Text = item.Navn + " (" + item.Stelling + ")";
-                    citem.Value = item;
-                    comboBox2.Items.Add(citem);
-                }
-
-
-                //foreach(Service item in controller.HentAlleService())
-                //{
-                //    ComboBoxItem citem = new ComboBoxItem();
-                //    citem.Text = item.ServiceType;
-                //    citem.Value = item;
-                //    comboBox1.Items.Add(citem);
-                //}
-
-                //foreach (Booking item in controller.HentFrieTider(comboBox1.Items.))
-                //{
-
-                //}
-
-                //foreach (Booking item in controller.HentFrieTider(comboBox1.Items.))
-                //{
-
-                //}
-
-
             }
             catch (Exception)
             {
@@ -132,6 +101,15 @@ namespace AnimalHouse_GUI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            foreach (Ansat item in controller.HentAlleAnsate())
+            {
+                ComboBoxItem citem = new ComboBoxItem();
+                citem.Text = item.Navn + " (" + item.Stelling + ")";
+                citem.Value = Convert.ToString(item.Id);
+                comboBox2.Items.Add(citem);
+            }
+
+
 
         }
 
@@ -157,10 +135,28 @@ namespace AnimalHouse_GUI
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            foreach (Service item in controller.HentAlleServiceType())
+            {
+                ComboBoxItem citem = new ComboBoxItem();
+                citem.Text = item.ServiceType;
+                citem.Value = Convert.ToString(item.ServiceTypeId);
+                comboBox1.Items.Add(citem);
+            }
+
         }
 
         private void StartTime_Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComboBoxItem info = (ComboBoxItem)comboBox1.SelectedItem;
+            
+
+            foreach (BookingTime item in controller.HentAlleFritider(Convert.ToInt32(info.Value), dateTimePicker1.Value))
+            {
+                ComboBoxItem citem = new ComboBoxItem();
+                citem.Text = item.time;
+                citem.Value = Convert.ToString(item.timeId);
+                comboBox1.Items.Add(citem);
+            }
 
         }
 
