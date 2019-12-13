@@ -104,7 +104,6 @@
             this.textBox_EjerIdBooking.Name = "textBox_EjerIdBooking";
             this.textBox_EjerIdBooking.Size = new System.Drawing.Size(298, 26);
             this.textBox_EjerIdBooking.TabIndex = 113;
-            this.textBox_EjerIdBooking.TextChanged += new System.EventHandler(this.textBox_EjerIdBooking_TextChanged);
             // 
             // label_BehandlerIdBooking
             // 
@@ -127,7 +126,6 @@
             this.label_EjerIdBooking.Size = new System.Drawing.Size(73, 25);
             this.label_EjerIdBooking.TabIndex = 115;
             this.label_EjerIdBooking.Text = "Ejer tlf";
-            this.label_EjerIdBooking.Click += new System.EventHandler(this.label_EjerIdBooking_Click);
             // 
             // button_RegBooking
             // 
@@ -165,9 +163,8 @@
             this.button_Søgning.Name = "button_Søgning";
             this.button_Søgning.Size = new System.Drawing.Size(147, 63);
             this.button_Søgning.TabIndex = 118;
-            this.button_Søgning.Text = "TilFøj";
+            this.button_Søgning.Text = "Søgning";
             this.button_Søgning.UseVisualStyleBackColor = false;
-            this.button_Søgning.Click += new System.EventHandler(this.button_Søgning_Click);
             // 
             // label_DyrIdBooking
             // 
@@ -201,7 +198,6 @@
             this.comboBox_ServiceType.Name = "comboBox_ServiceType";
             this.comboBox_ServiceType.Size = new System.Drawing.Size(298, 28);
             this.comboBox_ServiceType.TabIndex = 124;
-            this.comboBox_ServiceType.SelectedIndexChanged += new System.EventHandler(this.comboBox_ServiceType_SelectedIndexChanged);
             // 
             // label_BookingBur
             // 
@@ -224,7 +220,6 @@
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(382, 362);
             this.dataGridView1.TabIndex = 129;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataGridView2
             // 
@@ -281,7 +276,6 @@
             this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 134;
             this.label1.Text = "Start Tid";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -334,7 +328,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(298, 26);
             this.dateTimePicker2.TabIndex = 135;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // groupBox1
             // 
@@ -357,7 +350,6 @@
             this.groupBox1.TabIndex = 141;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label11
             // 
@@ -369,7 +361,6 @@
             this.label11.Size = new System.Drawing.Size(93, 25);
             this.label11.TabIndex = 137;
             this.label11.Text = "Slut Tid ";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // comboBox3
             // 
@@ -379,7 +370,6 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(180, 28);
             this.comboBox3.TabIndex = 136;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // StartTime_Combo
             // 
@@ -417,7 +407,6 @@
             this.label4.Size = new System.Drawing.Size(49, 20);
             this.label4.TabIndex = 143;
             this.label4.Text = "Navn:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -448,7 +437,6 @@
             this.label8.Size = new System.Drawing.Size(136, 20);
             this.label8.TabIndex = 148;
             this.label8.Text = "TilFørte bookinger";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -482,7 +470,7 @@
             this.button3.TabIndex = 151;
             this.button3.Text = "Tilføj kunde";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+
             // 
             // textBox1
             // 
@@ -502,7 +490,6 @@
             this.label7.Size = new System.Drawing.Size(48, 20);
             this.label7.TabIndex = 153;
             this.label7.Text = "Notat";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // Navn_empty
             // 

@@ -35,46 +35,6 @@ namespace AnimalHouse_GUI
 
         }
 
-        private void textBox_DyrIdBooking_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_EjerIdBooking_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-        
         private void button1_Click(object sender, EventArgs e)
         {//holger 
             try
@@ -95,11 +55,6 @@ namespace AnimalHouse_GUI
             {
                 throw;
             }
-        }
-
-        private void textBox_EjerIdBooking_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,25 +119,6 @@ namespace AnimalHouse_GUI
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void comboBox_ServiceType_SelectedIndexChanged(object sender, EventArgs e)
         {
