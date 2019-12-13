@@ -53,6 +53,7 @@
     <Compile Include="MainController.cs" />
     <Compile Include="DyrController.cs" />
     <Compile Include="KundeController.cs" />
+    <Compile Include="ProductController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceController.cs" />

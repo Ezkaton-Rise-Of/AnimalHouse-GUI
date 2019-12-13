@@ -28,6 +28,7 @@ namespace AnimalHouseBLL
         JournalController Jc;
         BurController BurC;
         ServiceController ServiceC;
+        ProductController Pc;
         public MainController()
         {
             Kc = new KundeController();
@@ -38,6 +39,7 @@ namespace AnimalHouseBLL
             Jc = new JournalController();
             BurC = new BurController();
             ServiceC = new ServiceController();
+            Pc = new ProductController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -288,6 +290,17 @@ namespace AnimalHouseBLL
         public DataSet Test()
         {
             return Jc.Test();
+        }
+
+        // Salg system Funktioner
+        public string GemFaktura()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Kategori> HentAlleKategorier()
+        {
+            return Pc.Hentkategorier();
         }
     }
 }

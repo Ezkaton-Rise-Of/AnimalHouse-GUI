@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 namespace AnimalHouseDB
 {
-    interface IProduktDB
+    public interface IProduktDB
     {
 
         List<Kategori> HentAlleKategorier();

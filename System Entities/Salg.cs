@@ -13,9 +13,9 @@ namespace System_Entities
         public List<SalgItemLine> salgitems = new List<SalgItemLine>();
         public double amount;
 
-        public Salg(Kunde k)
+        public Salg()
         {
-            this.k = k;
+            
         }
 
         public void AddItemToLine(Produkt p, int antal)
@@ -37,7 +37,7 @@ namespace System_Entities
 
         public double GetTotalDiscount()
         {
-            return GetTotal()-((GetTotal() * k.GetDiscount())/100);
+            return GetTotal()-((GetTotal() * 3)/100);
         }
     }
 }

@@ -17,18 +17,6 @@ namespace AnimalHouse_GUI
         public AnimalHouseGui_Main()
         {
             InitializeComponent();
-            
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label_AnimalHouse1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button_EjerReg_Click(object sender, EventArgs e)
@@ -42,12 +30,6 @@ namespace AnimalHouse_GUI
         {
             AnimalHouseGui_Booking formB = new AnimalHouseGui_Booking();
             formB.ShowDialog();
-        }
-
-        private void button_Salg_Click(object sender, EventArgs e)
-        {
-            AnimalHouseGui_Sales formS = new AnimalHouseGui_Sales();
-            formS.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -97,6 +79,13 @@ namespace AnimalHouse_GUI
             this.Hide();
             AnimalHouseGUI_JournalForm journalForm = new AnimalHouseGUI_JournalForm();
             journalForm.ShowDialog();
+        }
+
+        private void button_Salg_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGUI_SalgForm salgForm = new AnimalHouseGUI_SalgForm();
+            salgForm.ShowDialog();
         }
     }
 }

@@ -86,6 +86,7 @@
             this.button_Salg.TabIndex = 32;
             this.button_Salg.Text = "Salg";
             this.button_Salg.UseVisualStyleBackColor = true;
+            this.button_Salg.Click += new System.EventHandler(this.button_Salg_Click_1);
             // 
             // button_DyrReg
             // 

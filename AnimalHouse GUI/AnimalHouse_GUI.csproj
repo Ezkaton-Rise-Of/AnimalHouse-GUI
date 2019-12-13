@@ -88,11 +88,11 @@
     <Compile Include="AnimalHouseGui_Booking.Designer.cs">
       <DependentUpon>AnimalHouseGui_Booking.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnimalHouseGui_Sales.cs">
+    <Compile Include="AnimalHouseGUI_SalgForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnimalHouseGui_Sales.Designer.cs">
-      <DependentUpon>AnimalHouseGui_Sales.cs</DependentUpon>
+    <Compile Include="AnimalHouseGUI_SalgForm.Designer.cs">
+      <DependentUpon>AnimalHouseGUI_SalgForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AnimalHouseGui_Service.cs">
       <SubType>Form</SubType>
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="AnimalHouseGui_Register.resx">
       <DependentUpon>AnimalHouseGui_Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AnimalHouseGui_Sales.resx">
-      <DependentUpon>AnimalHouseGui_Sales.cs</DependentUpon>
+    <EmbeddedResource Include="AnimalHouseGUI_SalgForm.resx">
+      <DependentUpon>AnimalHouseGUI_SalgForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AnimalHouseGui_Service.resx">
       <DependentUpon>AnimalHouseGui_Service.cs</DependentUpon>

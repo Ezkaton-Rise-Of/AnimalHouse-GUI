@@ -18,6 +18,13 @@ namespace AnimalHouse_Entities
             KategoriNavn = kategoriNavn;
         }
 
+        public string HentNavn
+        {
+            get
+            {
+                return $"{KategoriNavn}";
+            }
+        }
         public int KategoriId { get; set; }
         public string KategoriNavn { get; set; }
 

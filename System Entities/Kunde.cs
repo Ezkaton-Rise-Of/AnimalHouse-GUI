@@ -13,7 +13,7 @@ namespace AnimalHouse_Entities
         public string Tlf { get; set; }
         public string Kundetype { get; set; }
         public string By { get; set; }
-        private double discount;
+
 
         public DateTime Oprettet { get; set; }
         public string E_mail { get; set; }
@@ -51,25 +51,6 @@ namespace AnimalHouse_Entities
                 return $"{Fnavn} {Lnavn}";
             }
         }
-
-
-        public void SetDiscount(string kundetype)
-        {
-            if (this.Kundetype == "Erhverv")
-            {
-                discount = 19;
-            }
-            else
-            {
-                discount = 0;
-
-            }
-        }
-        public double GetDiscount()
-        {
-            return discount;
-        }
-
     }
 }
 

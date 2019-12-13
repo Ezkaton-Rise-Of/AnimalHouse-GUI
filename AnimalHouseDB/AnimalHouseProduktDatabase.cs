@@ -1,14 +1,10 @@
 ﻿using AnimalHouse_Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Transactions;
 namespace AnimalHouseDB
 {
-    class AnimalHouseProduktDatabase : IProduktDB
+    public class AnimalHouseProduktDatabase : IProduktDB
     {
         public List<Kategori> HentAlleKategorier()
         {
@@ -16,22 +12,23 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+
             try
             {
-
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 kategoriList = new List<Kategori>();
-                SqlCommand command = new SqlCommand("select * from Produkt_Kategori", conn);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                { 
-                    Kategori kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
-                    kategoriList.Add(kategori);
+                SqlCommand command = new SqlCommand("select * from Produkt_Kategori", conn, transaction);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Kategori kategori = new Kategori();
+                        kategori.KategoriId = Convert.ToInt32(reader["Produkt_KategoriId"]);
+                        kategori.KategoriNavn = Convert.ToString(reader["Navn"]);
+                        kategoriList.Add(kategori);
+                    }
                 }
-
-                command.Transaction = transaction;
-                command.ExecuteNonQuery();
                 transaction.Commit();
             }
             catch (Exception e)
@@ -53,13 +50,12 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
             try
             {
-
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 produkts = new List<Produkt>();
-                SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId where Produkt.ProduktKategoriId = @kategori", conn);
+                SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId where Produkt.ProduktKategoriId = @kategori", conn, transaction);
                 command.Parameters.Add(new SqlParameter("@Kategori", k.KategoriId));
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -69,14 +65,11 @@ namespace AnimalHouseDB
                     item.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                     item.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
                     item.Pris = Convert.ToDouble(reader["Pris"]);
-                    item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
+                    item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                     item.Service = Convert.ToBoolean(reader["Service"]);
                     item.Navn = Convert.ToString(reader["Navn"]);
                     produkts.Add(item);
                 }
-
-                command.Transaction = transaction;
-                command.ExecuteNonQuery();
                 transaction.Commit();
             }
             catch (Exception e)
@@ -96,45 +89,42 @@ namespace AnimalHouseDB
         {
 
             List<Produkt> produkts = null;
-                SqlTransaction transaction = null;
-                SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            try
+            {
                 conn.Open();
                 transaction = conn.BeginTransaction();
-                try
-                {
-
-                        produkts = new List<Produkt>();
-                        SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId", conn);
-                        SqlDataReader reader = command.ExecuteReader();
-                        while (reader.Read())
+                produkts = new List<Produkt>();
+                SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId", conn,transaction);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
                     Produkt item = new Produkt();
                     item.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                     item.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
                     item.Pris = Convert.ToDouble(reader["Pris"]);
-                    item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
+                    item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                     item.Service = Convert.ToBoolean(reader["Service"]);
                     item.Navn = Convert.ToString(reader["Navn"]);
 
                     produkts.Add(item);
-                }
+                };
+                command.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw e;
 
-                command.Transaction = transaction;
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    throw e;
-
-                }
-                finally
-                {
-                    conn.Close();
-                }
-                return produkts;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return produkts;
         }
 
         public Produkt HentProdukt(int Id)
@@ -144,13 +134,12 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+           
             try
             {
-
-                
-                SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId where ProduktId = @produktId ", conn);
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId where ProduktId = @produktId ", conn,transaction);
                 command.Parameters.Add(new SqlParameter("@produktId", Id));
 
                 SqlDataReader reader = command.ExecuteReader();
@@ -164,8 +153,6 @@ namespace AnimalHouseDB
                     produkt.Service = Convert.ToBoolean(reader["Service"]);
                     produkt.Navn = Convert.ToString(reader["Navn"]);
                 }
-                command.Transaction = transaction;
-                command.ExecuteNonQuery();
                 transaction.Commit();
             }
             catch (Exception e)
@@ -187,22 +174,22 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("update Produkt set Beskrivelse = @beskrivelse, Pris = @Pris, Navn = @Navn where Produkt.ProduktId = @ProduktId", conn);
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                SqlCommand command = new SqlCommand("update Produkt set Beskrivelse = @beskrivelse, Pris = @Pris, Navn = @Navn where Produkt.ProduktId = @ProduktId", conn,transaction);
                 command.Parameters.Add(new SqlParameter("@beskrivelse", p.Beskrivelse));
                 command.Parameters.Add(new SqlParameter("@Pris", p.Pris));
                 command.Parameters.Add(new SqlParameter("@Navn", p.Navn));
                 command.Parameters.Add(new SqlParameter("@ProduktId", p.ProduktId));
-                command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();
                 answer = true;
             }
             catch (Exception e)
             {
+                answer = false;
                 transaction.Rollback();
                 throw e;
 

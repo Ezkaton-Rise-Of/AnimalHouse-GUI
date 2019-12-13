@@ -208,10 +208,6 @@ namespace AnimalHouse_GUI
             
                 }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button_tilbage_Click(object sender, EventArgs e)
         {
