@@ -23,8 +23,11 @@ namespace AnimalHouseBLL
         public List<Service> HentAlleService()
         {
             return ServiceDB.HentAlleService();
-        } 
+        }
 
-
+        internal List<Service> HentAlleServiceType()
+        {
+            return ServiceDB.HentAlleServiceType();
+        }
     }
 }

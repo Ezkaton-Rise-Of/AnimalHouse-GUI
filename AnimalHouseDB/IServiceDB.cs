@@ -13,6 +13,6 @@ namespace AnimalHouseDB
         bool UpdateService(Service s);
         Service HentService(int s);
         List<Service> HentAlleService();
-
+        List<Service> HentAlleServiceType();
     }
 }

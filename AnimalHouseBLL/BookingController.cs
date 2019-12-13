@@ -20,12 +20,6 @@ namespace AnimalHouseBLL
 
         }
 
-        public bool OpretBooking(Booking k)
-        {
-            return BookingDB.OpretBooking(k);
-        }
-
-
         public List<Booking> HentBookingByKundeId(int id)
         {
 
@@ -44,12 +38,12 @@ namespace AnimalHouseBLL
             return BookingDB.HentAlleBooking();
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(int ansat, DateTime dateTime)
         {
             return BookingDB.HentAlleFritider(ansat, dateTime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, int dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime)
         {
             return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime);
         }
@@ -62,6 +56,12 @@ namespace AnimalHouseBLL
         public bool UpdateBooking(Booking b)
         {
             return BookingDB.UpdaterBooking(b);
+        }
+
+        internal bool InsertBooking(Booking k)
+        {
+
+            return BookingDB.OpretBooking(k);
         }
     }
 }
