@@ -1,1 +1,5 @@
-﻿
+Kundes fornavn	 Kundes efternavn	 Kundes email adresse	 Sidste besøg dato	 DyrId	 DyrArt	 DyrRace
+
+Derck		Holmes		12@test.dk		12/2/2019 5:12:13 AM		6		Fisk		Arowana	
+Holger		Christiansen		hec_winter@hotmail.com		12/2/2019 5:12:27 AM		7		Hund		Chivava	
+Holger		Christiansen		hec_winter@hotmail.com		12/9/2019 3:22:40 AM		8		Kat		Dansk Huskat	

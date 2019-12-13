@@ -31,6 +31,7 @@
             this.button_Send = new System.Windows.Forms.Button();
             this.button_Tilbage = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_annullere = new System.Windows.Forms.Button();
             this.listBox_modtager_list = new System.Windows.Forms.ListBox();
             this.textBox_inhold = new System.Windows.Forms.TextBox();
             this.textBox_subjekt = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.button_visAlle = new System.Windows.Forms.Button();
             this.button_print = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button_annullere = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -102,6 +102,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Email info";
             this.groupBox1.UseCompatibleTextRendering = true;
+            // 
+            // button_annullere
+            // 
+            this.button_annullere.AutoSize = true;
+            this.button_annullere.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_annullere.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_annullere.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_annullere.Location = new System.Drawing.Point(342, 911);
+            this.button_annullere.Name = "button_annullere";
+            this.button_annullere.Size = new System.Drawing.Size(136, 48);
+            this.button_annullere.TabIndex = 7;
+            this.button_annullere.Text = "Annullere";
+            this.button_annullere.UseVisualStyleBackColor = false;
+            this.button_annullere.Click += new System.EventHandler(this.button_annullere_Click);
             // 
             // listBox_modtager_list
             // 
@@ -200,7 +214,6 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Vis";
             this.button2.UseVisualStyleBackColor = false;
-            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button_tilføj
             // 
@@ -264,7 +277,7 @@
             this.button_visAlle.TabIndex = 12;
             this.button_visAlle.Text = "Vis alle";
             this.button_visAlle.UseVisualStyleBackColor = false;
-            //this.button_visAlle.Click += new System.EventHandler(this.button_visAlle_Click);
+            this.button_visAlle.Click += new System.EventHandler(this.button_visAlle_Click);
             // 
             // button_print
             // 
@@ -293,20 +306,6 @@
             this.button1.Text = "Send";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button_annullere
-            // 
-            this.button_annullere.AutoSize = true;
-            this.button_annullere.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button_annullere.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_annullere.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_annullere.Location = new System.Drawing.Point(342, 911);
-            this.button_annullere.Name = "button_annullere";
-            this.button_annullere.Size = new System.Drawing.Size(136, 48);
-            this.button_annullere.TabIndex = 7;
-            this.button_annullere.Text = "Annullere";
-            this.button_annullere.UseVisualStyleBackColor = false;
-            this.button_annullere.Click += new System.EventHandler(this.button_annullere_Click);
             // 
             // AnimalHouse_MailForm
             // 

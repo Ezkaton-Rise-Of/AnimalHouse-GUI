@@ -179,5 +179,16 @@ namespace AnimalHouse_GUI
 
         }
 
+        private void button_tilbage_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AnimalHouseGui_Main mainform = new AnimalHouseGui_Main();
+            mainform.ShowDialog();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Booking Form.txt");
+        }
     }
 }

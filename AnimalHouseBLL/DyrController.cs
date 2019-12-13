@@ -17,9 +17,9 @@ namespace AnimalHouseBLL
             DyrDB = persistensFactory.GetDyrDB();
         }
 
-        public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
+        public string OpretDyr(int kundeId, string art, string race, int alder, char sex,string behandler)
         {
-            Dyr d = new Dyr(kundeId, art, race, alder, sex);
+            Dyr d = new Dyr(kundeId, art, race, alder, sex,behandler);
             return DyrDB.OpretDyr(d);
         }
 
@@ -57,6 +57,11 @@ namespace AnimalHouseBLL
         public List<Dyr> HentDyrDerskalHaveMaile(int maildage, int visitdage)
         {
             return DyrDB.HentDyrDerSkalHaveEmail(maildage, visitdage);
+        }
+
+        internal void TilknytBehandler(int dyrId, string behandler)
+        {
+            DyrDB.TilknytBehandler(dyrId, behandler);
         }
     }
 }

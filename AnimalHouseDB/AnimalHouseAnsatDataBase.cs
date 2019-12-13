@@ -261,21 +261,34 @@ namespace AnimalHouseDB
             return "Ansat blev oprettet!";
         }
 
-        public string SletAnsat(int ansatId)
+        public string SletAnsat(Ansat a)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-
+                SqlTransaction transaction = null;
+                SqlCommand command3 = new SqlCommand($"Delete From Journial where AnsatId =@ansatId", conn);
+                SqlCommand command2 = new SqlCommand("Delete from Ansat where AnsatId =@AnsatId", conn);
+                SqlCommand command1 = new SqlCommand($"Update Dyr Set Tilknyttet_behandler = '' where Tilknyttet_behandler = '{a.Navn}' ", conn);
+                command2.Parameters.Add(new SqlParameter("@AnsatId", a.Id));
+                command3.Parameters.Add(new SqlParameter("@ansatId",a.Id));
                 try
                 {
                     conn.Open();
-                    string commandtxt = $"Delete from Ansat where AnsatId =@AnsatId";
-                    SqlCommand command = new SqlCommand(commandtxt, conn);
-                    command.Parameters.Add(new SqlParameter("@AnsatId", ansatId));
-                    command.ExecuteNonQuery();
+                    transaction = conn.BeginTransaction();
+                    command1.Transaction = transaction;
+                    command2.Transaction = transaction;
+                    command3.Transaction = transaction;
+                    command1.ExecuteNonQuery();
+                    command2.ExecuteNonQuery();
+                    command3.ExecuteNonQuery();
+                    transaction.Commit();
                 }
                 catch (Exception e)
                 {
+                    if (transaction != null)
+                    {
+                        transaction.Rollback();
+                    }
                     return e.Message;
                 }
                 finally

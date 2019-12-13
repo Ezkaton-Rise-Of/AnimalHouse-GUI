@@ -7,6 +7,7 @@ using AnimalHouse_Entities;
 using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
+using System.Data;
 
 namespace AnimalHouseBLL
 {
@@ -77,10 +78,10 @@ namespace AnimalHouseBLL
             return Ac.OpretAnsat(a);
         }
 
-        //public DataSet Test2(int days)
-        //{
-        //    return Jc.Test2(days);
-        //}
+        public DataSet Test2(int days)
+        {
+            return Jc.Test2(days);
+        }
 
         public List<Kunde> HentAlleKunde()
         {
@@ -90,9 +91,9 @@ namespace AnimalHouseBLL
         {
             return Kc.SletKunde(id);
         }
-        public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
+        public string OpretDyr(int kundeId, string art, string race, int alder, char sex, string behandler)
         {
-            return Dc.OpretDyr(kundeId, art, race, alder, sex);
+            return Dc.OpretDyr(kundeId, art, race, alder, sex, behandler);
         }
 
         public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime)
@@ -119,7 +120,8 @@ namespace AnimalHouseBLL
 
         public string SletAnsat(int id)
         {
-            return Ac.SletAnsat(id);
+            Ansat a = HentAnsat(id);
+            return Ac.SletAnsat(a);
         }
         public Ansat HentAnsatByNavn(string navn)
         {
@@ -134,6 +136,20 @@ namespace AnimalHouseBLL
         public Dyr HentDyr(int id)
         {
             return Dc.HentDyr(id);
+        }
+
+        public bool TilknytBehandler(int dyrId, string behandler)
+        {
+            try
+            {
+                Dc.TilknytBehandler(dyrId, behandler);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
 
         public string SletDyr(int id)
@@ -257,9 +273,9 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatByNanv2(navn);
         }
-        //public DataSet Test()
-        //{
-        //    return Jc.Test();
-        //}
+        public DataSet Test()
+        {
+            return Jc.Test();
+        }
     }
 }

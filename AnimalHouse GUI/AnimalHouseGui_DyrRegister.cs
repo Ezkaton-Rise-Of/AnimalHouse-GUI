@@ -26,15 +26,15 @@ namespace AnimalHouse_GUI
 
         private void button_RegDyr_Click(object sender, EventArgs e)
         {
-            string answer = controller.OpretDyr(controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id, textBox_Art.Text, textBox_Race.Text,int.Parse(textBox_Alder.Text.Trim()), sex);
+            string answer = controller.OpretDyr(controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id, textBox_Art.Text, textBox_Race.Text,int.Parse(textBox_Alder.Text.Trim()), sex, comboBox_behandler.Text);
             MessageBox.Show(answer);
             FilleDataGridView();
         }
 
         private void FilleDataGridView()
         {
-            controller.HentAlleDyr();
-            dataGridView_Dyr.DataSource = controller.D;
+            dataGridView_Dyr.DataSource = controller.HentAlleDyr();
+            //dataGridView_Dyr.DataSource = controller.D;
             dataGridView_Dyr.Columns[0].Visible = false;
         }
 
@@ -72,7 +72,7 @@ namespace AnimalHouse_GUI
 
         private void label_hjælpe_Click(object sender, EventArgs e)
         {
-
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Dyr Form.txt");
         }
 
         private void button_Søg_Click(object sender, EventArgs e)
@@ -94,15 +94,16 @@ namespace AnimalHouse_GUI
         {
             if (checkBox1.Checked)
             {
-                comboBox1.Visible = true;
-                comboBox1.DataSource = controller.HentAlleBehandler();
-                comboBox1.DisplayMember = "HentNavn";
-                BehandlerId = controller.HentAnsatId(comboBox1.Text.Trim());
+                comboBox_behandler.Visible = true;
+                button_tilknyt.Visible = true;
+                comboBox_behandler.DataSource = controller.HentAlleBehandler();
+                comboBox_behandler.DisplayMember = "HentNavn";
+                BehandlerId = controller.HentAnsatId(comboBox_behandler.Text.Trim());
 
             }
             else
             {
-                comboBox1.Visible = false;
+                comboBox_behandler.Visible = false;
             }
         }
 
@@ -119,6 +120,20 @@ namespace AnimalHouse_GUI
         private void dataGridView_Dyr_DoubleClick(object sender, EventArgs e)
         {
             button_SletDyr.Enabled = true;
+        }
+
+        private void button_tilknyt_Click(object sender, EventArgs e)
+        {
+            bool res =controller.TilknytBehandler(int.Parse(dataGridView_Dyr.CurrentRow.Cells[0].Value.ToString()),comboBox_behandler.Text);
+            if (res)
+            {
+                MessageBox.Show("Behandleren blev tilknyttet");
+            }
+            else
+            {
+                MessageBox.Show("Der sket en file","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            FilleDataGridView();
         }
     }
 }

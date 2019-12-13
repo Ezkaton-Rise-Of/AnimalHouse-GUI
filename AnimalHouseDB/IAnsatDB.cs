@@ -11,7 +11,7 @@ namespace AnimalHouseDB
     {
         string OpretAnsat(Ansat a);
         string UpdateAnsat(Ansat a);
-        string SletAnsat(int ansatId);
+        string SletAnsat(Ansat a);
         Ansat HentAnsat(int ansatId);
         Ansat HentAnsatByNavn (string ansatNavn);
         List<Ansat> HentAlleAnsatte();

@@ -58,9 +58,16 @@ namespace AnimalHouse_GUI
 
         private void button_Register_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(controller.OpretAnsat(textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString(),textBox_tlf.Text.Trim()), "Oprettelse af ny ansat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ClearForm();
-            FillDataGridView();
+            if (ValidateForm())
+            {
+                MessageBox.Show(controller.OpretAnsat(textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString(), textBox_tlf.Text.Trim()), "Oprettelse af ny ansat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
+                FillDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Invalid data!","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
 
         private void button_Hent_Click(object sender, EventArgs e)
@@ -113,6 +120,20 @@ namespace AnimalHouse_GUI
             textBox_navn.Text = "";
             comboBox_stelling.Text = "";
             textBox_tlf.Text = "";
+        }
+        
+        private bool ValidateForm()
+        {
+            if (textBox_navn.Text.Trim().Length != 0 && !textBox_navn.Text.Trim().Any(char.IsDigit)
+                && comboBox_stelling.Text.Length != 0
+                && textBox_tlf.Text.All(char.IsDigit) && textBox_tlf.Text.Length != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

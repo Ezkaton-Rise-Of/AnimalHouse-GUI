@@ -28,7 +28,7 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 try
                 {
-                    SqlCommand command = new SqlCommand("SELECT * FROM Dyr", conn);
+                    SqlCommand command = new SqlCommand("select * from Dyr Left join Dyr_Has_Læge on dyr.DyrId = Dyr_Has_Læge.DyrId", conn);
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     ld = new List<Dyr>();
@@ -41,6 +41,7 @@ namespace AnimalHouseDB
                         d.Art = Convert.ToString(reader["Art"]);
                         d.Alder = Convert.ToInt32(reader["Alder"]);
                         d.Sex = Convert.ToChar(reader["Sex"]);
+                        d.Tilknyttet_Behandler = Convert.ToString(reader["Tilknyttet_behandler"]);
                       
                         ld.Add(d);
                     }
@@ -291,6 +292,23 @@ namespace AnimalHouseDB
             finally
             {
                 conn.Close();
+            }
+        }
+
+        public void TilknytBehandler(int dyrId, string behandler)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand($"update Dyr Set Tilknyttet_behandler = '{behandler}' where DyrId ={dyrId}", conn);
+                try
+                {
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
     }
