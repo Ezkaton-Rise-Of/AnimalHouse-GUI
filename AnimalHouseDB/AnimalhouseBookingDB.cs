@@ -133,6 +133,11 @@ namespace AnimalHouseDB
             return bookingTimes;
         }
 
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
         public Booking HentBooking(int Id)
         {
             Booking d = null;
@@ -231,13 +236,15 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato)");
+                SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato,startTid, slutTid,) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato, @StartTid, @SlutTid)", conn);
                 command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
                 command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
                 command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
                 command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
-                command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato));
-                command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato));
+                command.Parameters.Add(new SqlParameter("@StartDato", b.StartDato.ToString("yyyy-MM-dd")));
+                command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato.ToString("yyyy-MM-dd")));
+                command.Parameters.Add(new SqlParameter("@StartTid", b.startTid.timeId));
+                command.Parameters.Add(new SqlParameter("@Sluttid", b.slutTid.timeId));
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();

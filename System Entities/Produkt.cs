@@ -8,27 +8,39 @@ namespace AnimalHouse_Entities
 {
     public class Produkt
     {
-        public int ProduktId;
-        public string Beskrivelse;
-        public double Pris;
-        public int KategoriId;
-        public Service Service;
+        public int ProduktId { get; set; }
+        public string Beskrivelse { get; set; }
+        public double Pris { get; set; }
+        public Kategori kategori { get; set; }
+        public bool Service{get; set;}
+        public int KategoriId { get; set; }
+
+        public string Navn { get; set; }
+       
         public Produkt()
         {
 
         }
 
-        public Produkt(int produktId, string beskrivelse, double pris, int kategoriId)
+        public Produkt(int produktId, string beskrivelse, double pris, Kategori kategori, bool service, int kategoriId, string navn)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
             Pris = pris;
+            this.kategori = kategori;
+            Service = service;
             KategoriId = kategoriId;
+            Navn = navn;
         }
 
-        public Produkt(int produktId, string beskrivelse, double pris, int kategoriId, Service service) : this(produktId, beskrivelse, pris, kategoriId)
+        public Produkt(int produktId, string beskrivelse, double pris, bool service, int kategoriId, string navn)
         {
+            ProduktId = produktId;
+            Beskrivelse = beskrivelse;
+            Pris = pris;
             Service = service;
+            KategoriId = kategoriId;
+            Navn = navn;
         }
     }
 }

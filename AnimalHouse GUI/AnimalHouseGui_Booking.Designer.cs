@@ -157,6 +157,7 @@
             this.button_Søgning.TabIndex = 118;
             this.button_Søgning.Text = "TilFøj";
             this.button_Søgning.UseVisualStyleBackColor = false;
+            this.button_Søgning.Click += new System.EventHandler(this.button_Søgning_Click);
             // 
             // label_DyrIdBooking
             // 
@@ -172,7 +173,7 @@
             // 
             this.label_BookingType.AutoSize = true;
             this.label_BookingType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_BookingType.Location = new System.Drawing.Point(231, 100);
+            this.label_BookingType.Location = new System.Drawing.Point(231, 64);
             this.label_BookingType.Name = "label_BookingType";
             this.label_BookingType.Size = new System.Drawing.Size(95, 16);
             this.label_BookingType.TabIndex = 123;
@@ -185,10 +186,11 @@
             "Konsultation",
             "Behandling",
             "Operation"});
-            this.comboBox_ServiceType.Location = new System.Drawing.Point(234, 124);
+            this.comboBox_ServiceType.Location = new System.Drawing.Point(234, 88);
             this.comboBox_ServiceType.Name = "comboBox_ServiceType";
             this.comboBox_ServiceType.Size = new System.Drawing.Size(200, 21);
             this.comboBox_ServiceType.TabIndex = 124;
+            this.comboBox_ServiceType.SelectedIndexChanged += new System.EventHandler(this.comboBox_ServiceType_SelectedIndexChanged);
             // 
             // label_BookingBur
             // 
@@ -350,6 +352,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 136;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // StartTime_Combo
             // 
@@ -451,6 +454,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(145, 235);
             this.textBox1.TabIndex = 152;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label7
             // 

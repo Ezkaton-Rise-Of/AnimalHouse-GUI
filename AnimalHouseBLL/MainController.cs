@@ -46,15 +46,17 @@ namespace AnimalHouseBLL
             return Kc.OpretKunde(k);
         }
 
-        public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
+        public bool Opretbooking(string notat, BookingTime startTid, BookingTime slutTid, Ansat ansat,Service service, Dyr dyr, DateTime startDate, DateTime SlutDato)
         {
             Booking k = new Booking();
-            k.AnsatId = ansatId;
-            k.StartDato = slutDato;
+            k.AnsatId = ansat.Id;
+            k.startTid = startTid;
             k.Notat = notat;
-            k.SlutDato = slutDato;
-            k.DyrId = dyrId;
-            return Bc.OpretBooking(k);
+            k.slutTid = slutTid;
+            k.DyrId = dyr.DyrId;
+            k.StartDato = startDate;
+            k.SlutDato = SlutDato;
+            return Bc.InsertBooking(k);
         }
 
         public int HentAnsatId(string navn)
@@ -100,7 +102,7 @@ namespace AnimalHouseBLL
             return Bc.HentAlleFritider(ansat, datetime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(int ansat, int dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime)
         {
             return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime);
         }
@@ -192,10 +194,14 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
+
+        
+
         public List<Lager> HentLagerNavnEllerVareNummer(string input)
         {
             return Lc.HentLagerNavnEllerVareNummer(input);
         }
+
 
         public int HentKundeId(string tlf)
         {

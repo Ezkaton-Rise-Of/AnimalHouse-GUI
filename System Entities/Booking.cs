@@ -16,8 +16,10 @@ namespace AnimalHouse_Entities
         public DateTime StartDato { get; set; }
         public DateTime SlutDato { get; set; }
         public Service service { get; set; }
-        public Bur bur { get; set; } 
-
+        public Bur bur { get; set; }
+        public BookingTime startTid {get; set;}
+        public BookingTime slutTid { get; set; }
+        
         public Booking()
         {
             

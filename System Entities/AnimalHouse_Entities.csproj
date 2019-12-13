@@ -50,6 +50,7 @@
     <Compile Include="Dyr.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Journal.cs" />
+    <Compile Include="Kategori.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Lager.cs" />
     <Compile Include="Produkt.cs" />
