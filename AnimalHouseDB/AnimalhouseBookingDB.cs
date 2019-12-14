@@ -10,7 +10,7 @@ namespace AnimalHouseDB
         {
         }
 
-        public List<Booking> HentAlleBooking()
+        public List<Booking> HentAlleBooking(Kunde k)
         {
             List<Booking> ld = null;
             SqlTransaction transaction = null;
@@ -20,7 +20,12 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM Booking");
+                SqlCommand command = new SqlCommand("SELECT Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut FROM Booking " +
+                    "left join Produkt on Produkt.ProduktId = Booking.ProduKtId " +
+                    "inner join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
+                    "inner join BookingTimer as e on Booking.SlutTid = e.BookingTimerId where ", conn);
+                command.Parameters.Add(new SqlParameter("@Kunde", k.Id));
+
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
                 ld = new List<Booking>();
@@ -28,12 +33,18 @@ namespace AnimalHouseDB
                 {
                     Booking d = new Booking();
                     d.BookingId = Convert.ToInt32(reader["BookingId"]);
-                    d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                    d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
                     d.Notat = Convert.ToString(reader["Notat"]);
-                    d.StartDato = Convert.ToDateTime(reader["StartDato"]);
-                    d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
-
+                    d.StartDato = Convert.ToDateTime(reader["Startdato"]);
+                    d.SlutDato = Convert.ToDateTime(reader["Slutdato"]);
+                    Service s = new Service();
+                    s.Navn = Convert.ToString(reader["Navn"]);
+                    d.service = s;
+                    BookingTime start = new BookingTime();
+                    start.time = Convert.ToString(reader["start"]);
+                    d.startTid = start;
+                    BookingTime slut = new BookingTime();
+                    slut.time = Convert.ToString(reader["slut"]);
+                    d.slutTid = slut;
                     ld.Add(d);
                 }
                 reader.Close();
@@ -51,7 +62,7 @@ namespace AnimalHouseDB
             return ld;
         }
 
-        public List<BookingTime> HentAlleFritider(int ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
@@ -65,9 +76,9 @@ namespace AnimalHouseDB
                 SqlCommand command = new SqlCommand("select * from BookingTimer " +
                     "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
                     "and BookingTimer.BookingTimerId < Booking.SlutTid " +
-                    "and Booking.Startdato = @dato' AND Booking.AnsatId = @AnsatId);");
-                command.Parameters.Add(new SqlParameter("@dato", ansat));
-                command.Parameters.Add(new SqlParameter("@AnsatId", dateTime.ToString("yyyy-MM-dd")));
+                    "and Booking.Startdato = @dato AND Booking.AnsatId = @AnsatId);", conn);
+                command.Parameters.Add(new SqlParameter("@dato", dateTime.ToString("yyyy-MM-dd")));
+                command.Parameters.Add(new SqlParameter("@AnsatId", ansat.Id));
 
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
@@ -83,7 +94,7 @@ namespace AnimalHouseDB
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw e;
             }
             finally
             {
@@ -93,7 +104,7 @@ namespace AnimalHouseDB
             return bookingTimes;
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(int ansat, int starttime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime startTid, DateTime dateTime)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
@@ -104,10 +115,12 @@ namespace AnimalHouseDB
             try
             {
 
-                SqlCommand command = new SqlCommand("select * from BookingTimer " +
-                    "where BookingTimer.BookingTimerId between @starttime and(select top 1 Booking.StartTid from Booking where Booking.StartTid > @starttime order by Booking.StartTid asc) AND AnsatId = @ansat;");
-                command.Parameters.Add(new SqlParameter("@Ansat", ansat));
-                command.Parameters.Add(new SqlParameter("@starttime", starttime));
+                SqlCommand command = new SqlCommand("if 1 < (select Count(*) from Booking where Booking.Startdato = @Dato AND ansatID = @Ansat) " +
+                    "select * from BookingTimer where BookingTimer.BookingTimerId between @starttime and(select top 1 Booking.StartTid from Booking where Booking.StartTid > @starttime and Booking.Startdato = @Dato AND ansatID = @Ansat order by Booking.StartTid  asc) " +
+                    "else select* from BookingTimer where BookingTimer.BookingTimerId > @starttime", conn);
+                command.Parameters.Add(new SqlParameter("@Ansat", ansat.Id));
+                command.Parameters.Add(new SqlParameter("@starttime", startTid.timeId));
+                command.Parameters.Add(new SqlParameter("@Dato", dateTime.ToString("yyyy-MM-dd")));
 
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
@@ -123,7 +136,9 @@ namespace AnimalHouseDB
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+
+
+                throw e;
             }
             finally
             {
@@ -133,10 +148,7 @@ namespace AnimalHouseDB
             return bookingTimes;
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Booking HentBooking(int Id)
         {
@@ -236,8 +248,7 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato,startTid, slutTid,) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato, @StartTid, @SlutTid)", conn);
-                command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato, startTid, slutTid, ProduKtId) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato, @StartTid, @SlutTid, @ProduktId)", conn);
                 command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
                 command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
                 command.Parameters.Add(new SqlParameter("@Notat", b.Notat));
@@ -245,6 +256,7 @@ namespace AnimalHouseDB
                 command.Parameters.Add(new SqlParameter("@SlutDato", b.SlutDato.ToString("yyyy-MM-dd")));
                 command.Parameters.Add(new SqlParameter("@StartTid", b.startTid.timeId));
                 command.Parameters.Add(new SqlParameter("@Sluttid", b.slutTid.timeId));
+                command.Parameters.Add(new SqlParameter("@ProduktId", b.service.ProduktId));
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();

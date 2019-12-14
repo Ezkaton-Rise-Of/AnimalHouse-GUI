@@ -20,12 +20,12 @@ namespace AnimalHouseBLL
 
         }
 
-        public List<Service> HentAlleService()
+        public List<Service> HentAlleService(Servicetype servicetype)
         {
-            return ServiceDB.HentAlleService();
+            return ServiceDB.HentAlleServiceByServiceType( servicetype);
         }
 
-        internal List<Service> HentAlleServiceType()
+        public List<Servicetype> HentAlleServiceType()
         {
             return ServiceDB.HentAlleServiceType();
         }

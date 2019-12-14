@@ -13,8 +13,8 @@ namespace AnimalHouseDB
         bool SletBooking(int id);
         Booking HentBooking(int Id);
         List<Booking> HentBookingByKunde(int KundeId);
-        List<Booking> HentAlleBooking();
-        List<BookingTime> HentAlleFritider(int ansat, DateTime dateTime);
-        List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime);
+        List<Booking> HentAlleBooking(Kunde k);
+        List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime);
+        List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime startTid, DateTime dateTime);
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Salg.cs" />
     <Compile Include="SalgItemLine.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="Servicetype.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

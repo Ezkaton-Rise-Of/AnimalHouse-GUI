@@ -8,10 +8,15 @@ namespace AnimalHouse_Entities
 {
     public class Service :Produkt
     {
-        public string ServiceType;
-        public int ServiceTypeId;
+        public Servicetype Servicetype { get; set; }
+
         public Service()
         {
+        }
+
+        public Service(Servicetype servicetype)
+        {
+            Servicetype = servicetype;
         }
 
         public Service(int produktId, string beskrivelse, double pris, bool service, int kategoriId, string navn) : base(produktId, beskrivelse, pris, service, kategoriId, navn)

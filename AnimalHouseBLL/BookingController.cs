@@ -32,20 +32,20 @@ namespace AnimalHouseBLL
             return BookingDB.HentBookingByKunde(Kundeid);
         } 
 
-        public List<Booking> HentAlleBooking()
+        public List<Booking> HentAlleBooking(Kunde k)
         {
 
-            return BookingDB.HentAlleBooking();
+            return BookingDB.HentAlleBooking(k);
         }
 
-        public List<BookingTime> HentAlleFritider(int ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
         {
             return BookingDB.HentAlleFritider(ansat, dateTime);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime dato)
         {
-            return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime);
+            return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime, dato);
         }
 
         public bool SletBooking(int id)

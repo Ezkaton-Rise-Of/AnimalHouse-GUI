@@ -44,8 +44,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Dyr_comboBox = new System.Windows.Forms.ComboBox();
+            this.Combobox_ansat = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -53,9 +53,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Service_combobox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.StartTime_Combo = new System.Windows.Forms.ComboBox();
+            this.StartTid_Combo = new System.Windows.Forms.ComboBox();
+            this.SlutTid_Combo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,7 +82,7 @@
             // 
             // dateTimePicker_StartDato
             // 
-            this.dateTimePicker_StartDato.Location = new System.Drawing.Point(15, 35);
+            this.dateTimePicker_StartDato.Location = new System.Drawing.Point(237, 35);
             this.dateTimePicker_StartDato.Name = "dateTimePicker_StartDato";
             this.dateTimePicker_StartDato.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker_StartDato.TabIndex = 107;
@@ -89,7 +91,7 @@
             // 
             this.label_StartDato.AutoSize = true;
             this.label_StartDato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_StartDato.Location = new System.Drawing.Point(14, 16);
+            this.label_StartDato.Location = new System.Drawing.Point(236, 16);
             this.label_StartDato.Name = "label_StartDato";
             this.label_StartDato.Size = new System.Drawing.Size(77, 16);
             this.label_StartDato.TabIndex = 109;
@@ -106,7 +108,7 @@
             // 
             this.label_BehandlerIdBooking.AutoSize = true;
             this.label_BehandlerIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_BehandlerIdBooking.Location = new System.Drawing.Point(231, 20);
+            this.label_BehandlerIdBooking.Location = new System.Drawing.Point(12, 20);
             this.label_BehandlerIdBooking.Name = "label_BehandlerIdBooking";
             this.label_BehandlerIdBooking.Size = new System.Drawing.Size(115, 16);
             this.label_BehandlerIdBooking.TabIndex = 114;
@@ -129,9 +131,9 @@
             this.button_RegBooking.ForeColor = System.Drawing.Color.MidnightBlue;
             this.button_RegBooking.Location = new System.Drawing.Point(316, 545);
             this.button_RegBooking.Name = "button_RegBooking";
-            this.button_RegBooking.Size = new System.Drawing.Size(200, 55);
+            this.button_RegBooking.Size = new System.Drawing.Size(135, 55);
             this.button_RegBooking.TabIndex = 116;
-            this.button_RegBooking.Text = "Registrer Booking";
+            this.button_RegBooking.Text = "Book  Bur";
             this.button_RegBooking.UseVisualStyleBackColor = false;
             // 
             // button_AnulBooking
@@ -145,18 +147,20 @@
             this.button_AnulBooking.TabIndex = 117;
             this.button_AnulBooking.Text = "Annuller Booking";
             this.button_AnulBooking.UseVisualStyleBackColor = false;
+            this.button_AnulBooking.Click += new System.EventHandler(this.button_AnulBooking_Click);
             // 
             // button_Søgning
             // 
             this.button_Søgning.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Søgning.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Søgning.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_Søgning.Location = new System.Drawing.Point(15, 173);
+            this.button_Søgning.Location = new System.Drawing.Point(235, 179);
             this.button_Søgning.Name = "button_Søgning";
             this.button_Søgning.Size = new System.Drawing.Size(98, 41);
             this.button_Søgning.TabIndex = 118;
-            this.button_Søgning.Text = "Søgning";
+            this.button_Søgning.Text = "TilFøj";
             this.button_Søgning.UseVisualStyleBackColor = false;
+            this.button_Søgning.Click += new System.EventHandler(this.button_Søgning_Click_1);
             // 
             // label_DyrIdBooking
             // 
@@ -172,7 +176,7 @@
             // 
             this.label_BookingType.AutoSize = true;
             this.label_BookingType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_BookingType.Location = new System.Drawing.Point(231, 63);
+            this.label_BookingType.Location = new System.Drawing.Point(12, 63);
             this.label_BookingType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_BookingType.Name = "label_BookingType";
             this.label_BookingType.Size = new System.Drawing.Size(95, 16);
@@ -182,15 +186,12 @@
             // comboBox_ServiceType
             // 
             this.comboBox_ServiceType.FormattingEnabled = true;
-            this.comboBox_ServiceType.Items.AddRange(new object[] {
-            "Konsultation",
-            "Behandling",
-            "Operation"});
-            this.comboBox_ServiceType.Location = new System.Drawing.Point(233, 79);
-            this.comboBox_ServiceType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_ServiceType.Location = new System.Drawing.Point(14, 79);
+            this.comboBox_ServiceType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_ServiceType.Name = "comboBox_ServiceType";
             this.comboBox_ServiceType.Size = new System.Drawing.Size(200, 21);
             this.comboBox_ServiceType.TabIndex = 124;
+            this.comboBox_ServiceType.SelectedIndexChanged += new System.EventHandler(this.comboBox_ServiceType_SelectedIndexChanged);
             // 
             // label_BookingBur
             // 
@@ -233,31 +234,31 @@
             this.button1.TabIndex = 131;
             this.button1.Text = "Søgning";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.SearchKunde_Click);
             // 
-            // comboBox1
+            // Dyr_comboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(43, 186);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 132;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.Dyr_comboBox.FormattingEnabled = true;
+            this.Dyr_comboBox.Location = new System.Drawing.Point(43, 186);
+            this.Dyr_comboBox.Name = "Dyr_comboBox";
+            this.Dyr_comboBox.Size = new System.Drawing.Size(200, 21);
+            this.Dyr_comboBox.TabIndex = 132;
+            this.Dyr_comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDyr_SelectedIndexChanged);
             // 
-            // comboBox2
+            // Combobox_ansat
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(234, 39);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 21);
-            this.comboBox2.TabIndex = 133;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.Combobox_ansat.FormattingEnabled = true;
+            this.Combobox_ansat.Location = new System.Drawing.Point(15, 39);
+            this.Combobox_ansat.Name = "Combobox_ansat";
+            this.Combobox_ansat.Size = new System.Drawing.Size(200, 21);
+            this.Combobox_ansat.TabIndex = 133;
+            this.Combobox_ansat.SelectedIndexChanged += new System.EventHandler(this.ComboBoxAnsat_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 58);
+            this.label1.Location = new System.Drawing.Point(234, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 134;
@@ -312,9 +313,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.Service_combobox);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.StartTime_Combo);
+            this.groupBox1.Controls.Add(this.StartTid_Combo);
+            this.groupBox1.Controls.Add(this.SlutTid_Combo);
             this.groupBox1.Controls.Add(this.label_StartDato);
             this.groupBox1.Controls.Add(this.dateTimePicker_StartDato);
             this.groupBox1.Controls.Add(this.label_BehandlerIdBooking);
@@ -322,7 +325,7 @@
             this.groupBox1.Controls.Add(this.label_BookingType);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox_ServiceType);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.Combobox_ansat);
             this.groupBox1.Location = new System.Drawing.Point(316, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(455, 237);
@@ -330,32 +333,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(14, 106);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 16);
+            this.label13.TabIndex = 139;
+            this.label13.Text = "Service";
+            // 
+            // Service_combobox
+            // 
+            this.Service_combobox.FormattingEnabled = true;
+            this.Service_combobox.Location = new System.Drawing.Point(14, 132);
+            this.Service_combobox.Name = "Service_combobox";
+            this.Service_combobox.Size = new System.Drawing.Size(121, 21);
+            this.Service_combobox.TabIndex = 138;
+            this.Service_combobox.SelectedIndexChanged += new System.EventHandler(this.Service_combobox_SelectedIndexChanged);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 113);
+            this.label11.Location = new System.Drawing.Point(236, 106);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 16);
             this.label11.TabIndex = 137;
             this.label11.Text = "Slut Tid ";
             // 
-            // comboBox3
+            // StartTid_Combo
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(15, 132);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 136;
+            this.StartTid_Combo.FormattingEnabled = true;
+            this.StartTid_Combo.Location = new System.Drawing.Point(237, 77);
+            this.StartTid_Combo.Name = "StartTid_Combo";
+            this.StartTid_Combo.Size = new System.Drawing.Size(121, 21);
+            this.StartTid_Combo.TabIndex = 136;
+            this.StartTid_Combo.SelectedIndexChanged += new System.EventHandler(this.StartTime_Combo_SelectedIndexChanged);
             // 
-            // StartTime_Combo
+            // SlutTid_Combo
             // 
-            this.StartTime_Combo.FormattingEnabled = true;
-            this.StartTime_Combo.Location = new System.Drawing.Point(13, 77);
-            this.StartTime_Combo.Name = "StartTime_Combo";
-            this.StartTime_Combo.Size = new System.Drawing.Size(121, 21);
-            this.StartTime_Combo.TabIndex = 135;
-            this.StartTime_Combo.SelectedIndexChanged += new System.EventHandler(this.StartTime_Combo_SelectedIndexChanged);
+            this.SlutTid_Combo.FormattingEnabled = true;
+            this.SlutTid_Combo.Location = new System.Drawing.Point(239, 125);
+            this.SlutTid_Combo.Name = "SlutTid_Combo";
+            this.SlutTid_Combo.Size = new System.Drawing.Size(121, 21);
+            this.SlutTid_Combo.TabIndex = 135;
+            this.SlutTid_Combo.SelectedIndexChanged += new System.EventHandler(this.SlutTid_Combo_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -537,7 +560,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Dyr_comboBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
@@ -577,8 +600,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox Dyr_comboBox;
+        private System.Windows.Forms.ComboBox Combobox_ansat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
@@ -600,10 +623,12 @@
         private System.Windows.Forms.Label Addresse_empty;
         private System.Windows.Forms.Label By_empty;
         private System.Windows.Forms.Label Postnummer_empty;
-        private System.Windows.Forms.ComboBox StartTime_Combo;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox SlutTid_Combo;
+        private System.Windows.Forms.ComboBox StartTid_Combo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button_tilbage;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox Service_combobox;
     }
 }

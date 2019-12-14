@@ -19,64 +19,76 @@ namespace AnimalHouse_GUI
         Ansat ansat = new Ansat(); 
         BookingTime starttid = new BookingTime();
         BookingTime sluttid = new BookingTime();
+        Servicetype servicetype = new Servicetype();
         Service service = new Service();
         Dyr Dyr = new Dyr();
 
         public AnimalHouseGui_Booking()
         {
             InitializeComponent();
-
-
-
         }
-
-            private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)
+        private void Hentbookinger()
         {
-
+            dataGridView2.DataSource = controller.HentAlleBooking(controller.K[0]);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)   
+        {
+        }
+        private void SearchKunde_Click(object sender, EventArgs e)
         {//holger 
             try
-            {
+            {       
                 //henter kunder
                 controller.HentKundeByTlf(Convert.ToString(textBox_EjerIdBooking.Text));
-                //henter dyr for kunden.
-
-                foreach (Dyr item in controller.HentAlleKundesDyr(controller.K[0].Id))
+                Navn_empty.Text = controller.K[0].Fnavn + " " + controller.K[0].Lnavn;
+                Addresse_empty.Text = controller.K[0].Adresse;
+                By_empty.Text = controller.K[0].By;
+                Postnummer_empty.Text = controller.K[0].Postnummer;
+                try
                 {
-                    ComboBoxItem citem = new ComboBoxItem();
-                    citem.Text = item.DyrId + " " + item.Art + " " + item.Race;
-                    citem.Value = item;
-                    comboBox1.Items.Add(citem);
+                    FillDyrComboBox();
+                    Hentbookinger();
+                }
+                catch
+                {
+                    throw;
                 }
             }
             catch (Exception)
             {
+                MessageBox.Show("problemer med forbindelsen");
+
                 throw;
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void FillDyrComboBox()
         {
+            foreach (Dyr item in controller.HentAlleKundesDyr(controller.K[0].Id))
+            {
+                ComboBoxItem citem = new ComboBoxItem();
+                citem.Text = item.DyrId + " " + item.Art + " " + item.Race;
+                citem.Value = item;
+                Dyr_comboBox.Items.Add(citem);
+            }
+        }
+        private void ComboBoxDyr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBoxItem cbiDyr = (ComboBoxItem)Dyr_comboBox.SelectedItem;
+            Dyr = (Dyr)cbiDyr.Value;
+
             foreach (Ansat item in controller.HentAlleAnsate())
             {
                 ComboBoxItem citem = new ComboBoxItem();
                 citem.Text = item.Navn + " (" + item.Stelling + ")";
                 citem.Value = item;
-                comboBox2.Items.Add(citem);
+                Combobox_ansat.Items.Add(citem);
             }
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
-
-
             //holger
             //tjekker om der er tilføjes en kunde
             //if (comboBox1.SelectedValue. ==  null)
@@ -84,77 +96,94 @@ namespace AnimalHouse_GUI
             //    MessageBox.Show("vælg en Kunde først");
             //}
             controller.BookingHentFriBur(dateTimePicker1.Value, dateTimePicker2.Value);
-
             dataGridView1.DataSource = controller.Bur;
- 
-
+        }
+        private void ComboBoxAnsat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)Combobox_ansat.SelectedItem;
+            ansat = (Ansat)cbi.Value;
+            foreach (Servicetype item in controller.HentAlleServiceType())
+            {
+                if (item.ServiceType != "Bur") {
+                    ComboBoxItem citem = new ComboBoxItem();
+                    citem.Text = item.ServiceType;
+                    citem.Value = item;
+                    comboBox_ServiceType.Items.Add(citem);
+                }  
+            }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox_ServiceType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            foreach (Service item in controller.HentAlleServiceType())
+            ComboBoxItem cbiserviceType = (ComboBoxItem)comboBox_ServiceType.SelectedItem;
+            servicetype = (Servicetype)cbiserviceType.Value;
+            foreach (Service item in controller.HentAlleService(servicetype))
             {
                 ComboBoxItem citem = new ComboBoxItem();
-                citem.Text = item.ServiceType;
+                citem.Text = item.Navn;
                 citem.Value = item;
-                comboBox1.Items.Add(citem);
+                Service_combobox.Items.Add(citem);
             }
+        }
 
+        private void Service_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBoxItem cbiservice = (ComboBoxItem)Service_combobox.SelectedItem;
+            service = (Service)cbiservice.Value;
+            foreach (BookingTime item in controller.HentAlleFritider(ansat, dateTimePicker1.Value))
+            {
+                ComboBoxItem citem = new ComboBoxItem();
+                citem.Text = item.time;
+                citem.Value = item;
+                StartTid_Combo.Items.Add(citem);
+            }
         }
 
         private void StartTime_Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBoxItem cbiAnsat = (ComboBoxItem)comboBox1.SelectedItem;
-            ansat = (Ansat)cbiAnsat.Value;
-            ComboBoxItem cbistarttid = (ComboBoxItem)StartTime_Combo.SelectedItem;
+            ComboBoxItem cbistarttid = (ComboBoxItem)StartTid_Combo.SelectedItem;
             starttid = (BookingTime)cbistarttid.Value;
-            foreach (BookingTime item in controller.HentAlleHentMuligeSlutTider(ansat, starttid))
+            foreach (BookingTime item in controller.HentAlleHentMuligeSlutTider(ansat, starttid, dateTimePicker1.Value))
             {
                 ComboBoxItem citem = new ComboBoxItem();
                 citem.Text = item.time;
                 citem.Value = item;
-                comboBox3.Items.Add(citem);
-            }
-
-        }
-
-
-        private void comboBox_ServiceType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            ComboBoxItem cbiAnsat = (ComboBoxItem)comboBox1.SelectedItem;
-            ansat = (Ansat)cbiAnsat.Value;
-            ComboBoxItem cbiservice = (ComboBoxItem)comboBox1.SelectedItem;
-            service = (Service)cbiservice.Value;
-
-            foreach (BookingTime item in controller.HentAlleFritider(service.ServiceTypeId, dateTimePicker1.Value))
-            {
-                ComboBoxItem citem = new ComboBoxItem();
-                citem.Text = item.time;
-                citem.Value = Convert.ToString(item.timeId);
-                comboBox3.Items.Add(citem);
+                SlutTid_Combo.Items.Add(citem);
             }
         }
-
-        private void button_Søgning_Click(object sender, EventArgs e)
-        {
-            bool answer = controller.Opretbooking(textBox1.Text, starttid, sluttid, ansat, service, Dyr, dateTimePicker1.Value, dateTimePicker1.Value);
-
-            
-                }
-
-
         private void button_tilbage_Click(object sender, EventArgs e)
         {
             this.Close();
-            //AnimalHouseGui_Main mainform = new AnimalHouseGui_Main();
-            //mainform.ShowDialog();
         }
-
         private void label12_Click(object sender, EventArgs e)
         {
             Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Booking Form.txt");
+        }
+
+
+        private void SlutTid_Combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBoxItem cbistarttid = (ComboBoxItem)SlutTid_Combo.SelectedItem;
+            sluttid = (BookingTime)cbistarttid.Value;
+        }
+
+        private void button_Søgning_Click_1(object sender, EventArgs e)
+        {
+            bool answer = controller.Opretbooking(textBox1.Text, starttid, sluttid, ansat, service, Dyr, dateTimePicker1.Value, dateTimePicker1.Value);
+            
+            if (answer == true)
+            {
+                Hentbookinger();
+            }
+            else
+            {
+                MessageBox.Show("Der er sket en fejl i oprettelse");
+            }
+        }
+
+        private void button_AnulBooking_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
