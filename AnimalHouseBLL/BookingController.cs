@@ -48,9 +48,9 @@ namespace AnimalHouseBLL
             return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime, dato);
         }
 
-        public bool SletBooking(int id)
+        public bool SletBooking(Booking b)
         {
-            return BookingDB.SletBooking(id);
+            return BookingDB.SletBooking(b);
         }
 
         public bool UpdateBooking(Booking b)
@@ -62,6 +62,11 @@ namespace AnimalHouseBLL
         {
 
             return BookingDB.OpretBooking(k);
+        }
+
+        internal bool OpretbookingBur(string text, Dyr dyr, DateTime start, DateTime slut, Bur bur)
+        {
+            return BookingDB.OpretbookingBur(text, dyr, start, slut, bur);
         }
     }
 }

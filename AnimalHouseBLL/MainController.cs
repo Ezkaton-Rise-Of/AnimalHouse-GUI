@@ -243,6 +243,11 @@ namespace AnimalHouseBLL
             return Jc.SletJournal(id);
         }
 
+        public bool SletBooking(Booking b)
+        {
+            return Bc.SletBooking(b);
+        }
+
         public List<Journal> HentAlleJournale()
         {
             return Jc.HentAlleJournale();
@@ -263,6 +268,10 @@ namespace AnimalHouseBLL
             return Jc.HentJournal(id);
         }
 
+        public bool OpretbookingBur(string text, Dyr dyr, DateTime value1, DateTime value2, Bur dataBoundItem)
+        {
+            return Bc.OpretbookingBur(text, dyr, value1, value2, dataBoundItem);
+        }
 
         public void BookingHentFriBur(DateTime start, DateTime slut)
         {

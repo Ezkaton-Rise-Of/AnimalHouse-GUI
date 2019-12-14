@@ -167,7 +167,7 @@ namespace AnimalHouse_GUI
             sluttid = (BookingTime)cbistarttid.Value;
         }
 
-        private void button_Søgning_Click_1(object sender, EventArgs e)
+        private void button_tilføj_Click_1(object sender, EventArgs e)
         {
             bool answer = controller.Opretbooking(textBox1.Text, starttid, sluttid, ansat, service, Dyr, dateTimePicker1.Value, dateTimePicker1.Value);
             
@@ -181,9 +181,48 @@ namespace AnimalHouse_GUI
             }
         }
 
+
+
+
         private void button_AnulBooking_Click(object sender, EventArgs e)
         {
+            Booking b = (Booking)dataGridView2.CurrentRow.DataBoundItem;
+            bool answer = controller.SletBooking(b);
+            if (answer == true)
+            {
+                Hentbookinger();
+            }
+            else
+            {
+                MessageBox.Show("Der er sket en fejl i sletningen");
+            }
 
+           
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            AnimalHouseGui_Register form = new AnimalHouseGui_Register();
+            form.ShowDialog();
+        }
+
+        private void button_BurBooking_Click(object sender, EventArgs e)
+        {
+
+
+            bool answer = controller.OpretbookingBur(textBox1.Text, Dyr, dateTimePicker1.Value, dateTimePicker1.Value, (Bur)dataGridView1.CurrentRow.DataBoundItem);
+
+            if (answer == true)
+            {
+                Hentbookinger();
+            }
+            else
+            {
+                MessageBox.Show("Der er sket en fejl i oprettelse");
+            }
+        
         }
     }
 }

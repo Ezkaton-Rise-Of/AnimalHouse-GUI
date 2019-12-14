@@ -135,6 +135,7 @@
             this.button_RegBooking.TabIndex = 116;
             this.button_RegBooking.Text = "Book  Bur";
             this.button_RegBooking.UseVisualStyleBackColor = false;
+            this.button_RegBooking.Click += new System.EventHandler(this.button_BurBooking_Click);
             // 
             // button_AnulBooking
             // 
@@ -160,7 +161,7 @@
             this.button_Søgning.TabIndex = 118;
             this.button_Søgning.Text = "TilFøj";
             this.button_Søgning.UseVisualStyleBackColor = false;
-            this.button_Søgning.Click += new System.EventHandler(this.button_Søgning_Click_1);
+            this.button_Søgning.Click += new System.EventHandler(this.button_tilføj_Click_1);
             // 
             // label_DyrIdBooking
             // 
@@ -460,6 +461,7 @@
             this.button3.TabIndex = 151;
             this.button3.Text = "Tilføj kunde";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
             // 

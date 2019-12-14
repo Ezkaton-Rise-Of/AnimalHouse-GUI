@@ -193,7 +193,7 @@ namespace AnimalHouseDB
             return d;
         }
 
-        public List<Booking> HentBookingByKunde(int Id)
+        public List<Booking> HentBookingByKunde(int KundeId)
         {
             throw new NotImplementedException();
         }
@@ -277,8 +277,52 @@ namespace AnimalHouseDB
             return answer;
         }
 
+        public bool OpretbookingBur(string text, Dyr dyr, DateTime start, DateTime slut, Bur bur)
+        {
+            bool answer = false;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+                SqlCommand command1 = new SqlCommand("Insert into Booking (DyrId, Notat, StartDato, SlutDato, ProduKtId) values (@DyrId,  @Notat, @StartDato, @SlutDato, 1)", conn);
+                command1.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
+                command1.Parameters.Add(new SqlParameter("@Notat", text));
+                command1.Parameters.Add(new SqlParameter("@StartDato", start.ToString("yyyy-MM-dd")));
+                command1.Parameters.Add(new SqlParameter("@SlutDato", slut.ToString("yyyy-MM-dd")));
 
-        public bool SletBooking(int id)
+                command1.Transaction = transaction;
+                Int32 id = (Int32)command1.ExecuteScalar()
+
+
+
+                SqlCommand command2 = new SqlCommand($"Insert into Booking_Has_bur (BookingId, BurId) values ({id} , @bur)", conn);
+                command2.Parameters.Add(new SqlParameter("@bur", bur.Id));
+
+                command2.Transaction = transaction;
+                command2.ExecuteNonQuery();
+
+
+
+                transaction.Commit();
+                answer = true;
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw e;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return answer;
+        }
+
+        public bool SletBooking(Booking b)
         {
             bool result = false ;
             SqlTransaction transaction = null;
@@ -288,8 +332,8 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId");
-                command.Parameters.Add(new SqlParameter("@BookingId", id));
+                SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId", conn);
+                command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
                 command.Transaction = transaction;
                 command.ExecuteNonQuery();
                 transaction.Commit();
