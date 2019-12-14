@@ -20,10 +20,12 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("SELECT Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut FROM Booking " +
-                    "left join Produkt on Produkt.ProduktId = Booking.ProduKtId " +
+                SqlCommand command = new SqlCommand("SELECT Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut " +
+                    "FROM Booking left join Produkt on Produkt.ProduktId = Booking.ProduKtId " +
                     "inner join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
-                    "inner join BookingTimer as e on Booking.SlutTid = e.BookingTimerId where ", conn);
+                    "inner join BookingTimer as e on Booking.SlutTid = e.BookingTimerId " +
+                    "inner join Dyr on Dyr.DyrId = Booking.DyrId " +
+                    "inner join Kunde on Kunde.KundeId = dyr.KundeId where Kunde.KundeId = @Kunde", conn);
                 command.Parameters.Add(new SqlParameter("@Kunde", k.Id));
 
                 command.Transaction = transaction;
