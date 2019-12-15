@@ -14,7 +14,6 @@ namespace AnimalHouse_Entities
         public Kategori kategori { get; set; }
         public bool Service{get; set;}
         public int KategoriId { get; set; }
-
         public string Navn { get; set; }
        
         public Produkt()
@@ -41,6 +40,14 @@ namespace AnimalHouse_Entities
             Service = service;
             KategoriId = kategoriId;
             Navn = navn;
+        }
+
+        public String HentInfo
+        {
+            get 
+            {
+                return $"{Navn}  Pris {Pris}Kr.";
+            }
         }
     }
 }

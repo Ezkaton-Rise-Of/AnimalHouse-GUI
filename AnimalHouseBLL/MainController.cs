@@ -20,6 +20,8 @@ namespace AnimalHouseBLL
         public List<Booking> B = new List<Booking>();
         public List<Bur> Bur = new List<Bur>();
         public List<Service> S = new List<Service>();
+        public List<Kategori> kategorier = new List<Kategori>();
+        public List<Produkt> produkter = new List<Produkt>();
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
@@ -29,6 +31,7 @@ namespace AnimalHouseBLL
         BurController BurC;
         ServiceController ServiceC;
         ProductController Pc;
+        SalgController Sc;
         public MainController()
         {
             Kc = new KundeController();
@@ -40,6 +43,7 @@ namespace AnimalHouseBLL
             BurC = new BurController();
             ServiceC = new ServiceController();
             Pc = new ProductController();
+            Sc = new SalgController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -222,9 +226,9 @@ namespace AnimalHouseBLL
         }
 
 
-        public int HentKundeId(string tlf)
+        public int HentKundeId(string navnEllerTlf)
         {
-            return Kc.HentKundeId(tlf);
+            return Kc.HentKundeId(navnEllerTlf);
         }
 
         public Ansat HentAnsat(int id)
@@ -303,14 +307,38 @@ namespace AnimalHouseBLL
         }
 
         // Salg system Funktioner
-        public string GemFaktura()
+        public string GemFaktura(int kundeId)
         {
-            throw new NotImplementedException();
+            return Sc.GemFaktura();
         }
 
         public List<Kategori> HentAlleKategorier()
         {
+            kategorier = Pc.Hentkategorier();
             return Pc.Hentkategorier();
+        }
+
+        public List<Produkt> HentAlleProdukter()
+        {
+            produkter = Pc.HentAlleProdukter();
+            return Pc.HentAlleProdukter();
+        }
+
+        public List<Faktura> HentKundesFaktura(int kundeId)
+        {
+            return Sc.HentKundesFaktura(kundeId);
+        }
+        public List<Faktura> HentAlleFaktura()
+        {
+            return Sc.HentAlleFaktura();
+        }
+        public List<Produkt> HentAlleProduktByKategori(Kategori k)
+        {
+            return Pc.HentAlleProduktByKategori(k);
+        }
+        public Produkt HentProdukt(int id)
+        {
+            return Pc.HentAlleProdukt(id);
         }
 
         public List<Booking> HentAlleBooking(Kunde k)
