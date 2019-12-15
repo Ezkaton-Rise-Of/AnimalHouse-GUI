@@ -22,5 +22,19 @@ namespace AnimalHouseBLL
         {
             return produktDB.HentAlleKategorier();
         }
+        public List<Produkt> HentAlleProduktByKategori(Kategori k)
+        {
+            return produktDB.HentAlleProduktByKategori(k);
+        }
+
+        public List<Produkt> HentAlleProdukter()
+        {
+            return produktDB.HentAlleProdukter();
+        }
+
+        public Produkt HentAlleProdukt(int id)
+        {
+            return produktDB.HentProdukt(id);
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace AnimalHouse_GUI
         public AnimaHouseGui_AnsatForm()
         {
             InitializeComponent();
+            this.comboBox_stelling.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void buttonTilbage_Click(object sender, EventArgs e)

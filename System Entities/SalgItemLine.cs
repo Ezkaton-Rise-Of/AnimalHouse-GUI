@@ -18,7 +18,7 @@ namespace System_Entities
             this.p = p;
         }
 
-        public double GetSubTotal()
+        public double BeregneSubTotal()
         {
             return  p.Pris* ammount;
         }

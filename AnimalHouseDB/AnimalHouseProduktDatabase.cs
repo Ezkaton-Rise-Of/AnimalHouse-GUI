@@ -28,6 +28,7 @@ namespace AnimalHouseDB
                         kategori.KategoriNavn = Convert.ToString(reader["Navn"]);
                         kategoriList.Add(kategori);
                     }
+                    reader.Close();
                 }
                 transaction.Commit();
             }
@@ -70,6 +71,7 @@ namespace AnimalHouseDB
                     item.Navn = Convert.ToString(reader["Navn"]);
                     produkts.Add(item);
                 }
+                reader.Close();
                 transaction.Commit();
             }
             catch (Exception e)
@@ -108,10 +110,11 @@ namespace AnimalHouseDB
                     item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                     item.Service = Convert.ToBoolean(reader["Service"]);
                     item.Navn = Convert.ToString(reader["Navn"]);
+                    item.KategoriId = Convert.ToInt32(reader["Produkt_KategoriId"]);
 
                     produkts.Add(item);
-                };
-                command.ExecuteNonQuery();
+                }
+                reader.Close();
                 transaction.Commit();
             }
             catch (Exception e)
@@ -141,7 +144,6 @@ namespace AnimalHouseDB
                 transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("select * from Produkt join Produkt_Kategori on Produkt.ProduktKategoriId = Produkt_Kategori.Produkt_KategoriId where ProduktId = @produktId ", conn,transaction);
                 command.Parameters.Add(new SqlParameter("@produktId", Id));
-
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -152,7 +154,9 @@ namespace AnimalHouseDB
                     produkt.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
                     produkt.Service = Convert.ToBoolean(reader["Service"]);
                     produkt.Navn = Convert.ToString(reader["Navn"]);
+                    produkt.KategoriId = Convert.ToInt32(reader["Produkt_KategoriId"]);
                 }
+                reader.Close();
                 transaction.Commit();
             }
             catch (Exception e)

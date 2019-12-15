@@ -26,6 +26,10 @@ namespace AnimalHouse_GUI
             comboBox_behandler.DisplayMember = "HentNavn";
             comboBox_behandler2.DataSource = controller.HentAlleBehandler();
             comboBox_behandler2.DisplayMember = "HentNavn";
+            this.comboBox_behandler.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBox_behandler2.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBox_ejer.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBox_dyr.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void button2_Click(object sender, EventArgs e)

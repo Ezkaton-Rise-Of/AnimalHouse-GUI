@@ -72,6 +72,7 @@
     <Compile Include="AnimalhouseKundeDatabase.cs" />
     <Compile Include="AnimalHouseLagerDatabase.cs" />
     <Compile Include="AnimalHouseProduktDatabase.cs" />
+    <Compile Include="AnimalHouseSalgDataBase.cs" />
     <Compile Include="AnimalhouseServiceDatabase.cs" />
     <Compile Include="IAnsatDB.cs" />
     <Compile Include="IBookingBurDB.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="IKundeDB.cs" />
     <Compile Include="ILagerDB.cs" />
     <Compile Include="IProduktDB.cs" />
+    <Compile Include="ISalg.cs" />
     <Compile Include="IServiceDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
