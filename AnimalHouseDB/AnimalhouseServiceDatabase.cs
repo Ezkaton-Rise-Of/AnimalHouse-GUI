@@ -14,7 +14,7 @@ namespace AnimalHouseDB
         {
         }
 
-        public List<Service> HentAlleService()
+        public List<Service> HentAlleServiceByServiceType(Servicetype servicetype)
         {
             List<Service> ld = null;
             SqlTransaction transaction = null;
@@ -24,15 +24,22 @@ namespace AnimalHouseDB
             transaction = conn.BeginTransaction();
             try
             {
-                SqlCommand command = new SqlCommand("Select * from Service left join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId;", conn);
+                SqlCommand command = new SqlCommand("Select * from Service " +
+                    "left join ServiceType on Service.ServiceTypeId = ServiceType.ServiceTypeId " +
+                    "Left Join Produkt on Produkt.ProduktId = Service.ProduktId where Service.ServiceTypeId = @ServiceType; ", conn);
+                command.Parameters.Add(new SqlParameter("@Servicetype", servicetype.ServiceTypeId));
+
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
                 ld = new List<Service>();
                 while (reader.Read())
                 {
-                    Service d = new Service();
-                    d.ServiceType = Convert.ToString(reader["ServiceType"]);
-                    ld.Add(d);
+                    Service service = new Service();
+                    Servicetype serviceType = new Servicetype(Convert.ToString(reader["ServiceType"]), Convert.ToInt32(reader["ServiceTypeId"]));
+                    service.Servicetype = serviceType;
+                    service.ProduktId = Convert.ToInt32(reader["ProduktId"]);
+                    service.Navn = Convert.ToString(reader["Navn"]);
+                    ld.Add(service);
                 }
                 reader.Close();
             }
@@ -49,29 +56,38 @@ namespace AnimalHouseDB
             return ld;
         }
 
-        public List<Service> HentAlleServiceType()
+        public List<Servicetype> HentAlleServiceType()
         {
-            throw new NotImplementedException();
-        }
-
-        public Service HentService(int s)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool OpretService(Service s)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool SletService(int s)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdateService(Service s)
-        {
-            throw new NotImplementedException();
+            List<Servicetype> ld = null;
+            SqlTransaction transaction = null;
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            conn.Open();
+            transaction = conn.BeginTransaction();
+            try
+            {
+                SqlCommand command = new SqlCommand("Select * from ServiceType", conn);
+                command.Transaction = transaction;
+                SqlDataReader reader = command.ExecuteReader();
+                ld = new List<Servicetype>();
+                while (reader.Read())
+                {   
+                    Servicetype servicetype = new Servicetype(Convert.ToString(reader["ServiceType"]), Convert.ToInt32(reader["ServiceTypeId"]));
+                    ld.Add(servicetype);
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return ld;
         }
     }
+
+
+    
 }

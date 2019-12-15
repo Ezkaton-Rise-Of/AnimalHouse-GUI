@@ -8,22 +8,41 @@ namespace AnimalHouse_Entities
 {
     public class Booking
     {
-
+        public string Notat;
         public int BookingId { get; set; }
-        public int DyrId { get; set; }
-        public int AnsatId { get; set; }
-        public string Notat { get; set; }
         public DateTime StartDato { get; set; }
         public DateTime SlutDato { get; set; }
-        public Service service { get; set; }
-        public Bur bur { get; set; }
-        public BookingTime startTid {get; set;}
-        public BookingTime slutTid { get; set; }
+        public int DyrId;
+        public int AnsatId;
+
+        public Service service;
+        public Bur bur;
+        public BookingTime startTid;
+        public BookingTime slutTid;
         
         public Booking()
         {
             
         }
+
+        public string navn
+        {
+            get
+            {
+                return service.Navn;
+            }
+        }
+
+        public string StartTid
+        {
+            get { return startTid.time; }
+        }
+
+        public string SlutTid
+        {
+            get { return slutTid.time; }
+        }
+
 
 
     }
