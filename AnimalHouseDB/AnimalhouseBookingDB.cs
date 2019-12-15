@@ -288,13 +288,13 @@ namespace AnimalHouseDB
             try
             {
                 SqlCommand command1 = new SqlCommand("Insert into Booking (DyrId, Notat, StartDato, SlutDato, ProduKtId) values (@DyrId,  @Notat, @StartDato, @SlutDato, 1)", conn);
-                command1.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
+                command1.Parameters.Add(new SqlParameter("@DyrId",dyr.DyrId));
                 command1.Parameters.Add(new SqlParameter("@Notat", text));
                 command1.Parameters.Add(new SqlParameter("@StartDato", start.ToString("yyyy-MM-dd")));
                 command1.Parameters.Add(new SqlParameter("@SlutDato", slut.ToString("yyyy-MM-dd")));
 
                 command1.Transaction = transaction;
-                Int32 id = (Int32)command1.ExecuteScalar()
+                Int32 id = (Int32)command1.ExecuteScalar();
 
 
 

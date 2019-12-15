@@ -17,7 +17,7 @@ namespace AnimalHouseBLL
         {
             set;
         }
-        string  
+  
 
     }
 }
