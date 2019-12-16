@@ -9,35 +9,27 @@ namespace System_Entities
 {
     public class Salg
     {
-        public Kunde k;
         public List<SalgItemLine> salgitems = new List<SalgItemLine>();
         public decimal amount;
 
-        public Salg(Kunde k)
+        public Salg()
         {
-            this.k = k;
+            
         }
 
-        public void AddItemToLine(Produkt p, int antal)
+        public void TilføjeItemLine(Produkt p, int antal)
         {
             salgitems.Add(new SalgItemLine(p, antal));
         }
 
-        public decimal GetTotal()
+        public double BeregneTotal()
         {
-            decimal dblTotal = 0;
-            decimal dblSubTotal = 0;
+            double dblTotal = 0;
             foreach (SalgItemLine lineItem in salgitems)
             {
-                dblSubTotal = lineItem.GetSubTotal();
-                dblTotal = dblTotal + dblSubTotal;
+                dblTotal += lineItem.BeregneSubTotal();
             }
             return dblTotal;
-        }
-
-        public decimal GetTotalDiscount()
-        {
-            return GetTotal()-((GetTotal() * k.GetDiscount())/100);
         }
     }
 }

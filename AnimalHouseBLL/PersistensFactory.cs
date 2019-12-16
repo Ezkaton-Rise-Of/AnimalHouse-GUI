@@ -20,6 +20,10 @@ namespace AnimalHouseBLL
             }
             else return _instance;
         }
+        public IBookingBurDB GetBurDB()
+        {
+            return new AnimalHouseBurDatabase();
+        }
 
         public IKundeDB GetKundeDB()
         {
@@ -54,6 +58,19 @@ namespace AnimalHouseBLL
         public IJournal GetJournalDB()
         {
             return new AnimalHouseJournalDataBase();
+        }
+
+        public IServiceDB GetServiceDB()
+        {
+            return new AnimalhouseServiceDatabase();
+        }
+        public IProduktDB GetProduktDB()
+        {
+            return new AnimalHouseProduktDatabase();
+        }
+        public ISalg GetSalgDB()
+        {
+            return new AnimalHouseSalgDataBase();
         }
     }
 }

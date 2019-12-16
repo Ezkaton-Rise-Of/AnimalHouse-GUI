@@ -241,6 +241,7 @@
             this.textBox_By.Location = new System.Drawing.Point(28, 693);
             this.textBox_By.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_By.Name = "textBox_By";
+            this.textBox_By.ReadOnly = true;
             this.textBox_By.Size = new System.Drawing.Size(481, 30);
             this.textBox_By.TabIndex = 24;
             // 
@@ -453,7 +454,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AnimalHouseGui_Register";
             this.Text = "Animal House";
-            this.Load += new System.EventHandler(this.AnimalHouseGui_Register_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ejer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.groupBox1.ResumeLayout(false);

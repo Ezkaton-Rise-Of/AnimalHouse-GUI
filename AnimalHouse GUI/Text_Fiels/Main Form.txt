@@ -1,0 +1,33 @@
+Animal House Hovedmenu
+
+1- Registerer Ejer:
+   For at tilføje en ny kunde til systemet, at søge for en bestemt kunde, eller at have et overblik for
+   alle de kunder, der er registreret i systemet
+
+2- Registerere Dyr:
+   For at tilføje et nyt dyr for en kunde ind i systemet, at søge for et bestemt dyr, eller at have et
+   overblik foralle de dyre, der er registreret i systemet
+
+3- Booking
+   For at booke en behandling, konsultation, operation, og bur.
+
+4- Salg
+  For at sælge et produkt til en kunde og have et overblik over alle de produkter, der er registreret i
+  systemet
+
+5- Ansate
+   For at tilføje en ny ansat, at søge for en bestemt ansat, eller at have et overblik for alle de ansate, der
+   er registreret i systemet.
+
+6- Mail System:
+   For at sende  et  kort/brev/mail ud til de patienter som ikke har været der indenfor det sidste år, et list
+   af de patienter skulle kunne findes frem
+
+7- Lager status:
+   For at kunne udskrive en liste med lagerets status, I form af en fil - indeholdende lagerets værdi
+   (i indkøbspris excl. moms) samt status på hvorledes et varenummer indeholder under minimumsantallet for
+   den enkelte vare - og som vist på en skærm.
+
+8- Journalisereing:
+   For at registrere hvilket medicin/behandling et dyr har fået, og indtaste det i en database under dyrets
+   informationsside

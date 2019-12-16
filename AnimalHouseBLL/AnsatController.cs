@@ -24,9 +24,9 @@ namespace AnimalHouseBLL
         {
             return ansatDB.OpretAnsat(a);
         }
-        public string SletAnsat(int ansatId)
+        public string SletAnsat(Ansat a)
         {
-            return ansatDB.SletAnsat(ansatId);
+            return ansatDB.SletAnsat(a);
         }
 
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)

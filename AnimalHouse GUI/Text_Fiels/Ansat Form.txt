@@ -1,0 +1,25 @@
+Her har du mulighed for at oprette, Slet, Update en ansat information, og får et overblik over alle de
+ansate der er i systemet.
+
+- For at tilføje et nyt ansat:
+	1- Indtast ansat navns.
+	2- Vælg ansats stelling
+	3- Indtast ansats telefon nummer.
+	4- Tryk på Tilføj-knappen.
+
+- For at Updatere en ansats information:
+	1- vælg ansat fra datagridviewet via et doubletklik på ders record.
+	2- Genindtast de oplysninger, du vil ændre.
+	3- Try på Update-knappen.
+
+- For at slette et ansat fra systemet:
+	1- vælg ansat fra datagridviewet via et doubletklik på ders record.
+	2- Tryk på Slet-knappen.
+	3- Tryk på Yes-knappen i MessageBox for at bekræfte.
+
+- For at søge efter et bestemt ansat:
+	1- indtast ansats navn i søgfeltet.
+	2- Tryk på Søgning-knap.
+
+- For at får et overblik over alle ansate i systemet tryk på Hent alle ansate-knappen.
+- ? : Hjælpe funktion.

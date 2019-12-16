@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,16 @@ namespace AnimalHouseBLL
         public Journal HentJournal(int id)
         {
             return journalDB.HentJournal(id);
+        }
+
+        public DataSet Test()
+        {
+            return journalDB.Test();
+        }
+
+        public DataSet Test2(int days)
+        {
+            return journalDB.Test2(days);
         }
     }
 }

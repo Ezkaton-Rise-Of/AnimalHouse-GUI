@@ -52,7 +52,8 @@
             this.button_Søg = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_behandler = new System.Windows.Forms.ComboBox();
+            this.button_tilknyt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Dyr)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -325,21 +326,37 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // comboBox1
+            // comboBox_behandler
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(35, 872);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(329, 28);
-            this.comboBox1.TabIndex = 102;
-            this.comboBox1.Visible = false;
+            this.comboBox_behandler.FormattingEnabled = true;
+            this.comboBox_behandler.Location = new System.Drawing.Point(35, 872);
+            this.comboBox_behandler.Name = "comboBox_behandler";
+            this.comboBox_behandler.Size = new System.Drawing.Size(329, 28);
+            this.comboBox_behandler.TabIndex = 102;
+            this.comboBox_behandler.Visible = false;
+            // 
+            // button_tilknyt
+            // 
+            this.button_tilknyt.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_tilknyt.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_tilknyt.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_tilknyt.Location = new System.Drawing.Point(123, 907);
+            this.button_tilknyt.Margin = new System.Windows.Forms.Padding(4);
+            this.button_tilknyt.Name = "button_tilknyt";
+            this.button_tilknyt.Size = new System.Drawing.Size(113, 58);
+            this.button_tilknyt.TabIndex = 103;
+            this.button_tilknyt.Text = "Tilknyt";
+            this.button_tilknyt.UseVisualStyleBackColor = false;
+            this.button_tilknyt.Visible = false;
+            this.button_tilknyt.Click += new System.EventHandler(this.button_tilknyt_Click);
             // 
             // AnimalHouseGui_DyrRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1774, 1043);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.button_tilknyt);
+            this.Controls.Add(this.comboBox_behandler);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button_Søg);
@@ -398,6 +415,7 @@
         private System.Windows.Forms.Button button_Søg;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_behandler;
+        private System.Windows.Forms.Button button_tilknyt;
     }
 }

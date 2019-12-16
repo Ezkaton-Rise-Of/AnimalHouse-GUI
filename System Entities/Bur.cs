@@ -9,9 +9,9 @@ namespace AnimalHouse_Entities
     public class Bur
     {
         // attributes 
-        public int Id;
-        public string Art;
-        public char Booket;
+        public int Id { get; set; }
+        public string Art { get; set; }
+        public char Booket { get; set; }
 
         // Class Constructors
         public Bur() { }

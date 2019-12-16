@@ -1,7 +1,10 @@
 ﻿using AnimalHouse_Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System_Entities;
 
 namespace AnimalHouseDB
 {
@@ -151,9 +154,10 @@ namespace AnimalHouseDB
             List<Kunde> results = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
+            
             try
             {
+                conn.Open();
                 string commandtxt = $"Select * from Kunde " +
                     $"join Postnr on Postnr.Postnummer = Kunde.Postnummer";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
@@ -174,6 +178,7 @@ namespace AnimalHouseDB
                     k.E_mail = (string)reader["E_mail"];
                     results.Add(k);
                 }
+                reader.Close();
             }
             catch (Exception e)
             {
@@ -295,15 +300,15 @@ namespace AnimalHouseDB
             return results;
         }
 
-        public int HentKundeId(string tlf)
+        public int HentKundeId(string input)
         {
             int id = 0;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
             try
             {
-                string commandtxt = $"select KundeId from Kunde where Tlf Like '%{tlf}%'";
+                conn.Open();
+                string commandtxt = $"select KundeId from Kunde where Tlf Like '%{input}%' or Fnavn Like '%{input}%'";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())

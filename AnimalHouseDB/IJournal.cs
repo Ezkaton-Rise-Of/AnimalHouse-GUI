@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,5 +16,7 @@ namespace AnimalHouseDB
         string OpretJournal(Journal j);
         string SletJournal(int id);
         Journal HentJournal(int id);
+        DataSet Test();
+        DataSet Test2(int days);
     }
 }

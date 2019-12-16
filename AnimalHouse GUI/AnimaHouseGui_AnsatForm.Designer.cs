@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimaHouseGui_AnsatForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox_ansatNavn = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,12 +54,11 @@
             // 
             this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(573, 148);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(725, 228);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(559, 281);
+            this.dataGridView1.Size = new System.Drawing.Size(973, 650);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
@@ -66,8 +66,7 @@
             // textBox_ansatNavn
             // 
             this.textBox_ansatNavn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_ansatNavn.Location = new System.Drawing.Point(647, 124);
-            this.textBox_ansatNavn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_ansatNavn.Location = new System.Drawing.Point(981, 183);
             this.textBox_ansatNavn.Name = "textBox_ansatNavn";
             this.textBox_ansatNavn.Size = new System.Drawing.Size(216, 20);
             this.textBox_ansatNavn.TabIndex = 1;
@@ -78,10 +77,9 @@
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(880, 120);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(1320, 168);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 27);
+            this.button1.Size = new System.Drawing.Size(144, 54);
             this.button1.TabIndex = 2;
             this.button1.Text = "Søgning";
             this.button1.UseVisualStyleBackColor = false;
@@ -95,10 +93,9 @@
             "Dyrlæge",
             "Reciptionist",
             "veterinærsygeplejerske"});
-            this.comboBox_stelling.Location = new System.Drawing.Point(109, 89);
-            this.comboBox_stelling.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_stelling.Location = new System.Drawing.Point(101, 255);
             this.comboBox_stelling.Name = "comboBox_stelling";
-            this.comboBox_stelling.Size = new System.Drawing.Size(177, 24);
+            this.comboBox_stelling.Size = new System.Drawing.Size(390, 32);
             this.comboBox_stelling.TabIndex = 3;
             // 
             // buttonTilbage
@@ -107,8 +104,7 @@
             this.buttonTilbage.AutoSize = true;
             this.buttonTilbage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonTilbage.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTilbage.Location = new System.Drawing.Point(914, 443);
-            this.buttonTilbage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonTilbage.Location = new System.Drawing.Point(1559, 902);
             this.buttonTilbage.Name = "buttonTilbage";
             this.buttonTilbage.Size = new System.Drawing.Size(101, 45);
             this.buttonTilbage.TabIndex = 4;
@@ -121,8 +117,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(576, 124);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(864, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 5;
@@ -134,8 +129,7 @@
             this.button_Hent.AutoSize = true;
             this.button_Hent.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Hent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Hent.Location = new System.Drawing.Point(574, 443);
-            this.button_Hent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Hent.Location = new System.Drawing.Point(725, 902);
             this.button_Hent.Name = "button_Hent";
             this.button_Hent.Size = new System.Drawing.Size(109, 45);
             this.button_Hent.TabIndex = 6;
@@ -150,8 +144,7 @@
             this.button_Update.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Update.Enabled = false;
             this.button_Update.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Update.Location = new System.Drawing.Point(695, 443);
-            this.button_Update.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Update.Location = new System.Drawing.Point(934, 902);
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(96, 45);
             this.button_Update.TabIndex = 7;
@@ -167,8 +160,7 @@
             this.button_Slet.Enabled = false;
             this.button_Slet.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Slet.ForeColor = System.Drawing.Color.Red;
-            this.button_Slet.Location = new System.Drawing.Point(799, 443);
-            this.button_Slet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Slet.Location = new System.Drawing.Point(1112, 902);
             this.button_Slet.Name = "button_Slet";
             this.button_Slet.Size = new System.Drawing.Size(97, 45);
             this.button_Slet.TabIndex = 8;
@@ -179,10 +171,9 @@
             // textBox_navn
             // 
             this.textBox_navn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_navn.Location = new System.Drawing.Point(109, 34);
-            this.textBox_navn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_navn.Location = new System.Drawing.Point(101, 125);
             this.textBox_navn.Name = "textBox_navn";
-            this.textBox_navn.Size = new System.Drawing.Size(177, 23);
+            this.textBox_navn.Size = new System.Drawing.Size(390, 30);
             this.textBox_navn.TabIndex = 9;
             // 
             // label2
@@ -190,8 +181,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 34);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(97, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 10;
@@ -202,8 +192,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 92);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(97, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 17);
             this.label3.TabIndex = 11;
@@ -223,8 +212,7 @@
             this.groupBox1.Location = new System.Drawing.Point(37, 71);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(378, 311);
+            this.groupBox1.Size = new System.Drawing.Size(617, 669);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ansat Register";
@@ -234,20 +222,18 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 149);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(97, 356);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 17);
+            this.label5.Size = new System.Drawing.Size(67, 24);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Tlf.";
+            this.label5.Text = "Telefon";
             // 
             // textBox_tlf
             // 
             this.textBox_tlf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_tlf.Location = new System.Drawing.Point(101, 146);
-            this.textBox_tlf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_tlf.Location = new System.Drawing.Point(101, 414);
             this.textBox_tlf.Name = "textBox_tlf";
-            this.textBox_tlf.Size = new System.Drawing.Size(185, 23);
+            this.textBox_tlf.Size = new System.Drawing.Size(390, 30);
             this.textBox_tlf.TabIndex = 14;
             // 
             // button_Register
@@ -256,8 +242,7 @@
             this.button_Register.AutoSize = true;
             this.button_Register.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Register.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Register.Location = new System.Drawing.Point(109, 178);
-            this.button_Register.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Register.Location = new System.Drawing.Point(205, 534);
             this.button_Register.Name = "button_Register";
             this.button_Register.Size = new System.Drawing.Size(95, 32);
             this.button_Register.TabIndex = 13;
@@ -292,12 +277,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_ansatNavn);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnimaHouseGui_AnsatForm";
             this.Text = "Animal House";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

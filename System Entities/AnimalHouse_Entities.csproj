@@ -45,10 +45,13 @@
   <ItemGroup>
     <Compile Include="Ansat.cs" />
     <Compile Include="Booking.cs" />
+    <Compile Include="BookingTime.cs" />
     <Compile Include="Bur.cs" />
     <Compile Include="Dyr.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Faktura.cs" />
     <Compile Include="Journal.cs" />
+    <Compile Include="Kategori.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Lager.cs" />
     <Compile Include="Produkt.cs" />
@@ -57,6 +60,7 @@
     <Compile Include="Salg.cs" />
     <Compile Include="SalgItemLine.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="Servicetype.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

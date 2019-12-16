@@ -20,33 +20,37 @@ namespace AnimalHouseBLL
 
         }
 
-        public bool OpretBooking(Booking k)
+        public List<Booking> HentBookingByKundeId(int id)
         {
-            return BookingDB.OpretBooking(k);
+
+            return BookingDB.HentBookingByKunde(id);
         }
 
-
-        public void HentBookingByKundeId(int id)
+        public List<Booking> HentBookingByKunde(int Kundeid)
         {
 
-            bookings =BookingDB.HentBookingByKunde(id);
-        }
-
-        public void HentBookingByKunde(int Kundeid)
-        {
-
-            bookings = BookingDB.HentBookingByKunde(Kundeid);
+            return BookingDB.HentBookingByKunde(Kundeid);
         } 
 
-        public void HentAlleBooking()
+        public List<Booking> HentAlleBooking(Kunde k)
         {
 
-            bookings = BookingDB.HentAlleBooking();
+            return BookingDB.HentAlleBooking(k);
         }
 
-        public bool SletBooking(int id)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
         {
-            return BookingDB.SletBooking(id);
+            return BookingDB.HentAlleFritider(ansat, dateTime);
+        }
+
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime dato)
+        {
+            return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime, dato);
+        }
+
+        public bool SletBooking(Booking b)
+        {
+            return BookingDB.SletBooking(b);
         }
 
         public bool UpdateBooking(Booking b)
@@ -54,9 +58,15 @@ namespace AnimalHouseBLL
             return BookingDB.UpdaterBooking(b);
         }
 
+        internal bool InsertBooking(Booking k)
+        {
 
+            return BookingDB.OpretBooking(k);
+        }
 
-
-
+        internal bool OpretbookingBur(string text, Dyr dyr, DateTime start, DateTime slut, Bur bur)
+        {
+            return BookingDB.OpretbookingBur(text, dyr, start, slut, bur);
+        }
     }
 }

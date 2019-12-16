@@ -12,10 +12,11 @@ namespace AnimalHouseDB
 {
     public class AnimalHouseBurDatabase: IBookingBurDB
     {
-
         public AnimalHouseBurDatabase()
         {
         }
+
+
 
         //Opretter information af Bure
         public string OpretBur(Bur b)
@@ -163,11 +164,11 @@ namespace AnimalHouseDB
                 try
                 {
                     SqlCommand command = new SqlCommand("select * from Bur " +
-                        $"where not exists(select '' from Booking " +
-                        $"inner join Booking_Has_Bur " +
-                        $"on Booking.BookingId = Booking_Has_Bur.BookingId " +
-                        $"where @startdato <= Booking.StartDatoTid " +
-                        $"and @slutdato >= Booking.SlutDatoTid and Bur.BurId = Booking_Has_Bur.BurId)", conn);
+                        "where not exists(select '' from Booking " +
+                        "inner join Booking_Has_Bur " +
+                        "on Booking.BookingId = Booking_Has_Bur.BookingId " +
+                        "where @startdato <= Booking.Startdato " +
+                        "and @slutdato >= Booking.Slutdato and Bur.BurId = Booking_Has_Bur.BurId)", conn);
                     command.Parameters.Add(new SqlParameter("@startdato", startdato.ToString()));
                     command.Parameters.Add(new SqlParameter("@slutdato", slutdato.ToString()));
                     command.Transaction = transaction;

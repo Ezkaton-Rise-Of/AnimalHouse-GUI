@@ -1,6 +1,9 @@
 ﻿using AnimalHouseBLL;
 using System;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace AnimalHouse_GUI
 {
@@ -15,21 +18,21 @@ namespace AnimalHouse_GUI
             InitializeComponent();
         }
 
-
-        private void AnimalHouseGui_Register_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_RegEjer_Click(object sender, EventArgs e)
         {
             //string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email
-            string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text);
-            MessageBox.Show(answer);
-            FillDataGridView();
-            button_tilføje.Enabled = true;
-            ClearForm();
-            ;
+            if (Validateform())
+            {
+                string answer = controller.OpretKunde(textBox_Fornavn.Text, textBox_Efternavn.Text, textBox_Vejnavn.Text, textBox_Postnummer.Text, textBox_Telefon.Text, kundetype, textBox_By.Text = controller.HentBynavn(textBox_Postnummer.Text), textBox_Email.Text);
+                MessageBox.Show(answer);
+                FillDataGridView();
+                button_tilføje.Enabled = true;
+                ClearForm(); 
+            }
+            else
+            {
+                MessageBox.Show("Invalid data");
+            }
         }
 
         private void button_SletEjer_Click(object sender, EventArgs e)
@@ -86,12 +89,12 @@ namespace AnimalHouse_GUI
                     id = Convert.ToInt32(dataGridView_Ejer.CurrentRow.Cells[0].Value.ToString());
                     textBox_Fornavn.Text = dataGridView_Ejer.CurrentRow.Cells[1].Value.ToString();
                     textBox_Efternavn.Text = dataGridView_Ejer.CurrentRow.Cells[2].Value.ToString();
-                    textBox_By.Text = dataGridView_Ejer.CurrentRow.Cells[6].Value.ToString();
+                    textBox_By.Text = dataGridView_Ejer.CurrentRow.Cells[7].Value.ToString();
                     textBox_Email.Text = dataGridView_Ejer.CurrentRow.Cells[9].Value.ToString();
                     textBox_Postnummer.Text = dataGridView_Ejer.CurrentRow.Cells[4].Value.ToString();
                     textBox_Telefon.Text = dataGridView_Ejer.CurrentRow.Cells[5].Value.ToString();
                     textBox_Vejnavn.Text = dataGridView_Ejer.CurrentRow.Cells[3].Value.ToString();
-                    if (dataGridView_Ejer.CurrentRow.Cells[7].Value.ToString() == "Private")
+                    if (dataGridView_Ejer.CurrentRow.Cells[6].Value.ToString() == "Private")
                     {
                         radioButton_Private.Checked = true;
                         radioButton_Erhverv.Checked = false;
@@ -130,7 +133,7 @@ namespace AnimalHouse_GUI
 
         private void label_Help_Click(object sender, EventArgs e)
         {
-
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Register Form.txt");
         }
 
         private void radioButton_Private_CheckedChanged(object sender, EventArgs e)
@@ -162,6 +165,22 @@ namespace AnimalHouse_GUI
             AnimalHouseGui_DyrRegister dyrRegister = new AnimalHouseGui_DyrRegister();
             dyrRegister.ReturnKundeId(int.Parse(dataGridView_Ejer.CurrentRow.Cells[0].Value.ToString()));
             dyrRegister.ShowDialog();
+        }
+
+        private bool Validateform()
+        {
+            if ( textBox_Telefon.Text.Trim().All(char.IsDigit) && textBox_Telefon.Text.Length != 0 
+                && !textBox_Fornavn.Text.Trim().Any(char.IsDigit) && textBox_Fornavn.Text.Trim().Length != 0 
+                && !textBox_Efternavn.Text.Trim().Any(char.IsDigit) && textBox_Efternavn.Text.Trim().Length != 0
+                && textBox_Email.Text.Trim().Length != 0
+                && textBox_Vejnavn.Text.Trim().Length != 0
+                && textBox_Postnummer.Text.Trim().All(char.IsDigit)
+                && textBox_By.Text.Length != 0)
+            {
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

@@ -26,6 +26,10 @@ namespace AnimalHouse_GUI
             comboBox_behandler.DisplayMember = "HentNavn";
             comboBox_behandler2.DataSource = controller.HentAlleBehandler();
             comboBox_behandler2.DisplayMember = "HentNavn";
+            this.comboBox_behandler.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBox_behandler2.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBox_ejer.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBox_dyr.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,19 +59,26 @@ namespace AnimalHouse_GUI
 
         private void button_gem_Click(object sender, EventArgs e)
         {
-            try
+            if (ValidateForm())
             {
+                try
+                {
+                    controller.HentAlleDyr();
+                    int ansatid = controller.HentAnsatId(comboBox_behandler.Text.Trim());
+                    int dyrid = controller.D[comboBox_dyr.SelectedIndex].DyrId;
+                    string beskrivelse = textBox_beskrivelse.Text.Trim();
+                    string res = controller.Opretjournal(ansatid, dyrid, beskrivelse);
+                    MessageBox.Show(res);
+                }
+                catch (Exception er)
+                {
 
-                int ansatid = controller.HentAnsatId(comboBox_behandler.Text.Trim());
-                int dyrid = controller.D[comboBox_dyr.SelectedIndex].DyrId;
-                string beskrivelse = textBox_beskrivelse.Text.Trim();
-                string res = controller.Opretjournal(ansatid, dyrid, beskrivelse);
-                MessageBox.Show(res);
+                    MessageBox.Show(er.Message);
+                } 
             }
-            catch (Exception er)
+            else
             {
-
-                MessageBox.Show(er.Message);
+                MessageBox.Show("Invald data!","Warning",MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -172,6 +183,26 @@ namespace AnimalHouse_GUI
         private void button3_Click(object sender, EventArgs e)
         {
             FillDataGridView();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Journal Form.txt");
+        }
+
+        private bool ValidateForm()
+        {
+            if (comboBox_behandler.Text.Length != 0
+                && comboBox_ejer.Text.Length != 0
+                && comboBox_dyr.Text.Length != 0
+                && textBox_beskrivelse.Text.Length != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

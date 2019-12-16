@@ -1,0 +1,38 @@
+Her har du mulighed for at tilføj, update, selt en kunde, og får et overblik over alle de kunde der
+registreret i systemet.
+
+- Ejer type: her kan man vælge om det er en private eller en erhverv kunde.
+
+- Fornavn : kundes fornavn.
+
+- efternavn: kundes efternavn.
+
+- E_mail: kundes email adresse.
+
+- Telefon: kundes telefon nummer.
+
+- Vejnavn: kundes Vejnavn.
+
+- Postnummer: kundes postnummer.
+
+- By: kundes by navn (udfyldes automatisk i henhold til postnummeret).
+
+- Registrer knap: Når alle kundeoplysninger er indtastet, tilføjer registerknappen en ny kunderekord
+  i systemet.
+
+- Søg knap: her kan man søge efter en bestemt kunde via ders navn eller telefon nummer. Første indtast kundes
+  telefon eller navn, og så tryk på søg knappen.
+
+- Søgning knap: her får man et overblik over alle de kunde i systemet.
+
+- Slet Knap: for at slette en kundesrecord fra systemet sammen med alle de dyr, der er registreret under
+  kunden.Er aktiv føtste efter at en kunderekord blev vælgt via et dobbeltklik på recoreden i datagridviewet.
+
+- Update knap: for at opdatere kundernes oplysninger. Er aktiv føtste efter at en kunderekord blev vælgt via 
+  et dobbeltklik på recoreden i datagridviewet.
+
+- Tilføj dyr: Opner en anden window, hvor man kan tilføj et nyt dyr til kunden.
+
+- Tilbage: for at vende tilbage til hovedmenuen.
+
+- ? : hjælpe funktion.

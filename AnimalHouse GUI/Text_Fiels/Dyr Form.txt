@@ -1,0 +1,29 @@
+Her har du mulighed for at Opret, Slet, tilknyt en behandler til et dyr, og får et overblik over alle
+dyr i systemet.
+
+- For at tilføj et nyt dyr til en ejer/ kunde:
+	1- indtast kundes navn eller telefon nummer ind i søgningfeltet og tryk derefter på Søg-knappen.
+	2- indtast dyrs Art, Race , Køn, Alder
+	3- Tryk på Register-Knap.
+
+- For at slet et dyr fra systemet:
+	1- indtast kundes navn eller telefon nummer ind i søgningfeltet og tryk derefter på Søg-knappen.
+	2- Dobbeltklik på den dyre record, du vil slette i datagridviewet.
+	3- Tryk på Slet-knappen.
+	4- tryk på Yes-Kanppen i MessageBox window for at bekræfte.
+
+- For at får et overblik over alle dyre i systemet tryk på Søgning-knap.
+
+- For at tilknyt en behandler til et dyr:
+	1- Registrere dyret.
+	2- Tjek tilknyt en behandler-box.
+	3- vælg behandleren fra menuen, og derefter tryk på Tilknyt-Knappen
+
+- For at tilknyt en anden Behandler til dyret:
+	2- Dobbeltklik på den dyre record, du ønsker at opdatere i datagridviewet.
+	2- Tjek tilknyt en behandler-box.
+	3- vælg den nye behandler fra menuen, og derefter tryk på Tilknyt-Knappen
+
+- For at vende tilbage til hovedmenuen tryk på Tilbage-knappen.
+
+- ?: Hjælpe-Funktion.

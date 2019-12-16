@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGUI_JournalForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -242,6 +243,7 @@
             this.label5.Size = new System.Drawing.Size(22, 24);
             this.label5.TabIndex = 8;
             this.label5.Text = "?";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBox_behandler2
             // 
@@ -271,7 +273,7 @@
             this.button_annulere.Name = "button_annulere";
             this.button_annulere.Size = new System.Drawing.Size(137, 68);
             this.button_annulere.TabIndex = 10;
-            this.button_annulere.Text = "Annulere";
+            this.button_annulere.Text = "Annullere";
             this.button_annulere.UseVisualStyleBackColor = false;
             this.button_annulere.Click += new System.EventHandler(this.button_annulere_Click);
             // 
@@ -409,6 +411,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnimalHouseGUI_JournalForm";
             this.Text = "Animal House";
             this.Load += new System.EventHandler(this.AnimalHouseGUI_JournalForm_Load);

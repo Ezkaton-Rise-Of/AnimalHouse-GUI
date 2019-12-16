@@ -7,6 +7,7 @@ using AnimalHouse_Entities;
 using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
+using System.Data;
 using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
@@ -17,14 +18,21 @@ namespace AnimalHouseBLL
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
         public List<Lager> L = new List<Lager>();
-
+        public List<Booking> B = new List<Booking>();
+        public List<Bur> Bur = new List<Bur>();
+        public List<Service> S = new List<Service>();
+        public List<Kategori> kategorier = new List<Kategori>();
+        public List<Produkt> produkter = new List<Produkt>();
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
         BookingController Bc;
         LagerController Lc;
         JournalController Jc;
-
+        BurController BurC;
+        ServiceController ServiceC;
+        ProductController Pc;
+        SalgController Sc;
         public MainController()
         {
             Kc = new KundeController();
@@ -33,6 +41,10 @@ namespace AnimalHouseBLL
             Bc = new BookingController();
             Lc = new LagerController();
             Jc = new JournalController();
+            BurC = new BurController();
+            ServiceC = new ServiceController();
+            Pc = new ProductController();
+            Sc = new SalgController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -42,15 +54,18 @@ namespace AnimalHouseBLL
             return Kc.OpretKunde(k);
         }
 
-        public bool Opretbooking(string notat, DateTime startDato, DateTime slutDato, int serviceId, int dyrId, int ansatId)
+        public bool Opretbooking(string notat, BookingTime startTid, BookingTime slutTid, Ansat ansat, Service service, Dyr dyr, DateTime startDate, DateTime SlutDato)
         {
             Booking k = new Booking();
-            k.AnsatId = ansatId;
-            k.StartDato = slutDato;
+            k.AnsatId = ansat.Id;
+            k.startTid = startTid;
+            k.service = service;
             k.Notat = notat;
-            k.SlutDato = slutDato;
-            k.DyrId = dyrId;
-            return Bc.OpretBooking(k);
+            k.slutTid = slutTid;
+            k.DyrId = dyr.DyrId;
+            k.StartDato = startDate;
+            k.SlutDato = SlutDato;
+            return Bc.InsertBooking(k);
         }
 
         public int HentAnsatId(string navn)
@@ -73,6 +88,11 @@ namespace AnimalHouseBLL
             return Ac.OpretAnsat(a);
         }
 
+        public DataSet Test2(int days)
+        {
+            return Jc.Test2(days);
+        }
+
         public List<Kunde> HentAlleKunde()
         {
             return Kc.HentAlleKunde();
@@ -81,20 +101,44 @@ namespace AnimalHouseBLL
         {
             return Kc.SletKunde(id);
         }
-        public string OpretDyr(int kundeId, string art, string race, int alder, char sex)
+        public string OpretDyr(int kundeId, string art, string race, int alder, char sex, string behandler)
         {
-            return Dc.OpretDyr(kundeId, art, race, alder, sex);
+            return Dc.OpretDyr(kundeId, art, race, alder, sex, behandler);
         }
 
-        public void HentAlleDyr()
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime)
         {
-            D= Dc.HentAlleDyr();
+            return Bc.HentAlleFritider(ansat, datetime);
+        }
+
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime date)
+        {
+            return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date);
+        }
+
+        
+
+        public List<Service> HentAlleService(Servicetype servicetype)
+        {
+            return ServiceC.HentAlleService(servicetype);
+        }
+
+        public List<Dyr> HentAlleDyr()
+        {
+            return Dc.HentAlleDyr();
         }
 
         public string SletAnsat(int id)
         {
-            return Ac.SletAnsat(id);
+            Ansat a = HentAnsat(id);
+            return Ac.SletAnsat(a);
         }
+
+        public List<Servicetype> HentAlleServiceType()
+        {
+            return ServiceC.HentAlleServiceType();
+        }
+
         public Ansat HentAnsatByNavn(string navn)
         {
             return Ac.HentAnsatByName(navn);
@@ -108,6 +152,20 @@ namespace AnimalHouseBLL
         public Dyr HentDyr(int id)
         {
             return Dc.HentDyr(id);
+        }
+
+        public bool TilknytBehandler(int dyrId, string behandler)
+        {
+            try
+            {
+                Dc.TilknytBehandler(dyrId, behandler);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
 
         public string SletDyr(int id)
@@ -159,9 +217,10 @@ namespace AnimalHouseBLL
             return Lc.TilføjLager(L);
         }
 
-        public int HentKundeId(string tlf)
+
+        public int HentKundeId(string navnEllerTlf)
         {
-            return Kc.HentKundeId(tlf);
+            return Kc.HentKundeId(navnEllerTlf);
         }
         //Lager
 
@@ -179,6 +238,11 @@ namespace AnimalHouseBLL
         public string SletJournal(int id)
         {
             return Jc.SletJournal(id);
+        }
+
+        public bool SletBooking(Booking b)
+        {
+            return Bc.SletBooking(b);
         }
 
         public List<Journal> HentAlleJournale()
@@ -201,6 +265,19 @@ namespace AnimalHouseBLL
             return Jc.HentJournal(id);
         }
 
+        public bool OpretbookingBur(string text, Dyr dyr, DateTime value1, DateTime value2, Bur dataBoundItem)
+        {
+            return Bc.OpretbookingBur(text, dyr, value1, value2, dataBoundItem);
+        }
+
+        public void BookingHentFriBur(DateTime start, DateTime slut)
+        {
+
+            Bur = BurC.BookingHentFriBur(start, slut);
+        }
+
+
+
         public string HentAnsatNavn(int id)
         {
             return Ac.HentAnsatNavn(id);
@@ -216,6 +293,50 @@ namespace AnimalHouseBLL
         public List<Ansat> HentAnsatByNavn2(string navn)
         {
             return Ac.HentAnsatByNanv2(navn);
+        }
+        public DataSet Test()
+        {
+            return Jc.Test();
+        }
+
+        // Salg system Funktioner
+        public string GemFaktura(int kundeId)
+        {
+            return Sc.GemFaktura();
+        }
+
+        public List<Kategori> HentAlleKategorier()
+        {
+            kategorier = Pc.Hentkategorier();
+            return Pc.Hentkategorier();
+        }
+
+        public List<Produkt> HentAlleProdukter()
+        {
+            produkter = Pc.HentAlleProdukter();
+            return Pc.HentAlleProdukter();
+        }
+
+        public List<Faktura> HentKundesFaktura(int kundeId)
+        {
+            return Sc.HentKundesFaktura(kundeId);
+        }
+        public List<Faktura> HentAlleFaktura()
+        {
+            return Sc.HentAlleFaktura();
+        }
+        public List<Produkt> HentAlleProduktByKategori(Kategori k)
+        {
+            return Pc.HentAlleProduktByKategori(k);
+        }
+        public Produkt HentProdukt(int id)
+        {
+            return Pc.HentAlleProdukt(id);
+        }
+
+        public List<Booking> HentAlleBooking(Kunde k)
+        {
+            return Bc.HentAlleBooking(k);
         }
     }
 }
