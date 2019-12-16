@@ -9,18 +9,18 @@ namespace System_Entities
 {
     public class SalgItemLine
     {
-        public int ammount;
+        public decimal amount;
         public Produkt p;
 
-        public SalgItemLine(Produkt p, int ammount)
+        public SalgItemLine(Produkt p, decimal amount)
         {
-            this.ammount = ammount;
+            this.amount = amount;
             this.p = p;
         }
 
-        public double GetSubTotal()
+        public decimal GetSubTotal()
         {
-            return  p.Pris* ammount;
+            return p.Pris * amount;
         }
     }
 }

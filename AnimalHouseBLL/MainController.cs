@@ -7,6 +7,7 @@ using AnimalHouse_Entities;
 using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
+using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
 {
@@ -139,16 +140,9 @@ namespace AnimalHouseBLL
               return Kc.HentKundeByTlforNavn(input);
         }
 
-        public List<Lager> HentLagerVareNavn(string varenavn)
-        {
-            return Lc.HentLagerVareNavn(varenavn);
-        }
+       
 
-        public Lager HentLagerVareNummer(string varenummer)
-        {
-            return Lc.HentLagerVareNummer(varenummer);
-        }
-
+        //Lager 
         public Lager SøgId(int id)
         {
             return Lc.SøgId(id);
@@ -159,15 +153,17 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
-        public List<Lager> HentLagerNavnEllerVareNummer(string input)
+        public string TilføjLager(decimal pris, int antal, Produkt produkt)
         {
-            return Lc.HentLagerNavnEllerVareNummer(input);
+            Lager L = new Lager(pris, antal, produkt);
+            return Lc.TilføjLager(L);
         }
 
         public int HentKundeId(string tlf)
         {
             return Kc.HentKundeId(tlf);
         }
+        //Lager
 
         public Ansat HentAnsat(int id)
         {

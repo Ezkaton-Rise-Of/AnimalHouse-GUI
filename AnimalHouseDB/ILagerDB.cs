@@ -9,11 +9,13 @@ namespace AnimalHouseDB
 {
     public interface ILagerDB
     {
-            Lager SøgId(int id);
-            //string HentLagerByVareNavn(LagerStatus L);
-            Lager HentLagerVareNummer(string varenummer);
-            List<Lager> HentLager();
-            List<Lager> HentLagerNavnEllerVareNummer(string input);
-            List<Lager> HentLagerVareNavn(string varenavn);
-        }
+        Lager SøgId(int id);
+        List<Lager> HentLager();
+        string TilføjLager(Lager L);
+    }
+    //{Obsolete code}//
+    //Lager HentLagerVareNummer(string varenummer);
+    //List<Lager> HentLagerNavnEllerVareNummer(string input);
+    //List<Lager> HentLagerVareNavn(string varenavn);
+
 }

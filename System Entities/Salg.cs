@@ -11,7 +11,7 @@ namespace System_Entities
     {
         public Kunde k;
         public List<SalgItemLine> salgitems = new List<SalgItemLine>();
-        public double amount;
+        public decimal amount;
 
         public Salg(Kunde k)
         {
@@ -23,10 +23,10 @@ namespace System_Entities
             salgitems.Add(new SalgItemLine(p, antal));
         }
 
-        public double GetTotal()
+        public decimal GetTotal()
         {
-            double dblTotal = 0;
-            double dblSubTotal = 0;
+            decimal dblTotal = 0;
+            decimal dblSubTotal = 0;
             foreach (SalgItemLine lineItem in salgitems)
             {
                 dblSubTotal = lineItem.GetSubTotal();
@@ -35,7 +35,7 @@ namespace System_Entities
             return dblTotal;
         }
 
-        public double GetTotalDiscount()
+        public decimal GetTotalDiscount()
         {
             return GetTotal()-((GetTotal() * k.GetDiscount())/100);
         }

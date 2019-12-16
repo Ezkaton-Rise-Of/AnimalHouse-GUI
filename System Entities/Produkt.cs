@@ -8,17 +8,17 @@ namespace AnimalHouse_Entities
 {
     public class Produkt
     {
-        public int ProduktId;
-        public string Beskrivelse;
-        public double Pris;
-        public int KategoriId;
-        public Service Service;
+        public int ProduktId { get; set; }
+        public string Beskrivelse { get; set; }
+        public decimal Pris { get; set; }
+        public int KategoriId { get; set; }
+        public Service Service { get; set; }
         public Produkt()
         {
 
         }
 
-        public Produkt(int produktId, string beskrivelse, double pris, int kategoriId)
+        public Produkt(int produktId, string beskrivelse, decimal pris, int kategoriId)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
@@ -26,9 +26,17 @@ namespace AnimalHouse_Entities
             KategoriId = kategoriId;
         }
 
-        public Produkt(int produktId, string beskrivelse, double pris, int kategoriId, Service service) : this(produktId, beskrivelse, pris, kategoriId)
+        public Produkt(int produktId, string beskrivelse, decimal pris, int kategoriId, Service service) : this(produktId, beskrivelse, pris, kategoriId)
         {
             Service = service;
+        }
+
+        public string HentInfo
+        {
+            get
+            {
+                return $"{ProduktId}";
+            }
         }
     }
 }

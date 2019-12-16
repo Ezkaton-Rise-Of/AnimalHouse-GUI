@@ -113,6 +113,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>test102DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="test102DataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>test102DataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="test102DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>test102DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="test102DataSet31.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>test102DataSet31.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Test_LagerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,6 +193,39 @@
     </None>
     <None Include="test102DataSet.xss">
       <DependentUpon>test102DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="test102DataSet11.xsc">
+      <DependentUpon>test102DataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="test102DataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>test102DataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="test102DataSet11.xss">
+      <DependentUpon>test102DataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="test102DataSet2.xsc">
+      <DependentUpon>test102DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="test102DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>test102DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="test102DataSet2.xss">
+      <DependentUpon>test102DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="test102DataSet31.xsc">
+      <DependentUpon>test102DataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="test102DataSet31.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>test102DataSet31.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="test102DataSet31.xss">
+      <DependentUpon>test102DataSet31.xsd</DependentUpon>
     </None>
     <None Include="Test_LagerDataSet.xsc">
       <DependentUpon>Test_LagerDataSet.xsd</DependentUpon>
