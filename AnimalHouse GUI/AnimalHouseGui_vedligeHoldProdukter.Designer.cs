@@ -32,16 +32,16 @@
             this.Pris_Inputbox = new System.Windows.Forms.TextBox();
             this.Beskrive_InputBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.ProduktId_Label = new System.Windows.Forms.Label();
-            this.ProduktId_ShowId = new System.Windows.Forms.Label();
-            this.Produkt_Navn = new System.Windows.Forms.Label();
-            this.Label_Beskrivelse = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.ServiceType_Label = new System.Windows.Forms.Label();
-            this.Pris_Label = new System.Windows.Forms.Label();
             this.Button_slet = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Pris_Label = new System.Windows.Forms.Label();
+            this.ServiceType_Label = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Label_Beskrivelse = new System.Windows.Forms.Label();
+            this.Produkt_Navn = new System.Windows.Forms.Label();
+            this.ProduktId_ShowId = new System.Windows.Forms.Label();
+            this.ProduktId_Label = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Tilbage_button = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             this.Navn_InputBox.Name = "Navn_InputBox";
             this.Navn_InputBox.Size = new System.Drawing.Size(315, 20);
             this.Navn_InputBox.TabIndex = 0;
-            this.Navn_InputBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Navn_InputBox.TextChanged += new System.EventHandler(this.Navn_InputBox_TextChanged);
             // 
             // Pris_Inputbox
             // 
@@ -63,7 +63,6 @@
             this.Pris_Inputbox.Name = "Pris_Inputbox";
             this.Pris_Inputbox.Size = new System.Drawing.Size(315, 20);
             this.Pris_Inputbox.TabIndex = 2;
-            this.Pris_Inputbox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // Beskrive_InputBox
             // 
@@ -72,7 +71,6 @@
             this.Beskrive_InputBox.Name = "Beskrive_InputBox";
             this.Beskrive_InputBox.Size = new System.Drawing.Size(315, 176);
             this.Beskrive_InputBox.TabIndex = 3;
-            this.Beskrive_InputBox.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // groupBox1
             // 
@@ -97,6 +95,15 @@
             this.groupBox1.Text = "Opdater Service Produkter";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // Button_slet
+            // 
+            this.Button_slet.Location = new System.Drawing.Point(125, 370);
+            this.Button_slet.Name = "Button_slet";
+            this.Button_slet.Size = new System.Drawing.Size(75, 23);
+            this.Button_slet.TabIndex = 15;
+            this.Button_slet.Text = "Slet";
+            this.Button_slet.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(225, 370);
@@ -105,70 +112,6 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Tilføj Produkt";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(9, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Updater Produkt";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // ProduktId_Label
-            // 
-            this.ProduktId_Label.AutoSize = true;
-            this.ProduktId_Label.Location = new System.Drawing.Point(6, 21);
-            this.ProduktId_Label.Name = "ProduktId_Label";
-            this.ProduktId_Label.Size = new System.Drawing.Size(56, 13);
-            this.ProduktId_Label.TabIndex = 9;
-            this.ProduktId_Label.Text = "Produkt Id";
-            // 
-            // ProduktId_ShowId
-            // 
-            this.ProduktId_ShowId.AutoSize = true;
-            this.ProduktId_ShowId.Location = new System.Drawing.Point(68, 21);
-            this.ProduktId_ShowId.Name = "ProduktId_ShowId";
-            this.ProduktId_ShowId.Size = new System.Drawing.Size(35, 13);
-            this.ProduktId_ShowId.TabIndex = 10;
-            this.ProduktId_ShowId.Text = "empty";
-            // 
-            // Produkt_Navn
-            // 
-            this.Produkt_Navn.AutoSize = true;
-            this.Produkt_Navn.Location = new System.Drawing.Point(9, 48);
-            this.Produkt_Navn.Name = "Produkt_Navn";
-            this.Produkt_Navn.Size = new System.Drawing.Size(36, 13);
-            this.Produkt_Navn.TabIndex = 11;
-            this.Produkt_Navn.Text = "Navn:";
-            // 
-            // Label_Beskrivelse
-            // 
-            this.Label_Beskrivelse.AutoSize = true;
-            this.Label_Beskrivelse.Location = new System.Drawing.Point(10, 90);
-            this.Label_Beskrivelse.Name = "Label_Beskrivelse";
-            this.Label_Beskrivelse.Size = new System.Drawing.Size(61, 13);
-            this.Label_Beskrivelse.TabIndex = 12;
-            this.Label_Beskrivelse.Text = "Beskrivelse";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 343);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(315, 21);
-            this.comboBox1.TabIndex = 13;
-            // 
-            // ServiceType_Label
-            // 
-            this.ServiceType_Label.AutoSize = true;
-            this.ServiceType_Label.Location = new System.Drawing.Point(6, 327);
-            this.ServiceType_Label.Name = "ServiceType_Label";
-            this.ServiceType_Label.Size = new System.Drawing.Size(67, 13);
-            this.ServiceType_Label.TabIndex = 14;
-            this.ServiceType_Label.Text = "ServiceType";
-            this.ServiceType_Label.Click += new System.EventHandler(this.label1_Click);
             // 
             // Pris_Label
             // 
@@ -179,14 +122,67 @@
             this.Pris_Label.TabIndex = 8;
             this.Pris_Label.Text = "Pris";
             // 
-            // Button_slet
+            // ServiceType_Label
             // 
-            this.Button_slet.Location = new System.Drawing.Point(125, 370);
-            this.Button_slet.Name = "Button_slet";
-            this.Button_slet.Size = new System.Drawing.Size(75, 23);
-            this.Button_slet.TabIndex = 15;
-            this.Button_slet.Text = "Slet";
-            this.Button_slet.UseVisualStyleBackColor = true;
+            this.ServiceType_Label.AutoSize = true;
+            this.ServiceType_Label.Location = new System.Drawing.Point(6, 327);
+            this.ServiceType_Label.Name = "ServiceType_Label";
+            this.ServiceType_Label.Size = new System.Drawing.Size(67, 13);
+            this.ServiceType_Label.TabIndex = 14;
+            this.ServiceType_Label.Text = "ServiceType";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(9, 343);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(315, 21);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // Label_Beskrivelse
+            // 
+            this.Label_Beskrivelse.AutoSize = true;
+            this.Label_Beskrivelse.Location = new System.Drawing.Point(10, 90);
+            this.Label_Beskrivelse.Name = "Label_Beskrivelse";
+            this.Label_Beskrivelse.Size = new System.Drawing.Size(61, 13);
+            this.Label_Beskrivelse.TabIndex = 12;
+            this.Label_Beskrivelse.Text = "Beskrivelse";
+            // 
+            // Produkt_Navn
+            // 
+            this.Produkt_Navn.AutoSize = true;
+            this.Produkt_Navn.Location = new System.Drawing.Point(9, 48);
+            this.Produkt_Navn.Name = "Produkt_Navn";
+            this.Produkt_Navn.Size = new System.Drawing.Size(36, 13);
+            this.Produkt_Navn.TabIndex = 11;
+            this.Produkt_Navn.Text = "Navn:";
+            // 
+            // ProduktId_ShowId
+            // 
+            this.ProduktId_ShowId.AutoSize = true;
+            this.ProduktId_ShowId.Location = new System.Drawing.Point(68, 21);
+            this.ProduktId_ShowId.Name = "ProduktId_ShowId";
+            this.ProduktId_ShowId.Size = new System.Drawing.Size(35, 13);
+            this.ProduktId_ShowId.TabIndex = 10;
+            this.ProduktId_ShowId.Text = "empty";
+            // 
+            // ProduktId_Label
+            // 
+            this.ProduktId_Label.AutoSize = true;
+            this.ProduktId_Label.Location = new System.Drawing.Point(6, 21);
+            this.ProduktId_Label.Name = "ProduktId_Label";
+            this.ProduktId_Label.Size = new System.Drawing.Size(56, 13);
+            this.ProduktId_Label.TabIndex = 9;
+            this.ProduktId_Label.Text = "Produkt Id";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 370);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Updater Produkt";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -195,6 +191,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(544, 401);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Tilbage_button
             // 

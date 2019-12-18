@@ -15,6 +15,8 @@ namespace AnimalHouse_Entities
         public bool Service{get; set;}
         public int KategoriId { get; set; }
         public string Navn { get; set; }
+        public int varenummer;
+        public Supplier Supplier;
        
         public Produkt()
         {

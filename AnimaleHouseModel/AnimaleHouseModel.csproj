@@ -54,6 +54,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnimalHouseBLL\AnimalHouseBLL.csproj">
+      <Project>{bb4b345f-39af-49eb-837f-e0368802e375}</Project>
+      <Name>AnimalHouseBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\System Entities\AnimalHouse_Entities.csproj">
       <Project>{c3032e28-caf4-4537-ada4-ffb47c6b06f7}</Project>
       <Name>AnimalHouse_Entities</Name>

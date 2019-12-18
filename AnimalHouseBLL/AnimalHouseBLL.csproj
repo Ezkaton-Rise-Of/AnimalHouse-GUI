@@ -48,6 +48,7 @@
     <Compile Include="BurController.cs" />
     <Compile Include="EmailController.cs" />
     <Compile Include="IHentMedicinData.cs" />
+    <Compile Include="IProdukt.cs" />
     <Compile Include="JournalController.cs" />
     <Compile Include="LagerController.cs" />
     <Compile Include="PersistensFactory.cs" />

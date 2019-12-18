@@ -15,13 +15,16 @@ namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Booking : Form
     {
+
+        // instanserere maincontroller
         MainController controller = new MainController();
-        Ansat ansat = new Ansat(); 
-        BookingTime starttid = new BookingTime();
-        BookingTime sluttid = new BookingTime();
-        Servicetype servicetype = new Servicetype();
-        Service service = new Service();
-        Dyr Dyr = new Dyr();
+        // Opretter entities;
+        Ansat ansat = null;
+        BookingTime starttid = null;
+        BookingTime sluttid = null;
+        Servicetype servicetype = null;
+        Service service = null;
+        Dyr Dyr = null;
 
         public AnimalHouseGui_Booking()
         {
@@ -29,18 +32,30 @@ namespace AnimalHouse_GUI
         }
         private void Hentbookinger()
         {
-            dataGridView2.DataSource = controller.HentAlleBooking(controller.K[0]);
-        }
+            try
+            {
+                //tilføre alle bookinger til datasource
+                dataGridView2.DataSource = controller.HentAlleBooking(controller.K[0]);
+            }
+            catch (Exception)
+            {
 
+                throw new ArgumentException("Der er sket en fejl med at hente booking for kunden");
+            }
+
+        }
         private void AnimalHouseGui_Booking_Load(object sender, EventArgs e)   
         {
+            dateTimePicker1.MinDate = DateTime.Now;
+            dateTimePicker2.MinDate = DateTime.Now;
         }
         private void SearchKunde_Click(object sender, EventArgs e)
         {//holger 
             try
-            {       
+            {
                 //henter kunder
                 controller.HentKundeByTlf(Convert.ToString(textBox_EjerIdBooking.Text));
+                //tilføre informationer til labes
                 Navn_empty.Text = controller.K[0].Fnavn + " " + controller.K[0].Lnavn;
                 Addresse_empty.Text = controller.K[0].Adresse;
                 By_empty.Text = controller.K[0].By;
@@ -59,12 +74,16 @@ namespace AnimalHouse_GUI
             {
                 MessageBox.Show("problemer med forbindelsen");
 
+
                 throw;
             }
         }
-
         private void FillDyrComboBox()
         {
+            // reset Dyr_ComboBox
+            Dyr_comboBox.Items.Clear();
+            Dyr = null;
+
             foreach (Dyr item in controller.HentAlleKundesDyr(controller.K[0].Id))
             {
                 ComboBoxItem citem = new ComboBoxItem();
@@ -75,6 +94,10 @@ namespace AnimalHouse_GUI
         }
         private void ComboBoxDyr_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //reset combobox_ansat
+            Combobox_ansat.Items.Clear();
+            ansat = null;
+
             ComboBoxItem cbiDyr = (ComboBoxItem)Dyr_comboBox.SelectedItem;
             Dyr = (Dyr)cbiDyr.Value;
 
@@ -86,7 +109,6 @@ namespace AnimalHouse_GUI
                 Combobox_ansat.Items.Add(citem);
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             //holger
@@ -100,6 +122,9 @@ namespace AnimalHouse_GUI
         }
         private void ComboBoxAnsat_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboBox_ServiceType.Items.Clear();
+            servicetype = null;
+
             ComboBoxItem cbi = (ComboBoxItem)Combobox_ansat.SelectedItem;
             ansat = (Ansat)cbi.Value;
             foreach (Servicetype item in controller.HentAlleServiceType())
@@ -112,9 +137,13 @@ namespace AnimalHouse_GUI
                 }  
             }
         }
-
         private void comboBox_ServiceType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //reset
+            Service_combobox.Items.Clear();
+            service = null;
+
+
             ComboBoxItem cbiserviceType = (ComboBoxItem)comboBox_ServiceType.SelectedItem;
             servicetype = (Servicetype)cbiserviceType.Value;
             foreach (Service item in controller.HentAlleService(servicetype))
@@ -125,9 +154,10 @@ namespace AnimalHouse_GUI
                 Service_combobox.Items.Add(citem);
             }
         }
-
         private void Service_combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            StartTid_Combo.Items.Clear();
+            starttid = null;
             ComboBoxItem cbiservice = (ComboBoxItem)Service_combobox.SelectedItem;
             service = (Service)cbiservice.Value;
             foreach (BookingTime item in controller.HentAlleFritider(ansat, dateTimePicker1.Value))
@@ -138,9 +168,11 @@ namespace AnimalHouse_GUI
                 StartTid_Combo.Items.Add(citem);
             }
         }
-
         private void StartTime_Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SlutTid_Combo.Items.Clear();
+            sluttid = null;
+
             ComboBoxItem cbistarttid = (ComboBoxItem)StartTid_Combo.SelectedItem;
             starttid = (BookingTime)cbistarttid.Value;
             foreach (BookingTime item in controller.HentAlleHentMuligeSlutTider(ansat, starttid, dateTimePicker1.Value))
@@ -159,31 +191,64 @@ namespace AnimalHouse_GUI
         {
             Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Booking Form.txt");
         }
-
-
         private void SlutTid_Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBoxItem cbistarttid = (ComboBoxItem)SlutTid_Combo.SelectedItem;
             sluttid = (BookingTime)cbistarttid.Value;
         }
-
         private void button_tilføj_Click_1(object sender, EventArgs e)
         {
-            bool answer = controller.Opretbooking(textBox1.Text, starttid, sluttid, ansat, service, Dyr, dateTimePicker1.Value, dateTimePicker1.Value);
-            
-            if (answer == true)
+            List<string> mangler = new List<string>(); 
+
+            if(starttid == null)
             {
-                Hentbookinger();
+                mangler.Add("starttid");
+            }
+            if(sluttid == null)
+            {
+                mangler.Add("sluttid");
+            }
+            if(service == null)
+            {
+                mangler.Add("service");
+            }
+            if(Dyr == null)
+            {
+                mangler.Add("Dyr");
+            }
+            if (mangler.Count == 0)
+            {
+                if(service.Servicetype.ServiceType == "Operation")
+                {
+                    MessageBox.Show("Husk at Booke bur");
+
+                }
+
+                bool answer = controller.Opretbooking(textBox1.Text, starttid, sluttid, ansat, service, Dyr, dateTimePicker1.Value, dateTimePicker1.Value);
+                if (answer == true)
+                {
+                    Hentbookinger();
+                }
+                else
+                {
+                    MessageBox.Show("Der er sket en fejl i oprettelse");
+                }
             }
             else
             {
-                MessageBox.Show("Der er sket en fejl i oprettelse");
+                Mangler(mangler);
             }
         }
+        private void Mangler(List<string> mangler)
+        {
+            string answer = "Du mangler at udfylde: ";
+            for (int i = 0; i < mangler.Count; i++)
+            {
+                answer += mangler[i];
+            }
 
-
-
-
+            MessageBox.Show(answer);
+        }
         private void button_AnulBooking_Click(object sender, EventArgs e)
         {
             Booking b = (Booking)dataGridView2.CurrentRow.DataBoundItem;
@@ -196,33 +261,40 @@ namespace AnimalHouse_GUI
             {
                 MessageBox.Show("Der er sket en fejl i sletningen");
             }
-
-           
-            
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
 
             AnimalHouseGui_Register form = new AnimalHouseGui_Register();
             form.ShowDialog();
         }
-
         private void button_BurBooking_Click(object sender, EventArgs e)
         {
+            List<string> mangler = new List<string>();
 
-
-            bool answer = controller.OpretbookingBur(textBox1.Text, Dyr, dateTimePicker1.Value, dateTimePicker1.Value, (Bur)dataGridView1.CurrentRow.DataBoundItem);
-
-            if (answer == true)
+            if (Dyr == null)
             {
-                Hentbookinger();
+                mangler.Add("Dyr");
+            }if (mangler.Count() == 0)
+            {
+                bool answer = controller.OpretbookingBur(textBox1.Text, Dyr, dateTimePicker1.Value, dateTimePicker1.Value, (Bur)dataGridView1.CurrentRow.DataBoundItem);
+                if (answer == true)
+                {
+                    Hentbookinger();
+                }
+                else
+                {
+                    MessageBox.Show("Der er sket en fejl i oprettelse");
+                }
             }
             else
             {
-                MessageBox.Show("Der er sket en fejl i oprettelse");
+                Mangler(mangler);
             }
-        
+        }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker2.MinDate = dateTimePicker1.Value;
         }
     }
 }

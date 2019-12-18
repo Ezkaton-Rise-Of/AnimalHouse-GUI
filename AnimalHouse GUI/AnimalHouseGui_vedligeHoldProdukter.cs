@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using AnimalHouseBLL;
+using AnimalHouse_Entities;
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_vedligeHoldProdukter : Form
     {
+        ProductController pcont = new ProductController();
         public AnimalHouseGui_vedligeHoldProdukter()
         {
             InitializeComponent();
@@ -24,35 +26,15 @@ namespace AnimalHouse_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //dataGridView1.DataSource = pcon  
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void Navn_InputBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
