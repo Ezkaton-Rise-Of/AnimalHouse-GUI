@@ -15,32 +15,33 @@ namespace AnimalHouseDB
         public List<Ansat> HentAlleAnsatte()
         {
             List<Ansat> a = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            try
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                string commandtxt = $"select * from Ansat;";
-                SqlCommand command = new SqlCommand(commandtxt, conn);
-                a = new List<Ansat>();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                conn.Open();
+                try
                 {
-                    Ansat ansat = new Ansat();
-                    ansat.Id = (int)reader["AnsatId"];
-                    ansat.Navn = (string)reader["Navn"];
-                    ansat.Stelling = (string)reader["Stelling"];
-                    ansat.Tlf = (string)reader["Tlf"];
-                    a.Add(ansat);
+                    string commandtxt = $"select * from Ansat;";
+                    SqlCommand command = new SqlCommand(commandtxt, conn);
+                    a = new List<Ansat>();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Ansat ansat = new Ansat();
+                        ansat.Id = (int)reader["AnsatId"];
+                        ansat.Navn = (string)reader["Navn"];
+                        ansat.Stelling = (string)reader["Stelling"];
+                        ansat.Tlf = (string)reader["Tlf"];
+                        a.Add(ansat);
+                    }
                 }
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-            }
-            finally
-            {
-                conn.Close();
+                }
+                finally
+                {
+                    conn.Close();
+                } 
             }
 
             return a;
@@ -50,29 +51,30 @@ namespace AnimalHouseDB
         public Ansat HentAnsat(int ansatId)
         {
             Ansat a = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            try
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                string commandtxt = $"select * from Ansat where AnsatId = {ansatId};";
-                SqlCommand command = new SqlCommand(commandtxt, conn);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                conn.Open();
+                try
                 {
-                    a = new Ansat();
-                    a.Id = (int)reader["AnsatId"];
-                    a.Navn = (string)reader["Navn"];
-                    a.Stelling = (string)reader["Stelling"];
+                    string commandtxt = $"select * from Ansat where AnsatId = {ansatId};";
+                    SqlCommand command = new SqlCommand(commandtxt, conn);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        a = new Ansat();
+                        a.Id = (int)reader["AnsatId"];
+                        a.Navn = (string)reader["Navn"];
+                        a.Stelling = (string)reader["Stelling"];
+                    }
                 }
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-            }
-            finally
-            {
-                conn.Close();
+                }
+                finally
+                {
+                    conn.Close();
+                } 
             }
 
             return a;

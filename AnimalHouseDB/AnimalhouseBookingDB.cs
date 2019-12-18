@@ -16,10 +16,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("SELECT Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut " +
                     "FROM Booking left join Produkt on Produkt.ProduktId = Booking.ProduKtId " +
                     "inner join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
@@ -70,11 +71,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
-
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("select * from BookingTimer " +
                     "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
                     "and BookingTimer.BookingTimerId < Booking.SlutTid " +
@@ -112,11 +113,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
-
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("if 1 < (select Count(*) from Booking where Booking.Startdato = @Dato AND ansatID = @Ansat) " +
                     "select * from BookingTimer where BookingTimer.BookingTimerId between @starttime and(select top 1 Booking.StartTid from Booking where Booking.StartTid > @starttime and Booking.Startdato = @Dato AND ansatID = @Ansat order by Booking.StartTid  asc) " +
                     "else select* from BookingTimer where BookingTimer.BookingTimerId > @starttime", conn);
@@ -158,10 +159,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("SELECT * FROM Booking Where BookingId = " + Id);
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
@@ -204,10 +206,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("SELECT * FROM Booking");
                 command.Transaction = transaction;
                 SqlDataReader reader = command.ExecuteReader();
@@ -246,10 +249,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("Insert into Booking (DyrId, AnsatId, Notat, StartDato, SlutDato, startTid, slutTid, ProduKtId) values (@DyrId,  @AnsatId,  @Notat, @StartDato, @SlutDato, @StartTid, @SlutTid, @ProduktId)", conn);
                 command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));
                 command.Parameters.Add(new SqlParameter("@AnsatId", b.AnsatId));
@@ -283,10 +287,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command1 = new SqlCommand("Insert into Booking (DyrId, Notat, StartDato, SlutDato, ProduKtId) values (@DyrId,  @Notat, @StartDato, @SlutDato, 1)", conn);
                 command1.Parameters.Add(new SqlParameter("@DyrId",dyr.DyrId));
                 command1.Parameters.Add(new SqlParameter("@Notat", text));
@@ -328,10 +333,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId", conn);
                 command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
                 command.Transaction = transaction;
@@ -358,10 +364,11 @@ namespace AnimalHouseDB
             SqlTransaction transaction = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
+            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command = new SqlCommand("Update Booking SET DyrId = @DyrId, AnsatId = @AnsatId, Notat= @Notat, StartDato = @StartDato, SlutDato = @SlutDato where BookingId = @BookingId");
                 command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
                 command.Parameters.Add(new SqlParameter("@DyrId", b.DyrId));

@@ -12,8 +12,8 @@ namespace AnimaleHouseModel
     {
         IProdukt p;
 
-        string Path;
-        string ThisPath;
+        private string Path;
+        private string ThisPath;
 
         public AutomatikProductUpdate(string path = @"\MedicinPriser")
         {

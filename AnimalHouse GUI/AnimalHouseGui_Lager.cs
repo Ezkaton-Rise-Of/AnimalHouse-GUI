@@ -16,7 +16,7 @@ namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Lager : Form
     {
-        MainController controller = new MainController();
+        MainController controller = MainController.GetInstance();
 
         public AnimalHouseGui_Lager()
         {

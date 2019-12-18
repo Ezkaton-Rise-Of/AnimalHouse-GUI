@@ -18,10 +18,10 @@ namespace AnimalHouse_GUI
         public AnimalHouseGui_Main()
         {
             InitializeComponent();
-            AutomatikProductUpdate auto = new AutomatikProductUpdate();
+            //AutomatikProductUpdate auto = new AutomatikProductUpdate();
 
-            Thread autothread = new Thread(new ThreadStart(auto.Autorun));
-            autothread.Start();
+            //Thread autothread = new Thread(new ThreadStart(auto.Autorun));
+            //autothread.Start();
         }
         private void button_EjerReg_Click(object sender, EventArgs e)
         {

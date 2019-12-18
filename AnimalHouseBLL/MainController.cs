@@ -23,6 +23,7 @@ namespace AnimalHouseBLL
         public List<Service> S = new List<Service>();
         public List<Kategori> kategorier = new List<Kategori>();
         public List<Produkt> produkter = new List<Produkt>();
+
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
@@ -34,7 +35,7 @@ namespace AnimalHouseBLL
         ProductController Pc;
         SalgController Sc;
         EmailController MailController;
-        public MainController()
+        private MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
@@ -46,10 +47,18 @@ namespace AnimalHouseBLL
             ServiceC = new ServiceController();
             Pc = new ProductController();
             Sc = new SalgController();
+            MailController = new EmailController();
         }
         public static MainController GetInstance()
         {
-            return _instance;
+            if (_instance == null)
+            {
+                return new MainController();
+            }
+            else
+            {
+                return _instance;
+            }
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)

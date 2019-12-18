@@ -54,7 +54,6 @@ namespace AnimalHouse_GUI
         private void button_Register_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
-            if (ValidateForm())
             {
                 MessageBox.Show(controller.OpretAnsat(textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString(), textBox_tlf.Text.Trim()), "Oprettelse af ny ansat", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
