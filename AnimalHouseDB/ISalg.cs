@@ -11,5 +11,6 @@ namespace AnimalHouseDB
     {
         List<Faktura> HentKundesFaktura(int kundeId);
         List<Faktura> HentAlleFaktura();
+        string GemFaktura(Faktura f);
     }
 }

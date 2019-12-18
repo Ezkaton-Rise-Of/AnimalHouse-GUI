@@ -20,13 +20,10 @@ namespace AnimalHouseBLL
             KundeDB = persistensFactory.GetKundeDB();
         }
 
-        public string OpretKunde(Kunde k)
+        public string OpretKunde(string fnavn,string lnavn,string adresse,string postnummer,string tlf,string kundetype,string by,string email)
         {
-
-
-
+            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
             return KundeDB.OpretKunde(k);
-
         }
 
         public int HentKundeId(string tlf)
@@ -65,12 +62,9 @@ namespace AnimalHouseBLL
         {
             return KundeDB.HentByNavn(postnr);
         }
-
         public List<Kunde> HentKundeByTlforNavn(string input)
         {
             return KundeDB.HentKunderByTlfOrNavn(input);
         }
-
-        
     }
 }

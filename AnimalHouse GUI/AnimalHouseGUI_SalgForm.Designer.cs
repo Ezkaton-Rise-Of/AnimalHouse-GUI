@@ -58,7 +58,7 @@
             this.textBox_info1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox_info2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_info6 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,9 +79,9 @@
             this.button_tilbage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_tilbage.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_tilbage.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_tilbage.Location = new System.Drawing.Point(1608, 959);
+            this.button_tilbage.Location = new System.Drawing.Point(1591, 977);
             this.button_tilbage.Name = "button_tilbage";
-            this.button_tilbage.Size = new System.Drawing.Size(143, 61);
+            this.button_tilbage.Size = new System.Drawing.Size(143, 54);
             this.button_tilbage.TabIndex = 0;
             this.button_tilbage.Text = "Tilbage";
             this.button_tilbage.UseVisualStyleBackColor = false;
@@ -238,14 +238,16 @@
             // 
             this.button_print.AutoSize = true;
             this.button_print.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_print.Enabled = false;
             this.button_print.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_print.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_print.Location = new System.Drawing.Point(397, 723);
+            this.button_print.Location = new System.Drawing.Point(779, 364);
             this.button_print.Name = "button_print";
-            this.button_print.Size = new System.Drawing.Size(143, 50);
+            this.button_print.Size = new System.Drawing.Size(160, 50);
             this.button_print.TabIndex = 17;
-            this.button_print.Text = "Print faktura";
+            this.button_print.Text = "Print kvittering";
             this.button_print.UseVisualStyleBackColor = false;
+            this.button_print.Click += new System.EventHandler(this.button_print_Click);
             // 
             // label6
             // 
@@ -273,7 +275,7 @@
             this.button_gem.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_gem.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_gem.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_gem.Location = new System.Drawing.Point(268, 723);
+            this.button_gem.Location = new System.Drawing.Point(414, 723);
             this.button_gem.Name = "button_gem";
             this.button_gem.Size = new System.Drawing.Size(110, 50);
             this.button_gem.TabIndex = 21;
@@ -317,10 +319,11 @@
             this.button_visRecord.ForeColor = System.Drawing.Color.MidnightBlue;
             this.button_visRecord.Location = new System.Drawing.Point(1055, 457);
             this.button_visRecord.Name = "button_visRecord";
-            this.button_visRecord.Size = new System.Drawing.Size(170, 50);
+            this.button_visRecord.Size = new System.Drawing.Size(192, 50);
             this.button_visRecord.TabIndex = 26;
-            this.button_visRecord.Text = "Vis faktura info.";
+            this.button_visRecord.Text = "Vis kvittering info.";
             this.button_visRecord.UseVisualStyleBackColor = false;
+            this.button_visRecord.Click += new System.EventHandler(this.button_visRecord_Click);
             // 
             // groupBox1
             // 
@@ -330,11 +333,12 @@
             this.groupBox1.Controls.Add(this.textBox_info1);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.textBox_info2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBox_info6);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.button_print);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(795, 523);
@@ -342,19 +346,19 @@
             this.groupBox1.Size = new System.Drawing.Size(956, 430);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "faktura info.";
+            this.groupBox1.Text = "Kvittering info.";
             // 
             // textBox_info5
             // 
-            this.textBox_info5.Location = new System.Drawing.Point(809, 351);
+            this.textBox_info5.Location = new System.Drawing.Point(260, 335);
             this.textBox_info5.Name = "textBox_info5";
             this.textBox_info5.ReadOnly = true;
-            this.textBox_info5.Size = new System.Drawing.Size(113, 30);
+            this.textBox_info5.Size = new System.Drawing.Size(175, 30);
             this.textBox_info5.TabIndex = 39;
             // 
             // textBox_info4
             // 
-            this.textBox_info4.Location = new System.Drawing.Point(666, 351);
+            this.textBox_info4.Location = new System.Drawing.Point(117, 335);
             this.textBox_info4.Name = "textBox_info4";
             this.textBox_info4.ReadOnly = true;
             this.textBox_info4.Size = new System.Drawing.Size(63, 30);
@@ -362,7 +366,7 @@
             // 
             // textBox_info3
             // 
-            this.textBox_info3.Location = new System.Drawing.Point(108, 348);
+            this.textBox_info3.Location = new System.Drawing.Point(521, 44);
             this.textBox_info3.Name = "textBox_info3";
             this.textBox_info3.ReadOnly = true;
             this.textBox_info3.Size = new System.Drawing.Size(278, 30);
@@ -388,26 +392,26 @@
             // 
             // textBox_info2
             // 
-            this.textBox_info2.Location = new System.Drawing.Point(108, 108);
+            this.textBox_info2.Location = new System.Drawing.Point(108, 86);
             this.textBox_info2.Name = "textBox_info2";
             this.textBox_info2.ReadOnly = true;
             this.textBox_info2.Size = new System.Drawing.Size(278, 30);
             this.textBox_info2.TabIndex = 30;
             // 
-            // textBox1
+            // textBox_info6
             // 
-            this.textBox1.Location = new System.Drawing.Point(36, 184);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(886, 149);
-            this.textBox1.TabIndex = 30;
+            this.textBox_info6.Location = new System.Drawing.Point(6, 156);
+            this.textBox_info6.Multiline = true;
+            this.textBox_info6.Name = "textBox_info6";
+            this.textBox_info6.ReadOnly = true;
+            this.textBox_info6.Size = new System.Drawing.Size(886, 149);
+            this.textBox_info6.TabIndex = 30;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(32, 156);
+            this.label11.Location = new System.Drawing.Point(8, 129);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 24);
             this.label11.TabIndex = 34;
@@ -417,7 +421,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(561, 354);
+            this.label10.Location = new System.Drawing.Point(12, 338);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 24);
             this.label10.TabIndex = 33;
@@ -427,7 +431,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(34, 111);
+            this.label9.Location = new System.Drawing.Point(34, 89);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 24);
             this.label9.TabIndex = 32;
@@ -437,7 +441,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(32, 348);
+            this.label7.Location = new System.Drawing.Point(445, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 24);
             this.label7.TabIndex = 31;
@@ -447,7 +451,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(751, 354);
+            this.label5.Location = new System.Drawing.Point(202, 338);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 24);
             this.label5.TabIndex = 30;
@@ -459,11 +463,11 @@
             this.button_beregn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_beregn.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_beregn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_beregn.Location = new System.Drawing.Point(104, 446);
+            this.button_beregn.Location = new System.Drawing.Point(265, 718);
             this.button_beregn.Name = "button_beregn";
-            this.button_beregn.Size = new System.Drawing.Size(143, 61);
+            this.button_beregn.Size = new System.Drawing.Size(143, 55);
             this.button_beregn.TabIndex = 28;
-            this.button_beregn.Text = "Beregn";
+            this.button_beregn.Text = "Beregne";
             this.button_beregn.UseVisualStyleBackColor = false;
             this.button_beregn.Click += new System.EventHandler(this.button_beregn_Click);
             // 
@@ -509,7 +513,6 @@
             this.Controls.Add(this.button_gem);
             this.Controls.Add(this.label_res);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button_print);
             this.Controls.Add(this.button_annullere);
             this.Controls.Add(this.label_total);
             this.Controls.Add(this.label4);
@@ -571,7 +574,7 @@
         private System.Windows.Forms.TextBox textBox_info1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox_info2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_info6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;

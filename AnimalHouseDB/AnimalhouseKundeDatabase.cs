@@ -117,14 +117,15 @@ namespace AnimalHouseDB
             Kunde k = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
             try
             {
+                conn.Open();
                 string commandtxt = $"Select * from Kunde left join Postnr on Kunde.Postnummer = Postnr.Postnummer where KundeId ={id}";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    k = new Kunde();
                     k.Id = (int)reader["KundeId"];
                     k.Fnavn = (string)reader["Fnavn"];
                     k.Lnavn = (string)reader["Lnavn"];

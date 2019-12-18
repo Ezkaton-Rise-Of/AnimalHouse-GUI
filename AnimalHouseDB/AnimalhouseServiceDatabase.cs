@@ -43,9 +43,9 @@ namespace AnimalHouseDB
                 }
                 reader.Close();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
             }
             finally
             {
@@ -76,9 +76,9 @@ namespace AnimalHouseDB
                 }
                 reader.Close();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
             }
             finally
             {

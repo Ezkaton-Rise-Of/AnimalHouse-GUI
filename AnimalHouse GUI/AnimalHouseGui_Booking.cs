@@ -15,7 +15,7 @@ namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Booking : Form
     {
-        MainController controller = new MainController();
+        MainController controller = MainController.GetInstance();
         Ansat ansat = new Ansat(); 
         BookingTime starttid = new BookingTime();
         BookingTime sluttid = new BookingTime();

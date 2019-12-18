@@ -16,7 +16,7 @@ namespace AnimalHouse_GUI
     public partial class AnimalHouseGui_DyrRegister : Form
     {
 
-        MainController controller = new MainController();
+        MainController controller = MainController.GetInstance();
         private char sex;
         private int BehandlerId;
         public AnimalHouseGui_DyrRegister()
@@ -40,9 +40,7 @@ namespace AnimalHouse_GUI
 
         private void TilbageBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main main = new AnimalHouseGui_Main();
-            main.ShowDialog();
+            this.Close();
         }
 
         private void radioButton_male_CheckedChanged(object sender, EventArgs e)

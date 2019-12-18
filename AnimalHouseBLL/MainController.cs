@@ -13,7 +13,7 @@ namespace AnimalHouseBLL
 {
     public class MainController
     {
-
+        private static MainController _instance = new MainController();
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
         public List<Lager> L = new List<Lager>();
@@ -32,7 +32,7 @@ namespace AnimalHouseBLL
         ServiceController ServiceC;
         ProductController Pc;
         SalgController Sc;
-        public MainController()
+        private MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
@@ -45,12 +45,14 @@ namespace AnimalHouseBLL
             Pc = new ProductController();
             Sc = new SalgController();
         }
+        public static MainController GetInstance()
+        {
+            return _instance;
+        }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
         {
-
-            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
-            return Kc.OpretKunde(k);
+            return Kc.OpretKunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
         }
 
         public bool Opretbooking(string notat, BookingTime startTid, BookingTime slutTid, Ansat ansat, Service service, Dyr dyr, DateTime startDate, DateTime SlutDato)
@@ -87,9 +89,9 @@ namespace AnimalHouseBLL
             return Ac.OpretAnsat(a);
         }
 
-        public DataSet Test2(int days)
+        public DataSet MailSendelse2(int days)
         {
-            return Jc.Test2(days);
+            return Jc.MailSendelse2(days);
         }
 
         public List<Kunde> HentAlleKunde()
@@ -301,15 +303,16 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatByNanv2(navn);
         }
-        public DataSet Test()
+        public DataSet MailSendelse()
         {
-            return Jc.Test();
+            return Jc.MailSendelse();
         }
 
         // Salg system Funktioner
-        public string GemFaktura(int kundeId)
+        public string GemFaktura(int kundeId, string total, string rabat, string produkter)
         {
-            return Sc.GemFaktura();
+            Faktura f = new Faktura(kundeId,total,rabat,produkter);
+            return Sc.GemFaktura(f);
         }
 
         public List<Kategori> HentAlleKategorier()
@@ -338,12 +341,17 @@ namespace AnimalHouseBLL
         }
         public Produkt HentProdukt(int id)
         {
-            return Pc.HentAlleProdukt(id);
+            return Pc.HentProdukt(id);
         }
 
         public List<Booking> HentAlleBooking(Kunde k)
         {
             return Bc.HentAlleBooking(k);
+        }
+
+        public Kunde HentKundeById(int id)
+        {
+            return Kc.SøgeKundeById(id);
         }
     }
 }

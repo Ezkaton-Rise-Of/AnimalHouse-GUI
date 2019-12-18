@@ -21,7 +21,7 @@ namespace AnimalHouse_GUI
         public AnimalHouseGUI_JournalForm()
         {
             InitializeComponent();
-            controller = new MainController();
+            controller = MainController.GetInstance();
             comboBox_behandler.DataSource = controller.HentAlleBehandler();
             comboBox_behandler.DisplayMember = "HentNavn";
             comboBox_behandler2.DataSource = controller.HentAlleBehandler();
@@ -34,9 +34,8 @@ namespace AnimalHouse_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main mainform = new AnimalHouseGui_Main();
-            mainform.ShowDialog();
+            this.Close();
+
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -164,7 +163,7 @@ namespace AnimalHouse_GUI
                
                 textBox_info1.Text = controller.HentAnsatNavn((int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString())));
                
-                foreach (var item in controller.D)
+                foreach (var item in controller.HentAlleDyr())
                 {
                     if (item.DyrId == int.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString()))
                     {

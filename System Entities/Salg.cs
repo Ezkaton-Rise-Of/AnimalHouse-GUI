@@ -14,7 +14,7 @@ namespace System_Entities
 
         public Salg()
         {
-            
+            amount = 0;
         }
 
         public void TilføjeItemLine(Produkt p, int antal)
@@ -24,12 +24,11 @@ namespace System_Entities
 
         public double BeregneTotal()
         {
-            double dblTotal = 0;
             foreach (SalgItemLine lineItem in salgitems)
             {
-                dblTotal += lineItem.BeregneSubTotal();
+                amount += lineItem.BeregneSubTotal();
             }
-            return dblTotal;
+            return amount;
         }
     }
 }

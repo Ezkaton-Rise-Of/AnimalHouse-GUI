@@ -13,8 +13,16 @@ namespace System_Entities
         public string Total { get; set; }
         public string Rabat { get; set; }
         public DateTime Dato { get; set; }
-        
+        public string Produkter { get; set; }
+
         public Faktura() { }
+        public Faktura(int kundeId, string total, string rabat, string produkter) 
+        {
+            KundeId = kundeId;
+            Total = total;
+            Rabat = rabat;
+            Produkter = produkter;
+        }
 
         public Faktura(int fakturaId, int kundeId, DateTime dato, string total, string rabat)
         {

@@ -226,7 +226,7 @@ namespace AnimalHouseDB
             return result;
         }
 
-        public DataSet Test()
+        public DataSet MailSendelse()
         {
             DataSet e = new DataSet();
             SqlTransaction transaction = null;
@@ -256,7 +256,7 @@ namespace AnimalHouseDB
             }
         }
 
-        public DataSet Test2(int days)
+        public DataSet MailSendelse2(int days)
         {
             DataSet e = new DataSet();
             SqlTransaction transaction = null;
