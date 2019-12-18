@@ -10,7 +10,6 @@ namespace AnimalHouseBLL
     public class EmailController
     {
         IEmail emailDB;
-        IKundeDB KundeDB;
         public List<Email> emailList;
 
         public EmailController()
@@ -18,7 +17,7 @@ namespace AnimalHouseBLL
             //A = ansatDB.HentAlleAnsate();
             PersistensFactory persistensFactory = PersistensFactory.GetInstance();
             emailDB = persistensFactory.GetEmailDB();
-            KundeDB = persistensFactory.GetKundeDB();
+          
         }
 
         public void HentEmail(int emailId)
@@ -46,17 +45,7 @@ namespace AnimalHouseBLL
             return emailDB.HentKunderDerManglerMail(visit, mail);
         }
 
-        public List<Kunde> HentKunderDerManglerMail(int visit, int mail)
-        {
-            List<Kunde> kundeList = new List<Kunde>();
-            List<Dyr> dyrListe = HentDyrDerManglerMail(visit, mail);
-            for (int i = 0; i < dyrListe.Count; i++)
-            {
-                kundeList.Add(KundeDB.HentKundeById(dyrListe[i].KundeId));
-            }
-            
-            return kundeList;
-        } 
+
 
     }
 }

@@ -33,6 +33,7 @@ namespace AnimalHouseBLL
         ServiceController ServiceC;
         ProductController Pc;
         SalgController Sc;
+        EmailController MailController;
         public MainController()
         {
             Kc = new KundeController();
@@ -338,5 +339,18 @@ namespace AnimalHouseBLL
         {
             return Bc.HentAlleBooking(k);
         }
+
+        public List<Kunde> HentKunderDerManglerMail(int visit, int mail)
+        {
+            List<Kunde> kundeList = new List<Kunde>();
+            List<Dyr> dyrListe = MailController.HentDyrDerManglerMail(visit, mail);
+            for (int i = 0; i < dyrListe.Count; i++)
+            {
+                kundeList.Add(Kc.SøgeKundeById(dyrListe[i].KundeId));
+            }
+
+            return kundeList;
+        }
+
     }
 }
