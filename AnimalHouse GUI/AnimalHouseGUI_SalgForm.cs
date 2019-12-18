@@ -18,7 +18,7 @@ namespace AnimalHouse_GUI
         public AnimalHouseGUI_SalgForm()
         {
             InitializeComponent();
-            controller = MainController.GetInstance();
+            controller = MainController.GetInstance;
             salgSystem = new SalgSystem();
             comboBox_kunde.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_kategori.DropDownStyle = ComboBoxStyle.DropDownList;

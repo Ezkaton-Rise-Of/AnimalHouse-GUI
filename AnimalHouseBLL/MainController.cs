@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AnimalHouse_Entities;
-using System_Entities;
-using AnimalHouseDB;
-using AnimalHouseBLL;
-using System.Data;
+﻿using AnimalHouse_Entities;
 using AnimalHousePersistenslag;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System_Entities;
 
 namespace AnimalHouseBLL
 {
     public class MainController
     {
-        private static MainController _instance = new MainController();
+        private static readonly object Instancelock = new object();
+        private static MainController _instance = null;
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
         public List<Lager> L = new List<Lager>();
@@ -49,15 +45,18 @@ namespace AnimalHouseBLL
             Sc = new SalgController();
             MailController = new EmailController();
         }
-        public static MainController GetInstance()
+        public static MainController GetInstance
         {
-            if (_instance == null)
+            get
             {
-                return new MainController();
-            }
-            else
-            {
-                return _instance;
+                lock (Instancelock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new MainController();
+                    }
+                    return _instance;
+                }
             }
         }
 
@@ -128,7 +127,7 @@ namespace AnimalHouseBLL
             return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date);
         }
 
-        
+
 
         public List<Service> HentAlleService(Servicetype servicetype)
         {
@@ -158,7 +157,7 @@ namespace AnimalHouseBLL
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
 
-           return Dc.HentAlleKundesDyr(kundeId);
+            return Dc.HentAlleKundesDyr(kundeId);
         }
 
         public Dyr HentDyr(int id)
@@ -190,27 +189,27 @@ namespace AnimalHouseBLL
             return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
         }
 
-        public string UpdateKunde(int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
+        public string UpdateKunde(int id, string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
         {
-            return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
+            return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
 
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
-        { 
-            return Ac.UpdateAnsat(id, navn, stelling,tlf);
+        {
+            return Ac.UpdateAnsat(id, navn, stelling, tlf);
         }
 
         public void HentKundeByTlf(string tlf)
         {
-             K.Add(Kc.HentKundetByTlf(tlf));
+            K.Add(Kc.HentKundetByTlf(tlf));
         }
 
         public List<Kunde> HentKundeByTlforNavn(string input)
         {
-              return Kc.HentKundeByTlforNavn(input);
+            return Kc.HentKundeByTlforNavn(input);
         }
 
-       
+
 
         //Lager 
         public Lager SøgId(int id)
@@ -266,7 +265,7 @@ namespace AnimalHouseBLL
         {
             return Jc.HentAlleDyrJournale(dyrid);
         }
-        
+
         public List<Journal> HentAlleAnsateJournale(int ansatId)
         {
             return Jc.HentAlleAnsatJournal(ansatId);
@@ -314,7 +313,7 @@ namespace AnimalHouseBLL
         // Salg system Funktioner
         public string GemFaktura(int kundeId, string total, string rabat, string produkter)
         {
-            Faktura f = new Faktura(kundeId,total,rabat,produkter);
+            Faktura f = new Faktura(kundeId, total, rabat, produkter);
             return Sc.GemFaktura(f);
         }
 

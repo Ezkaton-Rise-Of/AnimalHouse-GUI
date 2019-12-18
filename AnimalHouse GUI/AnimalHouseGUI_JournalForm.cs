@@ -21,7 +21,7 @@ namespace AnimalHouse_GUI
         public AnimalHouseGUI_JournalForm()
         {
             InitializeComponent();
-            controller = MainController.GetInstance();
+            controller = MainController.GetInstance;
             comboBox_behandler.DataSource = controller.HentAlleBehandler();
             comboBox_behandler.DisplayMember = "HentNavn";
             comboBox_behandler2.DataSource = controller.HentAlleBehandler();

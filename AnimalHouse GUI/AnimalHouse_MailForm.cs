@@ -12,7 +12,7 @@ namespace AnimalHouse_GUI
     public partial class AnimalHouse_MailForm : Form
     {
         EmailSystem emailSystem = new EmailSystem();
-        MainController controller = MainController.GetInstance();
+        MainController controller = MainController.GetInstance;
         public AnimalHouse_MailForm()
         {
             InitializeComponent();

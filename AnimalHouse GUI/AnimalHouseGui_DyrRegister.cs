@@ -16,7 +16,7 @@ namespace AnimalHouse_GUI
     public partial class AnimalHouseGui_DyrRegister : Form
     {
 
-        MainController controller = MainController.GetInstance();
+        MainController controller = MainController.GetInstance;
         private char sex;
         private int BehandlerId;
         public AnimalHouseGui_DyrRegister()

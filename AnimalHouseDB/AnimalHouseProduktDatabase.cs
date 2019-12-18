@@ -1,20 +1,20 @@
 ﻿using AnimalHouse_Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 namespace AnimalHouseDB
 {
     public class AnimalHouseProduktDatabase : IProduktDB
     {
         SqlTransaction transaction = null;
-        SqlConnection conn = new SqlConnection("Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V");
         public AnimalHouseProduktDatabase()
         {
         }
         public List<Kategori> HentAlleKategorier()
         {
             List<Kategori> kategoriList = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
 
                 try
@@ -38,7 +38,10 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    transaction.Rollback();
+                    //if (transaction != null)
+                    //{
+                    //    transaction.Rollback();
+                    //}
                     throw e;
                 }
                 finally
@@ -52,7 +55,7 @@ namespace AnimalHouseDB
         public List<Produkt> HentAlleProduktByKategori(Kategori k)
         {
             List<Produkt> produkts = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -93,7 +96,7 @@ namespace AnimalHouseDB
         public List<Produkt> HentAlleProdukter()
         {
             List<Produkt> produkts = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -134,7 +137,7 @@ namespace AnimalHouseDB
         public Produkt HentProdukt(int Id)
         {
             Produkt produkt = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -173,7 +176,7 @@ namespace AnimalHouseDB
         public bool UpdaterProdukt(Produkt p)
         {
             bool answer = false;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -205,7 +208,7 @@ namespace AnimalHouseDB
         public bool ProduktFromExtern(List<Produkt> Lines)
         {
             bool answer = false;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 foreach (Produkt item in Lines)
                 {
@@ -253,7 +256,7 @@ namespace AnimalHouseDB
         private Int32 InsertSupplier(string navn)
         {
             Int32 id = -1;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -273,7 +276,7 @@ namespace AnimalHouseDB
         private int HentSupplier(string navn)
         {
             int id = -1;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {

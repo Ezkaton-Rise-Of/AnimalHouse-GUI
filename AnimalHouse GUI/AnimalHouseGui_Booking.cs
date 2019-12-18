@@ -17,7 +17,7 @@ namespace AnimalHouse_GUI
     {
 
         // instanserere maincontroller
-        MainController controller = MainController.GetInstance();
+        MainController controller = MainController.GetInstance;
         // Opretter entities;
         Ansat ansat = null;
         BookingTime starttid = null;

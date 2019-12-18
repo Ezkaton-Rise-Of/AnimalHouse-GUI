@@ -15,7 +15,7 @@ namespace AnimalHouse_GUI
 {
     public partial class AnimaHouseGui_AnsatForm : Form
     {
-        MainController controller = MainController.GetInstance();
+        MainController controller = MainController.GetInstance;
         private int id;
         public AnimaHouseGui_AnsatForm()
         {

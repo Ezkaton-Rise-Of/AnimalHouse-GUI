@@ -11,7 +11,7 @@ namespace AnimalHouse_GUI
     {
         private int id;
         private string kundetype;
-        MainController controller = MainController.GetInstance();
+        MainController controller = MainController.GetInstance;
 
         public AnimalHouseGui_Register()
         {
