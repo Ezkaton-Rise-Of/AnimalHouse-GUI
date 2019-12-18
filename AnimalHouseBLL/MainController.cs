@@ -8,6 +8,7 @@ using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
 using System.Data;
+using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
 {
@@ -32,7 +33,8 @@ namespace AnimalHouseBLL
         ServiceController ServiceC;
         ProductController Pc;
         SalgController Sc;
-        private MainController()
+        EmailController MailController;
+        public MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
@@ -199,16 +201,9 @@ namespace AnimalHouseBLL
               return Kc.HentKundeByTlforNavn(input);
         }
 
-        public List<Lager> HentLagerVareNavn(string varenavn)
-        {
-            return Lc.HentLagerVareNavn(varenavn);
-        }
+       
 
-        public Lager HentLagerVareNummer(string varenummer)
-        {
-            return Lc.HentLagerVareNummer(varenummer);
-        }
-
+        //Lager 
         public Lager SøgId(int id)
         {
             return Lc.SøgId(id);
@@ -219,12 +214,10 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
-
-        
-
-        public List<Lager> HentLagerNavnEllerVareNummer(string input)
+        public string TilføjLager(decimal pris, int antal, Produkt produkt)
         {
-            return Lc.HentLagerNavnEllerVareNummer(input);
+            Lager L = new Lager(pris, antal, produkt);
+            return Lc.TilføjLager(L);
         }
 
 
@@ -232,6 +225,7 @@ namespace AnimalHouseBLL
         {
             return Kc.HentKundeId(navnEllerTlf);
         }
+        //Lager
 
         public Ansat HentAnsat(int id)
         {
@@ -349,9 +343,21 @@ namespace AnimalHouseBLL
             return Bc.HentAlleBooking(k);
         }
 
+        public List<Kunde> HentKunderDerManglerMail(int visit, int mail)
+        {
+            List<Kunde> kundeList = new List<Kunde>();
+            List<Dyr> dyrListe = MailController.HentDyrDerManglerMail(visit, mail);
+            for (int i = 0; i < dyrListe.Count; i++)
+            {
+                kundeList.Add(Kc.SøgeKundeById(dyrListe[i].KundeId));
+            }
+
+            return kundeList;
+        }
         public Kunde HentKundeById(int id)
         {
             return Kc.SøgeKundeById(id);
         }
+
     }
 }

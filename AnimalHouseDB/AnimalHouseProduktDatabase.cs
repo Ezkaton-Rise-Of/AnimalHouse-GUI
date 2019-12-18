@@ -6,13 +6,14 @@ namespace AnimalHouseDB
 {
     public class AnimalHouseProduktDatabase : IProduktDB
     {
+        SqlTransaction transaction = null;
+        SqlConnection conn = new SqlConnection("Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V");
+        public AnimalHouseProduktDatabase()
+        {
+        }
         public List<Kategori> HentAlleKategorier()
         {
             List<Kategori> kategoriList = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-
             try
             {
                 conn.Open();
@@ -36,7 +37,6 @@ namespace AnimalHouseDB
             {
                 transaction.Rollback();
                 throw e;
-
             }
             finally
             {
@@ -48,9 +48,6 @@ namespace AnimalHouseDB
         public List<Produkt> HentAlleProduktByKategori(Kategori k)
         {
             List<Produkt> produkts = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             try
             {
                 conn.Open();
@@ -78,7 +75,6 @@ namespace AnimalHouseDB
             {
                 transaction.Rollback();
                 throw e;
-
             }
             finally
             {
@@ -89,11 +85,7 @@ namespace AnimalHouseDB
 
         public List<Produkt> HentAlleProdukter()
         {
-
             List<Produkt> produkts = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             try
             {
                 conn.Open();
@@ -121,7 +113,6 @@ namespace AnimalHouseDB
             {
                 transaction.Rollback();
                 throw e;
-
             }
             finally
             {
@@ -132,12 +123,7 @@ namespace AnimalHouseDB
 
         public Produkt HentProdukt(int Id)
         {
-
             Produkt produkt = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-           
             try
             {
                 conn.Open();
@@ -163,7 +149,6 @@ namespace AnimalHouseDB
             {
                 transaction.Rollback();
                 throw e;
-
             }
             finally
             {
@@ -175,9 +160,6 @@ namespace AnimalHouseDB
         public bool UpdaterProdukt(Produkt p)
         {
             bool answer = false;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             try
             {
                 conn.Open();
@@ -196,7 +178,6 @@ namespace AnimalHouseDB
                 answer = false;
                 transaction.Rollback();
                 throw e;
-
             }
             finally
             {
@@ -204,5 +185,89 @@ namespace AnimalHouseDB
             }
             return answer;
         }
+        //Holger
+        public bool ProduktFromExtern(List<Produkt> Lines)
+        {
+            bool answer = false;
+            foreach  (Produkt item in Lines)
+            {
+                try
+                {
+                    conn.Open();
+                    transaction = conn.BeginTransaction();
+
+                    //henter leverandørId     
+                    int id = -1; //HentSupplier(item.Supplier.SupplierNavn);
+                    //
+                    if (id == -1)
+                    {
+                        id = InsertSupplier(item.Supplier.SupplierNavn);
+                    }
+                    SqlCommand commandUpdate = new SqlCommand($"if 1 = (select count(*) from Produkt where VareNummer = @varenummer and SupplierId = {id})" +
+                        $"update Produkt set Beskrivelse = @beskrivelse, Pris = @Pris, Navn = @Navn where VareNummer = @varenummer and SupplierId = {id} " +
+                        $"else insert into Produkt (Beskrivelse, Pris, Navn, VareNummer, SupplierId, Service) values (@beskrivelse, @Pris, @Navn, @varenummer, {id}, 0); ", conn, transaction);
+                    commandUpdate.Parameters.Add(new SqlParameter("@beskrivelse", item.Beskrivelse));
+                    commandUpdate.Parameters.Add(new SqlParameter("@Pris", item.Pris));
+                    commandUpdate.Parameters.Add(new SqlParameter("@Navn", item.Navn));
+                    commandUpdate.Parameters.Add(new SqlParameter("@varenummer", item.varenummer));
+
+
+                    commandUpdate.ExecuteNonQuery();
+                    transaction.Commit();
+                    answer = true;
+                }
+                catch (Exception e)
+                {
+                    answer = false;
+                    transaction.Rollback();
+                    throw e;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            
+            return answer;
+        }
+
+        private Int32 InsertSupplier(string navn)
+        {
+            Int32 id = -1;
+            try
+            {
+                //insert into(SupplierNavn) values(@supplierNavn); SELECT CAST(scope_identity() AS int);
+                SqlCommand commandInsertSupplier = new SqlCommand("insert into Supplier(SupplierNavn) values(@supplierNavn); SELECT CAST(scope_identity() AS int); ", conn, transaction);
+                commandInsertSupplier.Parameters.Add(new SqlParameter("@supplierNavn", navn));
+                id = (Int32)commandInsertSupplier.ExecuteScalar();
+
+            }
+            catch (Exception t)
+            {
+                throw t;
+            }
+            return id;
+        }
+        private int HentSupplier(string navn)
+        {
+            int id = -1;
+            try {
+                
+                SqlCommand commandSelectleverandør = new SqlCommand("select top 1 SupplierId from Supplier where SupplierNavn = @SupplierNavn; ", conn, transaction);
+                commandSelectleverandør.Parameters.Add(new SqlParameter("@SupplierNavn", navn));
+                SqlDataReader reader = commandSelectleverandør.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = (int)reader["SupplierId"];
+                }
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return id;
+        }
+
     }
 }

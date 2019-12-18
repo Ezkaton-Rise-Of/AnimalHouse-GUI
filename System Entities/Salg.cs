@@ -10,7 +10,7 @@ namespace System_Entities
     public class Salg
     {
         public List<SalgItemLine> salgitems = new List<SalgItemLine>();
-        public double amount;
+        public decimal amount;
 
         public Salg()
         {

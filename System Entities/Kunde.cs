@@ -51,6 +51,25 @@ namespace AnimalHouse_Entities
                 return $"{Fnavn} {Lnavn}";
             }
         }
+
+
+        //public void SetDiscount(string kundetype)
+        //{
+        //    if (this.Kundetype == "Erhverv")
+        //    {
+        //        discount = 19;
+        //    }
+        //    else
+        //    {
+        //        discount = 0;
+
+        //    }
+        //}
+        //public decimal GetDiscount()
+        //{
+        //    return discount;
+        //}
+
     }
 }
 

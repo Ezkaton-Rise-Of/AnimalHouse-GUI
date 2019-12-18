@@ -14,10 +14,6 @@ namespace AnimalHouseDB
         List<Produkt> HentAlleProdukter();
         List<Produkt> HentAlleProduktByKategori(Kategori k);
         bool UpdaterProdukt(Produkt p);
-        //??
-        //bool SletProdukt(int id);
-        //bool OpretProdukter(produkt p);
-
-
+        bool ProduktFromExtern(List<Produkt> Lines);
     }
 }

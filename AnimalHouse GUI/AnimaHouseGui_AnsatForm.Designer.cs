@@ -60,6 +60,7 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(973, 650);
             this.dataGridView1.TabIndex = 0;
+           // this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // textBox_ansatNavn
@@ -67,7 +68,7 @@
             this.textBox_ansatNavn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox_ansatNavn.Location = new System.Drawing.Point(981, 183);
             this.textBox_ansatNavn.Name = "textBox_ansatNavn";
-            this.textBox_ansatNavn.Size = new System.Drawing.Size(322, 26);
+            this.textBox_ansatNavn.Size = new System.Drawing.Size(216, 20);
             this.textBox_ansatNavn.TabIndex = 1;
             // 
             // button1
@@ -105,7 +106,7 @@
             this.buttonTilbage.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTilbage.Location = new System.Drawing.Point(1559, 902);
             this.buttonTilbage.Name = "buttonTilbage";
-            this.buttonTilbage.Size = new System.Drawing.Size(151, 70);
+            this.buttonTilbage.Size = new System.Drawing.Size(101, 45);
             this.buttonTilbage.TabIndex = 4;
             this.buttonTilbage.Text = "Tilbage";
             this.buttonTilbage.UseVisualStyleBackColor = false;
@@ -118,7 +119,7 @@
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(864, 183);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 24);
+            this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Ansat navn";
             // 
@@ -130,7 +131,7 @@
             this.button_Hent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Hent.Location = new System.Drawing.Point(725, 902);
             this.button_Hent.Name = "button_Hent";
-            this.button_Hent.Size = new System.Drawing.Size(163, 70);
+            this.button_Hent.Size = new System.Drawing.Size(109, 45);
             this.button_Hent.TabIndex = 6;
             this.button_Hent.Text = "Hent alle ansate";
             this.button_Hent.UseVisualStyleBackColor = false;
@@ -145,7 +146,7 @@
             this.button_Update.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Update.Location = new System.Drawing.Point(934, 902);
             this.button_Update.Name = "button_Update";
-            this.button_Update.Size = new System.Drawing.Size(144, 70);
+            this.button_Update.Size = new System.Drawing.Size(96, 45);
             this.button_Update.TabIndex = 7;
             this.button_Update.Text = "Update";
             this.button_Update.UseVisualStyleBackColor = false;
@@ -161,7 +162,7 @@
             this.button_Slet.ForeColor = System.Drawing.Color.Red;
             this.button_Slet.Location = new System.Drawing.Point(1112, 902);
             this.button_Slet.Name = "button_Slet";
-            this.button_Slet.Size = new System.Drawing.Size(146, 70);
+            this.button_Slet.Size = new System.Drawing.Size(97, 45);
             this.button_Slet.TabIndex = 8;
             this.button_Slet.Text = "Slet";
             this.button_Slet.UseVisualStyleBackColor = false;
@@ -182,7 +183,7 @@
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(97, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 24);
+            this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Ansat navn";
             // 
@@ -193,7 +194,7 @@
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(97, 191);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 24);
+            this.label3.Size = new System.Drawing.Size(49, 17);
             this.label3.TabIndex = 11;
             this.label3.Text = "Stelling";
             // 
@@ -208,7 +209,8 @@
             this.groupBox1.Controls.Add(this.textBox_navn);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(55, 109);
+            this.groupBox1.Location = new System.Drawing.Point(37, 71);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(617, 669);
             this.groupBox1.TabIndex = 12;
@@ -242,7 +244,7 @@
             this.button_Register.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Register.Location = new System.Drawing.Point(205, 534);
             this.button_Register.Name = "button_Register";
-            this.button_Register.Size = new System.Drawing.Size(143, 50);
+            this.button_Register.Size = new System.Drawing.Size(95, 32);
             this.button_Register.TabIndex = 13;
             this.button_Register.Text = "Tilføje";
             this.button_Register.UseVisualStyleBackColor = false;
@@ -252,18 +254,19 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 1001);
+            this.label4.Location = new System.Drawing.Point(15, 651);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 24);
+            this.label4.Size = new System.Drawing.Size(15, 17);
             this.label4.TabIndex = 13;
             this.label4.Text = "?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // AnimaHouseGui_AnsatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1774, 1043);
+            this.ClientSize = new System.Drawing.Size(1183, 678);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button_Slet);
