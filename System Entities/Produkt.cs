@@ -23,7 +23,7 @@ namespace AnimalHouse_Entities
 
         }
 
-        public Produkt(int produktId, string beskrivelse, double pris, Kategori kategori, bool service, int kategoriId, string navn)
+        public Produkt(int produktId, string beskrivelse, decimal pris, Kategori kategori, bool service, int kategoriId, string navn)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
@@ -34,7 +34,7 @@ namespace AnimalHouse_Entities
             Navn = navn;
         }
 
-        public Produkt(int produktId, string beskrivelse, double pris, bool service, int kategoriId, string navn)
+        public Produkt(int produktId, string beskrivelse, decimal pris, bool service, int kategoriId, string navn)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
@@ -49,6 +49,14 @@ namespace AnimalHouse_Entities
             get 
             {
                 return $"{Navn}  Pris {Pris}Kr.";
+            }
+        }
+
+        public string HentInfo
+        {
+            get
+            {
+                return $"{ProduktId}";
             }
         }
     }

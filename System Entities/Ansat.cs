@@ -12,7 +12,9 @@ namespace AnimalHouse_Entities
         public string Navn { get; set; }
         public string Stelling { get; set; }
         public string Tlf { get; set; }
+
         public Ansat() { }
+
         public Ansat(int id, string navn, string stelling, string tlf)
         {
             this.Id = id;

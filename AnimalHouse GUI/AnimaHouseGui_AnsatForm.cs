@@ -38,17 +38,12 @@ namespace AnimalHouse_GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
+       
                 dataGridView1.DataSource = controller.HentAnsatByNavn2(textBox_ansatNavn.Text.Trim());
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[4].Visible = false;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+  
+         
             
         }
 
