@@ -9,10 +9,10 @@ namespace System_Entities
 {
     public class SalgItemLine
     {
-        public decimal amount;
+        public double amount;
         public Produkt p;
 
-        public SalgItemLine(Produkt p, decimal amount)
+        public SalgItemLine(Produkt p, double amount)
         {
             this.amount = amount;
             this.p = p;

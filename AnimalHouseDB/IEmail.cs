@@ -12,6 +12,7 @@ namespace AnimalHouseDB
         List<Email> HentEmails();
         List<Email> HentEmailsByKunde(int id);
         bool InsertMail(Email E);
+        List<Dyr> HentKunderDerManglerMail(int mailLast, int visitLast);
 
         
     }

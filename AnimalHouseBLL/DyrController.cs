@@ -54,10 +54,6 @@ namespace AnimalHouseBLL
             return DyrDB.UpdaterDyr(d);
                 }
 
-        public List<Dyr> HentDyrDerskalHaveMaile(int maildage, int visitdage)
-        {
-            return DyrDB.HentDyrDerSkalHaveEmail(maildage, visitdage);
-        }
 
         internal void TilknytBehandler(int dyrId, string behandler)
         {

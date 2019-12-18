@@ -14,8 +14,6 @@ namespace AnimalHouseDB
             Dyr HentDyr(int Id);
             List<Dyr> HentDyrByKundeId(int KId);
             List<Dyr> HentAlleDyr();
-
-            List<Dyr> HentDyrDerSkalHaveEmail(int mailDage, int visitDage);
             void TilknytBehandler(int dyrId, string behandler);
     }
 }

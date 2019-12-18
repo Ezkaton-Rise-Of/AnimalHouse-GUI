@@ -32,7 +32,6 @@
             this.Pris_Inputbox = new System.Windows.Forms.TextBox();
             this.Beskrive_InputBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Button_slet = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.Pris_Label = new System.Windows.Forms.Label();
             this.ServiceType_Label = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Tilbage_button = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +72,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Button_slet);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.Pris_Label);
             this.groupBox1.Controls.Add(this.ServiceType_Label);
@@ -95,15 +92,6 @@
             this.groupBox1.Text = "Opdater Service Produkter";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // Button_slet
-            // 
-            this.Button_slet.Location = new System.Drawing.Point(125, 370);
-            this.Button_slet.Name = "Button_slet";
-            this.Button_slet.Size = new System.Drawing.Size(75, 23);
-            this.Button_slet.TabIndex = 15;
-            this.Button_slet.Text = "Slet";
-            this.Button_slet.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(225, 370);
@@ -112,6 +100,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Tilføj Produkt";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Pris_Label
             // 
@@ -183,6 +172,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Updater Produkt";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -202,21 +192,11 @@
             this.Tilbage_button.Text = "Tilbage";
             this.Tilbage_button.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(20, 430);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // AnimalHouseGui_vedligeHoldProdukter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 614);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.Tilbage_button);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -244,10 +224,8 @@
         private System.Windows.Forms.Label ProduktId_ShowId;
         private System.Windows.Forms.Label ProduktId_Label;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button Button_slet;
         private System.Windows.Forms.Label Pris_Label;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Tilbage_button;
-        private System.Windows.Forms.Button button3;
     }
 }
