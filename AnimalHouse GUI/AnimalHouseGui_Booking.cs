@@ -233,6 +233,7 @@ namespace AnimalHouse_GUI
                 {
                     MessageBox.Show("Der er sket en fejl i oprettelse");
                 }
+                
             }
             else
             {
@@ -295,6 +296,11 @@ namespace AnimalHouse_GUI
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             dateTimePicker2.MinDate = dateTimePicker1.Value;
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

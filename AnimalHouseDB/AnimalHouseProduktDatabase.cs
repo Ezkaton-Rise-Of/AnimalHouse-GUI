@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 namespace AnimalHouseDB
-{
+{// Holger
     public class AnimalHouseProduktDatabase : IProduktDB
     {
         SqlTransaction transaction = null;
+
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         public AnimalHouseProduktDatabase()
         {
         }
         public List<Kategori> HentAlleKategorier()
         {
             List<Kategori> kategoriList = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
 
                 try
@@ -38,10 +40,9 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    //if (transaction != null)
-                    //{
-                    //    transaction.Rollback();
-                    //}
+                  
+                    transaction.Rollback();
+      
                     throw e;
                 }
                 finally
@@ -55,7 +56,7 @@ namespace AnimalHouseDB
         public List<Produkt> HentAlleProduktByKategori(Kategori k)
         {
             List<Produkt> produkts = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 try
                 {
@@ -96,7 +97,7 @@ namespace AnimalHouseDB
         public List<Produkt> HentAlleProdukter()
         {
             List<Produkt> produkts = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 try
                 {
@@ -137,7 +138,7 @@ namespace AnimalHouseDB
         public Produkt HentProdukt(int Id)
         {
             Produkt produkt = null;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 try
                 {
@@ -176,7 +177,7 @@ namespace AnimalHouseDB
         public bool UpdaterProdukt(Produkt p)
         {
             bool answer = false;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 try
                 {
@@ -208,7 +209,7 @@ namespace AnimalHouseDB
         public bool ProduktFromExtern(List<Produkt> Lines)
         {
             bool answer = false;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 foreach (Produkt item in Lines)
                 {
@@ -218,8 +219,9 @@ namespace AnimalHouseDB
                         transaction = conn.BeginTransaction();
 
                         //henter leverandørId     
-                        int id = -1; //HentSupplier(item.Supplier.SupplierNavn);
-                                     //
+                        int id = -1; 
+                        HentSupplier(item.Supplier.SupplierNavn);
+                                     
                         if (id == -1)
                         {
                             id = InsertSupplier(item.Supplier.SupplierNavn);
@@ -256,11 +258,10 @@ namespace AnimalHouseDB
         private Int32 InsertSupplier(string navn)
         {
             Int32 id = -1;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 try
                 {
-                    //insert into(SupplierNavn) values(@supplierNavn); SELECT CAST(scope_identity() AS int);
                     SqlCommand commandInsertSupplier = new SqlCommand("insert into Supplier(SupplierNavn) values(@supplierNavn); SELECT CAST(scope_identity() AS int); ", conn, transaction);
                     commandInsertSupplier.Parameters.Add(new SqlParameter("@supplierNavn", navn));
                     id = (Int32)commandInsertSupplier.ExecuteScalar();
@@ -276,7 +277,7 @@ namespace AnimalHouseDB
         private int HentSupplier(string navn)
         {
             int id = -1;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            using (conn)
             {
                 try
                 {

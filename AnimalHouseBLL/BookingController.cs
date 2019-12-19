@@ -20,17 +20,6 @@ namespace AnimalHouseBLL
 
         }
 
-        public List<Booking> HentBookingByKundeId(int id)
-        {
-
-            return BookingDB.HentBookingByKunde(id);
-        }
-
-        public List<Booking> HentBookingByKunde(int Kundeid)
-        {
-
-            return BookingDB.HentBookingByKunde(Kundeid);
-        } 
 
         public List<Booking> HentAlleBooking(Kunde k)
         {

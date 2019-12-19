@@ -2,21 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Configuration;
 namespace AnimalHouseDB
 {
+    //holger
     public class AnimalhouseBookingDB : IBookingDB
     {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         public AnimalhouseBookingDB()
         {
         }
-
         public List<Booking> HentAlleBooking(Kunde k)
         {
             List<Booking> ld = null;
             SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
             try
             {
                 conn.Open();
@@ -51,11 +50,13 @@ namespace AnimalHouseDB
                     ld.Add(d);
                 }
                 reader.Close();
-                return ld;
+                transaction.Commit();
+                
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                transaction.Rollback();
+                throw e;
             }
             finally
             {
@@ -64,16 +65,14 @@ namespace AnimalHouseDB
 
             return ld;
         }
-
         public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime, Servicetype servicetype)
         {
             List<BookingTime> bookingTimes = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
+            SqlTransaction transaction = null;            
             try
             {
+                conn.Open();
+                transaction = conn.BeginTransaction();
 
 
                 SqlCommand command;
@@ -84,11 +83,11 @@ namespace AnimalHouseDB
                         "where NOT EXISTS(select '' from Booking left join Service on Service.ProduktId = Booking.ProduKtId " +
                         "where (BookingTimer.BookingTimerId >= Booking.StartTid " +
                         "and BookingTimer.BookingTimerId < Booking.SlutTid " +
-                        "and Booking.Startdato = @date " +
+                        "and Booking.Startdato = @dato " +
                         "and Service.ServiceTypeId = 2) " +
                         "or (BookingTimer.BookingTimerId >= Booking.StartTid " +
                         "and BookingTimer.BookingTimerId < Booking.SlutTid " +
-                        "and Booking.Startdato = @date AND Booking.AnsatId = @AnsatId));", conn);
+                        "and Booking.Startdato = @dato AND Booking.AnsatId = @AnsatId));", conn);
                 }
                 else
                 {
@@ -111,9 +110,11 @@ namespace AnimalHouseDB
                     bookingTimes.Add(d);
                 }
                 reader.Close();
+                transaction.Commit();
             }
             catch (Exception e)
             {
+                transaction.Rollback();
                 throw e;
             }
             finally
@@ -123,19 +124,14 @@ namespace AnimalHouseDB
 
             return bookingTimes;
         }
-
         public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime startTid, DateTime dateTime, Servicetype serviceType)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
-            transaction = conn.BeginTransaction();
-
-            
                 try
                 {
+                conn.Open();
+                transaction = conn.BeginTransaction();
                 SqlCommand command;
                 if (serviceType.ServiceType == "Operation")
                 {
@@ -189,10 +185,11 @@ namespace AnimalHouseDB
                         bookingTimes.Add(d);
                     }
                     reader.Close();
+                transaction.Commit();
                 }
                 catch (Exception e)
                 {
-
+                transaction.Rollback();
 
                     throw e;
                 }
@@ -204,16 +201,10 @@ namespace AnimalHouseDB
             return bookingTimes;
 
         }
-
-
-
         public Booking HentBooking(int Id)
         {
             Booking d = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
+            SqlTransaction transaction = null;            
             try
             {
                 conn.Open();
@@ -231,36 +222,25 @@ namespace AnimalHouseDB
                     d.Notat = Convert.ToString(reader["Notat"]);
                     d.StartDato = Convert.ToDateTime(reader["StartDato"]);
                     d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
-
-
                 }
                 reader.Close();
-                return d;
+                transaction.Commit();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                transaction.Rollback();
+                throw e;
             }
             finally
             {
                 conn.Close();
             }
-
             return d;
         }
-
-        public List<Booking> HentBookingByKunde(int KundeId)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Booking> HentDyrByKunde(int Id)
         {
             List<Booking> ld = null;
             SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
             try
             {
                 conn.Open();
@@ -282,28 +262,24 @@ namespace AnimalHouseDB
                     ld.Add(d);
                 }
                 reader.Close();
-                return ld;
+                transaction.Commit();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                transaction.Rollback();
+                throw e;
             }
             finally
             {
-                transaction.Commit();
+                
                 conn.Close();
             }
-
             return ld;
         }
-
         public bool OpretBooking(Booking b)
         {
             bool answer = false;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
+            SqlTransaction transaction = null;            
             try
             {
                 conn.Open();
@@ -334,37 +310,23 @@ namespace AnimalHouseDB
             }
             return answer;
         }
-
         public bool OpretbookingBur(string text, Dyr dyr, DateTime start, DateTime slut, Bur bur)
         {
             bool answer = false;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
+            SqlTransaction transaction = null;            
             try
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
-                SqlCommand command1 = new SqlCommand("Insert into Booking (DyrId, Notat, StartDato, SlutDato, ProduKtId) values (@DyrId,  @Notat, @StartDato, @SlutDato, 1)", conn);
+                SqlCommand command1 = new SqlCommand("Insert into Booking (DyrId, Notat, StartDato, SlutDato, ProduKtId) values (@DyrId,  @Notat, @StartDato, @SlutDato, 1); SELECT CAST(scope_identity() AS int)", conn, transaction);
                 command1.Parameters.Add(new SqlParameter("@DyrId",dyr.DyrId));
                 command1.Parameters.Add(new SqlParameter("@Notat", text));
                 command1.Parameters.Add(new SqlParameter("@StartDato", start.ToString("yyyy-MM-dd")));
                 command1.Parameters.Add(new SqlParameter("@SlutDato", slut.ToString("yyyy-MM-dd")));
-
-                command1.Transaction = transaction;
                 Int32 id = (Int32)command1.ExecuteScalar();
-
-
-
-                SqlCommand command2 = new SqlCommand($"Insert into Booking_Has_bur (BookingId, BurId) values ({id} , @bur)", conn);
+                SqlCommand command2 = new SqlCommand($"Insert into Booking_Has_bur (BookingId, BurId) values ({id} , @bur)", conn, transaction);
                 command2.Parameters.Add(new SqlParameter("@bur", bur.Id));
-
-                command2.Transaction = transaction;
                 command2.ExecuteNonQuery();
-
-
-
                 transaction.Commit();
                 answer = true;
             }
@@ -380,7 +342,6 @@ namespace AnimalHouseDB
             }
             return answer;
         }
-
         public bool SletBooking(Booking b)
         {
             bool result = false ;
@@ -411,14 +372,10 @@ namespace AnimalHouseDB
 
             return result;
         }
-
         public bool UpdaterBooking(Booking b)
         {
             bool answer = false;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            
+            SqlTransaction transaction = null;            
             try
             {
                 conn.Open();
@@ -446,8 +403,6 @@ namespace AnimalHouseDB
             }
             return answer;
         }
-
-
     }
 }
 

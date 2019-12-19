@@ -12,7 +12,6 @@ namespace AnimalHouseDB
         bool UpdaterBooking(Booking b);
         bool SletBooking(Booking b);
         Booking HentBooking(int Id);
-        List<Booking> HentBookingByKunde(int KundeId);
         List<Booking> HentAlleBooking(Kunde k);
         List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime, Servicetype servicetype);
         List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime startTid, DateTime dateTime, Servicetype servicetype);
