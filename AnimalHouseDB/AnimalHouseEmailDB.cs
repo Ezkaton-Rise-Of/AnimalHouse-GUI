@@ -11,17 +11,17 @@ namespace AnimalHouseDB
     //Holger
     public class AnimalHouseEmailDB : IEmail
     {
-        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
         public AnimalHouseEmailDB()
         {
         }
 
         public List<Email> HentEmail(int id)
         {
-            SqlTransaction transaction = null;
-            using (conn)
+           
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                
+                SqlTransaction transaction = null;
                 List<Email> el = null;
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -62,7 +62,7 @@ namespace AnimalHouseDB
 
         public List<Email> HentEmails()
         {
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 SqlTransaction transaction = null;
                 List<Email> el = null;
@@ -103,7 +103,7 @@ namespace AnimalHouseDB
 
         public List<Email> HentEmailsByKunde(int id)
         {
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 SqlTransaction transaction = null;
                 List <Email> el = null;
@@ -145,7 +145,7 @@ namespace AnimalHouseDB
 
         public List<Dyr> HentKunderDerManglerMail(int mailDage = 365, int visitDage = 365)
         {
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 SqlTransaction transaction = null;
                 conn.Open();
@@ -198,7 +198,7 @@ namespace AnimalHouseDB
 
         public bool InsertMail(Email E)
         {
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 conn.Open();
                 try

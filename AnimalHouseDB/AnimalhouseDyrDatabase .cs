@@ -16,10 +16,11 @@ namespace AnimalHouseDB
 
         public List<Dyr> HentAlleDyr()
         {
-            List<Dyr> ld = null;
-            SqlTransaction transaction = null;
+
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                List<Dyr> ld = null;
+                SqlTransaction transaction = null;
 
                 try
                 {
@@ -53,8 +54,9 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return ld;
             }
-            return ld;
+          
         }
         public Dyr HentDyr(int Id)
         {
