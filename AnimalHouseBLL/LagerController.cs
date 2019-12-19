@@ -17,14 +17,10 @@ namespace AnimalHousePersistenslag
             PersistensFactory persistensFactory = PersistensFactory.GetInstance();
             LagerDB = persistensFactory.GetLagerDB();
         }
-
-
-
         public Lager SøgId(int id)
         {
             return LagerDB.SøgId(id);
         }
-
         public List<Lager> HentLager()
         {
             return LagerDB.HentLager();
@@ -33,6 +29,5 @@ namespace AnimalHousePersistenslag
         {
             return LagerDB.TilføjLager(L);
         }
-
     }
 }

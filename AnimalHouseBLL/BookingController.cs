@@ -38,14 +38,14 @@ namespace AnimalHouseBLL
             return BookingDB.HentAlleBooking(k);
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime, Servicetype servicetype)
         {
-            return BookingDB.HentAlleFritider(ansat, dateTime);
+            return BookingDB.HentAlleFritider(ansat, dateTime, servicetype);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime dato)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime dato, Servicetype servicetype)
         {
-            return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime, dato);
+            return BookingDB.HentAlleHentMuligeSlutTider(ansat, dateTime, dato, servicetype);
         }
 
         public bool SletBooking(Booking b)

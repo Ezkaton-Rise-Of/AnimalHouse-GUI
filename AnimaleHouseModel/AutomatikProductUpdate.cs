@@ -14,6 +14,7 @@ namespace AnimaleHouseModel
 
         string Path;
         string ThisPath;
+        string TempPath;
 
         public AutomatikProductUpdate(string path = @"\MedicinPriser")
         {
@@ -22,9 +23,7 @@ namespace AnimaleHouseModel
             this.Path = path;
             this.ThisPath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName + path;
             CheckforFolder();
-
         }
-
         private void CheckforFolder()
         {
             if (!Directory.Exists(ThisPath))
@@ -36,7 +35,10 @@ namespace AnimaleHouseModel
         {
             while (true)
             {
-                p.ProduktFromExtern(CheckForFiles());
+                if(p.ProduktFromExtern(CheckForFiles()) == true)
+                {
+                    File.Delete(TempPath);
+                }
             }
         }
         private List<string> CheckForFiles()
@@ -45,13 +47,7 @@ namespace AnimaleHouseModel
             {
                 if (Directory.GetFiles(ThisPath, "*.txt").Length != 0)
                 {
-                    List<string> Lines = new List<string>();
-                    string[] files = Directory.GetFiles(ThisPath, "*.txt");
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        Lines.AddRange(ReadFile(files[i]));
-                    }
-                    return Lines;
+                    return GetFilesConstentAndPath();
 
                 }
                 else
@@ -61,11 +57,16 @@ namespace AnimaleHouseModel
                 }
             }
         }
+        private List<string> GetFilesConstentAndPath()
+        {
+            List<string> Lines = new List<string>();
+            string[] files = Directory.GetFiles(ThisPath, "*.txt");
+            Lines.AddRange(ReadFile(files[0]));
+            return Lines;
+        }
 
         private List<string> ReadFile(string pathfile)
         {
-
-
             string line;
             List<string> Lines = new List<string>();
             StreamReader file = new StreamReader(pathfile);
@@ -73,13 +74,10 @@ namespace AnimaleHouseModel
             {
                 Lines.Add(line);
             }
-
             file.Close();
-            File.Delete(pathfile);
+            TempPath = pathfile;
             return Lines;
         }
-
-
         public class ProduktFactory
         {
             private static ProduktFactory _instance = null;

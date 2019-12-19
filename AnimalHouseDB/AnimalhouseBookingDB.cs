@@ -64,7 +64,7 @@ namespace AnimalHouseDB
             return ld;
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime, Servicetype servicetype)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
@@ -75,10 +75,28 @@ namespace AnimalHouseDB
             try
             {
 
-                SqlCommand command = new SqlCommand("select * from BookingTimer " +
-                    "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
-                    "and BookingTimer.BookingTimerId < Booking.SlutTid " +
-                    "and Booking.Startdato = @dato AND Booking.AnsatId = @AnsatId);", conn);
+
+                SqlCommand command;
+
+                if (servicetype.ServiceType == "Operation")
+                {
+                    command = new SqlCommand("select * from BookingTimer " +
+                        "where NOT EXISTS(select '' from Booking left join Service on Service.ProduktId = Booking.ProduKtId " +
+                        "where (BookingTimer.BookingTimerId >= Booking.StartTid " +
+                        "and BookingTimer.BookingTimerId < Booking.SlutTid " +
+                        "and Booking.Startdato = @date " +
+                        "and Service.ServiceTypeId = 2) " +
+                        "or (BookingTimer.BookingTimerId >= Booking.StartTid " +
+                        "and BookingTimer.BookingTimerId < Booking.SlutTid " +
+                        "and Booking.Startdato = @date AND Booking.AnsatId = @AnsatId));", conn);
+                }
+                else
+                {
+                    command = new SqlCommand("select * from BookingTimer " +
+                        "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
+                        "and BookingTimer.BookingTimerId < Booking.SlutTid " +
+                        "and Booking.Startdato = @dato AND Booking.AnsatId = @AnsatId);", conn);
+                }
                 command.Parameters.Add(new SqlParameter("@dato", dateTime.ToString("yyyy-MM-dd")));
                 command.Parameters.Add(new SqlParameter("@AnsatId", ansat.Id));
 
@@ -106,7 +124,7 @@ namespace AnimalHouseDB
             return bookingTimes;
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime startTid, DateTime dateTime)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime startTid, DateTime dateTime, Servicetype serviceType)
         {
             List<BookingTime> bookingTimes = null;
             SqlTransaction transaction = null;
@@ -114,40 +132,77 @@ namespace AnimalHouseDB
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
             conn.Open();
             transaction = conn.BeginTransaction();
-            try
-            {
 
-                SqlCommand command = new SqlCommand("if 1 < (select Count(*) from Booking where Booking.Startdato = @Dato AND ansatID = @Ansat) " +
-                    "select * from BookingTimer where BookingTimer.BookingTimerId between @starttime and(select top 1 Booking.StartTid from Booking where Booking.StartTid > @starttime and Booking.Startdato = @Dato AND ansatID = @Ansat order by Booking.StartTid  asc) " +
-                    "else select* from BookingTimer where BookingTimer.BookingTimerId > @starttime", conn);
-                command.Parameters.Add(new SqlParameter("@Ansat", ansat.Id));
-                command.Parameters.Add(new SqlParameter("@starttime", startTid.timeId));
-                command.Parameters.Add(new SqlParameter("@Dato", dateTime.ToString("yyyy-MM-dd")));
-
-                command.Transaction = transaction;
-                SqlDataReader reader = command.ExecuteReader();
-                bookingTimes = new List<BookingTime>();
-                while (reader.Read())
+            
+                try
                 {
-                    BookingTime d = new BookingTime();
-                    d.timeId = Convert.ToInt32(reader["BookingTimerId"]);
-                    d.time = Convert.ToString(reader["TimeRange"]);
-                    bookingTimes.Add(d);
+                SqlCommand command;
+                if (serviceType.ServiceType == "Operation")
+                {
+                     command = new SqlCommand("" +
+                         "if 0 < (select Count(*) from Booking " +
+                         "left join Service on Service.ProduktId = Booking.ProduKtId where Booking.Startdato = @Dato " +
+                         "and Booking.StartTid > @starttime AND (Service.ServiceTypeId = 2 or Booking.AnsatId = @Ansat)) " +
+                         "if 0 < (select Count(*) from Booking " +
+                         "where Booking.Startdato = @Dato AND AnsatId = @Ansat) " +
+                         "select * from BookingTimer " +
+                         "where BookingTimer.BookingTimerId " +
+                         "between @starttime and(select top 1 Booking.StartTid from Booking " +
+                         "left join Service on Service.ProduktId = Booking.ProduKtId " +
+                         "where Booking.Startdato = @Dato and Booking.StartTid > @starttime " +
+                         "AND (Service.ServiceTypeId = 2 or Booking.AnsatId = @Ansat) " +
+                         "order by Booking.StartTid  asc) " +
+                         "else select* from BookingTimer where BookingTimer.BookingTimerId " +
+                         "between 8 and (select top 1 Booking.StartTid from Booking " +
+                         "left join Service on Service.ProduktId = Booking.ProduKtId " +
+                         "where Booking.StartTid > @starttime and Booking.Startdato = @Dato " +
+                         "AND Service.ServiceTypeId = 2 order by Booking.StartTid  asc) " +
+                         "else select* from BookingTimer where BookingTimer.BookingTimerId > @starttime", conn);
                 }
-                reader.Close();
-            }
-            catch (Exception e)
-            {
+                else
+                {
+                     command = new SqlCommand("if 1 < (select Count(*) from Booking " +
+                    "where Booking.Startdato = @Dato AND ansatID = @Ansat) " +
+                    "select * from BookingTimer " +
+                    "where BookingTimer.BookingTimerId " +
+                    "between @starttime " +
+                    "and(select top 1 Booking.StartTid " +
+                    "from Booking where Booking.StartTid > @starttime " +
+                    "and Booking.Startdato = @Dato AND " +
+                    "ansatID = @Ansat order by Booking.StartTid  asc) " +
+                    "else select* from BookingTimer where BookingTimer.BookingTimerId > @starttime", conn);
+                }
 
 
-                throw e;
-            }
-            finally
-            {
-                conn.Close();
-            }
+                    command.Parameters.Add(new SqlParameter("@Ansat", ansat.Id));
+                    command.Parameters.Add(new SqlParameter("@starttime", startTid.timeId));
+                    command.Parameters.Add(new SqlParameter("@Dato", dateTime.ToString("yyyy-MM-dd")));
 
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    bookingTimes = new List<BookingTime>();
+                    while (reader.Read())
+                    {
+                        BookingTime d = new BookingTime();
+                        d.timeId = Convert.ToInt32(reader["BookingTimerId"]);
+                        d.time = Convert.ToString(reader["TimeRange"]);
+                        bookingTimes.Add(d);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+
+
+                    throw e;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            
             return bookingTimes;
+
         }
 
 

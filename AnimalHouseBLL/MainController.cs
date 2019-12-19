@@ -46,6 +46,7 @@ namespace AnimalHouseBLL
             ServiceC = new ServiceController();
             Pc = new ProductController();
             Sc = new SalgController();
+            MailController = new EmailController();
         }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
@@ -107,14 +108,14 @@ namespace AnimalHouseBLL
             return Dc.OpretDyr(kundeId, art, race, alder, sex, behandler);
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime, Servicetype servicetype)
         {
-            return Bc.HentAlleFritider(ansat, datetime);
+            return Bc.HentAlleFritider(ansat, datetime, servicetype);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime date)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime date, Servicetype servicetype)
         {
-            return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date);
+            return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date, servicetype);
         }
 
         
