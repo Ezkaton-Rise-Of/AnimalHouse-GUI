@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Radwan
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +67,7 @@ namespace AnimalHouseBLL
             return ansatDB.HentAnsatNavn(id);
         }
 
-        internal List<Ansat> HentAnsatByNanv2(string navn)
+        public List<Ansat> HentAnsatByNanv2(string navn)
         {
             return ansatDB.HentAnsatByNavn2(navn);
         }
