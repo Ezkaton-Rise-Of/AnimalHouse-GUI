@@ -8,29 +8,35 @@ namespace AnimalHouse_Entities
 {
     public class Lager
     {
-
-        public List<Lager> LagerList;
         public decimal Pris { get; set; }
         public int Antal { get; set; }
-        public Produkt Produkt;
+        public Produkt Produkt { get; set; }
+        public int ProduktId { get; set; }
+
+        public List<Lager> LagerList;
 
         public Lager()
         {
+
         }
 
-        public Lager(decimal pris, int antal, Produkt produkt)
+        public Lager(decimal pris, int antal, Produkt produkt, int produktid)
         {
 
-            this.Pris = pris;
-            this.Antal = antal;
-            this.Produkt = produkt;
+            Pris = pris;
+            Antal = antal;
+            Produkt = produkt;
+            ProduktId = produktid;
+
         }
 
-        public int ProduktId
+        public Lager(decimal pris, int antal, int produktid)
         {
-            get { return Produkt.ProduktId; }
-           
-        
+
+            Pris = pris;
+            Antal = antal;
+            ProduktId = produktid;
+
         }
 
 

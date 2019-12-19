@@ -20,6 +20,7 @@ namespace AnimalHouse_Entities
 
         // Class Constructors
         public Kunde() { }
+
         public Kunde(int id, string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string e_mail)
         {
             Id = id;

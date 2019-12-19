@@ -15,7 +15,7 @@ namespace AnimalHouseDB
 
 
         //Søg i tabel ved hjælp af ID
-        public Lager SøgId(int id)
+        public Lager SøgId(int produktid)
         {
             Lager L = null;
             SqlConnection conn = new SqlConnection();
@@ -23,7 +23,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"Select * from Lager inner join Produkt.ProduktId = Lager.ProduktId where Id ={id}";
+                string commandtxt = $"Select * from Lager inner join Produkt.ProduktId = Lager.ProduktId where ProduktId ={produktid}";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 L = new Lager();
@@ -66,10 +66,10 @@ namespace AnimalHouseDB
                 results = new List<Lager>();
                 while (reader.Read())
                 {
-                    
                     Lager lagervare = new Lager();
-                    lagervare.Pris = (decimal)reader["Pris"];
-                    lagervare.Antal = (int)reader["Antal"];
+                    lagervare.Pris = Convert.ToDecimal(reader["Pris"]);
+                    lagervare.Antal = Convert.ToInt32(reader["Antal"]);
+                    lagervare.Produkt = new Produkt(Convert.ToInt32(reader["ProduktId"]));
                     results.Add(lagervare);
                 }
             }
@@ -91,7 +91,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"Insert into Lager (Pris, Antal, Produkt) values (@Pris, @Antal, @Produkt)";
+                string commandtxt = $"Insert into Lager (Pris, Antal, Produkt) values (@Pris, @Antal, @ProduktId)";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 command.Parameters.Add(new SqlParameter("@Pris", L.Pris));
                 command.Parameters.Add(new SqlParameter("@Antal", L.Antal));

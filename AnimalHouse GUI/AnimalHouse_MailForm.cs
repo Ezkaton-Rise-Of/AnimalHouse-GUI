@@ -122,5 +122,10 @@ namespace AnimalHouse_GUI
                 return false;
             }
         }
+
+        private void label_hjælpe_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

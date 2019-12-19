@@ -8,7 +8,6 @@ using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
 using System.Data;
-using AnimalHousePersistenslag;
 
 namespace AnimalHouseBLL
 {
@@ -183,6 +182,11 @@ namespace AnimalHouseBLL
             return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
 
+        public decimal HentLager(string text1, string text2, string text3)
+        {
+            throw new NotImplementedException();
+        }
+
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
         { 
             return Ac.UpdateAnsat(id, navn, stelling,tlf);
@@ -211,9 +215,9 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
-        public string TilføjLager(decimal pris, int antal, Produkt produkt)
+        public string TilføjLager(decimal pris, int antal, int produktid)
         {
-            Lager L = new Lager(pris, antal, produkt);
+            Lager L = new Lager(pris, antal, produktid);
             return Lc.TilføjLager(L);
         }
 

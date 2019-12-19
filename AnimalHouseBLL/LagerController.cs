@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AnimalHouse_Entities;
-using AnimalHouseBLL;
 using AnimalHouseDB;
 
-namespace AnimalHousePersistenslag
+namespace  AnimalHouseBLL
 {
     public class LagerController
     {
@@ -18,11 +17,9 @@ namespace AnimalHousePersistenslag
             LagerDB = persistensFactory.GetLagerDB();
         }
 
-
-
-        public Lager SøgId(int id)
+        public Lager SøgId(int ProduktId)
         {
-            return LagerDB.SøgId(id);
+            return LagerDB.SøgId(ProduktId);
         }
 
         public List<Lager> HentLager()

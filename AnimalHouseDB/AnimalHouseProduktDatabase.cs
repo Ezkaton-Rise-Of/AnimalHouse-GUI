@@ -65,7 +65,7 @@ namespace AnimalHouseDB
                     Produkt item = new Produkt();
                     item.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                     item.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
-                    item.Pris = Convert.ToDouble(reader["Pris"]);
+                    item.Pris = Convert.ToDecimal(reader["Pris"]);
                     item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                     item.Service = Convert.ToBoolean(reader["Service"]);
                     item.Navn = Convert.ToString(reader["Navn"]);
@@ -106,7 +106,7 @@ namespace AnimalHouseDB
                     Produkt item = new Produkt();
                     item.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                     item.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
-                    item.Pris = Convert.ToDouble(reader["Pris"]);
+                    item.Pris = Convert.ToDecimal(reader["Pris"]);
                     item.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                     item.Service = Convert.ToBoolean(reader["Service"]);
                     item.Navn = Convert.ToString(reader["Navn"]);
@@ -150,7 +150,7 @@ namespace AnimalHouseDB
                     produkt = new Produkt();
                     produkt.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                     produkt.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
-                    produkt.Pris = Convert.ToDouble(reader["Pris"]);
+                    produkt.Pris = Convert.ToDecimal(reader["Pris"]);
                     produkt.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
                     produkt.Service = Convert.ToBoolean(reader["Service"]);
                     produkt.Navn = Convert.ToString(reader["Navn"]);

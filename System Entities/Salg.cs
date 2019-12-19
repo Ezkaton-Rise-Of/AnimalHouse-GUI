@@ -22,9 +22,9 @@ namespace System_Entities
             salgitems.Add(new SalgItemLine(p, antal));
         }
 
-        public double BeregneTotal()
+        public decimal BeregneTotal()
         {
-            double dblTotal = 0;
+            decimal dblTotal = 0;
             foreach (SalgItemLine lineItem in salgitems)
             {
                 dblTotal += lineItem.BeregneSubTotal();

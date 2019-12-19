@@ -11,7 +11,7 @@ namespace AnimaleHouseModel
     public class SalgSystem
     {
         Salg s = new Salg();
-        double total;
+        decimal total;
         public SalgSystem()
         {
             s = new Salg();
@@ -21,16 +21,16 @@ namespace AnimaleHouseModel
         {
             s.TilføjeItemLine(p,antal);
         }
-        public double BeregneTotal()
+        public decimal BeregneTotal()
         {
             return s.BeregneTotal();
         }
-        public double BeregneTilbud(double procent)
+        public decimal BeregneTilbud(decimal procent)
         {
             return  BeregneTotal() - ((BeregneTotal()*procent)/100);
         }
 
-        public double HentTotal(double rabat)
+        public decimal HentTotal(decimal rabat)
         {
             BeregneTotal();
             total = BeregneTilbud(rabat);

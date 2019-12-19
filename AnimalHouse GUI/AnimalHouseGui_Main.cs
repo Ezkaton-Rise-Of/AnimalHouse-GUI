@@ -82,6 +82,11 @@ namespace AnimalHouse_GUI
             AnimalHouseGUI_SalgForm salgForm = new AnimalHouseGUI_SalgForm();
             salgForm.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e) // Lager Tilføj
+        {
+            //AnimalHouseGui_Lager.tabTilføj.SelectTab(2);
+        }
     }
 }
 
