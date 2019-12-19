@@ -21,6 +21,7 @@ namespace AnimalHouse_GUI
             AutomatikProductUpdate auto = new AutomatikProductUpdate();
 
             Thread autothread = new Thread(new ThreadStart(auto.Autorun));
+            autothread.IsBackground = true;
             autothread.Start();
         }
         private void button_EjerReg_Click(object sender, EventArgs e)

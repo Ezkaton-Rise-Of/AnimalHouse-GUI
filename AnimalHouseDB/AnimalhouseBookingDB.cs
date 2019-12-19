@@ -21,10 +21,10 @@ namespace AnimalHouseDB
                 {
                     conn.Open();
                     transaction = conn.BeginTransaction();
-                    SqlCommand command = new SqlCommand("SELECT Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut " +
+                    SqlCommand command = new SqlCommand("SELECT Booking.ProduKtId, Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut " +
                         "FROM Booking left join Produkt on Produkt.ProduktId = Booking.ProduKtId " +
-                        "inner join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
-                        "inner join BookingTimer as e on Booking.SlutTid = e.BookingTimerId " +
+                        "left join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
+                        "left join BookingTimer as e on Booking.SlutTid = e.BookingTimerId " +
                         "inner join Dyr on Dyr.DyrId = Booking.DyrId " +
                         "inner join Kunde on Kunde.KundeId = dyr.KundeId where Kunde.KundeId = @Kunde", conn);
                     command.Parameters.Add(new SqlParameter("@Kunde", k.Id));
@@ -41,6 +41,7 @@ namespace AnimalHouseDB
                         d.SlutDato = Convert.ToDateTime(reader["Slutdato"]);
                         Service s = new Service();
                         s.Navn = Convert.ToString(reader["Navn"]);
+                        s.ProduktId = Convert.ToInt32(reader["ProduKtId"]);
                         d.service = s;
                         BookingTime start = new BookingTime();
                         start.time = Convert.ToString(reader["start"]);
@@ -372,28 +373,41 @@ namespace AnimalHouseDB
             {
                 bool result = false;
                 SqlTransaction transaction = null;
-                conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
 
-                try
-                {
-                    conn.Open();
-                    transaction = conn.BeginTransaction();
+                    try
+                    {
+                           
+
+
+                        conn.Open();
+                        transaction = conn.BeginTransaction();
+                    if (b.service.ProduktId == 1)
+                    {
+                        SqlCommand command1 = new SqlCommand("DELETE Booking_Has_Bur where BookingId = @BookingId", conn);
+                        command1.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                        command1.Transaction = transaction;
+                        command1.ExecuteNonQuery();
+
+                    }
+
                     SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId", conn);
-                    command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
-                    command.Transaction = transaction;
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    result = true;
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    throw e;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                        command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                        command.Transaction = transaction;
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                        result = true;
+                    }
+                    catch (Exception e)
+                    {
+                        transaction.Rollback();
+                        throw e;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                
+
 
                 return result;
             }
