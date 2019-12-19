@@ -158,7 +158,7 @@ namespace AnimalHouse_GUI
 
         private void button_print_Click(object sender, EventArgs e)
         {
-            using (StreamWriter tw = new StreamWriter(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Faktura Example.txt"))
+            using (StreamWriter tw = new StreamWriter(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Faktura Example.txt"))
             {
                 tw.WriteLine("\t\t\t\t Dato:"+textBox_info3.Text);
                 tw.WriteLine("Faktura ID: "+ textBox_info1.Text);
@@ -167,7 +167,7 @@ namespace AnimalHouse_GUI
                 tw.WriteLine("\t\t\t\t Rabat i %: " + textBox_info4.Text);
                 tw.WriteLine("\t\t\t\t Total: " + textBox_info5.Text);
             }
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Faktura Example.txt");
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Faktura Example.txt");
         }
     }
 }
