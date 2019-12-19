@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AnimalHouse_Entities;
-using System_Entities;
-using AnimalHouseDB;
-using AnimalHouseBLL;
-using System.Data;
+﻿using AnimalHouse_Entities;
 using AnimalHousePersistenslag;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System_Entities;
 
 namespace AnimalHouseBLL
 {
     public class MainController
     {
-
+        private static readonly object Instancelock = new object();
+        private static MainController _instance = null;
         public List<Dyr> D = new List<Dyr>();
         public List<Kunde> K = new List<Kunde>();
         public List<Lager> L = new List<Lager>();
@@ -23,6 +19,7 @@ namespace AnimalHouseBLL
         public List<Service> S = new List<Service>();
         public List<Kategori> kategorier = new List<Kategori>();
         public List<Produkt> produkter = new List<Produkt>();
+
         KundeController Kc;
         DyrController Dc;
         AnsatController Ac;
@@ -34,7 +31,7 @@ namespace AnimalHouseBLL
         ProductController Pc;
         SalgController Sc;
         EmailController MailController;
-        public MainController()
+        private MainController()
         {
             Kc = new KundeController();
             Dc = new DyrController();
@@ -48,12 +45,24 @@ namespace AnimalHouseBLL
             Sc = new SalgController();
             MailController = new EmailController();
         }
+        public static MainController GetInstance
+        {
+            get
+            {
+                lock (Instancelock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new MainController();
+                    }
+                    return _instance;
+                }
+            }
+        }
 
         public string OpretKunde(string fnavn, string lnavn, string adresse, string postnummer, string tlf, string kundetype, string by, string email)
         {
-
-            Kunde k = new Kunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
-            return Kc.OpretKunde(k);
+            return Kc.OpretKunde(fnavn, lnavn, adresse, postnummer, tlf, kundetype, by, email);
         }
 
         public bool Opretbooking(string notat, BookingTime startTid, BookingTime slutTid, Ansat ansat, Service service, Dyr dyr, DateTime startDate, DateTime SlutDato)
@@ -90,9 +99,9 @@ namespace AnimalHouseBLL
             return Ac.OpretAnsat(a);
         }
 
-        public DataSet Test2(int days)
+        public DataSet MailSendelse2(int days)
         {
-            return Jc.Test2(days);
+            return Jc.MailSendelse2(days);
         }
 
         public List<Kunde> HentAlleKunde()
@@ -118,7 +127,7 @@ namespace AnimalHouseBLL
             return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date, servicetype);
         }
 
-        
+
 
         public List<Service> HentAlleService(Servicetype servicetype)
         {
@@ -148,7 +157,7 @@ namespace AnimalHouseBLL
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
 
-           return Dc.HentAlleKundesDyr(kundeId);
+            return Dc.HentAlleKundesDyr(kundeId);
         }
 
         public Dyr HentDyr(int id)
@@ -180,27 +189,27 @@ namespace AnimalHouseBLL
             return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
         }
 
-        public string UpdateKunde(int id,string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
+        public string UpdateKunde(int id, string fnavn, string lnavn, string adress, string postnummer, string tlf, string kundetype, string by, string email)
         {
-            return Kc.UpdateKunde(id,fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
+            return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
 
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
-        { 
-            return Ac.UpdateAnsat(id, navn, stelling,tlf);
+        {
+            return Ac.UpdateAnsat(id, navn, stelling, tlf);
         }
 
         public void HentKundeByTlf(string tlf)
         {
-             K.Add(Kc.HentKundetByTlf(tlf));
+            K.Add(Kc.HentKundetByTlf(tlf));
         }
 
         public List<Kunde> HentKundeByTlforNavn(string input)
         {
-              return Kc.HentKundeByTlforNavn(input);
+            return Kc.HentKundeByTlforNavn(input);
         }
 
-       
+
 
         //Lager 
         public Lager SøgId(int id)
@@ -256,7 +265,7 @@ namespace AnimalHouseBLL
         {
             return Jc.HentAlleDyrJournale(dyrid);
         }
-        
+
         public List<Journal> HentAlleAnsateJournale(int ansatId)
         {
             return Jc.HentAlleAnsatJournal(ansatId);
@@ -296,15 +305,16 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatByNanv2(navn);
         }
-        public DataSet Test()
+        public DataSet MailSendelse()
         {
-            return Jc.Test();
+            return Jc.MailSendelse();
         }
 
         // Salg system Funktioner
-        public string GemFaktura(int kundeId)
+        public string GemFaktura(int kundeId, string total, string rabat, string produkter)
         {
-            return Sc.GemFaktura();
+            Faktura f = new Faktura(kundeId, total, rabat, produkter);
+            return Sc.GemFaktura(f);
         }
 
         public List<Kategori> HentAlleKategorier()
@@ -333,7 +343,7 @@ namespace AnimalHouseBLL
         }
         public Produkt HentProdukt(int id)
         {
-            return Pc.HentAlleProdukt(id);
+            return Pc.HentProdukt(id);
         }
 
         public List<Booking> HentAlleBooking(Kunde k)
@@ -351,6 +361,10 @@ namespace AnimalHouseBLL
             }
 
             return kundeList;
+        }
+        public Kunde HentKundeById(int id)
+        {
+            return Kc.SøgeKundeById(id);
         }
 
     }

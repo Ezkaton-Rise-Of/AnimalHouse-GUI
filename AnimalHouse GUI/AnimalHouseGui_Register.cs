@@ -11,7 +11,7 @@ namespace AnimalHouse_GUI
     {
         private int id;
         private string kundetype;
-        MainController controller = new MainController();
+        MainController controller = MainController.GetInstance;
 
         public AnimalHouseGui_Register()
         {
@@ -31,7 +31,7 @@ namespace AnimalHouse_GUI
             }
             else
             {
-                MessageBox.Show("Invalid data");
+                MessageBox.Show("Invalid data","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 
@@ -59,9 +59,7 @@ namespace AnimalHouse_GUI
 
         private void TilbageBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main main = new AnimalHouseGui_Main();
-            main.ShowDialog();
+            this.Close();
         }
 
         private void textBox_Postnummer_Leave(object sender, EventArgs e)

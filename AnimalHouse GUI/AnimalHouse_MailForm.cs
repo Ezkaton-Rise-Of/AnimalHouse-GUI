@@ -12,7 +12,7 @@ namespace AnimalHouse_GUI
     public partial class AnimalHouse_MailForm : Form
     {
         EmailSystem emailSystem = new EmailSystem();
-        MainController controller = new MainController();
+        MainController controller = MainController.GetInstance;
         public AnimalHouse_MailForm()
         {
             InitializeComponent();
@@ -25,9 +25,7 @@ namespace AnimalHouse_GUI
 
         private void button_Tilbage_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main mailForm = new AnimalHouseGui_Main();
-            mailForm.ShowDialog();
+            this.Close();
         }
 
         private void button_Send_Click(object sender, EventArgs e)
@@ -58,7 +56,7 @@ namespace AnimalHouse_GUI
 
         private void button_visAlle_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = controller.Test().Tables[0].DefaultView;
+            dataGridView1.DataSource = controller.MailSendelse().Tables[0].DefaultView;
         }
 
         private void button_fjern_Click(object sender, EventArgs e)
@@ -68,7 +66,7 @@ namespace AnimalHouse_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = controller.Test2(int.Parse(textBox_days.Text.Trim())).Tables[0].DefaultView;
+            dataGridView1.DataSource = controller.MailSendelse2(int.Parse(textBox_days.Text.Trim())).Tables[0].DefaultView;
 
         }
 

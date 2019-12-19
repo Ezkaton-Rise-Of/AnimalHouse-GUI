@@ -15,7 +15,7 @@ namespace AnimalHouse_GUI
 {
     public partial class AnimaHouseGui_AnsatForm : Form
     {
-        MainController controller = new MainController();
+        MainController controller = MainController.GetInstance;
         private int id;
         public AnimaHouseGui_AnsatForm()
         {
@@ -25,9 +25,8 @@ namespace AnimalHouse_GUI
 
         private void buttonTilbage_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            AnimalHouseGui_Main main = new AnimalHouseGui_Main();
-            main.ShowDialog();
+            this.Close();
+
         }
         private void FillDataGridView()
         {

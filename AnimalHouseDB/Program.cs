@@ -30,20 +30,20 @@ namespace AnimalHouseDB
 
             //}
 
-            AnimalHouseBurDatabase bur = new AnimalHouseBurDatabase();
-            DateTime startTime = DateTime.Now;
-            DateTime slutTime = DateTime.Now;
+            //AnimalHouseBurDatabase bur = new AnimalHouseBurDatabase();
+            //DateTime startTime = DateTime.Now;
+            //DateTime slutTime = DateTime.Now;
 
-            List <Bur> burlist = bur.HentFribure(startTime.AddDays(-1), slutTime.AddDays(1));
+            //List <Bur> burlist = bur.HentFribure(startTime.AddDays(-1), slutTime.AddDays(1));
 
-            for (int i = 0; i < burlist.Count; i++)
-            {
-                Console.WriteLine(burlist[i].Id);
-                Console.WriteLine(burlist[i].Art);
-            }
+            //for (int i = 0; i < burlist.Count; i++)
+            //{
+            //    Console.WriteLine(burlist[i].Id);
+            //    Console.WriteLine(burlist[i].Art);
+            //}
 
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }

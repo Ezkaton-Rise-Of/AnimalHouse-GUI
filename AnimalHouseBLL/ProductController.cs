@@ -32,7 +32,7 @@ namespace AnimalHouseBLL
             return produktDB.HentAlleProdukter();
         }
 
-        public Produkt HentAlleProdukt(int id)
+        public Produkt HentProdukt(int id)
         {
             return produktDB.HentProdukt(id);
         }

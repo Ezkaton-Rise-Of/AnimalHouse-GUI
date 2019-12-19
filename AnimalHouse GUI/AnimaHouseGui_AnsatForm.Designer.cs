@@ -54,21 +54,22 @@
             // 
             this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(725, 228);
+            this.dataGridView1.Location = new System.Drawing.Point(709, 188);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(973, 650);
+            this.dataGridView1.Size = new System.Drawing.Size(1033, 743);
             this.dataGridView1.TabIndex = 0;
-           // this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // textBox_ansatNavn
             // 
             this.textBox_ansatNavn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_ansatNavn.Location = new System.Drawing.Point(981, 183);
+            this.textBox_ansatNavn.Location = new System.Drawing.Point(880, 140);
+            this.textBox_ansatNavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_ansatNavn.Name = "textBox_ansatNavn";
-            this.textBox_ansatNavn.Size = new System.Drawing.Size(216, 20);
+            this.textBox_ansatNavn.Size = new System.Drawing.Size(322, 26);
             this.textBox_ansatNavn.TabIndex = 1;
             // 
             // button1
@@ -77,9 +78,10 @@
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1320, 168);
+            this.button1.Location = new System.Drawing.Point(1237, 126);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 54);
+            this.button1.Size = new System.Drawing.Size(160, 52);
             this.button1.TabIndex = 2;
             this.button1.Text = "Søgning";
             this.button1.UseVisualStyleBackColor = false;
@@ -93,9 +95,10 @@
             "Dyrlæge",
             "Reciptionist",
             "veterinærsygeplejerske"});
-            this.comboBox_stelling.Location = new System.Drawing.Point(101, 255);
+            this.comboBox_stelling.Location = new System.Drawing.Point(95, 243);
+            this.comboBox_stelling.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox_stelling.Name = "comboBox_stelling";
-            this.comboBox_stelling.Size = new System.Drawing.Size(390, 32);
+            this.comboBox_stelling.Size = new System.Drawing.Size(362, 32);
             this.comboBox_stelling.TabIndex = 3;
             // 
             // buttonTilbage
@@ -104,9 +107,10 @@
             this.buttonTilbage.AutoSize = true;
             this.buttonTilbage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonTilbage.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTilbage.Location = new System.Drawing.Point(1559, 902);
+            this.buttonTilbage.Location = new System.Drawing.Point(1573, 956);
+            this.buttonTilbage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonTilbage.Name = "buttonTilbage";
-            this.buttonTilbage.Size = new System.Drawing.Size(101, 45);
+            this.buttonTilbage.Size = new System.Drawing.Size(152, 52);
             this.buttonTilbage.TabIndex = 4;
             this.buttonTilbage.Text = "Tilbage";
             this.buttonTilbage.UseVisualStyleBackColor = false;
@@ -117,9 +121,10 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(864, 183);
+            this.label1.Location = new System.Drawing.Point(704, 140);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.Size = new System.Drawing.Size(97, 24);
             this.label1.TabIndex = 5;
             this.label1.Text = "Ansat navn";
             // 
@@ -129,9 +134,10 @@
             this.button_Hent.AutoSize = true;
             this.button_Hent.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Hent.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Hent.Location = new System.Drawing.Point(725, 902);
+            this.button_Hent.Location = new System.Drawing.Point(709, 956);
+            this.button_Hent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Hent.Name = "button_Hent";
-            this.button_Hent.Size = new System.Drawing.Size(109, 45);
+            this.button_Hent.Size = new System.Drawing.Size(164, 52);
             this.button_Hent.TabIndex = 6;
             this.button_Hent.Text = "Hent alle ansate";
             this.button_Hent.UseVisualStyleBackColor = false;
@@ -144,9 +150,10 @@
             this.button_Update.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Update.Enabled = false;
             this.button_Update.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Update.Location = new System.Drawing.Point(934, 902);
+            this.button_Update.Location = new System.Drawing.Point(881, 956);
+            this.button_Update.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Update.Name = "button_Update";
-            this.button_Update.Size = new System.Drawing.Size(96, 45);
+            this.button_Update.Size = new System.Drawing.Size(144, 52);
             this.button_Update.TabIndex = 7;
             this.button_Update.Text = "Update";
             this.button_Update.UseVisualStyleBackColor = false;
@@ -160,9 +167,10 @@
             this.button_Slet.Enabled = false;
             this.button_Slet.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Slet.ForeColor = System.Drawing.Color.Red;
-            this.button_Slet.Location = new System.Drawing.Point(1112, 902);
+            this.button_Slet.Location = new System.Drawing.Point(1042, 956);
+            this.button_Slet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Slet.Name = "button_Slet";
-            this.button_Slet.Size = new System.Drawing.Size(97, 45);
+            this.button_Slet.Size = new System.Drawing.Size(146, 52);
             this.button_Slet.TabIndex = 8;
             this.button_Slet.Text = "Slet";
             this.button_Slet.UseVisualStyleBackColor = false;
@@ -171,9 +179,10 @@
             // textBox_navn
             // 
             this.textBox_navn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_navn.Location = new System.Drawing.Point(101, 125);
+            this.textBox_navn.Location = new System.Drawing.Point(97, 151);
+            this.textBox_navn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_navn.Name = "textBox_navn";
-            this.textBox_navn.Size = new System.Drawing.Size(390, 30);
+            this.textBox_navn.Size = new System.Drawing.Size(362, 30);
             this.textBox_navn.TabIndex = 9;
             // 
             // label2
@@ -181,9 +190,10 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 82);
+            this.label2.Location = new System.Drawing.Point(93, 112);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(97, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "Ansat navn";
             // 
@@ -192,9 +202,10 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(97, 191);
+            this.label3.Location = new System.Drawing.Point(93, 205);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
+            this.label3.Size = new System.Drawing.Size(67, 24);
             this.label3.TabIndex = 11;
             this.label3.Text = "Stelling";
             // 
@@ -203,16 +214,16 @@
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox_tlf);
-            this.groupBox1.Controls.Add(this.button_Register);
-            this.groupBox1.Controls.Add(this.comboBox_stelling);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox_navn);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox_navn);
+            this.groupBox1.Controls.Add(this.button_Register);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.comboBox_stelling);
             this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(37, 71);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(36, 140);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(617, 669);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(628, 652);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ansat Register";
@@ -222,7 +233,8 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(97, 356);
+            this.label5.Location = new System.Drawing.Point(93, 330);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 24);
             this.label5.TabIndex = 15;
@@ -231,9 +243,10 @@
             // textBox_tlf
             // 
             this.textBox_tlf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_tlf.Location = new System.Drawing.Point(101, 414);
+            this.textBox_tlf.Location = new System.Drawing.Point(97, 368);
+            this.textBox_tlf.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox_tlf.Name = "textBox_tlf";
-            this.textBox_tlf.Size = new System.Drawing.Size(390, 30);
+            this.textBox_tlf.Size = new System.Drawing.Size(362, 30);
             this.textBox_tlf.TabIndex = 14;
             // 
             // button_Register
@@ -242,9 +255,10 @@
             this.button_Register.AutoSize = true;
             this.button_Register.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_Register.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Register.Location = new System.Drawing.Point(205, 534);
+            this.button_Register.Location = new System.Drawing.Point(197, 444);
+            this.button_Register.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Register.Name = "button_Register";
-            this.button_Register.Size = new System.Drawing.Size(95, 32);
+            this.button_Register.Size = new System.Drawing.Size(142, 52);
             this.button_Register.TabIndex = 13;
             this.button_Register.Text = "Tilføje";
             this.button_Register.UseVisualStyleBackColor = false;
@@ -254,19 +268,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(15, 651);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(12, 1010);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 17);
+            this.label4.Size = new System.Drawing.Size(20, 24);
             this.label4.TabIndex = 13;
             this.label4.Text = "?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // AnimaHouseGui_AnsatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 678);
+            this.ClientSize = new System.Drawing.Size(1774, 1043);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button_Slet);
@@ -278,6 +291,7 @@
             this.Controls.Add(this.textBox_ansatNavn);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AnimaHouseGui_AnsatForm";
             this.Text = "Animal House";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
