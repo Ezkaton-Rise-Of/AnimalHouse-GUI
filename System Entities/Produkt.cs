@@ -1,4 +1,5 @@
-﻿using System;
+﻿//holger
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace AnimalHouse_Entities
             KategoriId = kategoriId;
             Navn = navn;
         }
-
+        //radwan
         public string HentInfo
         {
             get 
@@ -53,7 +54,7 @@ namespace AnimalHouse_Entities
                 return $"{Navn}  Pris {Pris}Kr.";
             }
         }
-
+        //kenneth 
         public string HentInfo1
         {
             get
