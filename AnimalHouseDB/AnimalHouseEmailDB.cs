@@ -8,19 +8,20 @@ using System.Data.SqlClient;
 using System.Configuration;
 namespace AnimalHouseDB
 {
+    //Holger
     public class AnimalHouseEmailDB : IEmail
     {
         private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
         public AnimalHouseEmailDB()
         {
         }
 
         public List<Email> HentEmail(int id)
         {
+            SqlTransaction transaction = null;
             using (conn)
             {
-                SqlTransaction transaction = null;
+                
                 List<Email> el = null;
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -42,10 +43,12 @@ namespace AnimalHouseDB
                         el.Add(e);
                     }
                     reader.Close();
+                    transaction.Commit();
 
                 }
                 catch (Exception HentEmailError)
                 {
+                    transaction.Rollback();
                     throw HentEmailError;
                 }
                 finally
@@ -81,11 +84,13 @@ namespace AnimalHouseDB
                         el.Add(e);
                     }
                     reader.Close();
+                    transaction.Commit();
 
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    transaction.Rollback();
+                    throw e;
                 }
                 finally
                 {
@@ -121,14 +126,12 @@ namespace AnimalHouseDB
                         el.Add(e);
                     }
                     reader.Close();
+                    transaction.Commit();
                     
                 }
                 catch (Exception e)
                 {
-                    if (transaction != null)
-                    {
                         transaction.Rollback();
-                    }
                     throw e;
                 }
                 finally
@@ -137,6 +140,59 @@ namespace AnimalHouseDB
                     
                 }
                 return el;
+            }
+        }
+
+        public List<Dyr> HentKunderDerManglerMail(int mailDage = 365, int visitDage = 365)
+        {
+            using (conn)
+            {
+                SqlTransaction transaction = null;
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try
+                {
+
+                    //ændre til negativ værdig
+                    mailDage = mailDage * -1;
+                    visitDage = visitDage * -1;
+
+                    //outer joiner to views
+                    SqlCommand command = new SqlCommand("select Dyr.KundeId, LastVisit.DyrId, lastvisit.created_at " +
+                        "from LastVisit " +
+                        "left join Dyr on Dyr.DyrId = LastVisit.DyrId " +
+                        "full outer join LastMail on LastVisit.DyrId = LastMail.DyrId " +
+                        "where(LastVisit.DyrId is null or LastMail.DyrId is null) " +
+                        "and (LastVisit.created_at < DATEADD(DAY, @visitDage, GETDATE()) " +
+                        "and LastMail.created_at < DATEADD(DAY, @mailDage, GETDATE())) " +
+                        "or ((LastVisit.DyrId is null or LastMail.DyrId is null) " +
+                        "and LastVisit.created_at < DATEADD(DAY, @visitDage, GETDATE()) " +
+                        "and LastMail.DyrId is null)", conn);
+                    command.Parameters.Add(new SqlParameter("@mailDage", mailDage));
+                    command.Parameters.Add(new SqlParameter("@visitDage", visitDage));
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<Dyr> ld = new List<Dyr>();
+                    while (reader.Read())
+                    {
+                        Dyr d = new Dyr();
+                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                        d.KundeId = Convert.ToInt32(reader["KundeId"]);
+                        ld.Add(d);
+                    }
+
+                    reader.Close();
+                    return ld;
+                }
+                catch (Exception e)
+                {
+                    throw e;
+
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
 

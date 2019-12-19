@@ -19,16 +19,6 @@ namespace AnimalHouse_GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AnimalHouseGui_Main());
-            //Thread t = new Thread(new ThreadStart(Test));
-            //t.Start();
-        }
-        private static void Test()
-        {
-            EmailSystem email = new EmailSystem();
-            Email mail = new Email();
-            bool s = mail.SendEmail("test", "test", "radwawn.alfakseh@gmail.com");
-            Console.WriteLine(s);
-            Console.ReadLine();
         }
 
     }

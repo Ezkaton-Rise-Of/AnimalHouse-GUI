@@ -4,6 +4,7 @@ using AnimalHouseBLL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace AnimalHouse_GUI
@@ -13,10 +14,11 @@ namespace AnimalHouse_GUI
         SalgSystem salgSystem;
         MainController controller;
         List<Produkt> Salgpordukter = new List<Produkt>();
+        private string produkter = "";
         public AnimalHouseGUI_SalgForm()
         {
             InitializeComponent();
-            controller = new MainController();
+            controller = MainController.GetInstance;
             salgSystem = new SalgSystem();
             comboBox_kunde.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_kategori.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -26,9 +28,8 @@ namespace AnimalHouse_GUI
 
         private void button_tilbage_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main mainform = new AnimalHouseGui_Main();
-            mainform.ShowDialog();
+            this.Close();
+
 
         }
 
@@ -39,8 +40,11 @@ namespace AnimalHouse_GUI
 
         private void button_gem_Click(object sender, EventArgs e)
         {
-            int kundeId = controller.HentKundeId(comboBox_kunde.Text);
-            string res = controller.GemFaktura(kundeId);
+            //henter Kunder iden
+            var kundenavn = comboBox_kunde2.Text.Split(' ');
+            int kundeid = controller.HentKundeId(kundenavn[0]);
+            string res = controller.GemFaktura(kundeid,label_res.Text,textBox_rabat.Text.Trim(),produkter);
+            MessageBox.Show(res);
         }
 
         private void button_fjerne_Click(object sender, EventArgs e)
@@ -77,6 +81,7 @@ namespace AnimalHouse_GUI
             if (numericUpDown_antal.Value != 0)
             {
                 listBox_produkter.Items.Add(comboBox_produkter.Text + " *" + numericUpDown_antal.Value.ToString());
+                produkter += comboBox_produkter.Text + " *" + numericUpDown_antal.Value.ToString() + "\n";
                 foreach (Produkt item in controller.HentAlleProdukter())
                 {
                     if (item.HentInfo == comboBox_produkter.Text)
@@ -137,11 +142,6 @@ namespace AnimalHouse_GUI
         {
             comboBox_kategori.DataSource = controller.HentAlleKategorier();
             comboBox_kategori.DisplayMember = "HentNavn";
-        }
-
-        private void button_visRecord_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

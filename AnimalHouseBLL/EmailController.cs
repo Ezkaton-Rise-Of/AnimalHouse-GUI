@@ -17,7 +17,7 @@ namespace AnimalHouseBLL
             //A = ansatDB.HentAlleAnsate();
             PersistensFactory persistensFactory = PersistensFactory.GetInstance();
             emailDB = persistensFactory.GetEmailDB();
-            
+          
         }
 
         public void HentEmail(int emailId)
@@ -39,5 +39,13 @@ namespace AnimalHouseBLL
         {
             return emailDB.InsertMail(e);
         }
+
+        public List<Dyr> HentDyrDerManglerMail(int visit, int mail)
+        {
+            return emailDB.HentKunderDerManglerMail(visit, mail);
+        }
+
+
+
     }
 }

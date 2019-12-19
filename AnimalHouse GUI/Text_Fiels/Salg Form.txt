@@ -1,0 +1,27 @@
+Her har du mulighed for at Salge et produkt, gem kvittering, print kvittering, og får et overblik over
+ alle kvitteringer som er gemt i systemet.
+
+- For at start en ny salg:
+	1- Først vælg kunde fra droupdown menu.
+	2- vælg produktkategori fra produktkategori doropdown menu.
+	3- vælg produkt fra produkt dropdown menu.
+	4- vælg hvor mange stykker du vil tilføje.
+	5- Tryk på Tilføje-knappen.
+	6- Indtast rabatprocent, hvis du vil give en rabat!
+	6- For at beregne total tryk på Beregne-knappen.
+
+- For at gem Faktura i systemet tryk på Gem-knappen.
+- For at vise alle faktura af en bestemt kunde:
+	1- Vælg kunde fra dropdown menu.
+	2- Tryk på Søg-knappen.
+- For at vise alle kvitteringer i systemet tryk på Vis alle-knappen.
+- For at vise detaljerne af en bestemt kvittering:
+	1- Først vælg en kvittering fra datagridviewet via et doubeltklik.
+	2- Trk på vis kvittering info-knappen.
+- For at print en kvittering ud:
+	1- Først opret og gem kvitteringen.
+	2- Vælg kvitteringen via et doubeltklik i datagridviewet.
+	3- Tryk på vis kvittering info-knappen for at tjekke detaljerne.
+	4- Tryk på Print kvittering-knappen.
+
+- ?: hjælpe funktion.

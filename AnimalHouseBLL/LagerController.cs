@@ -21,7 +21,6 @@ namespace  AnimalHouseBLL
         {
             return LagerDB.SøgId(ProduktId);
         }
-
         public List<Lager> HentLager()
         {
             return LagerDB.HentLager();
@@ -30,6 +29,5 @@ namespace  AnimalHouseBLL
         {
             return LagerDB.TilføjLager(L);
         }
-
     }
 }

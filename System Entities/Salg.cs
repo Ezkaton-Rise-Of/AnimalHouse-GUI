@@ -10,11 +10,11 @@ namespace System_Entities
     public class Salg
     {
         public List<SalgItemLine> salgitems = new List<SalgItemLine>();
-        public decimal amount;
+        public double amount;
 
         public Salg()
         {
-            
+            amount = 0;
         }
 
         public void TilføjeItemLine(Produkt p, int antal)
@@ -24,12 +24,11 @@ namespace System_Entities
 
         public decimal BeregneTotal()
         {
-            decimal dblTotal = 0;
             foreach (SalgItemLine lineItem in salgitems)
             {
-                dblTotal += lineItem.BeregneSubTotal();
+                amount += lineItem.BeregneSubTotal();
             }
-            return dblTotal;
+            return amount;
         }
     }
 }

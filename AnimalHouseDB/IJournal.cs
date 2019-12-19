@@ -16,7 +16,7 @@ namespace AnimalHouseDB
         string OpretJournal(Journal j);
         string SletJournal(int id);
         Journal HentJournal(int id);
-        DataSet Test();
-        DataSet Test2(int days);
+        DataSet MailSendelse();
+        DataSet MailSendelse2(int days);
     }
 }

@@ -117,14 +117,15 @@ namespace AnimalHouseDB
             Kunde k = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
             try
             {
+                conn.Open();
                 string commandtxt = $"Select * from Kunde left join Postnr on Kunde.Postnummer = Postnr.Postnummer where KundeId ={id}";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
+                    k = new Kunde();
                     k.Id = (int)reader["KundeId"];
                     k.Fnavn = (string)reader["Fnavn"];
                     k.Lnavn = (string)reader["Lnavn"];
@@ -197,9 +198,10 @@ namespace AnimalHouseDB
             string bynavn = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
+            
             try
             {
+                conn.Open();
                 string commandtxt = $"Select * from Postnr " +
                     $"where Postnummer like '{postnr}'";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
@@ -226,9 +228,10 @@ namespace AnimalHouseDB
             Kunde kunde = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
+            
             try
             {
+                conn.Open();
                 string commandtxt = $"select * from Kunde Join Postnr on Kunde.Postnummer = Postnr.Postnummer where Tlf Like '%{tlf}%'";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
@@ -264,9 +267,10 @@ namespace AnimalHouseDB
             List<Kunde> results = null;
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
-            conn.Open();
+            
             try
             {
+                conn.Open();
                 string commandtxt = $"Select * from Kunde " +
                     $"join Postnr on Postnr.Postnummer = Kunde.Postnummer where Tlf like '%{input}%' or Fnavn like '%{input}%';";
                 SqlCommand command = new SqlCommand(commandtxt, conn);

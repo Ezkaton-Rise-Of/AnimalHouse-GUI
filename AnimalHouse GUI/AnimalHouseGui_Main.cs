@@ -6,10 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Diagnostics;
-
+using AnimaleHouseModel;
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Main : Form
@@ -17,8 +18,11 @@ namespace AnimalHouse_GUI
         public AnimalHouseGui_Main()
         {
             InitializeComponent();
-        }
+            AutomatikProductUpdate auto = new AutomatikProductUpdate();
 
+            Thread autothread = new Thread(new ThreadStart(auto.Autorun));
+            autothread.Start();
+        }
         private void button_EjerReg_Click(object sender, EventArgs e)
         {
 

@@ -9,13 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouseDB", "AnimalHous
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimaleHouseModel", "AnimaleHouseModel\AnimaleHouseModel.csproj", "{1269935A-78A6-46BD-939D-6729051FE282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouseConsoleGui", "AnimalHouseConsoleGui\AnimalHouseConsoleGui.csproj", "{60C1456F-64C6-4FEE-A9FA-368A5C616CB5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouse_Entities", "System Entities\AnimalHouse_Entities.csproj", "{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalHouseBLL", "AnimalHouseBLL\AnimalHouseBLL.csproj", "{BB4B345F-39AF-49EB-837F-E0368802E375}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneraleClasser", "GeneraleClasser\GeneraleClasser.csproj", "{496FD243-FC30-465C-9FF4-77F73A726DD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{C64035CC-8DBE-47D0-8243-4566761C92FF}"
 EndProject
@@ -37,10 +33,6 @@ Global
 		{1269935A-78A6-46BD-939D-6729051FE282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1269935A-78A6-46BD-939D-6729051FE282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1269935A-78A6-46BD-939D-6729051FE282}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60C1456F-64C6-4FEE-A9FA-368A5C616CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60C1456F-64C6-4FEE-A9FA-368A5C616CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60C1456F-64C6-4FEE-A9FA-368A5C616CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60C1456F-64C6-4FEE-A9FA-368A5C616CB5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3032E28-CAF4-4537-ADA4-FFB47C6B06F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,10 +41,6 @@ Global
 		{BB4B345F-39AF-49EB-837F-E0368802E375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB4B345F-39AF-49EB-837F-E0368802E375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB4B345F-39AF-49EB-837F-E0368802E375}.Release|Any CPU.Build.0 = Release|Any CPU
-		{496FD243-FC30-465C-9FF4-77F73A726DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{496FD243-FC30-465C-9FF4-77F73A726DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{496FD243-FC30-465C-9FF4-77F73A726DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{496FD243-FC30-465C-9FF4-77F73A726DD4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C64035CC-8DBE-47D0-8243-4566761C92FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C64035CC-8DBE-47D0-8243-4566761C92FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C64035CC-8DBE-47D0-8243-4566761C92FF}.Release|Any CPU.ActiveCfg = Release|Any CPU

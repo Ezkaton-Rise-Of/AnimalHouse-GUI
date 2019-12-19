@@ -33,7 +33,7 @@ namespace AnimaleHouseModel
         public decimal HentTotal(decimal rabat)
         {
             BeregneTotal();
-            total = BeregneTilbud(rabat);
+            total = Math.Round(BeregneTilbud(rabat), 2,MidpointRounding.ToEven);
             return total;
         }
     }

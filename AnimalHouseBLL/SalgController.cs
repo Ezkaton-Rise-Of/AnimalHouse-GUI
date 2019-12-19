@@ -25,9 +25,9 @@ namespace AnimalHouseBLL
         {
             return salgDB.HentAlleFaktura();
         }
-        public string GemFaktura()
+        public string GemFaktura(Faktura f)
         {
-            throw new NotImplementedException();
+            return salgDB.GemFaktura(f);
         }
     }
 }

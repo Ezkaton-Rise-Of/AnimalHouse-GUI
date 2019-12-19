@@ -48,14 +48,14 @@ namespace AnimalHouseBLL
             return journalDB.HentJournal(id);
         }
 
-        public DataSet Test()
+        public DataSet MailSendelse()
         {
-            return journalDB.Test();
+            return journalDB.MailSendelse();
         }
 
-        public DataSet Test2(int days)
+        public DataSet MailSendelse2(int days)
         {
-            return journalDB.Test2(days);
+            return journalDB.MailSendelse2(days);
         }
     }
 }

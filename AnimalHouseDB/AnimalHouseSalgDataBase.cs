@@ -12,26 +12,16 @@ namespace AnimalHouseDB
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-                SqlTransaction transaction = null;
-                SqlCommand command = new SqlCommand("insert into Faktura(KundeId,Total,Rabat)values(@kundeId,@total,@rabat);", conn, transaction);
-                command.Parameters.Add(new SqlParameter("@kundeId", f.KundeId));
-                command.Parameters.Add(new SqlParameter("@total", f.Total));
-                command.Parameters.Add(new SqlParameter("@rabat", f.Rabat));
+                SqlCommand command = new SqlCommand($"insert into Faktura(KundeId,Total,Rabat,Produkter)values({f.KundeId},'{f.Total}','{f.Rabat}','{f.Produkter}');", conn);
                 try
                 {
                     conn.Open();
-                    transaction = conn.BeginTransaction();
                     command.ExecuteNonQuery();
-                    transaction.Commit();
                     return "faktura blev gemt!";
                 }
                 catch (Exception)
                 {
-                    if (transaction != null)
-                    {
-                        transaction.Rollback();
-                    }
-                    return "Der sket en fejl!";
+                    //return "Der sket en fejl!";
                     throw;
                 }
                 finally { conn.Close(); }
@@ -71,7 +61,7 @@ namespace AnimalHouseDB
                     {
                         transaction.Rollback();
                     }
-                    throw;
+                    throw new NotImplementedException();
                 }
                 finally { conn.Close(); }
                 return res;
@@ -99,6 +89,7 @@ namespace AnimalHouseDB
                         f.Dato = Convert.ToDateTime(reader["Dato"]);
                         f.Total = reader["Total"].ToString();
                         f.Rabat = reader["Rabat"].ToString();
+                        f.Produkter = reader["Produkter"].ToString();
                         res.Add(f);
                     }
                     reader.Close();

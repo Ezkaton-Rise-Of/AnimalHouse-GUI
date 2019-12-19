@@ -15,17 +15,15 @@ namespace AnimalHouse_Entities
         public bool Service{get; set;}
         public int KategoriId { get; set; }
         public string Navn { get; set; }
+        public int varenummer;
+        public Supplier Supplier;
        
         public Produkt()
         {
 
         }
 
-        public Produkt(int produktId)
-        {
-            ProduktId = produktId;
-        }
-        public Produkt(int produktId, string beskrivelse, decimal pris, Kategori kategori, bool service, int kategoriId, string navn)
+        public Produkt(int produktId, string beskrivelse, double pris, Kategori kategori, bool service, int kategoriId, string navn)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
@@ -36,7 +34,7 @@ namespace AnimalHouse_Entities
             Navn = navn;
         }
 
-        public Produkt(int produktId, string beskrivelse, decimal pris, bool service, int kategoriId, string navn)
+        public Produkt(int produktId, string beskrivelse, double pris, bool service, int kategoriId, string navn)
         {
             ProduktId = produktId;
             Beskrivelse = beskrivelse;
@@ -54,7 +52,7 @@ namespace AnimalHouse_Entities
             }
         }
 
-        public string HentProdId
+        public string HentInfo1
         {
             get
             {
