@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using AnimaleHouseModel;
+using System;
 using System.Diagnostics;
-using AnimaleHouseModel;
+using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Main : Form
@@ -47,7 +41,7 @@ namespace AnimalHouse_GUI
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Main Form.txt");
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Main Form.txt");
         }
 
         private void button_mail_Click(object sender, EventArgs e)
