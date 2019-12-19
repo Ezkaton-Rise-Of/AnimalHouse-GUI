@@ -1,16 +1,15 @@
 ﻿using AnimalHouse_Entities;
-using AnimalHousePersistenslag;
+using AnimalHouseBLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AnimalHouse_Entities;
+
 using System_Entities;
 using AnimalHouseDB;
-using AnimalHouseBLL;
 using System.Data;
-using System_Entities;
+
 
 namespace AnimalHouseBLL
 {
@@ -201,7 +200,7 @@ namespace AnimalHouseBLL
             return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
 
-        public decimal HentLager(string text1, string text2, string text3)
+        public double HentLager(string text1, string text2, string text3)
         {
             throw new NotImplementedException();
         }
@@ -234,7 +233,7 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
-        public string TilføjLager(decimal pris, int antal, int produktid)
+        public string TilføjLager(double pris, int antal, int produktid)
         {
             Lager L = new Lager(pris, antal, produktid);
             return Lc.TilføjLager(L);

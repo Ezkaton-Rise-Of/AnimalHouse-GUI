@@ -8,7 +8,7 @@ namespace AnimalHouse_Entities
 {
     public class Lager
     {
-        public decimal Pris { get; set; }
+        public double Pris { get; set; }
         public int Antal { get; set; }
         public Produkt Produkt { get; set; }
         public int ProduktId { get; set; }
@@ -20,7 +20,7 @@ namespace AnimalHouse_Entities
 
         }
 
-        public Lager(decimal pris, int antal, Produkt produkt, int produktid)
+        public Lager(double pris, int antal, Produkt produkt, int produktid)
         {
 
             Pris = pris;
@@ -30,7 +30,7 @@ namespace AnimalHouse_Entities
 
         }
 
-        public Lager(decimal pris, int antal, int produktid)
+        public Lager(double pris, int antal, int produktid)
         {
 
             Pris = pris;

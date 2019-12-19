@@ -144,7 +144,7 @@ namespace AnimalHouse_GUI
 
         private void button1_Click(object sender, EventArgs e)//button_Tilføj
         {
-            string Tilføj = controller.TilføjLager(decimal.Parse(textBox_Pris.Text), int.Parse(textBox_Antal.Text), int.Parse(textBox_Produkt.Text));
+            string Tilføj = controller.TilføjLager(double.Parse(textBox_Pris.Text), int.Parse(textBox_Antal.Text), int.Parse(textBox_Produkt.Text));
             MessageBox.Show(Tilføj);
             FillDataGridView();
         }

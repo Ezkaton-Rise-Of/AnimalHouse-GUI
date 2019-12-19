@@ -10,7 +10,6 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseServiceDatabase : IServiceDB
     {
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
 
         public AnimalhouseServiceDatabase()
@@ -19,8 +18,8 @@ namespace AnimalHouseDB
 
         public List<Service> HentAlleServiceByServiceType(Servicetype servicetype)
         {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)) { 
-)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)) {  
+
                 List<Service> ld = null;
                 SqlTransaction transaction = null;
 
@@ -62,12 +61,13 @@ namespace AnimalHouseDB
 
                 return ld;
             }
+        
         }
 
         public List<Servicetype> HentAlleServiceType()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)) { 
-)
+
                 List<Servicetype> ld = null;
                 SqlTransaction transaction = null;
                 conn.Open();

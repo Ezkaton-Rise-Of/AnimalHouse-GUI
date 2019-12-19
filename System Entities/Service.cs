@@ -19,11 +19,11 @@ namespace AnimalHouse_Entities
             Servicetype = servicetype;
         }
 
-        public Service(int produktId, string beskrivelse, decimal pris, bool service, int kategoriId, string navn) : base(produktId, beskrivelse, pris, service, kategoriId, navn)
+        public Service(int produktId, string beskrivelse, double pris, bool service, int kategoriId, string navn) : base(produktId, beskrivelse, pris, service, kategoriId, navn)
         {
         }
 
-        public Service(int produktId, string beskrivelse, decimal pris, Kategori kategori, bool service, int kategoriId, string navn) : base(produktId, beskrivelse, pris, kategori, service, kategoriId, navn)
+        public Service(int produktId, string beskrivelse, double pris, Kategori kategori, bool service, int kategoriId, string navn) : base(produktId, beskrivelse, pris, kategori, service, kategoriId, navn)
         {
         }
     }

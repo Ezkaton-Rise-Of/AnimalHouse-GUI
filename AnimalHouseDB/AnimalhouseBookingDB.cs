@@ -372,7 +372,6 @@ namespace AnimalHouseDB
             {
                 bool result = false;
                 SqlTransaction transaction = null;
-                SqlConnection conn = new SqlConnection();
                 conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
 
                 try

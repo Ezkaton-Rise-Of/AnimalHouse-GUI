@@ -261,7 +261,8 @@
             this.button_print.TabIndex = 17;
             this.button_print.Text = "Print kvittering";
             this.button_print.UseVisualStyleBackColor = false;
-            this.button_print.Click += new System.EventHandler(this.button_print_Click);
+ 
+            //this.button_print.Click += new System.EventHandler(this.button_print_Click);
             // 
             // label6
             // 
@@ -342,7 +343,7 @@
             this.button_visRecord.TabIndex = 26;
             this.button_visRecord.Text = "Vis kvittering info.";
             this.button_visRecord.UseVisualStyleBackColor = false;
-            this.button_visRecord.Click += new System.EventHandler(this.button_visRecord_Click);
+       //     this.button_visRecord.Click += new System.EventHandler(this.button_visRecord_Click);
             // 
             // groupBox1
             // 

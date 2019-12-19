@@ -36,7 +36,7 @@ namespace AnimalHouseDB
                     p.KategoriId = (int)reader["KategoriId"];
                     Lager lagervare = new Lager();
                     lagervare.Produkt = p;
-                    lagervare.Pris = (decimal)reader["Pris"];
+                    lagervare.Pris = (double)reader["Pris"];
                     lagervare.Antal = (int)reader["Antal"];
                     L.LagerList.Add(lagervare);
                 }
@@ -67,9 +67,9 @@ namespace AnimalHouseDB
                 while (reader.Read())
                 {
                     Lager lagervare = new Lager();
-                    lagervare.Pris = Convert.ToDecimal(reader["Pris"]);
+                    lagervare.Pris = Convert.ToDouble(reader["Pris"]);
                     lagervare.Antal = Convert.ToInt32(reader["Antal"]);
-                    lagervare.Produkt = new Produkt(Convert.ToInt32(reader["ProduktId"]));
+                    lagervare.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                     results.Add(lagervare);
                 }
             }
