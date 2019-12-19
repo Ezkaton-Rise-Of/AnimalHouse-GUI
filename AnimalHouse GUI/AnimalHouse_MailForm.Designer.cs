@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouse_MailForm));
-            this.button_Send = new System.Windows.Forms.Button();
-            this.button_Tilbage = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_annullere = new System.Windows.Forms.Button();
             this.listBox_modtager_list = new System.Windows.Forms.ListBox();
@@ -39,22 +37,25 @@
             this.Lable_Body = new System.Windows.Forms.Label();
             this.label_Subjekt = new System.Windows.Forms.Label();
             this.Lable_To = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.button_fjern = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button_tilføj = new System.Windows.Forms.Button();
-            this.textBox_days = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_hjælpe = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button_visAlle = new System.Windows.Forms.Button();
-            this.button_print = new System.Windows.Forms.Button();
+            this.button_Send = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button_Tilbage = new System.Windows.Forms.Button();
+            this.button_print = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button_visAlle = new System.Windows.Forms.Button();
+            this.button_fjern = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox_days = new System.Windows.Forms.TextBox();
+            this.button_tilføj = new System.Windows.Forms.Button();
+            this.label_hjælpe = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Send
@@ -121,7 +122,6 @@
             this.button_annullere.TabIndex = 7;
             this.button_annullere.Text = "Annullere";
             this.button_annullere.UseVisualStyleBackColor = false;
-            this.button_annullere.Click += new System.EventHandler(this.button_annullere_Click);
             // 
             // listBox_modtager_list
             // 
@@ -180,6 +180,74 @@
             this.Lable_To.TabIndex = 1;
             this.Lable_To.Text = "To:";
             // 
+            // button_Send
+            // 
+            this.button_Send.AutoSize = true;
+            this.button_Send.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_Send.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Send.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_Send.Location = new System.Drawing.Point(85, 592);
+            this.button_Send.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Send.Name = "button_Send";
+            this.button_Send.Size = new System.Drawing.Size(91, 31);
+            this.button_Send.TabIndex = 0;
+            this.button_Send.Text = "Send";
+            this.button_Send.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button1.Location = new System.Drawing.Point(570, 365);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 31);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button_Tilbage
+            // 
+            this.button_Tilbage.AutoSize = true;
+            this.button_Tilbage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_Tilbage.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Tilbage.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_Tilbage.Location = new System.Drawing.Point(1087, 676);
+            this.button_Tilbage.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Tilbage.Name = "button_Tilbage";
+            this.button_Tilbage.Size = new System.Drawing.Size(105, 44);
+            this.button_Tilbage.TabIndex = 14;
+            this.button_Tilbage.Text = "Tilbage";
+            this.button_Tilbage.UseVisualStyleBackColor = false;
+            // 
+            // button_print
+            // 
+            this.button_print.AutoSize = true;
+            this.button_print.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_print.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_print.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button_print.Location = new System.Drawing.Point(967, 639);
+            this.button_print.Margin = new System.Windows.Forms.Padding(2);
+            this.button_print.Name = "button_print";
+            this.button_print.Size = new System.Drawing.Size(92, 31);
+            this.button_print.TabIndex = 26;
+            this.button_print.Text = "Print list";
+            this.button_print.UseVisualStyleBackColor = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Location = new System.Drawing.Point(687, 105);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(505, 512);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Kunde mail list";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -191,7 +259,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(486, 478);
             this.dataGridView1.TabIndex = 4;
             // 
-            // groupBox2
+            // button_visAlle
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(669, 8);
@@ -216,9 +284,16 @@
             this.button_fjern.TabIndex = 6;
             this.button_fjern.Text = "Fjern";
             this.button_fjern.UseVisualStyleBackColor = false;
-            this.button_fjern.Click += new System.EventHandler(this.button_fjern_Click);
             // 
-            // button2
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(556, 330);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(120, 20);
+            this.textBox4.TabIndex = 24;
+            // 
+            // textBox_days
             // 
             this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -278,9 +353,9 @@
             this.label_hjælpe.Size = new System.Drawing.Size(17, 17);
             this.label_hjælpe.TabIndex = 10;
             this.label_hjælpe.Text = "?";
-            this.label_hjælpe.Click += new System.EventHandler(this.label_hjælpe_Click);
+            this.label_hjælpe.Click += new System.EventHandler(this.label_hjælpe_Click_1);
             // 
-            // textBox4
+            // label1
             // 
             this.textBox4.Location = new System.Drawing.Point(538, 233);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -288,7 +363,7 @@
             this.textBox4.Size = new System.Drawing.Size(120, 20);
             this.textBox4.TabIndex = 11;
             // 
-            // button_visAlle
+            // button2
             // 
             this.button_visAlle.AutoSize = true;
             this.button_visAlle.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -303,7 +378,7 @@
             this.button_visAlle.UseVisualStyleBackColor = false;
             this.button_visAlle.Click += new System.EventHandler(this.button_visAlle_Click);
             // 
-            // button_print
+            // richTextBox1
             // 
             this.button_print.AutoSize = true;
             this.button_print.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -318,7 +393,7 @@
             this.button_print.UseVisualStyleBackColor = false;
             this.button_print.Click += new System.EventHandler(this.button_print_Click);
             // 
-            // button1
+            // label2
             // 
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -339,26 +414,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 678);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Tilbage);
             this.Controls.Add(this.button_print);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button_visAlle);
+            this.Controls.Add(this.button_fjern);
             this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox_days);
+            this.Controls.Add(this.button_tilføj);
             this.Controls.Add(this.label_hjælpe);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox_days);
-            this.Controls.Add(this.button_tilføj);
-            this.Controls.Add(this.button_fjern);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button_Tilbage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AnimalHouse_MailForm";
             this.Text = "Animal House";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,28 +440,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button_Send;
-        private System.Windows.Forms.Button button_Tilbage;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button_annullere;
         private System.Windows.Forms.ListBox listBox_modtager_list;
         private System.Windows.Forms.TextBox textBox_inhold;
         private System.Windows.Forms.TextBox textBox_subjekt;
         private System.Windows.Forms.Label Lable_Body;
         private System.Windows.Forms.Label label_Subjekt;
         private System.Windows.Forms.Label Lable_To;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button button_fjern;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button_tilføj;
-        private System.Windows.Forms.TextBox textBox_days;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label_hjælpe;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button_visAlle;
-        private System.Windows.Forms.Button button_print;
+        private System.Windows.Forms.Button button_Send;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button_annullere;
+        private System.Windows.Forms.Button button_Tilbage;
+        private System.Windows.Forms.Button button_print;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button_visAlle;
+        private System.Windows.Forms.Button button_fjern;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox_days;
+        private System.Windows.Forms.Button button_tilføj;
+        private System.Windows.Forms.Label label_hjælpe;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

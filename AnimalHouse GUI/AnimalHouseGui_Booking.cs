@@ -160,7 +160,7 @@ namespace AnimalHouse_GUI
             starttid = null;
             ComboBoxItem cbiservice = (ComboBoxItem)Service_combobox.SelectedItem;
             service = (Service)cbiservice.Value;
-            foreach (BookingTime item in controller.HentAlleFritider(ansat, dateTimePicker1.Value))
+            foreach (BookingTime item in controller.HentAlleFritider(ansat, dateTimePicker1.Value, servicetype))
             {
                 ComboBoxItem citem = new ComboBoxItem();
                 citem.Text = item.time;
@@ -175,7 +175,7 @@ namespace AnimalHouse_GUI
 
             ComboBoxItem cbistarttid = (ComboBoxItem)StartTid_Combo.SelectedItem;
             starttid = (BookingTime)cbistarttid.Value;
-            foreach (BookingTime item in controller.HentAlleHentMuligeSlutTider(ansat, starttid, dateTimePicker1.Value))
+            foreach (BookingTime item in controller.HentAlleHentMuligeSlutTider(ansat, starttid, dateTimePicker1.Value, servicetype))
             {
                 ComboBoxItem citem = new ComboBoxItem();
                 citem.Text = item.time;
@@ -233,6 +233,7 @@ namespace AnimalHouse_GUI
                 {
                     MessageBox.Show("Der er sket en fejl i oprettelse");
                 }
+                
             }
             else
             {
@@ -295,6 +296,11 @@ namespace AnimalHouse_GUI
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             dateTimePicker2.MinDate = dateTimePicker1.Value;
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

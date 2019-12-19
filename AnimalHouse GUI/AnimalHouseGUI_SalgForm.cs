@@ -144,31 +144,5 @@ namespace AnimalHouse_GUI
             comboBox_kategori.DataSource = controller.HentAlleKategorier();
             comboBox_kategori.DisplayMember = "HentNavn";
         }
-
-        private void button_visRecord_Click(object sender, EventArgs e)
-        {
-            textBox_info1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            textBox_info2.Text = controller.HentKundeById(int.Parse( dataGridView1.CurrentRow.Cells[1].Value.ToString())).GetName;
-            textBox_info3.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            textBox_info4.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBox_info5.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBox_info6.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            button_print.Enabled = true;
-        }
-
-        private void button_print_Click(object sender, EventArgs e)
-        {
-            string path = @"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Faktura Example.txt";
-            using (StreamWriter tw = new StreamWriter(path))
-            {
-                tw.WriteLine("\t\t\t\t\tDato:" + textBox_info3.Text);
-                tw.WriteLine("Faktura ID " + textBox_info1.Text);
-                tw.WriteLine("Kunde navn: " + textBox_info2.Text);  
-                tw.WriteLine("Produkter:\n" + textBox_info6.Text);
-                tw.WriteLine("\t\t\t\t\tRabat i % " + textBox_info4.Text);
-                tw.WriteLine("\t\t\t\t\tTotal: " + textBox_info5.Text);
-            }
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Faktura Example.txt");
-        }
     }
 }

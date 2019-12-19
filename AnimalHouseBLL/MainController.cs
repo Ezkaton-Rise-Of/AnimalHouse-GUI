@@ -1,10 +1,16 @@
 ﻿// Radwan + Holger + Kenneth
 using AnimalHouse_Entities;
-using AnimalHousePersistenslag;
+using AnimalHouseBLL;
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using System_Entities;
+using AnimalHouseDB;
+using System.Data;
+
 
 namespace AnimalHouseBLL
 {
@@ -127,14 +133,14 @@ namespace AnimalHouseBLL
             return Dc.OpretDyr(kundeId, art, race, alder, sex, behandler);
         }
 
-        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime)
+        public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime, Servicetype servicetype)
         {
-            return Bc.HentAlleFritider(ansat, datetime);
+            return Bc.HentAlleFritider(ansat, datetime, servicetype);
         }
 
-        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime date)
+        public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime date, Servicetype servicetype)
         {
-            return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date);
+            return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date, servicetype);
         }
 
 
@@ -204,6 +210,11 @@ namespace AnimalHouseBLL
         {
             return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
+
+        public double HentLager(string text1, string text2, string text3)
+        {
+            throw new NotImplementedException();
+        }
         // update an emplyees information - radwan
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
         {
@@ -233,9 +244,9 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
-        public string TilføjLager(decimal pris, int antal, Produkt produkt)
+        public string TilføjLager(double pris, int antal, int produktid)
         {
-            Lager L = new Lager(pris, antal, produkt);
+            Lager L = new Lager(pris, antal, produktid);
             return Lc.TilføjLager(L);
         }
 

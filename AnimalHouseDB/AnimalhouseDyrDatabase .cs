@@ -223,10 +223,12 @@ namespace AnimalHouseDB
                         ld.Add(d);
                     }
                     reader.Close();
+                    transaction.Commit();
                     return ld;
                 }
                 catch (Exception e)
                 {
+                    transaction.Rollback();
                     throw e;
 
                 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimalHouseGui_Lager));
             this.button_PrintStatus = new System.Windows.Forms.Button();
             this.button_UdskriftStatus = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -116,6 +117,7 @@
             this.textBox_SøgId.Name = "textBox_SøgId";
             this.textBox_SøgId.Size = new System.Drawing.Size(486, 22);
             this.textBox_SøgId.TabIndex = 116;
+            this.textBox_SøgId.TextChanged += new System.EventHandler(this.textBox_SøgId_TextChanged);
             // 
             // button_SøgLagerStatus
             // 
@@ -209,11 +211,11 @@
             // label_hjælpe
             // 
             this.label_hjælpe.AutoSize = true;
-            this.label_hjælpe.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_hjælpe.Location = new System.Drawing.Point(35, 665);
+            this.label_hjælpe.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_hjælpe.Location = new System.Drawing.Point(35, 664);
             this.label_hjælpe.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_hjælpe.Name = "label_hjælpe";
-            this.label_hjælpe.Size = new System.Drawing.Size(15, 17);
+            this.label_hjælpe.Size = new System.Drawing.Size(17, 18);
             this.label_hjælpe.TabIndex = 117;
             this.label_hjælpe.Text = "?";
             this.label_hjælpe.Click += new System.EventHandler(this.label_hjælpe_Click);
@@ -270,10 +272,10 @@
             // 
             // tabTilføj
             // 
+            this.tabTilføj.Controls.Add(this.label7);
             this.tabTilføj.Controls.Add(this.label2);
             this.tabTilføj.Controls.Add(this.button_Tilbage2);
             this.tabTilføj.Controls.Add(this.groupBox1);
-            this.tabTilføj.Controls.Add(this.label7);
             this.tabTilføj.Location = new System.Drawing.Point(4, 22);
             this.tabTilføj.Name = "tabTilføj";
             this.tabTilføj.Padding = new System.Windows.Forms.Padding(3);
@@ -281,6 +283,7 @@
             this.tabTilføj.TabIndex = 1;
             this.tabTilføj.Text = "Tilføj";
             this.tabTilføj.UseVisualStyleBackColor = true;
+            this.tabTilføj.Click += new System.EventHandler(this.tabTilføj_Click);
             // 
             // label2
             // 
@@ -447,13 +450,14 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(35, 665);
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(35, 664);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 17);
-            this.label7.TabIndex = 117;
+            this.label7.Size = new System.Drawing.Size(17, 18);
+            this.label7.TabIndex = 137;
             this.label7.Text = "?";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // AnimalHouseGui_Lager
             // 
@@ -461,8 +465,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1221, 748);
             this.Controls.Add(this.tabController);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AnimalHouseGui_Lager";
-            this.Text = "AnimalHouseGui_Lager";
+            this.Text = "Animal House";
             this.Load += new System.EventHandler(this.AnimalHouseGui_Lager_Load);
             this.groupBox_UdskriftStatus.ResumeLayout(false);
             this.groupBox_UdskriftStatus.PerformLayout();
@@ -495,13 +500,11 @@
         private System.Windows.Forms.GroupBox groupBox_LagerStatus;
         private System.Windows.Forms.Button button_Tilbage;
         private System.Windows.Forms.Label label_hjælpe;
-        private System.Windows.Forms.TabControl tabController;
-        private System.Windows.Forms.TabPage tabStatus;
-        private System.Windows.Forms.TabPage tabTilføj;
+        public  System.Windows.Forms.TabControl tabController;
+        public System.Windows.Forms.TabPage tabStatus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button_Tilføj;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox_Pris;
         private System.Windows.Forms.DataGridView dataGridView_LagerTilføj;
         private System.Windows.Forms.Label label6;
@@ -514,5 +517,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button_Update;
+        public System.Windows.Forms.TabPage tabTilføj;
+        private System.Windows.Forms.Label label7;
     }
 }

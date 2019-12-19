@@ -5,18 +5,22 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 namespace AnimalHouseDB
-{
+{// Holger
     public class AnimalHouseProduktDatabase : IProduktDB
     {
-        SqlTransaction transaction = null;
+       
+
         public AnimalHouseProduktDatabase()
         {
         }
         public List<Kategori> HentAlleKategorier()
         {
-            List<Kategori> kategoriList = null;
+            
+           
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                List<Kategori> kategoriList = null;
+                SqlTransaction transaction = null;
 
                 try
                 {
@@ -39,25 +43,28 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    //if (transaction != null)
-                    //{
-                    //    transaction.Rollback();
-                    //}
+                  
+                    transaction.Rollback();
+      
                     throw e;
                 }
                 finally
                 {
                     conn.Close();
                 }
+                return kategoriList;
             }
-            return kategoriList;
+           
         }
 
         public List<Produkt> HentAlleProduktByKategori(Kategori k)
         {
-            List<Produkt> produkts = null;
+            
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                SqlTransaction transaction = null;
+
+                List<Produkt> produkts = null;
                 try
                 {
                     conn.Open();
@@ -90,15 +97,18 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return produkts;
             }
-            return produkts;
+            
         }
 
         public List<Produkt> HentAlleProdukter()
         {
-            List<Produkt> produkts = null;
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                SqlTransaction transaction = null;
+
+                List<Produkt> produkts = null;
                 try
                 {
                     conn.Open();
@@ -131,15 +141,19 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return produkts;
             }
-            return produkts;
+           
         }
 
         public Produkt HentProdukt(int Id)
         {
-            Produkt produkt = null;
+            
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                SqlTransaction transaction = null;
+
+                Produkt produkt = null;
                 try
                 {
                     conn.Open();
@@ -170,15 +184,20 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return produkt;
             }
-            return produkt;
+         
         }
 
         public bool UpdaterProdukt(Produkt p)
         {
-            bool answer = false;
+
+            
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                SqlTransaction transaction = null;
+
+                bool answer = false;
                 try
                 {
                     conn.Open();
@@ -202,15 +221,19 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return answer;
             }
-            return answer;
+        
         }
         //Holger
         public bool ProduktFromExtern(List<Produkt> Lines)
         {
-            bool answer = false;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+           
+            using(SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                SqlTransaction transaction = null;
+
+                bool answer = false;
                 foreach (Produkt item in Lines)
                 {
                     try
@@ -219,11 +242,12 @@ namespace AnimalHouseDB
                         transaction = conn.BeginTransaction();
 
                         //henter leverandørId     
-                        int id = -1; //HentSupplier(item.Supplier.SupplierNavn);
-                                     //
+                        int id = -1; 
+                        HentSupplier(item.Supplier.SupplierNavn, transaction, conn);
+                                     
                         if (id == -1)
                         {
-                            id = InsertSupplier(item.Supplier.SupplierNavn);
+                            id = InsertSupplier(item.Supplier.SupplierNavn, transaction, conn);
                         }
                         SqlCommand commandUpdate = new SqlCommand($"if 1 = (select count(*) from Produkt where VareNummer = @varenummer and SupplierId = {id})" +
                             $"update Produkt set Beskrivelse = @beskrivelse, Pris = @Pris, Navn = @Navn where VareNummer = @varenummer and SupplierId = {id} " +
@@ -249,19 +273,18 @@ namespace AnimalHouseDB
                         conn.Close();
                     }
                 }
+                return answer;
             }
 
-            return answer;
+            
         }
 
-        private Int32 InsertSupplier(string navn)
+        private Int32 InsertSupplier(string navn, SqlTransaction transaction, SqlConnection conn)
         {
-            Int32 id = -1;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
+            int id = -1;
+
                 try
                 {
-                    //insert into(SupplierNavn) values(@supplierNavn); SELECT CAST(scope_identity() AS int);
                     SqlCommand commandInsertSupplier = new SqlCommand("insert into Supplier(SupplierNavn) values(@supplierNavn); SELECT CAST(scope_identity() AS int); ", conn, transaction);
                     commandInsertSupplier.Parameters.Add(new SqlParameter("@supplierNavn", navn));
                     id = (Int32)commandInsertSupplier.ExecuteScalar();
@@ -271,14 +294,13 @@ namespace AnimalHouseDB
                 {
                     throw t;
                 }
-            }
+           
             return id;
         }
-        private int HentSupplier(string navn)
+        private int HentSupplier(string navn, SqlTransaction transaction, SqlConnection conn)
         {
             int id = -1;
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
+
                 try
                 {
 
@@ -295,7 +317,7 @@ namespace AnimalHouseDB
                 {
                     throw e;
                 }
-            }
+   
             return id;
         }
 

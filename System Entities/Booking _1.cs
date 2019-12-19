@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalHouse_Entities
 {
-    public class Booking_1
+    public abstract class Booking_1
     {
         public DateTime StartDato { get; set; }
         public int DyrId;

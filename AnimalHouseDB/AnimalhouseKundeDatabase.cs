@@ -28,7 +28,7 @@ namespace AnimalHouseDB
                 string commandtxt = $"Insert into Kunde (Fnavn,Lnavn,Adresse,Postnummer,Tlf,Kundetype,E_mail) values (@Fnavn,@Lnavn,@Adresse,@Postnummer,@Tlf,@Kundetype,@E_mail)";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 command.Parameters.Add(new SqlParameter("@Fnavn", k.Fnavn));
-                command.Parameters.Add(new SqlParameter("@Lnavn", k.Fnavn));
+                command.Parameters.Add(new SqlParameter("@Lnavn", k.Lnavn));
                 command.Parameters.Add(new SqlParameter("@Adresse", k.Adresse));
                 command.Parameters.Add(new SqlParameter("@Postnummer", k.Postnummer));
                 command.Parameters.Add(new SqlParameter("@Tlf", k.Tlf));

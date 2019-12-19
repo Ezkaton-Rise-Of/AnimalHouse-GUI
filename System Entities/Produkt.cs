@@ -23,6 +23,8 @@ namespace AnimalHouse_Entities
 
         }
 
+
+
         public Produkt(int produktId, string beskrivelse, double pris, Kategori kategori, bool service, int kategoriId, string navn)
         {
             ProduktId = produktId;
@@ -44,7 +46,7 @@ namespace AnimalHouse_Entities
             Navn = navn;
         }
 
-        public String HentInfo
+        public string HentInfo
         {
             get 
             {

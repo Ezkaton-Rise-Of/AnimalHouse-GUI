@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AnimalHouse_Entities
 {
-    public class BookingService:Booking_1
+    public class BookingBur:Booking_1
     {
         public DateTime SlutDato { get; set; }
         public Bur bur;
         public BookingTime startTid;
         public BookingTime slutTid;
         
-        public BookingService()
+        public BookingBur()
         {
             
         }

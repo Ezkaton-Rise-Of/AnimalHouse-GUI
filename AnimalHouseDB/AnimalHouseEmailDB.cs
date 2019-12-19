@@ -8,19 +8,20 @@ using System.Data.SqlClient;
 using System.Configuration;
 namespace AnimalHouseDB
 {
+    //Holger
     public class AnimalHouseEmailDB : IEmail
     {
         private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
         public AnimalHouseEmailDB()
         {
         }
 
         public List<Email> HentEmail(int id)
         {
+            SqlTransaction transaction = null;
             using (conn)
             {
-                SqlTransaction transaction = null;
+                
                 List<Email> el = null;
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -42,10 +43,12 @@ namespace AnimalHouseDB
                         el.Add(e);
                     }
                     reader.Close();
+                    transaction.Commit();
 
                 }
                 catch (Exception HentEmailError)
                 {
+                    transaction.Rollback();
                     throw HentEmailError;
                 }
                 finally
@@ -81,11 +84,13 @@ namespace AnimalHouseDB
                         el.Add(e);
                     }
                     reader.Close();
+                    transaction.Commit();
 
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    transaction.Rollback();
+                    throw e;
                 }
                 finally
                 {
@@ -121,14 +126,12 @@ namespace AnimalHouseDB
                         el.Add(e);
                     }
                     reader.Close();
+                    transaction.Commit();
                     
                 }
                 catch (Exception e)
                 {
-                    if (transaction != null)
-                    {
                         transaction.Rollback();
-                    }
                     throw e;
                 }
                 finally

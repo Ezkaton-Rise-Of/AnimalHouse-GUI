@@ -125,5 +125,10 @@ namespace AnimalHouse_GUI
         {
 
         }
+
+        private void label_hjælpe_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -9,15 +9,12 @@ using System.Configuration;
 using AnimalHouse_Entities;
 
 namespace AnimalHouseDB
-{
+{//Kenneth med en methode af holger.
     public class AnimalHouseBurDatabase: IBookingBurDB
     {
         public AnimalHouseBurDatabase()
         {
         }
-
-
-
         //Opretter information af Bure
         public string OpretBur(Bur b)
         {
@@ -34,7 +31,7 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    throw e;
                 }
                 finally
                 {
@@ -58,7 +55,7 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    throw e;
                 }
                 finally
                 {
@@ -108,10 +105,11 @@ namespace AnimalHouseDB
                     {
                         b.Id = (int)reader["BurID"];
                     }
+                    reader.Close();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    throw e;
                 }
                 finally
                 {
@@ -142,7 +140,7 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    throw e;
                 }
                 finally
                 {
@@ -169,8 +167,8 @@ namespace AnimalHouseDB
                         "on Booking.BookingId = Booking_Has_Bur.BookingId " +
                         "where @startdato <= Booking.Startdato " +
                         "and @slutdato >= Booking.Slutdato and Bur.BurId = Booking_Has_Bur.BurId)", conn);
-                    command.Parameters.Add(new SqlParameter("@startdato", startdato.ToString()));
-                    command.Parameters.Add(new SqlParameter("@slutdato", slutdato.ToString()));
+                    command.Parameters.Add(new SqlParameter("@startdato", startdato.ToString("yyyy-MM-dd")));
+                    command.Parameters.Add(new SqlParameter("@slutdato", slutdato.ToString("yyyy-MM-dd")));
                     command.Transaction = transaction;
                     SqlDataReader reader = command.ExecuteReader();
                     results = new List<Bur>();
