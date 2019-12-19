@@ -99,7 +99,7 @@
             // 
             // textBox_EjerIdBooking
             // 
-            this.textBox_EjerIdBooking.Location = new System.Drawing.Point(43, 55);
+            this.textBox_EjerIdBooking.Location = new System.Drawing.Point(15, 50);
             this.textBox_EjerIdBooking.Name = "textBox_EjerIdBooking";
             this.textBox_EjerIdBooking.Size = new System.Drawing.Size(200, 20);
             this.textBox_EjerIdBooking.TabIndex = 113;
@@ -118,7 +118,7 @@
             // 
             this.label_EjerIdBooking.AutoSize = true;
             this.label_EjerIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_EjerIdBooking.Location = new System.Drawing.Point(40, 33);
+            this.label_EjerIdBooking.Location = new System.Drawing.Point(12, 28);
             this.label_EjerIdBooking.Name = "label_EjerIdBooking";
             this.label_EjerIdBooking.Size = new System.Drawing.Size(52, 16);
             this.label_EjerIdBooking.TabIndex = 115;
@@ -129,7 +129,7 @@
             this.button_RegBooking.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button_RegBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_RegBooking.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button_RegBooking.Location = new System.Drawing.Point(316, 545);
+            this.button_RegBooking.Location = new System.Drawing.Point(267, 545);
             this.button_RegBooking.Name = "button_RegBooking";
             this.button_RegBooking.Size = new System.Drawing.Size(135, 55);
             this.button_RegBooking.TabIndex = 116;
@@ -167,7 +167,7 @@
             // 
             this.label_DyrIdBooking.AutoSize = true;
             this.label_DyrIdBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DyrIdBooking.Location = new System.Drawing.Point(40, 167);
+            this.label_DyrIdBooking.Location = new System.Drawing.Point(12, 162);
             this.label_DyrIdBooking.Name = "label_DyrIdBooking";
             this.label_DyrIdBooking.Size = new System.Drawing.Size(32, 16);
             this.label_DyrIdBooking.TabIndex = 120;
@@ -208,20 +208,20 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(316, 293);
+            this.dataGridView1.Location = new System.Drawing.Point(267, 293);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(255, 235);
+            this.dataGridView1.Size = new System.Drawing.Size(171, 235);
             this.dataGridView1.TabIndex = 129;
             // 
             // dataGridView2
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(763, 293);
+            this.dataGridView2.Location = new System.Drawing.Point(728, 293);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.Size = new System.Drawing.Size(266, 235);
+            this.dataGridView2.Size = new System.Drawing.Size(443, 235);
             this.dataGridView2.TabIndex = 130;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -230,7 +230,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button1.Location = new System.Drawing.Point(43, 100);
+            this.button1.Location = new System.Drawing.Point(15, 95);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 48);
             this.button1.TabIndex = 131;
@@ -241,7 +241,7 @@
             // Dyr_comboBox
             // 
             this.Dyr_comboBox.FormattingEnabled = true;
-            this.Dyr_comboBox.Location = new System.Drawing.Point(43, 186);
+            this.Dyr_comboBox.Location = new System.Drawing.Point(15, 181);
             this.Dyr_comboBox.Name = "Dyr_comboBox";
             this.Dyr_comboBox.Size = new System.Drawing.Size(200, 21);
             this.Dyr_comboBox.TabIndex = 132;
@@ -329,12 +329,12 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox_ServiceType);
             this.groupBox1.Controls.Add(this.Combobox_ansat);
-            this.groupBox1.Location = new System.Drawing.Point(316, 12);
+            this.groupBox1.Location = new System.Drawing.Point(267, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(455, 237);
             this.groupBox1.TabIndex = 141;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Service Booking";
             // 
             // label13
             // 
@@ -391,17 +391,17 @@
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Location = new System.Drawing.Point(787, 5);
+            this.groupBox2.Location = new System.Drawing.Point(728, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(339, 243);
+            this.groupBox2.Size = new System.Drawing.Size(443, 243);
             this.groupBox2.TabIndex = 142;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Bur Booking";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 235);
+            this.label4.Location = new System.Drawing.Point(12, 230);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 143;
@@ -410,7 +410,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 256);
+            this.label5.Location = new System.Drawing.Point(12, 251);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 144;
@@ -419,7 +419,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(40, 279);
+            this.label6.Location = new System.Drawing.Point(12, 274);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 145;
@@ -446,7 +446,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 305);
+            this.label10.Location = new System.Drawing.Point(12, 300);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(68, 13);
             this.label10.TabIndex = 150;
@@ -457,7 +457,7 @@
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button3.Location = new System.Drawing.Point(152, 99);
+            this.button3.Location = new System.Drawing.Point(124, 94);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 48);
             this.button3.TabIndex = 151;
@@ -467,16 +467,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(595, 293);
+            this.textBox1.Location = new System.Drawing.Point(478, 293);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 235);
+            this.textBox1.Size = new System.Drawing.Size(226, 235);
             this.textBox1.TabIndex = 152;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(595, 265);
+            this.label7.Location = new System.Drawing.Point(547, 265);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 153;
@@ -485,7 +485,7 @@
             // Navn_empty
             // 
             this.Navn_empty.AutoSize = true;
-            this.Navn_empty.Location = new System.Drawing.Point(131, 235);
+            this.Navn_empty.Location = new System.Drawing.Point(103, 230);
             this.Navn_empty.Name = "Navn_empty";
             this.Navn_empty.Size = new System.Drawing.Size(36, 13);
             this.Navn_empty.TabIndex = 154;
@@ -494,7 +494,7 @@
             // Addresse_empty
             // 
             this.Addresse_empty.AutoSize = true;
-            this.Addresse_empty.Location = new System.Drawing.Point(131, 256);
+            this.Addresse_empty.Location = new System.Drawing.Point(103, 251);
             this.Addresse_empty.Name = "Addresse_empty";
             this.Addresse_empty.Size = new System.Drawing.Size(36, 13);
             this.Addresse_empty.TabIndex = 155;
@@ -503,7 +503,7 @@
             // By_empty
             // 
             this.By_empty.AutoSize = true;
-            this.By_empty.Location = new System.Drawing.Point(131, 279);
+            this.By_empty.Location = new System.Drawing.Point(103, 274);
             this.By_empty.Name = "By_empty";
             this.By_empty.Size = new System.Drawing.Size(36, 13);
             this.By_empty.TabIndex = 156;
@@ -512,7 +512,7 @@
             // Postnummer_empty
             // 
             this.Postnummer_empty.AutoSize = true;
-            this.Postnummer_empty.Location = new System.Drawing.Point(131, 305);
+            this.Postnummer_empty.Location = new System.Drawing.Point(103, 300);
             this.Postnummer_empty.Name = "Postnummer_empty";
             this.Postnummer_empty.Size = new System.Drawing.Size(36, 13);
             this.Postnummer_empty.TabIndex = 157;

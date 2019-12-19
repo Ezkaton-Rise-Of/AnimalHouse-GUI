@@ -15,15 +15,19 @@ namespace AnimaleHouseModel
         private string Path;
         private string ThisPath;
         private string TempPath;
+        private int counter = 0;
 
         public AutomatikProductUpdate(string path = @"\MedicinPriser")
         {
             ProduktFactory pF = ProduktFactory.GetInstance();
             p = pF.GetProduktC();
             this.Path = path;
+
+            // skaber stien hvor der skal ser efter filer 
             this.ThisPath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName + path;
             CheckforFolder();
         }
+        //se om den ønskede mappe eksistere eller skabes den
         private void CheckforFolder()
         {
             if (!Directory.Exists(ThisPath))
@@ -31,20 +35,26 @@ namespace AnimaleHouseModel
                 Directory.CreateDirectory(ThisPath);
             }
         }
+
+        //program start, køre "uendeligt" eller til form lukker
         public void Autorun()
         {
             while (true)
             {
-                if(p.ProduktFromExtern(CheckForFiles()) == true)
+                //hvis uploadet ikke er sket tilføres counter en så filen ikke bliver kørt igen før mainform åbener igen
+                if(p.ProduktFromExtern(CheckForFiles()) == false)
                 {
-                    File.Delete(TempPath);
+                    counter++;
                 }
+                File.Delete(TempPath);
             }
         }
         private List<string> CheckForFiles()
         {
+            //køre til den finder nogle filer ellers holder den pause i 60 sekunder
             while (true)
             {
+                // se som mappen har nogle txt filer
                 if (Directory.GetFiles(ThisPath, "*.txt").Length != 0)
                 {
                     return GetFilesConstentAndPath();
@@ -60,11 +70,19 @@ namespace AnimaleHouseModel
         private List<string> GetFilesConstentAndPath()
         {
             List<string> Lines = new List<string>();
+            // skaber en array af filer der er fundes
             string[] files = Directory.GetFiles(ThisPath, "*.txt");
-            Lines.AddRange(ReadFile(files[0]));
+            // hvis counter er mindren en antal filer, bliver den næste fil læst
+            if (counter < files.Length)
+            {
+
+                // tilføre produkt liner til lines
+                    Lines.AddRange(ReadFile(files[counter]));
+         
+            }
             return Lines;
         }
-
+        //læser filen og returner det som en liste af strings
         private List<string> ReadFile(string pathfile)
         {
             string line;
@@ -78,6 +96,8 @@ namespace AnimaleHouseModel
             TempPath = pathfile;
             return Lines;
         }
+
+        // skaber et singleton for at benytte interfaces til at sende med,
         public class ProduktFactory
         {
             private static ProduktFactory _instance = null;

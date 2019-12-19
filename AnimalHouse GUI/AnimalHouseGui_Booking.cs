@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Holger
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +12,7 @@ using AnimalHouseBLL;
 using AnimalHouse_Entities;
 using System.Diagnostics;
 using System_Entities;
+using System.IO;
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Booking : Form
@@ -70,12 +72,12 @@ namespace AnimalHouse_GUI
                     throw;
                 }
             }
-            catch (Exception)
+            catch 
             {
                 MessageBox.Show("problemer med forbindelsen");
 
 
-                throw;
+               
             }
         }
         private void FillDyrComboBox()
@@ -112,13 +114,15 @@ namespace AnimalHouse_GUI
         private void button2_Click(object sender, EventArgs e)
         {
             //holger
-            //tjekker om der er tilføjes en kunde
-            //if (comboBox1.SelectedValue. ==  null)
-            //{
-            //    MessageBox.Show("vælg en Kunde først");
-            //}
-            controller.BookingHentFriBur(dateTimePicker1.Value, dateTimePicker2.Value);
-            dataGridView1.DataSource = controller.Bur;
+            // tjekker om der er tilføjes en kunde
+            if (string.IsNullOrEmpty(Dyr_comboBox.Text))
+            {
+                MessageBox.Show("vælg en dyr først");
+            }
+            else {
+                controller.BookingHentFriBur(dateTimePicker1.Value, dateTimePicker2.Value);
+                dataGridView1.DataSource = controller.Bur;
+            }
         }
         private void ComboBoxAnsat_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -189,7 +193,8 @@ namespace AnimalHouse_GUI
         }
         private void label12_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Booking Form.txt");
+
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Booking.pdf");
         }
         private void SlutTid_Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -212,6 +217,10 @@ namespace AnimalHouse_GUI
             {
                 mangler.Add("service");
             }
+            if(ansat == null)
+            {
+                mangler.Add("ansat");
+            }
             if(Dyr == null)
             {
                 mangler.Add("Dyr");
@@ -227,6 +236,23 @@ namespace AnimalHouse_GUI
                 bool answer = controller.Opretbooking(textBox1.Text, starttid, sluttid, ansat, service, Dyr, dateTimePicker1.Value, dateTimePicker1.Value);
                 if (answer == true)
                 {
+
+                    // reset 
+                    starttid = null;
+                    sluttid = null;
+                    service = null;
+                    ansat = null;
+                    Combobox_ansat.Items.Clear();
+                    Combobox_ansat.Text = "";
+                    comboBox_ServiceType.Items.Clear();
+                    comboBox_ServiceType.Text = "";
+                    SlutTid_Combo.Items.Clear();
+                    SlutTid_Combo.Text = "";
+                    StartTid_Combo.Items.Clear();
+                    StartTid_Combo.Text = "";
+                    Service_combobox.Items.Clear();
+                    Service_combobox.Text = "";
+
                     Hentbookinger();
                 }
                 else

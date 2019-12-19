@@ -12,9 +12,14 @@ namespace AnimalHouse_GUI
         public AnimalHouseGui_Main()
         {
             InitializeComponent();
+           // holger
+            //instansiere automatik produkt opdatering/upload
             AutomatikProductUpdate auto = new AutomatikProductUpdate();
-
+           // skaber en ny tråd
             Thread autothread = new Thread(new ThreadStart(auto.Autorun));
+            // sætter den til at kære i baggrunden
+            autothread.IsBackground = true;
+            // starter tråden
             autothread.Start();
         }
         private void button_EjerReg_Click(object sender, EventArgs e)
