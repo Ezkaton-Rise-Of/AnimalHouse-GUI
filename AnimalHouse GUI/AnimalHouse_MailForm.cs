@@ -17,12 +17,6 @@ namespace AnimalHouse_GUI
         {
             InitializeComponent();
         }
-
-        private void label_hjælpe_Click(object sender, EventArgs e)
-        {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Mail Form.txt");
-        }
-
         private void button_Tilbage_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -30,38 +24,17 @@ namespace AnimalHouse_GUI
 
         private void button_Send_Click(object sender, EventArgs e)
         {
-            if (Validateform())
-            {
-                var modtagerList = listBox_modtager_list.Items.Cast<String>().ToList();
-                bool res = emailSystem.CreateEmail(textBox_subjekt.Text, textBox_inhold.Text, modtagerList);
-                if (res is true)
-                {
-                    MessageBox.Show("mail blev sendt");
-                }
-                else
-                {
-                    MessageBox.Show("der sket en fejl!");
-                } 
-            }
-            else
-            {
-                MessageBox.Show("Invald data!", "Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            }
+
         }
 
         private void button_tilføj_Click(object sender, EventArgs e)
         {
-            listBox_modtager_list.Items.Add(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            listBox_modtagere.Items.Add(dataGridView1.CurrentRow.Cells[2].Value.ToString());
         }
 
         private void button_visAlle_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = controller.MailSendelse().Tables[0].DefaultView;
-        }
-
-        private void button_fjern_Click(object sender, EventArgs e)
-        {
-            listBox_modtager_list.Items.Remove(listBox_modtager_list.SelectedItem);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,21 +68,9 @@ namespace AnimalHouse_GUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            listBox_modtager_list.Items.Add(textBox4.Text.Trim());
-        }
-
-        private void button_annullere_Click(object sender, EventArgs e)
-        {
-            listBox_modtager_list.Items.Clear();
-            textBox_inhold.Text = "";
-            textBox_subjekt.Text = "";
-        }
-
         private bool Validateform()
         {
-            if (listBox_modtager_list.Items.Count != 0 
+            if (listBox_modtagere.Items.Count != 0
                 && textBox_subjekt.Text.Length != 0
                 && textBox_inhold.Text.Length != 0)
             {
@@ -123,12 +84,45 @@ namespace AnimalHouse_GUI
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = controller.MailSendelse2(int.Parse(textBox_days.Text)).Tables[0].DefaultView; ;
+        }
 
+        private void button_annullere_Click(object sender, EventArgs e)
+        {
+            listBox_modtagere.Items.Clear();
+            textBox_subjekt.Text = "";
+            textBox_inhold.Text = "";
+        }
+
+        private void button_send_Click_1(object sender, EventArgs e)
+        {
+            if (Validateform())
+            {
+                var modtagerList = listBox_modtagere.Items.Cast<String>().ToList();
+                bool res = emailSystem.CreateEmail(textBox_subjekt.Text, textBox_inhold.Text, modtagerList);
+                if (res is true)
+                {
+                    MessageBox.Show("mail blev sendt");
+                }
+                else
+                {
+                    MessageBox.Show("der sket en fejl!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invald data!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button_fjern_Click_1(object sender, EventArgs e)
+        {
+            listBox_modtagere.Items.Remove(listBox_modtagere.SelectedItem);
         }
 
         private void label_hjælpe_Click_1(object sender, EventArgs e)
         {
-
+            Process.Start(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Mail Form.txt");
         }
     }
 }

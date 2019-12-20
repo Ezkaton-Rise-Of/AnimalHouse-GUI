@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Holger
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,6 @@ namespace AnimalHouseBLL
             BookingDB = persistensFactory.GetBookingDB();
 
         }
-
-
         public List<Booking> HentAlleBooking(Kunde k)
         {
 
@@ -41,7 +40,6 @@ namespace AnimalHouseBLL
         {
             return BookingDB.SletBooking(b);
         }
-
         public bool UpdateBooking(Booking b)
         {
             return BookingDB.UpdaterBooking(b);
@@ -52,7 +50,6 @@ namespace AnimalHouseBLL
 
             return BookingDB.OpretBooking(k);
         }
-
         internal bool OpretbookingBur(string text, Dyr dyr, DateTime start, DateTime slut, Bur bur)
         {
             return BookingDB.OpretbookingBur(text, dyr, start, slut, bur);

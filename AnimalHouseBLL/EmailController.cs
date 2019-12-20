@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Holger
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,7 @@ namespace AnimalHouseBLL
         {
             //A = ansatDB.HentAlleAnsate();
             PersistensFactory persistensFactory = PersistensFactory.GetInstance();
-            emailDB = persistensFactory.GetEmailDB();
-          
+            emailDB = persistensFactory.GetEmailDB();  
         }
 
         public void HentEmail(int emailId)

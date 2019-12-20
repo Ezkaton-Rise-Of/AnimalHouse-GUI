@@ -1,4 +1,5 @@
-﻿using AnimalHouseDB;
+﻿// Radwan + Holger + Kenneth
+using AnimalHouseDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Radwan
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -10,6 +11,7 @@ using System.Diagnostics;
 using AnimalHouseBLL;
 using AnimalHouse_Entities;
 using System_Entities;
+using System.IO;
 
 namespace AnimalHouse_GUI
 {
@@ -120,6 +122,7 @@ namespace AnimalHouse_GUI
 
         private void button_søg_Click(object sender, EventArgs e)
         {
+            comboBox_dyr.Items.Clear();
             //henter Kunder iden
             var kundenavn = comboBox_ejer.Text.Split(' ');
             int  kundeid = controller.HentKundeId(kundenavn[0]);
@@ -186,7 +189,7 @@ namespace AnimalHouse_GUI
 
         private void label5_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Journal Form.txt");
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Journal Form.txt");
         }
 
         private bool ValidateForm()

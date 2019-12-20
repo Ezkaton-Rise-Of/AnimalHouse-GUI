@@ -15,7 +15,7 @@ namespace AnimalHouse_GUI
         /// </summary>
         [STAThread]
         static void Main()
-        {
+      {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AnimalHouseGui_Main());

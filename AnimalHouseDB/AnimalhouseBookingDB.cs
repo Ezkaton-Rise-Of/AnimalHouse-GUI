@@ -1,11 +1,11 @@
-﻿using AnimalHouse_Entities;
+﻿//Holger
+using AnimalHouse_Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
 namespace AnimalHouseDB
 {
-    //holger
     public class AnimalhouseBookingDB : IBookingDB
     {
         public AnimalhouseBookingDB()
@@ -21,10 +21,10 @@ namespace AnimalHouseDB
                 {
                     conn.Open();
                     transaction = conn.BeginTransaction();
-                    SqlCommand command = new SqlCommand("SELECT Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut " +
+                    SqlCommand command = new SqlCommand("SELECT Booking.ProduKtId, Booking.BookingId, Booking.Startdato, Booking.Slutdato, Booking.Notat, Produkt.Navn, s.TimeRange as start, e.TimeRange as slut " +
                         "FROM Booking left join Produkt on Produkt.ProduktId = Booking.ProduKtId " +
-                        "inner join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
-                        "inner join BookingTimer as e on Booking.SlutTid = e.BookingTimerId " +
+                        "left join BookingTimer as s on Booking.StartTid = s.BookingTimerId " +
+                        "left join BookingTimer as e on Booking.SlutTid = e.BookingTimerId " +
                         "inner join Dyr on Dyr.DyrId = Booking.DyrId " +
                         "inner join Kunde on Kunde.KundeId = dyr.KundeId where Kunde.KundeId = @Kunde", conn);
                     command.Parameters.Add(new SqlParameter("@Kunde", k.Id));
@@ -41,6 +41,7 @@ namespace AnimalHouseDB
                         d.SlutDato = Convert.ToDateTime(reader["Slutdato"]);
                         Service s = new Service();
                         s.Navn = Convert.ToString(reader["Navn"]);
+                        s.ProduktId = Convert.ToInt32(reader["ProduKtId"]);
                         d.service = s;
                         BookingTime start = new BookingTime();
                         start.time = Convert.ToString(reader["start"]);
@@ -69,7 +70,6 @@ namespace AnimalHouseDB
         }
         public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime dateTime, Servicetype servicetype)
         {
-
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 List<BookingTime> bookingTimes = null;
@@ -78,10 +78,8 @@ namespace AnimalHouseDB
                 {
                     conn.Open();
                     transaction = conn.BeginTransaction();
-
-
                     SqlCommand command;
-
+                    // hvis der skal laves operation findes der både tider hvor både lægen og operationsrummet er ledig;
                     if (servicetype.ServiceType == "Operation")
                     {
                         command = new SqlCommand("select * from BookingTimer " +
@@ -96,6 +94,8 @@ namespace AnimalHouseDB
                     }
                     else
                     {
+
+                    //eller findes der tid hvor lægen er fri
                         command = new SqlCommand("select * from BookingTimer " +
                             "where NOT EXISTS(select '' from Booking where BookingTimer.BookingTimerId >= Booking.StartTid " +
                             "and BookingTimer.BookingTimerId < Booking.SlutTid " +
@@ -144,9 +144,11 @@ namespace AnimalHouseDB
                     if (serviceType.ServiceType == "Operation")
                     {
                         command = new SqlCommand("" +
+                            //hvis lægen eller operationsrummet har en booking efter den givne starttid
                             "if 0 < (select Count(*) from Booking " +
                             "left join Service on Service.ProduktId = Booking.ProduKtId where Booking.Startdato = @Dato " +
                             "and Booking.StartTid > @starttime AND (Service.ServiceTypeId = 2 or Booking.AnsatId = @Ansat)) " +
+                            //hvis lægen har en booking efter starttid hentes tiderne hvor operationsrummet og lægen er ledig til en af dem er optaget igen;
                             "if 0 < (select Count(*) from Booking " +
                             "where Booking.Startdato = @Dato AND AnsatId = @Ansat) " +
                             "select * from BookingTimer " +
@@ -156,17 +158,20 @@ namespace AnimalHouseDB
                             "where Booking.Startdato = @Dato and Booking.StartTid > @starttime " +
                             "AND (Service.ServiceTypeId = 2 or Booking.AnsatId = @Ansat) " +
                             "order by Booking.StartTid  asc) " +
+                            // eller hentes tiderne indtil operationsrummet er optaget
                             "else select* from BookingTimer where BookingTimer.BookingTimerId " +
                             "between 8 and (select top 1 Booking.StartTid from Booking " +
                             "left join Service on Service.ProduktId = Booking.ProduKtId " +
                             "where Booking.StartTid > @starttime and Booking.Startdato = @Dato " +
                             "AND Service.ServiceTypeId = 2 order by Booking.StartTid  asc) " +
+                            // har ingen af dem bookinger den dan hentet alle tider efter starttiden;
                             "else select* from BookingTimer where BookingTimer.BookingTimerId > @starttime", conn);
                     }
                     else
                     {
+                        //
                         command = new SqlCommand("if 1 < (select Count(*) from Booking " +
-                       "where Booking.Startdato = @Dato AND ansatID = @Ansat) " +
+                       "where Booking.StartTid > @starttime AND Booking.Startdato = @Dato AND ansatID = @Ansat) " +
                        "select * from BookingTimer " +
                        "where BookingTimer.BookingTimerId " +
                        "between @starttime " +
@@ -249,50 +254,7 @@ namespace AnimalHouseDB
                 return d;
             }
         }
-        public List<Booking> HentDyrByKunde(int Id)
-
-        {
-
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-            {
-                List<Booking> ld = null;
-                SqlTransaction transaction = null;
-                try
-                {
-                    conn.Open();
-                    transaction = conn.BeginTransaction();
-                    SqlCommand command = new SqlCommand("SELECT * FROM Booking");
-                    command.Transaction = transaction;
-                    SqlDataReader reader = command.ExecuteReader();
-                    ld = new List<Booking>();
-                    while (reader.Read())
-                    {
-                        Booking d = new Booking();
-                        d.BookingId = Convert.ToInt32(reader["BookingId"]);
-                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
-                        d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
-                        d.Notat = Convert.ToString(reader["Notat"]);
-                        d.StartDato = Convert.ToDateTime(reader["StartDato"]);
-                        d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
-
-                        ld.Add(d);
-                    }
-                    reader.Close();
-                    transaction.Commit();
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    throw e;
-                }
-                finally
-                {
-
-                    conn.Close();
-                }
-                return ld;
-            }
-        }
+ 
         public bool OpretBooking(Booking b)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -372,29 +334,35 @@ namespace AnimalHouseDB
             {
                 bool result = false;
                 SqlTransaction transaction = null;
-                conn.ConnectionString = "Data Source=den1.mssql8.gear.host; Initial Catalog=test102; User Id=test102; Password=Ld8m8N!-wV0V";
 
-                try
-                {
-                    conn.Open();
-                    transaction = conn.BeginTransaction();
+                    try
+                    {
+                        conn.Open();
+                        transaction = conn.BeginTransaction();
+                    
+                    if (b.service.ProduktId == 1)
+                    {
+                        SqlCommand command1 = new SqlCommand("DELETE Booking_Has_Bur where BookingId = @BookingId", conn);
+                        command1.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                        command1.Transaction = transaction;
+                        command1.ExecuteNonQuery();
+                    }
                     SqlCommand command = new SqlCommand("DELETE Booking WHERE BookingId = @BookingId", conn);
-                    command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
-                    command.Transaction = transaction;
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    result = true;
-                }
-                catch (Exception e)
-                {
-                    transaction.Rollback();
-                    throw e;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-
+                        command.Parameters.Add(new SqlParameter("@BookingId", b.BookingId));
+                        command.Transaction = transaction;
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                        result = true;
+                    }
+                    catch (Exception e)
+                    {
+                        transaction.Rollback();
+                        throw e;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
                 return result;
             }
         }
@@ -432,6 +400,51 @@ namespace AnimalHouseDB
                 return answer;
             }
         }
+        public List<Booking> HentDyrByKunde(int Id)
+
+        {
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            {
+                List<Booking> ld = null;
+                SqlTransaction transaction = null;
+                try
+                {
+                    conn.Open();
+                    transaction = conn.BeginTransaction();
+                    SqlCommand command = new SqlCommand("SELECT * FROM Booking");
+                    command.Transaction = transaction;
+                    SqlDataReader reader = command.ExecuteReader();
+                    ld = new List<Booking>();
+                    while (reader.Read())
+                    {
+                        Booking d = new Booking();
+                        d.BookingId = Convert.ToInt32(reader["BookingId"]);
+                        d.DyrId = Convert.ToInt32(reader["DyrId"]);
+                        d.AnsatId = Convert.ToInt32(reader["AnsatId"]);
+                        d.Notat = Convert.ToString(reader["Notat"]);
+                        d.StartDato = Convert.ToDateTime(reader["StartDato"]);
+                        d.SlutDato = Convert.ToDateTime(reader["SlutDato"]);
+
+                        ld.Add(d);
+                    }
+                    reader.Close();
+                    transaction.Commit();
+                }
+                catch (Exception e)
+                {
+                    transaction.Rollback();
+                    throw e;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+                return ld;
+            }
+        }
+
     }
 }
 

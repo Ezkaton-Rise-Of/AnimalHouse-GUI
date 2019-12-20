@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
+﻿// Radwan
 using AnimalHouseBLL;
-
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace AnimalHouse_GUI
 {
@@ -37,18 +32,14 @@ namespace AnimalHouse_GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-       
-                dataGridView1.DataSource = controller.HentAnsatByNavn2(textBox_ansatNavn.Text.Trim());
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
-  
-         
-            
+            dataGridView1.DataSource = controller.HentAnsatByNavn2(textBox_ansatNavn.Text.Trim());
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[4].Visible = false;
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Ansat Form.txt");
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Ansat Form.txt");
         }
 
         private void button_Register_Click(object sender, EventArgs e)
@@ -61,7 +52,7 @@ namespace AnimalHouse_GUI
             }
             else
             {
-                MessageBox.Show("Invalid data!","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Invalid data!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -105,7 +96,7 @@ namespace AnimalHouse_GUI
         {
             if (MessageBox.Show("Er du sikker?", "Update ansat information", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(controller.UpdateAnsat(id,textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString().Trim(), textBox_tlf.Text.Trim()), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(controller.UpdateAnsat(id, textBox_navn.Text.Trim(), comboBox_stelling.SelectedItem.ToString().Trim(), textBox_tlf.Text.Trim()), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FillDataGridView();
             }
         }
@@ -116,7 +107,7 @@ namespace AnimalHouse_GUI
             comboBox_stelling.Text = "";
             textBox_tlf.Text = "";
         }
-        
+
         private bool ValidateForm()
         {
             if (textBox_navn.Text.Trim().Length != 0 && !textBox_navn.Text.Trim().Any(char.IsDigit)

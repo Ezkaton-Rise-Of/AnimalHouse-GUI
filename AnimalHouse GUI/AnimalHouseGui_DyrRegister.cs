@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using AnimalHouse_Entities;
+﻿// Radwan
 using AnimalHouseBLL;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace AnimalHouse_GUI
 {
@@ -26,7 +20,7 @@ namespace AnimalHouse_GUI
 
         private void button_RegDyr_Click(object sender, EventArgs e)
         {
-            string answer = controller.OpretDyr(controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id, textBox_Art.Text, textBox_Race.Text,int.Parse(textBox_Alder.Text.Trim()), sex, comboBox_behandler.Text);
+            string answer = controller.OpretDyr(controller.HentKundeByTlforNavn(textBox_Søg.Text.Trim())[0].Id, textBox_Art.Text, textBox_Race.Text, int.Parse(textBox_Alder.Text.Trim()), sex, comboBox_behandler.Text);
             MessageBox.Show(answer);
             FilleDataGridView();
         }
@@ -70,7 +64,7 @@ namespace AnimalHouse_GUI
 
         private void label_hjælpe_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Dyr Form.txt");
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Dyr Form.txt");
         }
 
         private void button_Søg_Click(object sender, EventArgs e)
@@ -122,14 +116,14 @@ namespace AnimalHouse_GUI
 
         private void button_tilknyt_Click(object sender, EventArgs e)
         {
-            bool res =controller.TilknytBehandler(int.Parse(dataGridView_Dyr.CurrentRow.Cells[0].Value.ToString()),comboBox_behandler.Text);
+            bool res = controller.TilknytBehandler(int.Parse(dataGridView_Dyr.CurrentRow.Cells[0].Value.ToString()), comboBox_behandler.Text);
             if (res)
             {
                 MessageBox.Show("Behandleren blev tilknyttet");
             }
             else
             {
-                MessageBox.Show("Der sket en file","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Der sket en file", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             FilleDataGridView();
         }
