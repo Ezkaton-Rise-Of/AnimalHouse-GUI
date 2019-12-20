@@ -128,28 +128,30 @@ namespace AnimalHouseBLL
         {
             return Kc.SletKunde(id);
         }
+
+        // create animal -holger
         public string OpretDyr(int kundeId, string art, string race, int alder, char sex, string behandler)
         {
             return Dc.OpretDyr(kundeId, art, race, alder, sex, behandler);
         }
-
+        // get all free times by ansat - holger 
         public List<BookingTime> HentAlleFritider(Ansat ansat, DateTime datetime, Servicetype servicetype)
         {
             return Bc.HentAlleFritider(ansat, datetime, servicetype);
         }
-
+        //get all posible clock-time where a booking can end - Hogler
         public List<BookingTime> HentAlleHentMuligeSlutTider(Ansat ansat, BookingTime dateTime, DateTime date, Servicetype servicetype)
         {
             return Bc.HentAlleHentMuligeSlutTider(ansat, dateTime, date, servicetype);
         }
 
 
-
+        // get alle serviceprodukts by serviceType - Holger
         public List<Service> HentAlleService(Servicetype servicetype)
         {
             return ServiceC.HentAlleService(servicetype);
         }
-
+        // get all animals - Holer
         public List<Dyr> HentAlleDyr()
         {
             return Dc.HentAlleDyr();
@@ -160,7 +162,7 @@ namespace AnimalHouseBLL
             Ansat a = HentAnsat(id);
             return Ac.SletAnsat(a);
         }
-
+        // get all servicetypes - holger 
         public List<Servicetype> HentAlleServiceType()
         {
             return ServiceC.HentAlleServiceType();
@@ -170,13 +172,13 @@ namespace AnimalHouseBLL
         {
             return Ac.HentAnsatByName(navn);
         }
-
+        // get animals for kunde - Holger
         public List<Dyr> HentAlleKundesDyr(int kundeId)
         {
 
             return Dc.HentAlleKundesDyr(kundeId);
         }
-
+        // get animal - Holger
         public Dyr HentDyr(int id)
         {
             return Dc.HentDyr(id);
@@ -195,12 +197,12 @@ namespace AnimalHouseBLL
                 throw;
             }
         }
-
+        // delete animal - Holger
         public string SletDyr(int id)
         {
             return Dc.SletDyr(id);
         }
-
+        // Update animal - Holger
         public string UpdateDyr(int dyrId, int kundeId, string art, string race, int alder, char sex)
         {
             return Dc.UpdateDyr(dyrId, kundeId, art, race, alder, sex);
@@ -273,7 +275,7 @@ namespace AnimalHouseBLL
         {
             return Jc.SletJournal(id);
         }
-
+        //delete selected booking  HHolger
         public bool SletBooking(Booking b)
         {
             return Bc.SletBooking(b);
@@ -375,12 +377,12 @@ namespace AnimalHouseBLL
         {
             return Pc.HentProdukt(id);
         }
-
+        //return booking by kunde - Holger 
         public List<Booking> HentAlleBooking(Kunde k)
         {
             return Bc.HentAlleBooking(k);
         }
-
+        //return list for kunder der skal have mail - Holger
         public List<Kunde> HentKunderDerManglerMail(int visit, int mail)
         {
             List<Kunde> kundeList = new List<Kunde>();

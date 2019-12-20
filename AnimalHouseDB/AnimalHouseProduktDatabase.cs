@@ -1,11 +1,11 @@
-﻿//Holger + Radwan
+﻿//Holger + Radwan enkelte rettelser
 using AnimalHouse_Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 namespace AnimalHouseDB
-{// Holger
+{
     public class AnimalHouseProduktDatabase : IProduktDB
     {
        
@@ -101,7 +101,6 @@ namespace AnimalHouseDB
             }
             
         }
-
         public List<Produkt> HentAlleProdukter()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -225,7 +224,7 @@ namespace AnimalHouseDB
             }
         
         }
-        //Holger
+
         public bool ProduktFromExtern(List<Produkt> Lines)
         {
            
@@ -297,6 +296,7 @@ namespace AnimalHouseDB
            
             return id;
         }
+
         private int HentSupplier(string navn, SqlTransaction transaction, SqlConnection conn)
         {
             int id = -1;

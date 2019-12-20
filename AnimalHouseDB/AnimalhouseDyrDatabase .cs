@@ -1,4 +1,5 @@
-﻿using AnimalHouse_Entities;
+﻿//Holger
+using AnimalHouse_Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,8 +9,6 @@ namespace AnimalHouseDB
 {
     public class AnimalhouseDyrDatabase : IDyrDB
     {
-
-
         public AnimalhouseDyrDatabase()
         {
         }
@@ -21,7 +20,6 @@ namespace AnimalHouseDB
             {
                 List<Dyr> ld = null;
                 SqlTransaction transaction = null;
-
                 try
                 {
                     conn.Open();
@@ -60,10 +58,10 @@ namespace AnimalHouseDB
         }
         public Dyr HentDyr(int Id)
         {
-            Dyr d = null;
-            SqlTransaction transaction = null;
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
+                Dyr d = null;
+                SqlTransaction transaction = null;
                 try
                 {
                     conn.Open();
@@ -82,7 +80,6 @@ namespace AnimalHouseDB
                         d.Sex = Convert.ToChar(reader["Sex"]);
                         reader.Close();
                     }
-
                 }
                 catch (Exception)
                 {
@@ -93,8 +90,8 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return d;
             }
-            return d;
         }
 
         public string OpretDyr(Dyr d)
@@ -130,7 +127,6 @@ namespace AnimalHouseDB
             }
             return result;
         }
-
         public string SletDyr(int Id)
         {
             string result;
@@ -160,7 +156,6 @@ namespace AnimalHouseDB
             }
             return result;
         }
-
         public string UpdaterDyr(Dyr d)
         {
             SqlTransaction transaction = null;
@@ -194,16 +189,12 @@ namespace AnimalHouseDB
                 }
             }
         }
-
         public List<Dyr> HentDyrByKundeId(int KId)
         {
-            List<Dyr> ld = null;
-            SqlTransaction transaction = null;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
-
-
+                List<Dyr> ld = null;
+                SqlTransaction transaction = null;
                 try
                 {
                     conn.Open();
@@ -226,7 +217,7 @@ namespace AnimalHouseDB
                     }
                     reader.Close();
                     transaction.Commit();
-                    return ld;
+                    
                 }
                 catch (Exception e)
                 {
@@ -238,11 +229,9 @@ namespace AnimalHouseDB
                 {
                     conn.Close();
                 }
+                return ld;
             }
         }
-
-
-
         public void TilknytBehandler(int dyrId, string behandler)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
