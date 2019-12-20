@@ -1,1 +1,11 @@
-﻿
+				 Dato:15-12-2019 11:31:57
+Faktura ID: 9
+Kunde: Derck Holmes
+Produkter:
+Hills Prescription Diet Canine Z/D Mini Allergy & Skin Care  Pris 189Kr. *2
+VetPro Klorhexidin Mundgel 100 ml  Pris 94Kr. *4
+Kaninører  Pris 19.95Kr. *1
+DOUXO Calm ME Spray 200 ml.  Pris 159Kr. *2
+
+				 Rabat i %: 5
+				 Total: 1037.3525Kr.

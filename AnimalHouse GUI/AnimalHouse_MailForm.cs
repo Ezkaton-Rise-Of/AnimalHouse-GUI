@@ -46,7 +46,7 @@ namespace AnimalHouse_GUI
         private void button_print_Click(object sender, EventArgs e)
         {
             controller.HentAlleDyr();
-            string path = @"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Email list.txt";
+            string path = (Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Email list.txt");
             using (TextWriter tw = new StreamWriter(path))
             {
                 tw.WriteLine("Kundes fornavn\t Kundes efternavn\t Kundes email adresse\t Sidste besøg dato\t DyrId\t DyrArt\t DyrRace\n");
@@ -63,7 +63,7 @@ namespace AnimalHouse_GUI
                     }
                     tw.WriteLine();
                 }
-                Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Email list.txt");
+                Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Email list.txt");
             }
 
         }
