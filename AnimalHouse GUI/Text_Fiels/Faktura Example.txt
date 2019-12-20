@@ -1,1 +1,9 @@
-﻿
+				 Dato:12/15/2019 10:50:02 AM
+Faktura ID: 7
+Kunde: Derck Holmes
+Produkter:
+Petosan Oralcleaner 1 stk.  Pris 49.95Kr. *2
+DOUXO Pyo Mousse 200 ml.  Pris 219Kr. *3
+
+				 Rabat i %: 31
+				 Total: 756.9Kr.
