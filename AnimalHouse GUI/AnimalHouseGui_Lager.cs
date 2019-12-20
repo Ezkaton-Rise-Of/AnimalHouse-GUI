@@ -64,9 +64,7 @@ namespace AnimalHouse_GUI
 
     private void button_Tilbage_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main main = new AnimalHouseGui_Main();
-            main.ShowDialog();
+            this.Close();
         }
 
         //Skriver lager til RichTextBox
