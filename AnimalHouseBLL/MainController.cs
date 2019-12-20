@@ -236,9 +236,9 @@ namespace AnimalHouseBLL
 
 
         //Lager 
-        public Lager SøgId(int id)
+        public Lager SøgId(int produktid)
         {
-            return Lc.SøgId(id);
+            return Lc.SøgId(produktid);
         }
 
         public List<Lager> HentLager()
@@ -251,6 +251,7 @@ namespace AnimalHouseBLL
             Lager L = new Lager(pris, antal, produktid);
             return Lc.TilføjLager(L);
         }
+        //Lager
 
         // returns the ID of a customer based on there name or telefon nummber - radwan
         public int HentKundeId(string navnEllerTlf)

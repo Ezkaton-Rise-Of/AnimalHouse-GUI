@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.IO;
 using System_Entities;
 
+
+//Kenneth A. Kun
 namespace AnimalHouse_GUI
 {
     public partial class AnimalHouseGui_Lager : Form
@@ -62,9 +64,7 @@ namespace AnimalHouse_GUI
 
     private void button_Tilbage_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            AnimalHouseGui_Main main = new AnimalHouseGui_Main();
-            main.ShowDialog();
+            this.Close();
         }
 
         //Skriver lager til RichTextBox
@@ -130,10 +130,15 @@ namespace AnimalHouse_GUI
         private void button_SøgLagerStatus_Click_1(object sender, EventArgs e)
         {
             dataGridView_LagerStatus.DataSource = controller.SøgId (int.Parse( textBox_SøgId.Text));
+
             if (dataGridView_LagerStatus.Rows.Count == 0)
             {
                 MessageBox.Show("Id ikke fundet");
+                ClearDataGridView();
+                FillDataGridView();
+
             }
+
         }
 
         private void dataGridView_LagerStatus_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -144,10 +149,25 @@ namespace AnimalHouse_GUI
 
         private void button1_Click(object sender, EventArgs e)//button_Tilføj
         {
-            string Tilføj = controller.TilføjLager(double.Parse(textBox_Pris.Text), int.Parse(textBox_Antal.Text), int.Parse(textBox_Produkt.Text));
-            MessageBox.Show(Tilføj);
-            FillDataGridView();
+            Produkt p = controller.HentProdukt(int.Parse(textBox_Produkt.Text));
+
+            if (p.Service == true)
+            {
+                MessageBox.Show("Invalid Product ID");
+            }
+            
+            else
+            {
+                string Tilføj = controller.TilføjLager(double.Parse(textBox_Pris.Text), int.Parse(textBox_Antal.Text), int.Parse(textBox_Produkt.Text));
+                MessageBox.Show(Tilføj);
+                FillDataGridView();
+            }
+
+           
         }
+
+
+
 
         private void label_hjælpe_Click(object sender, EventArgs e)
         {
@@ -211,3 +231,5 @@ namespace AnimalHouse_GUI
     }
 
 }
+
+//Kenneth A. Kun

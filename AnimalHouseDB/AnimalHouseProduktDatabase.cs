@@ -166,7 +166,7 @@ namespace AnimalHouseDB
                         produkt.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                         produkt.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
                         produkt.Pris = Convert.ToDouble(reader["Pris"]);
-                        produkt.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
+                        produkt.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                         produkt.Service = Convert.ToBoolean(reader["Service"]);
                         produkt.Navn = Convert.ToString(reader["Navn"]);
                         produkt.KategoriId = Convert.ToInt32(reader["Produkt_KategoriId"]);
@@ -176,7 +176,7 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    transaction.Rollback();
+                    //transaction.Rollback();
                     throw e;
                 }
                 finally

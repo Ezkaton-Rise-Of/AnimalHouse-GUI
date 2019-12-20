@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 
-namespace  AnimalHouseBLL
+//Kenneth A. Kun
+namespace AnimalHouseBLL
 {
     public class LagerController
     {
@@ -25,9 +26,12 @@ namespace  AnimalHouseBLL
         {
             return LagerDB.HentLager();
         }
+
         public string TilføjLager(Lager L)
         {
             return LagerDB.TilføjLager(L);
         }
     }
 }
+
+//Kenneth A. Kun

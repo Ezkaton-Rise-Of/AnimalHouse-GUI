@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 using AnimalHouse_Entities;
 using AnimalHouseDB;
 
+
+
+//Kenneth A. Kun
 namespace AnimalHouseDB
 {
     public class AnimalHouseLagerDatabase : ILagerDB
@@ -23,7 +26,7 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"Select * from Lager inner join Produkt.ProduktId = Lager.ProduktId where ProduktId ={produktid}";
+                string commandtxt = $"Select * from Lager inner join on Lager.ProduktId = Produkt.ProduktId where ProduktId ={produktid}";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 L = new Lager();
@@ -35,7 +38,6 @@ namespace AnimalHouseDB
                     p.Pris = (double)reader["Pris"];
                     p.KategoriId = (int)reader["KategoriId"];
                     Lager lagervare = new Lager();
-                    lagervare.Produkt = p;
                     lagervare.Pris = (double)reader["Pris"];
                     lagervare.Antal = (int)reader["Antal"];
                     L.LagerList.Add(lagervare);
@@ -91,11 +93,11 @@ namespace AnimalHouseDB
             conn.Open();
             try
             {
-                string commandtxt = $"Insert into Lager (Pris, Antal, Produkt) values (@Pris, @Antal, @ProduktId)";
+                string commandtxt = $"Insert into Lager (Pris, Antal, ProduktId) values (@Pris, @Antal, @ProduktId)";
                 SqlCommand command = new SqlCommand(commandtxt, conn);
                 command.Parameters.Add(new SqlParameter("@Pris", L.Pris));
                 command.Parameters.Add(new SqlParameter("@Antal", L.Antal));
-                command.Parameters.Add(new SqlParameter("@Produkt", L.Produkt));
+                command.Parameters.Add(new SqlParameter("@ProduktId", L.ProduktId));
                 command.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -111,3 +113,5 @@ namespace AnimalHouseDB
         }
     }
 }
+
+//Kenneth A. Kun
