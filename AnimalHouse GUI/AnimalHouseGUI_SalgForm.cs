@@ -107,7 +107,7 @@ namespace AnimalHouse_GUI
 
         private void button_beregn_Click(object sender, EventArgs e)
         {
-            label_res.Text = salgSystem.HentTotal(decimal.Parse(textBox_rabat.Text.Trim())).ToString() + "Kr.";
+            label_res.Text = salgSystem.HentTotal(double.Parse(textBox_rabat.Text.Trim())).ToString() + "Kr.";
         }
 
         private void button_annullere_Click(object sender, EventArgs e)

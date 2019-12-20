@@ -1,6 +1,4 @@
-﻿using AnimalHouse_Entities;
-using AnimalHousePersistenslag;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +8,6 @@ using System_Entities;
 using AnimalHouseDB;
 using AnimalHouseBLL;
 using System.Data;
-using System_Entities;
 
 namespace AnimalHouseBLL
 {
@@ -201,11 +198,6 @@ namespace AnimalHouseBLL
             return Kc.UpdateKunde(id, fnavn, lnavn, adress, postnummer, tlf, kundetype, by, email);
         }
 
-        public decimal HentLager(string text1, string text2, string text3)
-        {
-            throw new NotImplementedException();
-        }
-
         public string UpdateAnsat(int id, string navn, string stelling, string tlf)
         {
             return Ac.UpdateAnsat(id, navn, stelling, tlf);
@@ -224,9 +216,9 @@ namespace AnimalHouseBLL
 
 
         //Lager 
-        public Lager SøgId(int id)
+        public Lager SøgId(int produktid)
         {
-            return Lc.SøgId(id);
+            return Lc.SøgId(produktid);
         }
 
         public List<Lager> HentLager()
@@ -234,18 +226,18 @@ namespace AnimalHouseBLL
             return Lc.HentLager();
         }
 
-        public string TilføjLager(decimal pris, int antal, int produktid)
+        public string TilføjLager(double pris, int antal, int produktid)
         {
             Lager L = new Lager(pris, antal, produktid);
             return Lc.TilføjLager(L);
         }
+        //Lager
 
 
         public int HentKundeId(string navnEllerTlf)
         {
             return Kc.HentKundeId(navnEllerTlf);
         }
-        //Lager
 
         public Ansat HentAnsat(int id)
         {

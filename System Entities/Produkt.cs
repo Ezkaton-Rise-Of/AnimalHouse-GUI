@@ -10,7 +10,7 @@ namespace AnimalHouse_Entities
     {
         public int ProduktId { get; set; }
         public string Beskrivelse { get; set; }
-        public decimal Pris { get; set; }
+        public double Pris { get; set; }
         public Kategori kategori { get; set; }
         public bool Service{get; set;}
         public int KategoriId { get; set; }

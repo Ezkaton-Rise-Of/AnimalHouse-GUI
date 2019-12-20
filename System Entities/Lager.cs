@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+//Kenneth A. Kun
 namespace AnimalHouse_Entities
 {
     public class Lager
     {
-        public decimal Pris { get; set; }
+        public double Pris { get; set; }
         public int Antal { get; set; }
-        public Produkt Produkt { get; set; }
         public int ProduktId { get; set; }
+        public bool Service { get; set; }
 
         public List<Lager> LagerList;
 
@@ -20,17 +23,7 @@ namespace AnimalHouse_Entities
 
         }
 
-        public Lager(decimal pris, int antal, Produkt produkt, int produktid)
-        {
-
-            Pris = pris;
-            Antal = antal;
-            Produkt = produkt;
-            ProduktId = produktid;
-
-        }
-
-        public Lager(decimal pris, int antal, int produktid)
+        public Lager(double pris, int antal, int produktid)
         {
 
             Pris = pris;

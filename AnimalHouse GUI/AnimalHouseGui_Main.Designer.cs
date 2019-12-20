@@ -40,7 +40,6 @@
             this.button_lagerStatus = new System.Windows.Forms.Button();
             this.button_mail = new System.Windows.Forms.Button();
             this.button_Journal = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_AnimalHouse1
@@ -135,7 +134,7 @@
             this.button_lagerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_lagerStatus.Location = new System.Drawing.Point(117, 493);
             this.button_lagerStatus.Name = "button_lagerStatus";
-            this.button_lagerStatus.Size = new System.Drawing.Size(137, 46);
+            this.button_lagerStatus.Size = new System.Drawing.Size(275, 46);
             this.button_lagerStatus.TabIndex = 37;
             this.button_lagerStatus.Text = "Lagerstatus";
             this.button_lagerStatus.UseVisualStyleBackColor = true;
@@ -163,24 +162,12 @@
             this.button_Journal.UseVisualStyleBackColor = true;
             this.button_Journal.Click += new System.EventHandler(this.button_Journal_Click);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(255, 493);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 46);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Lager Tilføj";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // AnimalHouseGui_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(509, 608);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button_Journal);
             this.Controls.Add(this.button_mail);
             this.Controls.Add(this.button_lagerStatus);
@@ -213,7 +200,6 @@
         private System.Windows.Forms.Button button_lagerStatus;
         private System.Windows.Forms.Button button_mail;
         private System.Windows.Forms.Button button_Journal;
-        private System.Windows.Forms.Button button2;
     }
 }
 

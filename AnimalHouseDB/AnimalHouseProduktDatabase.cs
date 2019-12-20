@@ -7,7 +7,6 @@ namespace AnimalHouseDB
 {// Holger
     public class AnimalHouseProduktDatabase : IProduktDB
     {
-        SqlTransaction transaction = null;
 
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         public AnimalHouseProduktDatabase()
@@ -15,8 +14,9 @@ namespace AnimalHouseDB
         }
         public List<Kategori> HentAlleKategorier()
         {
+            SqlTransaction transaction = null;
             List<Kategori> kategoriList = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
 
                 try
@@ -55,8 +55,9 @@ namespace AnimalHouseDB
 
         public List<Produkt> HentAlleProduktByKategori(Kategori k)
         {
+            SqlTransaction transaction = null;
             List<Produkt> produkts = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -96,8 +97,9 @@ namespace AnimalHouseDB
 
         public List<Produkt> HentAlleProdukter()
         {
+            SqlTransaction transaction = null;
             List<Produkt> produkts = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -137,8 +139,9 @@ namespace AnimalHouseDB
 
         public Produkt HentProdukt(int Id)
         {
+            SqlTransaction transaction = null;
             Produkt produkt = null;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -153,7 +156,7 @@ namespace AnimalHouseDB
                         produkt.ProduktId = Convert.ToInt32(reader["ProduktId"]);
                         produkt.Beskrivelse = Convert.ToString(reader["Beskrivelse"]);
                         produkt.Pris = Convert.ToDouble(reader["Pris"]);
-                        produkt.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader[".Produkt_Kategori.Navn"]));
+                        produkt.kategori = new Kategori(Convert.ToInt32(reader["Produkt_KategoriId"]), Convert.ToString(reader["Navn"]));
                         produkt.Service = Convert.ToBoolean(reader["Service"]);
                         produkt.Navn = Convert.ToString(reader["Navn"]);
                         produkt.KategoriId = Convert.ToInt32(reader["Produkt_KategoriId"]);
@@ -163,7 +166,7 @@ namespace AnimalHouseDB
                 }
                 catch (Exception e)
                 {
-                    transaction.Rollback();
+                    //transaction.Rollback();
                     throw e;
                 }
                 finally
@@ -176,8 +179,9 @@ namespace AnimalHouseDB
 
         public bool UpdaterProdukt(Produkt p)
         {
+            SqlTransaction transaction = null;
             bool answer = false;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -208,8 +212,9 @@ namespace AnimalHouseDB
         //Holger
         public bool ProduktFromExtern(List<Produkt> Lines)
         {
+            SqlTransaction transaction = null;
             bool answer = false;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 foreach (Produkt item in Lines)
                 {
@@ -220,11 +225,11 @@ namespace AnimalHouseDB
 
                         //henter leverandørId     
                         int id = -1; 
-                        HentSupplier(item.Supplier.SupplierNavn);
+                        HentSupplier(item.Supplier.SupplierNavn, transaction);
                                      
                         if (id == -1)
                         {
-                            id = InsertSupplier(item.Supplier.SupplierNavn);
+                            id = InsertSupplier(item.Supplier.SupplierNavn, transaction);
                         }
                         SqlCommand commandUpdate = new SqlCommand($"if 1 = (select count(*) from Produkt where VareNummer = @varenummer and SupplierId = {id})" +
                             $"update Produkt set Beskrivelse = @beskrivelse, Pris = @Pris, Navn = @Navn where VareNummer = @varenummer and SupplierId = {id} " +
@@ -255,10 +260,10 @@ namespace AnimalHouseDB
             return answer;
         }
 
-        private Int32 InsertSupplier(string navn)
+        private Int32 InsertSupplier(string navn, SqlTransaction transaction)
         {
             Int32 id = -1;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {
@@ -274,10 +279,10 @@ namespace AnimalHouseDB
             }
             return id;
         }
-        private int HentSupplier(string navn)
+        private int HentSupplier(string navn, SqlTransaction transaction)
         {
             int id = -1;
-            using (conn)
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 try
                 {

@@ -22,7 +22,7 @@ namespace System_Entities
             salgitems.Add(new SalgItemLine(p, antal));
         }
 
-        public decimal BeregneTotal()
+        public double BeregneTotal()
         {
             foreach (SalgItemLine lineItem in salgitems)
             {
