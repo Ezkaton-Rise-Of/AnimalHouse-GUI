@@ -36,7 +36,7 @@ namespace AnimalHouse_GUI
 
         private void label_hjælpe_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\Source\Repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Salg Form.txt");
+            Process.Start(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Salg Form.txt");
         }
 
         private void button_gem_Click(object sender, EventArgs e)
@@ -143,6 +143,31 @@ namespace AnimalHouse_GUI
         {
             comboBox_kategori.DataSource = controller.HentAlleKategorier();
             comboBox_kategori.DisplayMember = "HentNavn";
+        }
+
+        private void button_visRecord_Click(object sender, EventArgs e)
+        {
+            textBox_info1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            textBox_info2.Text = controller.HentKundeById(int.Parse( dataGridView1.CurrentRow.Cells[1].Value.ToString())).GetName;
+            textBox_info5.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBox_info4.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            textBox_info3.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            textBox_info6.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            button_print.Enabled = true;
+        }
+
+        private void button_print_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter tw = new StreamWriter(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Faktura Example.txt"))
+            {
+                tw.WriteLine("\t\t\t\t Dato:"+textBox_info3.Text);
+                tw.WriteLine("Faktura ID: "+ textBox_info1.Text);
+                tw.WriteLine("Kunde: "+textBox_info2.Text);
+                tw.WriteLine("Produkter:\n"+textBox_info6.Text);
+                tw.WriteLine("\t\t\t\t Rabat i %: " + textBox_info4.Text);
+                tw.WriteLine("\t\t\t\t Total: " + textBox_info5.Text);
+            }
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Faktura Example.txt");
         }
     }
 }

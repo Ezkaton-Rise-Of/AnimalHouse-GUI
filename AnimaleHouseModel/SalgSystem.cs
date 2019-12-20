@@ -22,18 +22,18 @@ namespace AnimaleHouseModel
         {
             s.TilføjeItemLine(p,antal);
         }
-        public double BeregneTotal()
+        public void BeregneTotal()
         {
-            return s.BeregneTotal();
+            total = s.BeregneTotal();
         }
         public double BeregneTilbud(double procent)
         {
-            return  BeregneTotal() - ((BeregneTotal()*procent)/100);
+            BeregneTotal();
+            return total - (total * procent)/100;
         }
 
         public double HentTotal(double rabat)
         {
-            BeregneTotal();
             total = Math.Round(BeregneTilbud(rabat), 2,MidpointRounding.ToEven);
             return total;
         }

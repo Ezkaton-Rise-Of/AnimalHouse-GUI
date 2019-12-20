@@ -1,10 +1,10 @@
 ﻿// Radwan
 using AnimalHouseBLL;
 using System;
-using System.Windows.Forms;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace AnimalHouse_GUI
 {
@@ -28,11 +28,11 @@ namespace AnimalHouse_GUI
                 MessageBox.Show(answer);
                 FillDataGridView();
                 button_tilføje.Enabled = true;
-                ClearForm(); 
+                ClearForm();
             }
             else
             {
-                MessageBox.Show("Invalid data","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Invalid data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -101,7 +101,7 @@ namespace AnimalHouse_GUI
                     else
                     {
                         radioButton_Private.Checked = false;
-                        radioButton_Erhverv.Checked = true; 
+                        radioButton_Erhverv.Checked = true;
                     }
                     button_SletEjer.Enabled = true;
                     UpdateEjerBtn.Enabled = true;
@@ -132,7 +132,7 @@ namespace AnimalHouse_GUI
 
         private void label_Help_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\Radwan\source\repos\AnimalHouse-GUI\AnimalHouse GUI\Text_Fiels\Register Form.txt");
+            Process.Start(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName + @"\Text_Fiels\Register Form.txt");
         }
 
         private void radioButton_Private_CheckedChanged(object sender, EventArgs e)
@@ -168,8 +168,8 @@ namespace AnimalHouse_GUI
 
         private bool Validateform()
         {
-            if ( textBox_Telefon.Text.Trim().All(char.IsDigit) && textBox_Telefon.Text.Length != 0 
-                && !textBox_Fornavn.Text.Trim().Any(char.IsDigit) && textBox_Fornavn.Text.Trim().Length != 0 
+            if (textBox_Telefon.Text.Trim().All(char.IsDigit) && textBox_Telefon.Text.Length != 0
+                && !textBox_Fornavn.Text.Trim().Any(char.IsDigit) && textBox_Fornavn.Text.Trim().Length != 0
                 && !textBox_Efternavn.Text.Trim().Any(char.IsDigit) && textBox_Efternavn.Text.Trim().Length != 0
                 && textBox_Email.Text.Trim().Length != 0
                 && textBox_Vejnavn.Text.Trim().Length != 0
